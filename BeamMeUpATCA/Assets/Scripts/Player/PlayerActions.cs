@@ -64,6 +64,24 @@ namespace BeamMeUpATCA
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Primary Action"",
+                    ""type"": ""Button"",
+                    ""id"": ""ca447b67-fac8-4b42-bb22-ae43ed5c6979"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Secondary Action"",
+                    ""type"": ""Button"",
+                    ""id"": ""e3718e7f-3943-4519-b694-a19bb53dbd6d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -209,6 +227,28 @@ namespace BeamMeUpATCA
                     ""action"": ""Quit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c68f632-763f-45bd-a57c-faf9465a77a9"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Primary Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4c304a6-1f79-414d-96fd-acd2d0cf08a8"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Secondary Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -238,6 +278,8 @@ namespace BeamMeUpATCA
             m_Default_PanCamera = m_Default.FindAction("Pan Camera", throwIfNotFound: true);
             m_Default_Stop = m_Default.FindAction("Stop", throwIfNotFound: true);
             m_Default_Quit = m_Default.FindAction("Quit", throwIfNotFound: true);
+            m_Default_PrimaryAction = m_Default.FindAction("Primary Action", throwIfNotFound: true);
+            m_Default_SecondaryAction = m_Default.FindAction("Secondary Action", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -301,6 +343,8 @@ namespace BeamMeUpATCA
         private readonly InputAction m_Default_PanCamera;
         private readonly InputAction m_Default_Stop;
         private readonly InputAction m_Default_Quit;
+        private readonly InputAction m_Default_PrimaryAction;
+        private readonly InputAction m_Default_SecondaryAction;
         public struct DefaultActions
         {
             private @PlayerActions m_Wrapper;
@@ -309,6 +353,8 @@ namespace BeamMeUpATCA
             public InputAction @PanCamera => m_Wrapper.m_Default_PanCamera;
             public InputAction @Stop => m_Wrapper.m_Default_Stop;
             public InputAction @Quit => m_Wrapper.m_Default_Quit;
+            public InputAction @PrimaryAction => m_Wrapper.m_Default_PrimaryAction;
+            public InputAction @SecondaryAction => m_Wrapper.m_Default_SecondaryAction;
             public InputActionMap Get() { return m_Wrapper.m_Default; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -330,6 +376,12 @@ namespace BeamMeUpATCA
                     @Quit.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnQuit;
                     @Quit.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnQuit;
                     @Quit.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnQuit;
+                    @PrimaryAction.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPrimaryAction;
+                    @PrimaryAction.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPrimaryAction;
+                    @PrimaryAction.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPrimaryAction;
+                    @SecondaryAction.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSecondaryAction;
+                    @SecondaryAction.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSecondaryAction;
+                    @SecondaryAction.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSecondaryAction;
                 }
                 m_Wrapper.m_DefaultActionsCallbackInterface = instance;
                 if (instance != null)
@@ -346,6 +398,12 @@ namespace BeamMeUpATCA
                     @Quit.started += instance.OnQuit;
                     @Quit.performed += instance.OnQuit;
                     @Quit.canceled += instance.OnQuit;
+                    @PrimaryAction.started += instance.OnPrimaryAction;
+                    @PrimaryAction.performed += instance.OnPrimaryAction;
+                    @PrimaryAction.canceled += instance.OnPrimaryAction;
+                    @SecondaryAction.started += instance.OnSecondaryAction;
+                    @SecondaryAction.performed += instance.OnSecondaryAction;
+                    @SecondaryAction.canceled += instance.OnSecondaryAction;
                 }
             }
         }
@@ -365,6 +423,8 @@ namespace BeamMeUpATCA
             void OnPanCamera(InputAction.CallbackContext context);
             void OnStop(InputAction.CallbackContext context);
             void OnQuit(InputAction.CallbackContext context);
+            void OnPrimaryAction(InputAction.CallbackContext context);
+            void OnSecondaryAction(InputAction.CallbackContext context);
         }
     }
 }
