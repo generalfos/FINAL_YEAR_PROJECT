@@ -7,12 +7,28 @@ namespace BeamMeUpATCA
 {
     public class Unit : MonoBehaviour
     {
+        #region Unit Properties
+        public enum UnitClass
+        {
+            Engineer,
+            Scientist
+        };
+
+        [field: SerializeField]
+        public string Name;
+
+        [field: SerializeField]
+        public UnitClass Class;
+
+        #endregion
+
+        #region Commanding
         private Queue<Command> commandQueue;
         private Command nextCommand;
         
         private void Awake() 
         {
-            commandQueue = new Queue<Command>(); 
+            commandQueue = new Queue<Command>();
         }
 
         public void AddCommand(Command command, bool skipQueue= false, bool resetQueue= false) 
@@ -54,6 +70,7 @@ namespace BeamMeUpATCA
                     ExecuteNextCommand();
                 }   
             }
-        }     
+        }
+        #endregion
     }
 }
