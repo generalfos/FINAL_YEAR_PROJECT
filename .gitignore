@@ -156,3 +156,5 @@ $RECYCLE.BIN/
 /BeamMeUpATCA/[Aa]ssets/[Ss]treamingAssets/aa.meta
 /BeamMeUpATCA/[Aa]ssets/[Ss]treamingAssets/aa/*
 
+# Vscode
+**.vscode/ 
