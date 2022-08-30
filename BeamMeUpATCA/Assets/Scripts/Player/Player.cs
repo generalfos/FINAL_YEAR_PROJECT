@@ -23,7 +23,6 @@ namespace BeamMeUpATCA
         [SerializeField]
         private CameraMover _cameraMover;
 
-
         private Camera _camera;
         private InputActionAsset _playerActions;
         private HashSet<Unit> _selectedUnits;
