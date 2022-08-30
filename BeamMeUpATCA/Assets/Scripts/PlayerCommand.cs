@@ -8,24 +8,21 @@ namespace BeamMeUpATCA
     public class PlayerCommand : MonoBehaviour
     {
         [SerializeField]
-        private PlayerUI _playerUI;
-        [SerializeField]
         private Player _player;
 
-        private GameObject target;
+        [SerializeField]
+        private PlayerUI _playerUI;
 
-        void setUI(Unit props)
-        {
-            String _unitName = props.name;
-            Color _unitColor = props.Class == Unit.UnitClass.Engineer ? Color.red : Color.blue;
-            
-            _playerUI.setUnitUI(_unitName, _unitColor);
-        }
+        private Unit targetUnit;
 
-        void clearUI()
+        [field: SerializeField]
+        public GameObject DynamicInfo { get; private set; }
+
+        private void Awake() 
         {
-            _playerUI.clearUnitUI();
+            DynamicInfo.SetActive(false);
         }
+        
 
         // Update is called once per frame
         void Update()
@@ -36,12 +33,12 @@ namespace BeamMeUpATCA
             {
                 // Hover on Object
                 if (hit.transform.gameObject.tag == "Unit" || hit.transform.gameObject.tag == "ObservationHut" || hit.transform.gameObject.tag == "EngineerShed") {
-                    _playerUI.DynamicInfo.transform.position = _player.Pointer.ReadValue<Vector2>();
-                    _playerUI.DynamicInfo.GetComponentInChildren<Text>().text = hit.transform.gameObject.tag;
-                    _playerUI.DynamicInfo.SetActive(true);
+                    DynamicInfo.transform.position = _player.Pointer.ReadValue<Vector2>();
+                    DynamicInfo.GetComponentInChildren<Text>().text = hit.transform.gameObject.tag;
+                    DynamicInfo.SetActive(true);
                 } else
                 {
-                    _playerUI.DynamicInfo.SetActive(false);
+                    DynamicInfo.SetActive(false);
                 }
 
                 // Click on Object 
@@ -51,15 +48,18 @@ namespace BeamMeUpATCA
                     if (hit.transform.gameObject.tag == "Unit")
                     {
                         Debug.Log("I've hit a Unit: " + _player.Pointer.ReadValue<Vector2>());
-                        Unit props = hit.transform.gameObject.GetComponent<Unit>();
+                        targetUnit = hit.transform.gameObject.GetComponent<Unit>();
 
-                        Debug.Log("Name: " + props.Name + "; Class: " + props.Class.ToString());
-                        setUI(props);
+                        Debug.Log("Name: " + targetUnit.Name + "; Class: " + targetUnit.UnitClass.ToString());
+                        _playerUI.SelectUnit(targetUnit);
                     }
                     else
                     {
                         // Clear Detailed View (TODO: check state if not issuing a command)
-                        clearUI();
+                        if (targetUnit != null) 
+                        {
+                            _playerUI.DeselectUnit(targetUnit);
+                        }
                     }
                 }
 

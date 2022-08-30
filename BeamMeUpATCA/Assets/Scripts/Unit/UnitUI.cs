@@ -5,7 +5,7 @@ using System;
 
 namespace BeamMeUpATCA 
 {
-    public class PlayerUI : MonoBehaviour
+    public class UnitUI : MonoBehaviour
     {
         [SerializeField] 
         private Text _UnitName;
@@ -13,25 +13,23 @@ namespace BeamMeUpATCA
         [SerializeField] 
         private Image _UnitIcon;
 
-        [field: SerializeField]
-        public GameObject DynamicInfo { get; private set; }
-
         private void Awake() 
         {
             clearUnitUI();
-            DynamicInfo.SetActive(false);
         }
 
         public void clearUnitUI()
         {
             _UnitName.text = String.Empty;
             _UnitIcon.color = Color.white;
+            gameObject.SetActive(false);
         }
 
         public void setUnitUI(string name, Color color) 
         {
             _UnitName.text = name;
             _UnitIcon.color = color;
+            gameObject.SetActive(true);
         }
     }
 }

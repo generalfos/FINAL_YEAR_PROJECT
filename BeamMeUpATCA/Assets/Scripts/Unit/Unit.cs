@@ -9,17 +9,32 @@ namespace BeamMeUpATCA
     {
         #region Unit Properties
 
-        public enum UnitClass
+        public enum UnitType
         {
             Engineer,
             Scientist
         };
 
-        [field: SerializeField]
-        public string Name;
+        [field: SerializeField] public string Name {get; private set;}
+        [field: SerializeField] public UnitType UnitClass {get; private set;}
+        
+        public Color UnitColor {get; private set;}
 
-        [field: SerializeField]
-        public UnitClass Class;
+        private void Awake() {
+            switch (UnitClass) 
+            { 
+                case Unit.UnitType.Engineer:
+                    UnitColor = Color.red;
+                    break;
+
+                case Unit.UnitType.Scientist:
+                    UnitColor = Color.blue;
+                    break;
+            }
+
+            commandQueue = new Queue<Command>();
+        }
+
         #endregion // Unit Properties
 
         #region Commanding
@@ -27,11 +42,6 @@ namespace BeamMeUpATCA
         private Queue<Command> commandQueue;
         private Command nextCommand;
         
-        private void Awake() 
-        {
-            commandQueue = new Queue<Command>();
-        }
-
         public void AddCommand(Command command)
         {
             // Guard Clause for determining if the command queue should be reset.

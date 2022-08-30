@@ -13,12 +13,22 @@ namespace BeamMeUpATCA
         
         [SerializeField]
         private PlayerInput _playerInput;
+
+        [SerializeField]
+        private PlayerUI _playerUI;
+
+        [SerializeField]
+        private PlayerSelector _playerSelector;
+
         private InputActionAsset _playerActions;
+        private Camera _camera;
+        private HashSet<Unit> _selectedUnits;
 
         private void Awake() 
         {
-            //_selectedUnits = new List<Unit>();
+            _selectedUnits = new HashSet<Unit>();
             _playerActions = _playerInput.actions;
+            _camera = _playerInput.camera;
 
             DefineInputActions();
         }
@@ -57,12 +67,24 @@ namespace BeamMeUpATCA
         {
             CommandActionSubscription(true);
             _quit.performed += ctx => Application.Quit();
+            PrimaryAction.performed += ctx => SelectUnits();
+            SecondaryAction.performed += ctx => 
+            {
+                // If right click is on something then command action. Otherwise deselect
+                DeselectAllUnits();
+            };
         }
 
         private void OnDisable() 
         {
             CommandActionSubscription(false);
             _quit.performed -= ctx => Application.Quit();
+            PrimaryAction.performed -= ctx => SelectUnits();
+            SecondaryAction.performed -= ctx => 
+            {
+                // If right click is on something then command action. Otherwise deselect
+                DeselectAllUnits();
+            };
         }
 
         // Registers/De-registers Command Action 
@@ -83,9 +105,24 @@ namespace BeamMeUpATCA
         }
         #endregion // Input Action Setup
 
-        // Should be HashSet<Unit> to avoid duplicates. Is List<Unit> for now for Editor serialization.
-        [SerializeField]
-        private List<Unit> _selectedUnits; 
+        private void SelectUnits() 
+        {
+            GameObject selectedObject = _playerSelector.SelectGameObject(_camera, Pointer, PrimaryAction);
+            // Guard clause to check valid return from function.
+            if (selectedObject == null) { return; }
+            if (selectedObject.GetComponent<Unit>() == null) { return; }
+
+            Unit selectedUnit = selectedObject.GetComponent<Unit>() ;   
+              
+            _playerUI.SelectUnit(selectedUnit);
+            _selectedUnits.Add(selectedUnit);
+        }
+
+        private void DeselectAllUnits() 
+        {
+            _playerUI.DeselectAllUnits();
+            _selectedUnits.Clear();
+        }
 
         private void CommandSelectedUnits(Command command)
         {
