@@ -13,6 +13,6 @@ namespace BeamMeUpATCA
             Name = "Command";
         }
 
-        public abstract void Execute();
+        public abstract void Execute(Unit unit);
     }
 }

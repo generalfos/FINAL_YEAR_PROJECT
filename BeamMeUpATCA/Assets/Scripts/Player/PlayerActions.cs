@@ -91,6 +91,24 @@ namespace BeamMeUpATCA
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Tertiary Action"",
+                    ""type"": ""Button"",
+                    ""id"": ""66482325-3237-40ea-8682-410ab3b40f6c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Scroll Camera"",
+                    ""type"": ""Button"",
+                    ""id"": ""a82e8ecb-40bc-46a1-b21a-8478bbfe070b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -269,6 +287,50 @@ namespace BeamMeUpATCA
                     ""action"": ""Command: Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95ce353f-b6c1-4d39-8bba-164c2ac1978c"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tertiary Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""bac367a3-b6ce-4e32-bbcb-f57b11f911fc"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll Camera"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""b297897d-864c-4848-a1a2-3fc5e2aa18cb"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""953aad81-1117-4bc9-a76d-d3ec3ec1931f"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -301,6 +363,8 @@ namespace BeamMeUpATCA
             m_Default_Quit = m_Default.FindAction("Quit", throwIfNotFound: true);
             m_Default_PrimaryAction = m_Default.FindAction("Primary Action", throwIfNotFound: true);
             m_Default_SecondaryAction = m_Default.FindAction("Secondary Action", throwIfNotFound: true);
+            m_Default_TertiaryAction = m_Default.FindAction("Tertiary Action", throwIfNotFound: true);
+            m_Default_ScrollCamera = m_Default.FindAction("Scroll Camera", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -367,6 +431,8 @@ namespace BeamMeUpATCA
         private readonly InputAction m_Default_Quit;
         private readonly InputAction m_Default_PrimaryAction;
         private readonly InputAction m_Default_SecondaryAction;
+        private readonly InputAction m_Default_TertiaryAction;
+        private readonly InputAction m_Default_ScrollCamera;
         public struct DefaultActions
         {
             private @PlayerActions m_Wrapper;
@@ -378,6 +444,8 @@ namespace BeamMeUpATCA
             public InputAction @Quit => m_Wrapper.m_Default_Quit;
             public InputAction @PrimaryAction => m_Wrapper.m_Default_PrimaryAction;
             public InputAction @SecondaryAction => m_Wrapper.m_Default_SecondaryAction;
+            public InputAction @TertiaryAction => m_Wrapper.m_Default_TertiaryAction;
+            public InputAction @ScrollCamera => m_Wrapper.m_Default_ScrollCamera;
             public InputActionMap Get() { return m_Wrapper.m_Default; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -408,6 +476,12 @@ namespace BeamMeUpATCA
                     @SecondaryAction.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSecondaryAction;
                     @SecondaryAction.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSecondaryAction;
                     @SecondaryAction.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSecondaryAction;
+                    @TertiaryAction.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnTertiaryAction;
+                    @TertiaryAction.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnTertiaryAction;
+                    @TertiaryAction.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnTertiaryAction;
+                    @ScrollCamera.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnScrollCamera;
+                    @ScrollCamera.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnScrollCamera;
+                    @ScrollCamera.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnScrollCamera;
                 }
                 m_Wrapper.m_DefaultActionsCallbackInterface = instance;
                 if (instance != null)
@@ -433,6 +507,12 @@ namespace BeamMeUpATCA
                     @SecondaryAction.started += instance.OnSecondaryAction;
                     @SecondaryAction.performed += instance.OnSecondaryAction;
                     @SecondaryAction.canceled += instance.OnSecondaryAction;
+                    @TertiaryAction.started += instance.OnTertiaryAction;
+                    @TertiaryAction.performed += instance.OnTertiaryAction;
+                    @TertiaryAction.canceled += instance.OnTertiaryAction;
+                    @ScrollCamera.started += instance.OnScrollCamera;
+                    @ScrollCamera.performed += instance.OnScrollCamera;
+                    @ScrollCamera.canceled += instance.OnScrollCamera;
                 }
             }
         }
@@ -455,6 +535,8 @@ namespace BeamMeUpATCA
             void OnQuit(InputAction.CallbackContext context);
             void OnPrimaryAction(InputAction.CallbackContext context);
             void OnSecondaryAction(InputAction.CallbackContext context);
+            void OnTertiaryAction(InputAction.CallbackContext context);
+            void OnScrollCamera(InputAction.CallbackContext context);
         }
     }
 }

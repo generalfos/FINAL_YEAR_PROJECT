@@ -10,8 +10,9 @@ namespace BeamMeUpATCA
                 Name = "Move";
             }
 
-        public override void Execute() 
+        public override void Execute(Unit unit) 
         {
+            unit.gameObject.transform.position = new Vector3(Random.Range(-10.0f, 10.0f), 0, Random.Range(-10.0f, 10.0f));
             Debug.Log("MoveCommand called");
         }
     }
