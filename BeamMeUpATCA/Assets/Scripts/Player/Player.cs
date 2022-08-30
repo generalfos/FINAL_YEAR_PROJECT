@@ -9,15 +9,23 @@ namespace BeamMeUpATCA
 
     public class Player : MonoBehaviour
     {
-        #region Setup
+        #region Player Setup
         
         [SerializeField]
         private PlayerInput _playerInput;
         private InputActionAsset _playerActions;
 
-        private List<Unit> _selectedUnits;
+        private void Awake() 
+        {
+            //_selectedUnits = new List<Unit>();
+            _playerActions = _playerInput.actions;
 
-        private InputAction _stop; 
+            DefineInputActions();
+        }
+        #endregion // Player Setup
+
+        #region Input Action Setup
+
         private InputAction _quit;
 
         public InputAction PrimaryAction { get; private set; }
@@ -25,54 +33,67 @@ namespace BeamMeUpATCA
         public InputAction Pointer { get; private set; }
         public InputAction CameraPan { get; private set; }
 
+        private Dictionary<InputAction, Command> _commandActions;
+        private String _cs = "Default/";
+        private String _cmdString = "Command: ";
 
-        private void Awake() 
+        private void DefineInputActions()
         {
-            _selectedUnits = new List<Unit>();
-             _playerActions = _playerInput.actions;
-            //DefineInputActions();
+            PrimaryAction = _playerActions.FindAction(_cs + "Primary Action");
+            SecondaryAction = _playerActions.FindAction(_cs + "Secondary Action");
+            Pointer = _playerActions.FindAction(_cs + "Pointer");
+            CameraPan = _playerActions.FindAction(_cs + "Pan Camera");
 
-            // HACK: Need to get values from index instead of string.
-            PrimaryAction = _playerActions.FindAction("Default/Primary Action");
-            SecondaryAction = _playerActions.FindAction("Default/Secondary Action");
-            Pointer = _playerActions.FindAction("Default/Pointer");
-            CameraPan = _playerActions.FindAction("Default/Pan Camera");
+            _commandActions = new Dictionary<InputAction, Command>() 
+            {
+                {_playerActions.FindAction(_cs + _cmdString + "Cancel"), new CancelCommand()},
+                {_playerActions.FindAction(_cs + _cmdString + "Move"), new MoveCommand()}
+            };
 
-            _stop = _playerActions.FindAction("Default/Stop");
             _quit = _playerActions.FindAction("Default/Quit");
         }
 
-        #endregion
-
         private void OnEnable() 
         {
-            _stop.performed += ctx => Application.Quit();
+            CommandActionSubscription(true);
             _quit.performed += ctx => Application.Quit();
         }
 
         private void OnDisable() 
         {
-            _stop.performed -= ctx => Application.Quit();
+            CommandActionSubscription(false);
             _quit.performed -= ctx => Application.Quit();
         }
 
-        // private void CommandUnits(Command command) 
-        // {
-        //     foreach(Unit unit in _selectedUnits) 
-        //     {
-        //         unit.AddCommand();
-        //     }
-        // }
+        // Registers/De-registers Command Action 
+        private void CommandActionSubscription(bool subscribe) 
+        {
+            foreach (InputAction action in _commandActions.Keys) 
+            {
+                if (subscribe) 
+                {
+                    action.performed += ctx => CommandSelectedUnits(_commandActions[action]);
+                } 
+                else
+                {
+                    action.performed -= ctx => CommandSelectedUnits(_commandActions[action]);
+                }
+            }
 
-        // TODO: Will fix on next commit
-        // private Dictionary<Command, InputAction> _issueCommandTriggers;
+        }
+        #endregion // Input Action Setup
 
-        // private void DefineInputActions() 
-        // {
-        //     _issueCommandTriggers = new Dictionary<Command, InputAction>
-        //     {
-        //         { new StopCommand() , _playerActions.FindAction("Default/Stop") }
-        //     };
-        // }
+        // Should be HashSet<Unit> to avoid duplicates. Is List<Unit> for now for Editor serialization.
+        [SerializeField]
+        private List<Unit> _selectedUnits; 
+
+        private void CommandSelectedUnits(Command command)
+        {
+            foreach (Unit unit in _selectedUnits) 
+            {
+                Debug.Log("Commanding " + unit.name + " to preform the " + command.Name + " command");
+                unit.AddCommand(command);
+            }
+        }
     }
 }
