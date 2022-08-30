@@ -29,49 +29,56 @@ namespace BeamMeUpATCA
         
         // Update for loop per frame. FixedUpdate for loop per physics step.
         // Update() counts in Time.deltaTime. FixedUpdate counts in Time.fixedDeltaTime.
-        private void Update() 
+        private void Update()
         {
+            if (Input.GetMouseButtonDown(1))
+            {
+                dragRotation = true;
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                dragRotation = false;
+            }
+            if (dragRotation)
+            {
+                transform.Rotate(new Vector3(Input.GetAxis("Mouse Y") * RotationSpeed, -Input.GetAxis("Mouse X") * RotationSpeed, 0));
+                x = transform.rotation.eulerAngles.x;
+                y = transform.rotation.eulerAngles.y;
+                z = transform.rotation.eulerAngles.z;
+                transform.rotation = Quaternion.Euler(x, y, z);
+            }
+        }
+
+        private void FixedUpdate() {
             if (!freeCam)
             {
                 if (Input.GetKey(KeyCode.W))
                 {
-                    CameraPosition.z += CameraSpeed / Time.deltaTime;
+                    CameraPosition.z += CameraSpeed / Time.fixedDeltaTime;
                 }
                 if (Input.GetKey(KeyCode.S))
                 {
-                    CameraPosition.z -= CameraSpeed / Time.deltaTime;
+                    CameraPosition.z -= CameraSpeed / Time.fixedDeltaTime;
                 }
                 if (Input.GetKey(KeyCode.D))
                 {
-                    CameraPosition.x += CameraSpeed / Time.deltaTime;
+                    CameraPosition.x += CameraSpeed / Time.fixedDeltaTime;
                 }
                 if (Input.GetKey(KeyCode.A))
                 {
-                    CameraPosition.x -= CameraSpeed / Time.deltaTime;
+                    CameraPosition.x -= CameraSpeed / Time.fixedDeltaTime;
                 }
                 if (Input.GetKey(KeyCode.UpArrow))
                 {
-                    CameraPosition.y += CameraSpeed / Time.deltaTime;
+                    CameraPosition.y += CameraSpeed / Time.fixedDeltaTime;
                 }
                 if (Input.GetKey(KeyCode.DownArrow))
                 {
-                    CameraPosition.y -= CameraSpeed / Time.deltaTime;
+                    CameraPosition.y -= CameraSpeed / Time.fixedDeltaTime;
                 }
                 if (Input.GetMouseButtonDown(1))
                 {
                     dragRotation = true;
-                }
-                if (Input.GetMouseButtonUp(1))
-                {
-                    dragRotation = false;
-                }
-                if (dragRotation)
-                {
-                    transform.Rotate(new Vector3(Input.GetAxis("Mouse Y") * RotationSpeed, -Input.GetAxis("Mouse X") * RotationSpeed, 0));
-                    x = transform.rotation.eulerAngles.x;
-                    y = transform.rotation.eulerAngles.y;
-                    z = transform.rotation.eulerAngles.z;
-                    transform.rotation = Quaternion.Euler(x, y, z);
                 }
             }
             if (Input.GetKeyDown(KeyCode.F))
@@ -84,8 +91,6 @@ namespace BeamMeUpATCA
             }
             this.transform.position = CameraPosition;
         }
-
-        private void FixedUpdate() {}
 
         private void EnterFreeCam()
         {
