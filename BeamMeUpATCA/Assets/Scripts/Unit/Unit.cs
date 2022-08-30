@@ -8,6 +8,7 @@ namespace BeamMeUpATCA
     public class Unit : MonoBehaviour
     {
         #region Unit Properties
+
         public enum UnitClass
         {
             Engineer,
@@ -19,10 +20,10 @@ namespace BeamMeUpATCA
 
         [field: SerializeField]
         public UnitClass Class;
-
-        #endregion
+        #endregion // Unit Properties
 
         #region Commanding
+
         private Queue<Command> commandQueue;
         private Command nextCommand;
         
@@ -31,46 +32,34 @@ namespace BeamMeUpATCA
             commandQueue = new Queue<Command>();
         }
 
-        public void AddCommand(Command command, bool skipQueue= false, bool resetQueue= false) 
+        public void AddCommand(Command command)
         {
             // Guard Clause for determining if the command queue should be reset.
-            if (resetQueue) { commandQueue.Clear(); }
+            if (command.ResetQueue) { commandQueue.Clear(); }
 
             commandQueue.Enqueue(command);
 
             // Sets next command to front of queue or the command parameter if skipQueue is true.
-            nextCommand = skipQueue ? command : commandQueue.Dequeue();
+            nextCommand = command.SkipQueue ? command : commandQueue.Dequeue();
         }
 
-        public void ExecuteNextCommand() 
+        public Command ExecuteCommand(Command command) 
         {
             // Guard Clause for determining if there is no next command.
-            if (nextCommand == null) { return; }
-            
-            nextCommand.Execute();
+            if (command == null) { return null; }
 
-            try 
-            {
-                nextCommand = commandQueue.Dequeue();
-            }
-            catch (InvalidOperationException) 
-            {
-                nextCommand = null;
-            }
+            command.Execute();
+
+            // If there is a next command then return it. Otherwise return null.
+            try { return commandQueue.Dequeue(); }
+            catch (InvalidOperationException) { return null; }
         }
 
         private void Update() 
         {
-            // HACK: Commands should call ExecuteNextCommand() as an event instead
-            // Checking each Update() call. Also double checking for null values here :/
-            if (nextCommand != null) 
-            {
-                if (nextCommand.IsFinished) 
-                {
-                    ExecuteNextCommand();
-                }   
-            }
+            // ExecuteCommand() returns the next command in the queue.
+            nextCommand = ExecuteCommand(nextCommand);
         }
-        #endregion
+        #endregion // Commanding
     }
 }

@@ -3,7 +3,7 @@
 
 To download and open this project on your computer ensure you have [UnityHub](https://unity3d.com/get-unity/download) installed and lauched.
 
-Ensure you have the version `Editor 2020.3.38f1` LTS installed.
+Ensure you have the version `Editor 2020.3.38f1` LTS installed. Do not upgrade the project to a newer LTS if it becomes available during development as this could cause potential problems.
 
 ## Git
 
@@ -27,3 +27,7 @@ Navigate to **Projects** -> **Open (↓)** -> **Add project from disk**. Then na
 - git
 - git-lfs
 - untityhub
+
+## Controls
+
+Look in `BeamMeUpATCA/Assets/StreamingAssets` (or `BeamMeUpATCA_Data/StreamingAssets` for builds) to find controls.

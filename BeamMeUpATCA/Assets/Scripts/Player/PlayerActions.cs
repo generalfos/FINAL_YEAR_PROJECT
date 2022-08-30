@@ -48,9 +48,18 @@ namespace BeamMeUpATCA
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Stop"",
+                    ""name"": ""Command: Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""49bd28d1-0852-4b9e-91ba-1435c4970561"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Command: Move"",
+                    ""type"": ""Button"",
+                    ""id"": ""0a33ba2d-c6ad-4a6e-ae17-04fb4cd37fc3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -99,11 +108,11 @@ namespace BeamMeUpATCA
                 {
                     ""name"": """",
                     ""id"": ""35abdebe-12d3-4859-8b2d-499490893d19"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""Stop"",
+                    ""action"": ""Command: Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -249,6 +258,17 @@ namespace BeamMeUpATCA
                     ""action"": ""Secondary Action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9637febd-848f-443d-8ef9-d7ae196efed4"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Command: Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -276,7 +296,8 @@ namespace BeamMeUpATCA
             m_Default = asset.FindActionMap("Default", throwIfNotFound: true);
             m_Default_Pointer = m_Default.FindAction("Pointer", throwIfNotFound: true);
             m_Default_PanCamera = m_Default.FindAction("Pan Camera", throwIfNotFound: true);
-            m_Default_Stop = m_Default.FindAction("Stop", throwIfNotFound: true);
+            m_Default_CommandCancel = m_Default.FindAction("Command: Cancel", throwIfNotFound: true);
+            m_Default_CommandMove = m_Default.FindAction("Command: Move", throwIfNotFound: true);
             m_Default_Quit = m_Default.FindAction("Quit", throwIfNotFound: true);
             m_Default_PrimaryAction = m_Default.FindAction("Primary Action", throwIfNotFound: true);
             m_Default_SecondaryAction = m_Default.FindAction("Secondary Action", throwIfNotFound: true);
@@ -341,7 +362,8 @@ namespace BeamMeUpATCA
         private IDefaultActions m_DefaultActionsCallbackInterface;
         private readonly InputAction m_Default_Pointer;
         private readonly InputAction m_Default_PanCamera;
-        private readonly InputAction m_Default_Stop;
+        private readonly InputAction m_Default_CommandCancel;
+        private readonly InputAction m_Default_CommandMove;
         private readonly InputAction m_Default_Quit;
         private readonly InputAction m_Default_PrimaryAction;
         private readonly InputAction m_Default_SecondaryAction;
@@ -351,7 +373,8 @@ namespace BeamMeUpATCA
             public DefaultActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Pointer => m_Wrapper.m_Default_Pointer;
             public InputAction @PanCamera => m_Wrapper.m_Default_PanCamera;
-            public InputAction @Stop => m_Wrapper.m_Default_Stop;
+            public InputAction @CommandCancel => m_Wrapper.m_Default_CommandCancel;
+            public InputAction @CommandMove => m_Wrapper.m_Default_CommandMove;
             public InputAction @Quit => m_Wrapper.m_Default_Quit;
             public InputAction @PrimaryAction => m_Wrapper.m_Default_PrimaryAction;
             public InputAction @SecondaryAction => m_Wrapper.m_Default_SecondaryAction;
@@ -370,9 +393,12 @@ namespace BeamMeUpATCA
                     @PanCamera.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPanCamera;
                     @PanCamera.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPanCamera;
                     @PanCamera.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPanCamera;
-                    @Stop.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnStop;
-                    @Stop.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnStop;
-                    @Stop.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnStop;
+                    @CommandCancel.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandCancel;
+                    @CommandCancel.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandCancel;
+                    @CommandCancel.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandCancel;
+                    @CommandMove.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandMove;
+                    @CommandMove.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandMove;
+                    @CommandMove.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandMove;
                     @Quit.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnQuit;
                     @Quit.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnQuit;
                     @Quit.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnQuit;
@@ -392,9 +418,12 @@ namespace BeamMeUpATCA
                     @PanCamera.started += instance.OnPanCamera;
                     @PanCamera.performed += instance.OnPanCamera;
                     @PanCamera.canceled += instance.OnPanCamera;
-                    @Stop.started += instance.OnStop;
-                    @Stop.performed += instance.OnStop;
-                    @Stop.canceled += instance.OnStop;
+                    @CommandCancel.started += instance.OnCommandCancel;
+                    @CommandCancel.performed += instance.OnCommandCancel;
+                    @CommandCancel.canceled += instance.OnCommandCancel;
+                    @CommandMove.started += instance.OnCommandMove;
+                    @CommandMove.performed += instance.OnCommandMove;
+                    @CommandMove.canceled += instance.OnCommandMove;
                     @Quit.started += instance.OnQuit;
                     @Quit.performed += instance.OnQuit;
                     @Quit.canceled += instance.OnQuit;
@@ -421,7 +450,8 @@ namespace BeamMeUpATCA
         {
             void OnPointer(InputAction.CallbackContext context);
             void OnPanCamera(InputAction.CallbackContext context);
-            void OnStop(InputAction.CallbackContext context);
+            void OnCommandCancel(InputAction.CallbackContext context);
+            void OnCommandMove(InputAction.CallbackContext context);
             void OnQuit(InputAction.CallbackContext context);
             void OnPrimaryAction(InputAction.CallbackContext context);
             void OnSecondaryAction(InputAction.CallbackContext context);
