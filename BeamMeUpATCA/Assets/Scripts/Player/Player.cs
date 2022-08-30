@@ -20,16 +20,23 @@ namespace BeamMeUpATCA
         [SerializeField]
         private PlayerSelector _playerSelector;
 
-        private InputActionAsset _playerActions;
+        [SerializeField]
+        private CameraMover _cameraMover;
+
+
         private Camera _camera;
+        private InputActionAsset _playerActions;
         private HashSet<Unit> _selectedUnits;
 
         private void Awake() 
         {
-            _selectedUnits = new HashSet<Unit>();
             _playerActions = _playerInput.actions;
-            _camera = _playerInput.camera;
 
+            // Setup camera and camera mover script
+            _camera = _playerInput.camera;
+            _cameraMover.PlayerCamera = _camera;
+
+            _selectedUnits = new HashSet<Unit>();
             DefineInputActions();
         }
         #endregion // Player Setup
@@ -40,8 +47,10 @@ namespace BeamMeUpATCA
 
         public InputAction PrimaryAction { get; private set; }
         public InputAction SecondaryAction { get; private set; }
+        public InputAction TertiaryAction { get; private set; }
         public InputAction Pointer { get; private set; }
         public InputAction CameraPan { get; private set; }
+        public InputAction CameraScroll { get; private set; }
 
         private Dictionary<InputAction, Command> _commandActions;
         private String _cs = "Default/";
@@ -51,8 +60,10 @@ namespace BeamMeUpATCA
         {
             PrimaryAction = _playerActions.FindAction(_cs + "Primary Action");
             SecondaryAction = _playerActions.FindAction(_cs + "Secondary Action");
+            TertiaryAction = _playerActions.FindAction(_cs + "Tertiary Action");
             Pointer = _playerActions.FindAction(_cs + "Pointer");
             CameraPan = _playerActions.FindAction(_cs + "Pan Camera");
+            CameraScroll = _playerActions.FindAction(_cs + "Scroll Camera");
 
             _commandActions = new Dictionary<InputAction, Command>() 
             {
@@ -73,6 +84,16 @@ namespace BeamMeUpATCA
                 // If right click is on something then command action. Otherwise deselect
                 DeselectAllUnits();
             };
+            TertiaryAction.started += ctx => _cameraMover.DragRotation = true;
+            TertiaryAction.canceled += ctx => _cameraMover.DragRotation = false;
+
+            CameraPan.started += ctx => _cameraMover.Camera2DAdjust = ctx.ReadValue<Vector2>();
+            CameraPan.performed += ctx => _cameraMover.Camera2DAdjust = ctx.ReadValue<Vector2>();
+            CameraPan.canceled += ctx => _cameraMover.Camera2DAdjust = ctx.ReadValue<Vector2>();
+
+            CameraScroll.started += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
+            CameraScroll.performed += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
+            CameraScroll.canceled += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
         }
 
         private void OnDisable() 
@@ -85,6 +106,16 @@ namespace BeamMeUpATCA
                 // If right click is on something then command action. Otherwise deselect
                 DeselectAllUnits();
             };
+            TertiaryAction.started -= ctx => _cameraMover.DragRotation = true;
+            TertiaryAction.canceled -= ctx => _cameraMover.DragRotation = false;
+
+            CameraPan.started -= ctx => _cameraMover.Camera2DAdjust = ctx.ReadValue<Vector2>();
+            CameraPan.performed -= ctx => _cameraMover.Camera2DAdjust = ctx.ReadValue<Vector2>();
+            CameraPan.canceled -= ctx => _cameraMover.Camera2DAdjust = ctx.ReadValue<Vector2>();
+
+            CameraScroll.started += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
+            CameraScroll.performed += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
+            CameraScroll.canceled += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
         }
 
         // Registers/De-registers Command Action 

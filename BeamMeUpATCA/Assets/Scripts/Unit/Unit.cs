@@ -58,7 +58,8 @@ namespace BeamMeUpATCA
             // Guard Clause for determining if there is no next command.
             if (command == null) { return null; }
 
-            command.Execute();
+            // Pass self
+            command.Execute(this);
 
             // If there is a next command then return it. Otherwise return null.
             try { return commandQueue.Dequeue(); }
