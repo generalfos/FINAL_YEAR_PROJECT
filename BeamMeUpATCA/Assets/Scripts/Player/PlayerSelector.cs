@@ -21,13 +21,16 @@ namespace BeamMeUpATCA
         RaycastHit RayCastHit;
         Ray RayCast;
 
-        List<string> SelectableGameObjectTags = new List<string>() {"Unit"};
+        List<string> SelectableGameObjectTags = new List<string>() {"Unit", "Array"};
 
         public GameObject SelectGameObject(Camera camera, InputAction pointer, InputAction primaryClick) 
         {
             RayCast = camera.ScreenPointToRay(pointer.ReadValue<Vector2>());
             // Guard claus to exit and return null if nothing is collided with the raycast.
-            if (!Physics.Raycast(RayCast, out RayCastHit, 1000f)) { return null; } 
+            if (!Physics.Raycast(RayCast, out RayCastHit, 10000f)) {
+                Debug.Log("No hit");
+                return null; 
+            } 
 
             string RayCastHitTag = RayCastHit.transform.gameObject.tag;            
 

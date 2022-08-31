@@ -4,15 +4,26 @@ namespace BeamMeUpATCA
 {
     public class MoveCommand : Command
     {
-        public MoveCommand(bool skipQueue = false, bool resetQueue = false) 
+        RaycastHit RayCastHit;
+        Ray RayCast;
+        Player _player;
+
+        public MoveCommand(Player player, bool skipQueue = false, bool resetQueue = false) 
             : base(skipQueue, resetQueue) 
             {
                 Name = "Move";
+                _player = player;
             }
 
         public override void Execute(Unit unit) 
         {
-            unit.gameObject.transform.position = new Vector3(Random.Range(-10.0f, 10.0f), 0, Random.Range(-10.0f, 10.0f));
+            RayCast = Camera.main.ScreenPointToRay(_player.Pointer.ReadValue<Vector2>());
+            if (!Physics.Raycast(RayCast, out RayCastHit, 10000f))
+            {
+                Debug.Log("No hit");
+                return;
+            }
+            unit.gameObject.transform.position = RayCastHit.point;
             Debug.Log("MoveCommand called");
         }
     }
