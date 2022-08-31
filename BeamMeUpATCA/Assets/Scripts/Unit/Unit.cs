@@ -12,7 +12,8 @@ namespace BeamMeUpATCA
         public enum UnitType
         {
             Engineer,
-            Scientist
+            Scientist,
+            Array
         };
 
         [field: SerializeField] public string Name {get; private set;}
@@ -29,6 +30,9 @@ namespace BeamMeUpATCA
 
                 case Unit.UnitType.Scientist:
                     UnitColor = Color.blue;
+                    break;
+                case Unit.UnitType.Array:
+                    UnitColor = Color.green;
                     break;
             }
 

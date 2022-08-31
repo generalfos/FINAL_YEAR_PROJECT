@@ -32,7 +32,7 @@ namespace BeamMeUpATCA
             if (Physics.Raycast(ray, out hit, 1000f))
             {
                 // Hover on Object
-                if (hit.transform.gameObject.tag == "Unit" || hit.transform.gameObject.tag == "ObservationHut" || hit.transform.gameObject.tag == "EngineerShed") {
+                if (hit.transform.gameObject.tag == "Unit" || hit.transform.gameObject.tag == "ObservationHut" || hit.transform.gameObject.tag == "EngineerShed" || hit.transform.gameObject.tag == "Array") {
                     DynamicInfo.transform.position = _player.Pointer.ReadValue<Vector2>();
                     DynamicInfo.GetComponentInChildren<Text>().text = hit.transform.gameObject.tag;
                     DynamicInfo.SetActive(true);
