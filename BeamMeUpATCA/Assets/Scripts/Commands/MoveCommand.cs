@@ -23,8 +23,23 @@ namespace BeamMeUpATCA
                 Debug.Log("No hit");
                 return;
             }
-            unit.gameObject.transform.position = RayCastHit.point;
+            string RayCastHitTag = RayCastHit.transform.gameObject.tag;
+            Debug.Log(RayCastHitTag);
+            if (RayCastHitTag == "ConfigSlot")
+            {
+                if (unit.UnitClass == Unit.UnitType.Array)
+                {
+                    unit.gameObject.transform.position = RayCastHit.point;
+                }
+            } else
+            {
+                if (!(unit.UnitClass == Unit.UnitType.Array))
+                {
+                    unit.gameObject.transform.position = RayCastHit.point;
+                }
+            }
             Debug.Log("MoveCommand called");
+
         }
     }
 }
