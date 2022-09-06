@@ -13,6 +13,9 @@ namespace BeamMeUpATCA
         [SerializeField] 
         private Image _UnitIcon;
 
+        [SerializeField]
+        private Slider _UnitHealthBar;
+
         private void Awake() 
         {
             clearUnitUI();
@@ -25,10 +28,12 @@ namespace BeamMeUpATCA
             gameObject.SetActive(false);
         }
 
-        public void setUnitUI(string name, Color color) 
+        public void setUnitUI(string name, Color color, int health) 
         {
             _UnitName.text = name;
             _UnitIcon.color = color;
+            _UnitHealthBar.value = (float) health / (float) 100;
+            Debug.Log(_UnitHealthBar.value);
             gameObject.SetActive(true);
         }
     }

@@ -18,7 +18,8 @@ namespace BeamMeUpATCA
 
         [field: SerializeField] public string Name {get; private set;}
         [field: SerializeField] public UnitType UnitClass {get; private set;}
-        
+        [field: SerializeField] public int UnitHealth { get; private set; }
+
         public Color UnitColor {get; private set;}
 
         private void Awake() {
