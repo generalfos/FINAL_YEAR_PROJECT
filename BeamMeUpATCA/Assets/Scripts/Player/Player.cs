@@ -67,7 +67,8 @@ namespace BeamMeUpATCA
             _commandActions = new Dictionary<InputAction, Command>() 
             {
                 {_playerActions.FindAction(_cs + _cmdString + "Cancel"), new CancelCommand()},
-                {_playerActions.FindAction(_cs + _cmdString + "Move"), new MoveCommand(this)}
+                {_playerActions.FindAction(_cs + _cmdString + "Move"), new MoveCommand(this)},
+                {_playerActions.FindAction(_cs + _cmdString + "Rotate"), new RotateCommand(this)}
             };
 
             _quit = _playerActions.FindAction("Default/Quit");

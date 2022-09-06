@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Command: Rotate",
+                    "type": "Button",
+                    "id": "2afb722b-f3dc-4c99-95b6-9890345dcf97",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Quit",
                     "type": "Button",
                     "id": "6c1defbc-86af-4db2-83de-ee85bcda12da",
@@ -325,6 +334,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Rotate Camera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96d1d831-d90d-4a0d-b992-134f2481975c",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Command: Rotate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

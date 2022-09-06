@@ -21,7 +21,10 @@ namespace BeamMeUpATCA
         // Update for loop per frame. FixedUpdate for loop per physics step.
         // Update() counts in Time.deltaTime. FixedUpdate counts in Time.fixedDeltaTime.
         private void Update() {
-            Completeness += (float)0.1 / ((float)100 / (float)SignalStrength);
+            if (SignalStrength > 0)
+            {
+                Completeness += (float)0.1 / ((float)100 / (float)SignalStrength);
+            }
             _SignalStrength.value = (float)SignalStrength/(float)100;
             _Completeness.value = (float)Completeness/(float)100;
         }
