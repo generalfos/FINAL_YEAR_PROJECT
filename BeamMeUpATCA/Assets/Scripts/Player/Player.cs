@@ -142,8 +142,8 @@ namespace BeamMeUpATCA
             if (selectedObject == null) { return; }
             if (selectedObject.GetComponent<Unit>() == null) { return; }
 
-            Unit selectedUnit = selectedObject.GetComponent<Unit>() ;   
-              
+            Unit selectedUnit = selectedObject.GetComponent<Unit>();
+            if (selectedUnit.UnitClass == Unit.UnitType.Array) { DeselectAllUnits(); }
             _playerUI.SelectUnit(selectedUnit);
             _selectedUnits.Add(selectedUnit);
         }
