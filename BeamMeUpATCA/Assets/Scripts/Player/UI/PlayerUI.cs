@@ -24,7 +24,7 @@ namespace BeamMeUpATCA
 
         public void SelectUnit(Unit unit) 
         {
-            unitUIList[0].setUnitUI(unit.Name, unit.UnitColor);
+            unitUIList[0].setUnitUI(unit.Name, unit.UnitColor, unit.UnitHealth);
         }
 
         public void DeselectUnit(Unit unit) 
