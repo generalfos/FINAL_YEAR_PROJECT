@@ -20,7 +20,14 @@ namespace BeamMeUpATCA
         [field: SerializeField] public UnitType UnitClass {get; private set;}
         [field: SerializeField] public int UnitHealth { get; private set; }
 
+        [field: SerializeField] public float UnitMorale {get; private set; }
+
         public Color UnitColor {get; private set;}
+        
+        private float tickCounter;
+        private float moraleTickDmg;
+
+        private float maxMorale;
 
         private void Awake() {
             switch (UnitClass) 
@@ -36,6 +43,11 @@ namespace BeamMeUpATCA
                     UnitColor = Color.green;
                     break;
             }
+
+            maxMorale = 100;
+            UnitMorale = maxMorale;
+            moraleTickDmg = 1;
+            tickCounter = 0;
 
             commandQueue = new Queue<Command>();
         }
@@ -77,5 +89,28 @@ namespace BeamMeUpATCA
             nextCommand = ExecuteCommand(nextCommand);
         }
         #endregion // Commanding
+
+        #region TickUpdates
+
+        private void FixedUpdate() {
+            takeTickDamage();
+        }
+
+        private void takeTickDamage() {
+            tickCounter += Time.fixedDeltaTime;
+            if(tickCounter >= 3) {
+                float newMorale = UnitMorale - moraleTickDmg;
+                if(newMorale <= 0) {
+                    newMorale = 0;
+                }
+                if(newMorale >= maxMorale) {
+                    newMorale = maxMorale; //do not heal over full
+                }
+                UnitMorale = newMorale;
+                tickCounter = 0;
+            }
+        }
+
+        #endregion //TickUpdates
     }
 }
