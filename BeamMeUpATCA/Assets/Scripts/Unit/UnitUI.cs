@@ -33,7 +33,7 @@ namespace BeamMeUpATCA
             _UnitName.text = name;
             _UnitIcon.color = color;
             _UnitHealthBar.value = (float) health / (float) 100;
-            Debug.Log(_UnitHealthBar.value);
+            // Debug.Log(_UnitHealthBar.value);
             gameObject.SetActive(true);
         }
     }

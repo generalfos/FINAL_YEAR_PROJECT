@@ -9,7 +9,7 @@ namespace BeamMeUpATCA
 
         private List<UnitUI> unitUIList;
         private int selectedUnits;
-        private Vector3 screenPosition = new Vector3(150, 0, 0);
+        private Vector3 unitUIScreenPosition = new Vector3(150, 0, 0);
 
         private void Awake() {
             unitUIList = new List<UnitUI>();
@@ -18,7 +18,7 @@ namespace BeamMeUpATCA
 
         private void CreateNewUnitUI() 
         {
-            GameObject newUnitUI = Instantiate(UnitUIPrefab, screenPosition, Quaternion.identity, gameObject.transform);
+            GameObject newUnitUI = Instantiate(UnitUIPrefab, unitUIScreenPosition, Quaternion.identity, gameObject.transform);
             unitUIList.Add(newUnitUI.GetComponent<UnitUI>());
         }
 
