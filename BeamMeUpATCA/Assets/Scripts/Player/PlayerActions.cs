@@ -353,7 +353,7 @@ namespace BeamMeUpATCA
                 {
                     ""name"": """",
                     ""id"": ""36347e74-9612-46df-8ded-50f5be405708"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Mouse>/middleButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
