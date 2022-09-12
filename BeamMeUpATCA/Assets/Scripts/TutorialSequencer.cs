@@ -14,6 +14,7 @@ namespace BeamMeUpATCA
         private GameObject currPopUp;
         static private int titleIndex = 0;
         static private int contentIndex = 1;
+        static private int btnIndex = 2;
 
         // Awake is init function. Start before first frame
         private void Awake() {
@@ -46,14 +47,25 @@ namespace BeamMeUpATCA
             GameObject newPrompt = Instantiate(TutPopUpPrefab, screenCenter, Quaternion.identity, gameObject.transform);
             Text Title = newPrompt.transform.GetChild(0).GetChild(titleIndex).GetComponentInChildren<Text>();
             Text Content = newPrompt.transform.GetChild(0).GetChild(contentIndex).GetComponentInChildren<Text>();
+            Button btn = newPrompt.transform.GetChild(0).GetChild(btnIndex).GetComponentInChildren<Button>();
             Title.text = title;
             Content.text = content;
+            btn.onClick.AddListener(handleOk);
             currPopUp = newPrompt;
         }
         
+        private void handleOk()
+        {
+            Debug.Log("Button Clicked");
+            DestroyPrompt(currPopUp);
+            currPopUp = null;
+        }
+
         private void Intro()
         {
-            CreateNewPrompt("Hello", "Welcome");
+            CreateNewPrompt("Welcome to the Beam Me Up ATCA Tutorial",
+                "In this tutorial you will manage the ATCA whilst it performs an observation of" +
+                " Betelguese");
         }
     }
 }

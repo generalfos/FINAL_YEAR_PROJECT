@@ -26,7 +26,7 @@ namespace BeamMeUpATCA
             Debug.Log("Hit: " + RayCastHit.transform.gameObject.name);
             if (unit.UnitClass == Unit.UnitType.Array)
             {
-                Debug.Log(RayCastHit.point);
+                // Debug.Log(RayCastHit.point);
                 GameObject dish = unit.gameObject.transform.GetChild(2).gameObject;
                 Vector3 targetPos = RayCastHit.point;
                 targetPos.y = 0;
