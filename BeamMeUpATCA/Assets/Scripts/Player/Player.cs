@@ -50,6 +50,7 @@ namespace BeamMeUpATCA
         public InputAction Pointer { get; private set; }
         public InputAction CameraPan { get; private set; }
         public InputAction CameraScroll { get; private set; }
+        public InputAction CameraRotate { get; private set; }
 
         private Dictionary<InputAction, Command> _commandActions;
         private String _cs = "Default/";
@@ -63,6 +64,7 @@ namespace BeamMeUpATCA
             Pointer = _playerActions.FindAction(_cs + "Pointer");
             CameraPan = _playerActions.FindAction(_cs + "Pan Camera");
             CameraScroll = _playerActions.FindAction(_cs + "Scroll Camera");
+            CameraRotate = _playerActions.FindAction(_cs + "Rotate Camera");
 
             _commandActions = new Dictionary<InputAction, Command>() 
             {
