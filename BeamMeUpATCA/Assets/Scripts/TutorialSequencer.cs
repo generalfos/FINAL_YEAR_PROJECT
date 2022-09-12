@@ -22,15 +22,15 @@ namespace BeamMeUpATCA
         [field: SerializeField] public GameObject Engineer { get; private set; }
 
         // Position popup directly in centre of screen
-        static private Vector3 screenCenter = new Vector3(Screen.width/2, Screen.height/2, 0);
+        private Vector3 screenCenter = new Vector3(Screen.width/2, Screen.height/2, 0);
         private GameObject currPopUp;
         private int tutSeqNo;
         private bool popUpActive;
 
         // TODO: Introduce serialised fields for these elements or another more appropriate method
-        static private int titleIndex = 0;
-        static private int contentIndex = 1;
-        static private int btnIndex = 2;
+        private const int titleIndex = 0;
+        private const int contentIndex = 1;
+        private const int btnIndex = 2;
 
         // Awake is init function. Start before first frame
         private void Awake() {
