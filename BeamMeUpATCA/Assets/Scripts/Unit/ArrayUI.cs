@@ -13,8 +13,6 @@ namespace BeamMeUpATCA
 
         [SerializeField]
         private Image _ArrayHealthIndicator;
-
-        private void Awake() {}
         
         // Update for loop per frame. FixedUpdate for loop per physics step.
         // Update() counts in Time.deltaTime. FixedUpdate counts in Time.fixedDeltaTime.
@@ -33,6 +31,5 @@ namespace BeamMeUpATCA
                 _ArrayHealthIndicator.color = Color.red;
             }
         }
-        private void FixedUpdate() {}
     }
 }

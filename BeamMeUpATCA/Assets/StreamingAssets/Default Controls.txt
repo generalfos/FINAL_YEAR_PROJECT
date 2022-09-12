@@ -9,4 +9,5 @@ General Controls:
 
 Unit Controls:
 	Move Command - M
+	Rotate Command - R
 	Cancel Command - C
