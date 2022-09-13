@@ -13,69 +13,95 @@ namespace BeamMeUpATCA
         [SerializeField]
         private float healthPool;
         [SerializeField]
-        private float tickDmg; // We could make the engineers temporarily change tickDmg to a negative value
+        private float tickDmg;
+        [SerializeField]
+        private float repairHP;
         [SerializeField]
         private bool isBroken;
         private float tickCounter;
+        private Unit repairer;
 
-        private Queue<Unit> storedUnits;
+        private List<Unit> storedUnits;
 
         private void Awake() {
             maxHealth = 100f;
             healthPool = 100f;
             tickDmg = 1f;
+            repairHP = 5f;
             isBroken = false;
             tickCounter = 0;
+            Unit repairer = null;
         }
 
-        private void FixedUpdate() {
-            //If it's not broken, or if it is broken and is being healed
-            if(!isBroken || tickDmg < 0) {takeTickDamage();}
+        private void FixedUpdate() 
+        {
+            // Reduce HP if not broken or not being repaired
+            if ((!isBroken || tickDmg < 0) && repairer is null)
+            {
+                takeTickDamage();
+            }
+            // If a unit has been assigned to repair, gain HP
+            if (repairer != null)
+            {
+                regainHealth();
+            }
         }
-
-        private void takeTickDamage() {
+        
+        /*
+         * If a unit has been assigned to repair a building, it gains HP
+         * Cannot have more HP than maxHealth
+         */
+        private void regainHealth()
+        {
             tickCounter += Time.fixedDeltaTime;
-            if(tickCounter >= 1) {
-                float newHp = healthPool - tickDmg;
-                if(newHp <= 0) {
-                    newHp = 0;
-                    isBroken = true;
-                } else if (isBroken) {
-                    isBroken = false; //if being healed from broken, fix
+            if (tickCounter >= 1)
+            {
+                float newHp = healthPool + repairHP; // TODO: Multiplier based on unit repairing
+                if (newHp >= maxHealth)
+                {
+                    newHp = maxHealth;
                 }
-                if(newHp >= maxHealth) {
-                    newHp = maxHealth; //do not heal over full
-                }
+                isBroken = false;
                 healthPool = newHp;
                 tickCounter = 0;
             }
         }
+
+        private void takeTickDamage()
+        {
+            tickCounter += Time.fixedDeltaTime;
+            if (tickCounter >= 1)
+            {
+                float newHp = healthPool - tickDmg;
+                if (newHp <= 0)
+                {
+                    newHp = 0;
+                    isBroken = true;
+                    healthPool = newHp;
+                    tickCounter = 0;
+                }
+            }
+        }
+
         public void setTickDmg(float dmg) {
             tickDmg = dmg;
-        }
-
-        public void addHealth(float hp) {
-            healthPool += hp;
-        }
-
-        public void setBreak(bool flag) {
-            isBroken = flag;
         }
 
         public float getHealth() {
             return healthPool;
         }
 
-        public Queue<Unit> getUnits() {
+        public List<Unit> getUnits() {
             return storedUnits;
         }
 
         public void storeUnit(Unit unit) {
-            storedUnits.Enqueue(unit);
+            storedUnits.Add(unit);
         }
 
-        public Unit removeUnit() {
-            return storedUnits.Dequeue();
+        public Unit removeUnit(Unit unit) {
+            storedUnits.Remove(unit);
+            return unit;
         }
     }
 }
