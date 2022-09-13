@@ -21,7 +21,7 @@ namespace BeamMeUpATCA
         RaycastHit RayCastHit;
         Ray RayCast;
 
-        List<string> SelectableGameObjectTags = new List<string>() {"Unit", "Array"};
+        List<string> SelectableGameObjectTags = new List<string>() {"Unit", "Array", "Building"};
 
         public GameObject SelectGameObject(Camera camera, InputAction pointer, InputAction primaryClick) 
         {
