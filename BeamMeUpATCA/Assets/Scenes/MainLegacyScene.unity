@@ -487,6 +487,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Jimmy D
   <UnitClass>k__BackingField: 0
+  <UnitHealth>k__BackingField: 0
+  <UnitMorale>k__BackingField: 0
 --- !u!65 &423787098
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -575,6 +577,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Dr Carter
   <UnitClass>k__BackingField: 0
+  <UnitHealth>k__BackingField: 0
+  <UnitMorale>k__BackingField: 0
 --- !u!1 &887331946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,6 +1048,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Frodo
   <UnitClass>k__BackingField: 0
+  <UnitHealth>k__BackingField: 0
+  <UnitMorale>k__BackingField: 0
 --- !u!65 &1641982887
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1104,6 +1110,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Olivia
   <UnitClass>k__BackingField: 1
+  <UnitHealth>k__BackingField: 0
+  <UnitMorale>k__BackingField: 0
 --- !u!65 &1651073155
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1143,7 +1151,6 @@ GameObject:
   - component: {fileID: 1692210119}
   - component: {fileID: 1692210118}
   - component: {fileID: 1692210117}
-  - component: {fileID: 1692210120}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -1216,20 +1223,6 @@ Transform:
   m_Father: {fileID: 2030694048}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
---- !u!114 &1692210120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692210116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c172f83f2aa06b41b4a22a18f45a51e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraSpeed: 20
-  CameraZoom: 2
 --- !u!1 &1722437784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,11 +1505,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1992930325 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7432474734040376514, guid: 30dd037b74f6b804a83a9c7ad892d5cd, type: 3}
-  m_PrefabInstance: {fileID: 29166029}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1997039674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,6 +1692,7 @@ GameObject:
   - component: {fileID: 2030694048}
   - component: {fileID: 2030694047}
   - component: {fileID: 2030694049}
+  - component: {fileID: 2030694051}
   - component: {fileID: 2030694050}
   m_Layer: 0
   m_Name: Player
@@ -1724,10 +1713,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57535bbae29908469fa367e6c5030b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInput: {fileID: 2030694049}
   _playerUI: {fileID: 1105963882}
-  _playerSelector: {fileID: 2030694050}
-  _cameraMover: {fileID: 1692210120}
+  <PlayerCamera>k__BackingField: {fileID: 2030694050}
+  <Commander>k__BackingField: {fileID: 2030694051}
 --- !u!4 &2030694048
 Transform:
   m_ObjectHideFlags: 0
@@ -1801,6 +1789,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 66482325-3237-40ea-8682-410ab3b40f6c
     m_ActionName: Default/Tertiary Action[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2afb722b-f3dc-4c99-95b6-9890345dcf97
+    m_ActionName: 'Default/Command: Rotate[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a82e8ecb-40bc-46a1-b21a-8478bbfe070b
+    m_ActionName: Default/Scroll Camera[/Mouse/scroll/up,/Mouse/scroll/down]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Default
@@ -1815,12 +1811,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2030694046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c97e7ca03ae38d4ca817b0db5ff93bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c172f83f2aa06b41b4a22a18f45a51e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2030694047}
-  _playerUI: {fileID: 1105963882}
-  <DynamicInfo>k__BackingField: {fileID: 1992930325}
+  CameraSpeed: 40
+  CameraZoom: 4
+--- !u!114 &2030694051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030694046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d896baddfae5494d8a29a4a8601edce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2035711851
 GameObject:
   m_ObjectHideFlags: 0
