@@ -16,9 +16,9 @@ namespace BeamMeUpATCA
 
             string RayCastHitTag = RayCastHit.transform.gameObject.tag;            
 
+            // Guard clause to exit and return null if object hit doesn't have a tag from selectableTags
             if (!selectableTags.Contains(RayCastHitTag)) { return null; } 
 
-            Debug.Log("Hit: " + RayCastHit.transform.gameObject.name);
             return RayCastHit.transform.gameObject;
         }
     }
