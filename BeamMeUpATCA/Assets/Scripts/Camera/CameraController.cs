@@ -35,18 +35,25 @@ namespace BeamMeUpATCA
 
         public void FocusCamera(Vector2 focusPosition)
         {
+            // Offsets positioning camera
+            int yOffset = 30;
+            int zOffset = -20;
+            
             GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, focusPosition, new List<string>{"Building"});
             // Guard clause to check valid return from function.
             if (selectedObject == null) { return; }
             if (selectedObject.GetComponent<Building>() == null) { return; }
             
-            // Find the positions of the builiding and the camera
+            // Find the positions of the builiding and the camera and fi
             Vector3 objectPos = selectedObject.transform.position;
             Vector3 cameraPos = ActiveCamera.transform.position;
+            Vector3 positionDiff = objectPos - cameraPos + new Vector3(0, yOffset, zOffset);
             
             //TODO
             Debug.Log(selectedObject.name + " is at " + objectPos);
             Debug.Log("Camera is at " + cameraPos);
+
+            ActiveCamera.transform.position += positionDiff;
 
 
             // Vector3 targetLocation3D = focusPosition;
