@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 namespace BeamMeUpATCA
@@ -33,8 +35,22 @@ namespace BeamMeUpATCA
 
         public void FocusCamera(Vector2 focusPosition)
         {
-            Vector3 targetLocation3D = focusPosition;
-            ActiveCamera.transform.position = targetLocation3D;
+            GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, focusPosition, new List<string>{"Building"});
+            // Guard clause to check valid return from function.
+            if (selectedObject == null) { return; }
+            if (selectedObject.GetComponent<Building>() == null) { return; }
+            
+            // Find the positions of the builiding and the camera
+            Vector3 objectPos = selectedObject.transform.position;
+            Vector3 cameraPos = ActiveCamera.transform.position;
+            
+            //TODO
+            Debug.Log(selectedObject.name + " is at " + objectPos);
+            Debug.Log("Camera is at " + cameraPos);
+
+
+            // Vector3 targetLocation3D = focusPosition;
+            // ActiveCamera.transform.position = targetLocation3D;
         }
 
         private void Update() 
