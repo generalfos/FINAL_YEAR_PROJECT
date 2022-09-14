@@ -354,7 +354,7 @@ namespace BeamMeUpATCA
                     ""name"": """",
                     ""id"": ""9b3602bc-83a9-4f95-9974-160bad2550e8"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""MultiTap"",
+                    ""interactions"": ""MultiTap(tapDelay=0.5)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Focus Camera"",
