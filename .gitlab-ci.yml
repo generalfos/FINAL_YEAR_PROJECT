@@ -1,0 +1,35 @@
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  only:
+    - main
+  tags:
+    - deco3801-vm
+  script:
+    - rm -rf $(pwd)/BeamMeUpATCA/Builds/out
+    - /home/deco3801/Unity/Hub/Editor/2020.3.38f1/Editor/Unity -batchmode -quit -nographics -projectPath $(pwd)/BeamMeUpATCA -executeMethod BuildScript.PreformAllBuilds BeamMeUpATCA out -serial F4-7KDF-ABM2-XUY5-Z6M8-XXXX -logFile $(pwd)/BUILDLOG.log
+    
+deploy:
+  stage: deploy
+  only:
+    - "/^v[0-9]+\\.[0-9]+\\..*$/"
+  tags:
+    - deco3801-vm
+  script:
+    - rm -rf $(pwd)/BeamMeUpATCA/Builds/out
+    - /home/deco3801/Unity/Hub/Editor/2020.3.38f1/Editor/Unity -batchmode -quit -nographics -projectPath $(pwd)/BeamMeUpATCA -executeMethod BuildScript.PreformAllBuilds BeamMeUpATCA out -serial F4-7KDF-ABM2-XUY5-Z6M8-XXXX -logFile $(pwd)/BUILDLOG.log
+    - mkdir -p bin
+    - mv $(pwd)/BeamMeUpATCA/Builds/out bin
+    - cd bin
+    - zip -r $CI_COMMIT_TAG.zip out
+    - cp $CI_COMMIT_TAG.zip LATEST.zip
+    - curl -T $CI_COMMIT_TAG.zip ftp://deco3801:t6FqxdT3@192.168.1.44/deco3801/
+    - curl -T LATEST.zip ftp://deco3801:t6FqxdT3@192.168.1.44/deco3801/
+  artifacts:
+    paths:
+      - $(pwd)/bin/LATEST.zip
+    expire_in: 1 week
