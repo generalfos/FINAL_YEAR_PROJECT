@@ -150,14 +150,16 @@ namespace BeamMeUpATCA
          */
         private void FocusCamera(Vector2 targetPos)
         {
-            GameObject selectedObject = _playerSelector.SelectGameObject(_camera, Pointer, PrimaryAction);
-            if (selectedObject == null) { return; }
-            if (selectedObject.GetComponent<Building>() == null) { return; }
+            GameObject selectedBuilding = _playerSelector.SelectGameObject(_camera, Pointer, PrimaryAction);
+            if (selectedBuilding == null) { return; }
+            if (selectedBuilding.GetComponent<Building>() == null) { return; }
 
             // Find current camera location
             Vector3 currentPos = _camera.transform.position;
             Debug.Log("CAMERA CURRENTLY AT: " + currentPos);
             // Find difference between target location object and camera location
+            Vector3 buildingPos = selectedBuilding.transform.position;
+            Debug.Log(selectedBuilding.name + " positioned at " + buildingPos);
             // Instruct camera to look above object and this diff using CameraMover()
         }
 
