@@ -22,8 +22,9 @@ namespace BeamMeUpATCA
 
         [SerializeField]
         private CameraMover _cameraMover;
-
+        
         private Camera _camera;
+        // private CameraFocus _cameraFocus;
         private InputActionAsset _playerActions;
         private HashSet<Unit> _selectedUnits;
 
@@ -34,6 +35,7 @@ namespace BeamMeUpATCA
             // Setup camera and camera mover script
             _camera = _playerInput.camera;
             _cameraMover.PlayerCamera = _camera;
+            // _cameraFocus.PlayerCamera = _camera;
 
             _selectedUnits = new HashSet<Unit>();
             DefineInputActions();
@@ -51,6 +53,7 @@ namespace BeamMeUpATCA
         public InputAction CameraPan { get; private set; }
         public InputAction CameraScroll { get; private set; }
         public InputAction CameraRotate { get; private set; }
+        //public InputAction CameraFocus { get; private set;  }
 
         private Dictionary<InputAction, Command> _commandActions;
         private String _cs = "Default/";
@@ -65,6 +68,7 @@ namespace BeamMeUpATCA
             CameraPan = _playerActions.FindAction(_cs + "Pan Camera");
             CameraScroll = _playerActions.FindAction(_cs + "Scroll Camera");
             CameraRotate = _playerActions.FindAction(_cs + "Rotate Camera");
+            //CameraFocus = _playerActions.FindAction((_cs + "Focus Camera"));
 
             _commandActions = new Dictionary<InputAction, Command>() 
             {
@@ -96,6 +100,8 @@ namespace BeamMeUpATCA
             CameraScroll.started += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
             CameraScroll.performed += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
             CameraScroll.canceled += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
+            // TODO
+            //CameraFocus.performed += ctx => _cameraFocus.targetLocation = Pointer.ReadValue<Vector2>();
         }
 
         private void OnDisable() 
