@@ -350,7 +350,7 @@
                     "name": "",
                     "id": "03df0d1f-75f3-4146-8780-eeed24bd6397",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "MultiTap",
+                    "interactions": "MultiTap(tapDelay=0.5)",
                     "processors": "",
                     "groups": "",
                     "action": "Focus Camera",
