@@ -54,6 +54,7 @@ namespace BeamMeUpATCA
         private void DefineSubscriptions()
         {
             // Binds subscribers to subscriptions to allow actions to trigger any actions
+            // https://gitlab.com/teamnamefinal/Beammeupatca/-/wikis/Unity/Guides/Creating-new-InputAction-event-handles
             ActionSubscriptions = new Dictionary<IASubscriber, IASub[]>() 
             {
                 {new IASubscriber(_actions["Primary Action"]), 
@@ -87,7 +88,7 @@ namespace BeamMeUpATCA
                 },
                 {new IASubscriber(_actions["Command: Rotate"]), 
                     new[] { new IASub(ctx => Commander.CommandUnits(new RotateCommand(this)), IASub.PREFORMED)}
-                },
+                }
             };
 
             AddSubscriptions();
