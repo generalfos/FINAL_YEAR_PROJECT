@@ -53,7 +53,7 @@ namespace BeamMeUpATCA
         public InputAction CameraPan { get; private set; }
         public InputAction CameraScroll { get; private set; }
         public InputAction CameraRotate { get; private set; }
-        //public InputAction CameraFocus { get; private set;  }
+        public InputAction CameraFocus { get; private set;  }
 
         private Dictionary<InputAction, Command> _commandActions;
         private String _cs = "Default/";
@@ -68,7 +68,7 @@ namespace BeamMeUpATCA
             CameraPan = _playerActions.FindAction(_cs + "Pan Camera");
             CameraScroll = _playerActions.FindAction(_cs + "Scroll Camera");
             CameraRotate = _playerActions.FindAction(_cs + "Rotate Camera");
-            //CameraFocus = _playerActions.FindAction((_cs + "Focus Camera"));
+            CameraFocus = _playerActions.FindAction((_cs + "Focus Camera"));
 
             _commandActions = new Dictionary<InputAction, Command>() 
             {
@@ -101,7 +101,7 @@ namespace BeamMeUpATCA
             CameraScroll.performed += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
             CameraScroll.canceled += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
             // TODO
-            //CameraFocus.performed += ctx => _cameraFocus.targetLocation = Pointer.ReadValue<Vector2>();
+            CameraFocus.performed += ctx => FocusCamera(Pointer.ReadValue<Vector2>());
         }
 
         private void OnDisable() 
@@ -143,6 +143,23 @@ namespace BeamMeUpATCA
 
         }
         #endregion // Input Action Setup
+        
+        /*
+         * Attempts to translate a Pointer position into a
+         * camera position
+         */
+        private void FocusCamera(Vector2 targetPos)
+        {
+            GameObject selectedObject = _playerSelector.SelectGameObject(_camera, Pointer, PrimaryAction);
+            if (selectedObject == null) { return; }
+            if (selectedObject.GetComponent<Building>() == null) { return; }
+
+            // Find current camera location
+            Vector3 currentPos = _camera.transform.position;
+            Debug.Log("CAMERA CURRENTLY AT: " + currentPos);
+            // Find difference between target location object and camera location
+            // Instruct camera to look above object and this diff using CameraMover()
+        }
 
         private void SelectUnits() 
         {
