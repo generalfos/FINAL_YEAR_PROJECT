@@ -127,6 +127,15 @@ namespace BeamMeUpATCA
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Focus Camera"",
+                    ""type"": ""Button"",
+                    ""id"": ""67885096-b46f-4b52-9f4f-c8560d716464"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -371,6 +380,17 @@ namespace BeamMeUpATCA
                     ""action"": ""Command: Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03df0d1f-75f3-4146-8780-eeed24bd6397"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Focus Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -407,6 +427,7 @@ namespace BeamMeUpATCA
             m_Default_TertiaryAction = m_Default.FindAction("Tertiary Action", throwIfNotFound: true);
             m_Default_ScrollCamera = m_Default.FindAction("Scroll Camera", throwIfNotFound: true);
             m_Default_RotateCamera = m_Default.FindAction("Rotate Camera", throwIfNotFound: true);
+            m_Default_FocusCamera = m_Default.FindAction("Focus Camera", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -477,6 +498,7 @@ namespace BeamMeUpATCA
         private readonly InputAction m_Default_TertiaryAction;
         private readonly InputAction m_Default_ScrollCamera;
         private readonly InputAction m_Default_RotateCamera;
+        private readonly InputAction m_Default_FocusCamera;
         public struct DefaultActions
         {
             private @PlayerActions m_Wrapper;
@@ -492,6 +514,7 @@ namespace BeamMeUpATCA
             public InputAction @TertiaryAction => m_Wrapper.m_Default_TertiaryAction;
             public InputAction @ScrollCamera => m_Wrapper.m_Default_ScrollCamera;
             public InputAction @RotateCamera => m_Wrapper.m_Default_RotateCamera;
+            public InputAction @FocusCamera => m_Wrapper.m_Default_FocusCamera;
             public InputActionMap Get() { return m_Wrapper.m_Default; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -534,6 +557,9 @@ namespace BeamMeUpATCA
                     @RotateCamera.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnRotateCamera;
                     @RotateCamera.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnRotateCamera;
                     @RotateCamera.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnRotateCamera;
+                    @FocusCamera.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnFocusCamera;
+                    @FocusCamera.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnFocusCamera;
+                    @FocusCamera.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnFocusCamera;
                 }
                 m_Wrapper.m_DefaultActionsCallbackInterface = instance;
                 if (instance != null)
@@ -571,6 +597,9 @@ namespace BeamMeUpATCA
                     @RotateCamera.started += instance.OnRotateCamera;
                     @RotateCamera.performed += instance.OnRotateCamera;
                     @RotateCamera.canceled += instance.OnRotateCamera;
+                    @FocusCamera.started += instance.OnFocusCamera;
+                    @FocusCamera.performed += instance.OnFocusCamera;
+                    @FocusCamera.canceled += instance.OnFocusCamera;
                 }
             }
         }
@@ -597,6 +626,7 @@ namespace BeamMeUpATCA
             void OnTertiaryAction(InputAction.CallbackContext context);
             void OnScrollCamera(InputAction.CallbackContext context);
             void OnRotateCamera(InputAction.CallbackContext context);
+            void OnFocusCamera(InputAction.CallbackContext context);
         }
     }
 }
