@@ -80,12 +80,14 @@ namespace BeamMeUpATCA
                 {_playerActions.FindAction(_cs + _cmdString + "Move"), new MoveCommand(this)},
                 {_playerActions.FindAction(_cs + _cmdString + "Rotate"), new RotateCommand(this)}
             };
+        }
 
         private Dictionary<IASubscriber, IASub[]> ActionSubscriptions;
 
         private void DefineSubscriptions()
         {
             // Binds subscribers to subscriptions to allow actions to trigger any actions
+            // https://gitlab.com/teamnamefinal/Beammeupatca/-/wikis/Unity/Guides/Creating-new-InputAction-event-handles
             ActionSubscriptions = new Dictionary<IASubscriber, IASub[]>() 
             {
                 {new IASubscriber(_actions["Primary Action"]), 
@@ -119,7 +121,7 @@ namespace BeamMeUpATCA
                 },
                 {new IASubscriber(_actions["Command: Rotate"]), 
                     new[] { new IASub(ctx => Commander.CommandUnits(new RotateCommand(this)), IASub.PREFORMED)}
-                },
+                }
             };
 
             CameraScroll.started += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
@@ -139,7 +141,6 @@ namespace BeamMeUpATCA
                 }
             }
         }
-        #endregion // Input Action Setup
         
         /*
          * Attempts to translate a Pointer position into a
