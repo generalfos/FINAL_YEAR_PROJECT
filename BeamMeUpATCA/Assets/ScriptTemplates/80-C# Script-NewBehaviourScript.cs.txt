@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace BeamMeUpATCA
 {
-    public class #SCRIPTNAME# : Monobehaviour
+    public class #SCRIPTNAME# : MonoBehaviour
     {
         // Link below for information on MonoBehaviour
         // https://docs.unity3d.com/2020.3/Documentation/ScriptReference/MonoBehaviour.html

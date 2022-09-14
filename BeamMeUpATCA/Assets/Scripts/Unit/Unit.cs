@@ -8,69 +8,109 @@ namespace BeamMeUpATCA
     public class Unit : MonoBehaviour
     {
         #region Unit Properties
-        public enum UnitClass
+
+        public enum UnitType
         {
             Engineer,
-            Scientist
+            Scientist,
+            Array
         };
 
-        [field: SerializeField]
-        public string Name;
+        [field: SerializeField] public string Name {get; private set;}
+        [field: SerializeField] public UnitType UnitClass {get; private set;}
+        [field: SerializeField] public int UnitHealth { get; private set; }
 
-        [field: SerializeField]
-        public UnitClass Class;
+        [field: SerializeField] public float UnitMorale {get; private set; }
 
-        #endregion
-
-        #region Commanding
-        private Queue<Command> commandQueue;
-        private Command nextCommand;
+        public Color UnitColor {get; private set;}
         
-        private void Awake() 
-        {
+        private float tickCounter;
+        private float moraleTickDmg;
+
+        private float maxMorale;
+
+        private void Awake() {
+            switch (UnitClass) 
+            { 
+                case Unit.UnitType.Engineer:
+                    UnitColor = Color.red;
+                    break;
+
+                case Unit.UnitType.Scientist:
+                    UnitColor = Color.blue;
+                    break;
+                case Unit.UnitType.Array:
+                    UnitColor = Color.green;
+                    break;
+            }
+
+            maxMorale = 100;
+            UnitMorale = maxMorale;
+            moraleTickDmg = 1;
+            tickCounter = 0;
+
             commandQueue = new Queue<Command>();
         }
 
-        public void AddCommand(Command command, bool skipQueue= false, bool resetQueue= false) 
+        #endregion // Unit Properties
+
+        #region Commanding
+
+        private Queue<Command> commandQueue;
+        private Command nextCommand;
+        
+        public void AddCommand(Command command)
         {
             // Guard Clause for determining if the command queue should be reset.
-            if (resetQueue) { commandQueue.Clear(); }
+            if (command.ResetQueue) { commandQueue.Clear(); }
 
             commandQueue.Enqueue(command);
 
             // Sets next command to front of queue or the command parameter if skipQueue is true.
-            nextCommand = skipQueue ? command : commandQueue.Dequeue();
+            nextCommand = command.SkipQueue ? command : commandQueue.Dequeue();
         }
 
-        public void ExecuteNextCommand() 
+        public Command ExecuteCommand(Command command) 
         {
             // Guard Clause for determining if there is no next command.
-            if (nextCommand == null) { return; }
-            
-            nextCommand.Execute();
+            if (command == null) { return null; }
 
-            try 
-            {
-                nextCommand = commandQueue.Dequeue();
-            }
-            catch (InvalidOperationException) 
-            {
-                nextCommand = null;
-            }
+            // Pass self
+            command.Execute(this);
+
+            // If there is a next command then return it. Otherwise return null.
+            try { return commandQueue.Dequeue(); }
+            catch (InvalidOperationException) { return null; }
         }
 
         private void Update() 
         {
-            // HACK: Commands should call ExecuteNextCommand() as an event instead
-            // Checking each Update() call. Also double checking for null values here :/
-            if (nextCommand != null) 
-            {
-                if (nextCommand.IsFinished) 
-                {
-                    ExecuteNextCommand();
-                }   
+            // ExecuteCommand() returns the next command in the queue.
+            nextCommand = ExecuteCommand(nextCommand);
+        }
+        #endregion // Commanding
+
+        #region TickUpdates
+
+        private void FixedUpdate() {
+            takeTickDamage();
+        }
+
+        private void takeTickDamage() {
+            tickCounter += Time.fixedDeltaTime;
+            if(tickCounter >= 3) {
+                float newMorale = UnitMorale - moraleTickDmg;
+                if(newMorale <= 0) {
+                    newMorale = 0;
+                }
+                if(newMorale >= maxMorale) {
+                    newMorale = maxMorale; //do not heal over full
+                }
+                UnitMorale = newMorale;
+                tickCounter = 0;
             }
         }
-        #endregion
+
+        #endregion //TickUpdates
     }
 }

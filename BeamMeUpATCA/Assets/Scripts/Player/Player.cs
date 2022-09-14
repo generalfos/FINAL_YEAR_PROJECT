@@ -4,75 +4,116 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
+using IASub = BeamMeUpATCA.InputActionSubscription;
+using IASubscriber = BeamMeUpATCA.InputActionSubscriber;
+
+
 namespace BeamMeUpATCA
 {
-
+    [RequireComponent(typeof(PlayerInput))]
     public class Player : MonoBehaviour
     {
-        #region Setup
-        
-        [SerializeField]
+        #region Player Setup
+
+        [SerializeField] private PlayerUI _playerUI;
+        [field: SerializeField] private CameraController PlayerCamera { get; set; }
+        [field: SerializeField] private UnitCommander Commander { get; set; }
+
         private PlayerInput _playerInput;
-        private InputActionAsset _playerActions;
-
-        private List<Unit> _selectedUnits;
-
-        private InputAction _stop; 
-        private InputAction _quit;
-
-        public InputAction PrimaryAction { get; private set; }
-        public InputAction SecondaryAction { get; private set; }
-        public InputAction Pointer { get; private set; }
-        public InputAction CameraPan { get; private set; }
-
+        private InputActionAsset _actions;
 
         private void Awake() 
         {
-            _selectedUnits = new List<Unit>();
-             _playerActions = _playerInput.actions;
-            //DefineInputActions();
+            _playerInput = gameObject.GetComponent<PlayerInput>();
+            _actions = _playerInput.actions;
 
-            // HACK: Need to get values from index instead of string.
-            PrimaryAction = _playerActions.FindAction("Default/Primary Action");
-            SecondaryAction = _playerActions.FindAction("Default/Secondary Action");
-            Pointer = _playerActions.FindAction("Default/Pointer");
-            CameraPan = _playerActions.FindAction("Default/Pan Camera");
+            if (_playerInput.camera == null) {
+                Debug.LogWarning("PlayerInput requires a camera to be set. Using MainCamera instead.");
+                _playerInput.camera = Camera.main;
+            }
 
-            _stop = _playerActions.FindAction("Default/Stop");
-            _quit = _playerActions.FindAction("Default/Quit");
+            // Dependencies for PlayerCamera and Commander.
+            PlayerCamera.ActiveCamera = _playerInput.camera;
+            Commander.ActiveCamera = _playerInput.camera;
+            Commander.PlayerUI = _playerUI;
+
+            DefineSubscriptions();
+        }
+        #endregion // Player Setup
+
+        #region InputAction/Action Subscriptions
+
+        private Vector2 PointerPosition { get 
+        {
+            if (_actions == null) { return Vector2.zero; }
+            return _actions["Pointer"].ReadValue<Vector2>(); 
+        }}
+
+        private Dictionary<IASubscriber, IASub[]> ActionSubscriptions;
+
+        private void DefineSubscriptions()
+        {
+            // Binds subscribers to subscriptions to allow actions to trigger any actions
+            ActionSubscriptions = new Dictionary<IASubscriber, IASub[]>() 
+            {
+                {new IASubscriber(_actions["Primary Action"]), 
+                    new[] { new IASub(ctx => Commander.SelectUnit(PointerPosition), IASub.PREFORMED)}
+                },
+                {new IASubscriber(_actions["Secondary Action"]), 
+                    new[] { new IASub(ctx => Commander.DeselectAllUnits(), IASub.PREFORMED)}
+                },
+                {new IASubscriber(_actions["Tertiary Action"]), 
+                    new[] { 
+                        new IASub(ctx => PlayerCamera.DragRotation = true, (true, false, false)),
+                        new IASub(ctx => PlayerCamera.DragRotation = false, (false, false, true))}
+                },
+                {new IASubscriber(_actions["Pan Camera"]), 
+                    new[] { new IASub(ctx => PlayerCamera.Camera2DAdjust = ctx.ReadValue<Vector2>(), IASub.UPDATE)}
+                },
+                {new IASubscriber(_actions["Scroll Camera"]), 
+                    new[] { new IASub(ctx => PlayerCamera.CameraZoomAdjust = ctx.ReadValue<float>(), IASub.UPDATE)}
+                },
+                {new IASubscriber(_actions["Focus Camera"]), 
+                    new[] { new IASub(ctx =>  PlayerCamera.FocusCamera(PointerPosition), IASub.PREFORMED)}
+                },
+                {new IASubscriber(_actions["Quit"]), 
+                    new[] { new IASub(ctx => Application.Quit(), IASub.PREFORMED)}
+                },
+                {new IASubscriber(_actions["Command: Cancel"]), 
+                    new[] { new IASub(ctx => Commander.CommandUnits(new CancelCommand(this)), IASub.PREFORMED)}
+                },
+                {new IASubscriber(_actions["Command: Move"]), 
+                    new[] { new IASub(ctx => Commander.CommandUnits(new MoveCommand(this)), IASub.PREFORMED)}
+                },
+                {new IASubscriber(_actions["Command: Rotate"]), 
+                    new[] { new IASub(ctx => Commander.CommandUnits(new RotateCommand(this)), IASub.PREFORMED)}
+                },
+            };
+
+            AddSubscriptions();
         }
 
-        #endregion
+        private void AddSubscriptions()
+        {
+            foreach (IASubscriber subscriber in ActionSubscriptions.Keys) 
+            {
+                foreach (IASub sub in ActionSubscriptions[subscriber]) 
+                {
+                    subscriber.AddSubscription(sub);
+                }
+            }
+        }
 
         private void OnEnable() 
         {
-            _stop.performed += ctx => Application.Quit();
-            _quit.performed += ctx => Application.Quit();
+            foreach (IASubscriber subscriber in ActionSubscriptions.Keys) { subscriber.RegisterSubscriptions(true);}
         }
 
         private void OnDisable() 
         {
-            _stop.performed -= ctx => Application.Quit();
-            _quit.performed -= ctx => Application.Quit();
+            foreach (IASubscriber subscriber in ActionSubscriptions.Keys) { subscriber.RegisterSubscriptions(false);}
         }
 
-        // private void CommandUnits(Command command) 
-        // {
-        //     foreach(Unit unit in _selectedUnits) 
-        //     {
-        //         unit.AddCommand();
-        //     }
-        // }
-
-        // TODO: Will fix on next commit
-        // private Dictionary<Command, InputAction> _issueCommandTriggers;
-
-        // private void DefineInputActions() 
-        // {
-        //     _issueCommandTriggers = new Dictionary<Command, InputAction>
-        //     {
-        //         { new StopCommand() , _playerActions.FindAction("Default/Stop") }
-        //     };
-        // }
+        #endregion // InputAction/Action Subscriptions
     }
 }
