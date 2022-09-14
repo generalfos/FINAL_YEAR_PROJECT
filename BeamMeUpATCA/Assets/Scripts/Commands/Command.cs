@@ -1,6 +1,8 @@
+using UnityEngine;
+
 namespace BeamMeUpATCA
 {
-    public abstract class Command
+    public abstract class Command : MonoBehaviour
     {
         public bool SkipQueue { private set; get; }
         public bool ResetQueue { private set; get; }
