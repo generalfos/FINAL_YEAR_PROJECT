@@ -105,6 +105,9 @@ namespace BeamMeUpATCA
                 {new IASubscriber(_actions["Scroll Camera"]), 
                     new[] { new IASub(ctx => PlayerCamera.CameraZoomAdjust = ctx.ReadValue<float>(), IASub.UPDATE)}
                 },
+                {new IASubscriber(_actions["Focus Camera"]), 
+                    new[] { new IASub(ctx =>  PlayerCamera.FocusCamera(PointerPosition), IASub.PREFORMED)}
+                },
                 {new IASubscriber(_actions["Quit"]), 
                     new[] { new IASub(ctx => Application.Quit(), IASub.PREFORMED)}
                 },

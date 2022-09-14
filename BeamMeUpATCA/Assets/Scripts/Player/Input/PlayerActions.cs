@@ -361,9 +361,9 @@ namespace BeamMeUpATCA
                 },
                 {
                     ""name"": """",
-                    ""id"": ""96d1d831-d90d-4a0d-b992-134f2481975c"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
+                    ""id"": ""9b3602bc-83a9-4f95-9974-160bad2550e8"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""MultiTap"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Command: Rotate"",
