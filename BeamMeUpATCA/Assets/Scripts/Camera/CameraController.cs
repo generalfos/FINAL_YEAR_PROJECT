@@ -3,9 +3,8 @@ using UnityEngine;
 
 namespace BeamMeUpATCA
 {
-    public class CameraMover : MonoBehaviour
+    public class CameraController : MonoBehaviour
     {
-
 
         [Header("Camera Settings")]
         public float CameraSpeed;
@@ -14,7 +13,7 @@ namespace BeamMeUpATCA
         //public float freeLookSensitivity;
 
         // Setters for Camera
-        public Camera PlayerCamera { private get; set; }
+        public Camera ActiveCamera { private get; set; }
         public bool DragRotation { private get; set; }
         
         public Vector2 Camera2DAdjust { private get; set; }
@@ -22,6 +21,15 @@ namespace BeamMeUpATCA
 
         private Vector3 CameraPosition;
         //private bool freeCam;
+
+        private void Start() {
+            if (ActiveCamera == null) 
+            {
+                Debug.Log("Using MainCamera.");
+                ActiveCamera = Camera.main;
+            }
+
+        }
 
         private void Update() 
         {
@@ -54,8 +62,8 @@ namespace BeamMeUpATCA
 
         private void LateUpdate() 
         {
-            Debug.Log("CameraPosition: " + CameraPosition.ToString());
-            PlayerCamera.transform.position += CameraPosition;
+            // Debug.Log("CameraPosition: " + CameraPosition.ToString());
+            ActiveCamera.transform.position += CameraPosition;
             CameraPosition = Vector3.zero;
         }
         // TODO: Need to re-implement this with new hookup to Player.cs
