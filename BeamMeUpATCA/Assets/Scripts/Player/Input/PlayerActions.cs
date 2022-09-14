@@ -118,6 +118,15 @@ namespace BeamMeUpATCA
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Focus Camera"",
+                    ""type"": ""Button"",
+                    ""id"": ""411aa447-b5cb-45b7-bec2-1c353b9411e8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -343,9 +352,9 @@ namespace BeamMeUpATCA
                 },
                 {
                     ""name"": """",
-                    ""id"": ""96d1d831-d90d-4a0d-b992-134f2481975c"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
+                    ""id"": ""9b3602bc-83a9-4f95-9974-160bad2550e8"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""MultiTap"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Focus Camera"",
@@ -386,6 +395,7 @@ namespace BeamMeUpATCA
             m_Default_SecondaryAction = m_Default.FindAction("Secondary Action", throwIfNotFound: true);
             m_Default_TertiaryAction = m_Default.FindAction("Tertiary Action", throwIfNotFound: true);
             m_Default_ScrollCamera = m_Default.FindAction("Scroll Camera", throwIfNotFound: true);
+            m_Default_FocusCamera = m_Default.FindAction("Focus Camera", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -455,6 +465,7 @@ namespace BeamMeUpATCA
         private readonly InputAction m_Default_SecondaryAction;
         private readonly InputAction m_Default_TertiaryAction;
         private readonly InputAction m_Default_ScrollCamera;
+        private readonly InputAction m_Default_FocusCamera;
         public struct DefaultActions
         {
             private @PlayerActions m_Wrapper;
@@ -469,6 +480,7 @@ namespace BeamMeUpATCA
             public InputAction @SecondaryAction => m_Wrapper.m_Default_SecondaryAction;
             public InputAction @TertiaryAction => m_Wrapper.m_Default_TertiaryAction;
             public InputAction @ScrollCamera => m_Wrapper.m_Default_ScrollCamera;
+            public InputAction @FocusCamera => m_Wrapper.m_Default_FocusCamera;
             public InputActionMap Get() { return m_Wrapper.m_Default; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -508,6 +520,9 @@ namespace BeamMeUpATCA
                     @ScrollCamera.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnScrollCamera;
                     @ScrollCamera.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnScrollCamera;
                     @ScrollCamera.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnScrollCamera;
+                    @FocusCamera.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnFocusCamera;
+                    @FocusCamera.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnFocusCamera;
+                    @FocusCamera.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnFocusCamera;
                 }
                 m_Wrapper.m_DefaultActionsCallbackInterface = instance;
                 if (instance != null)
@@ -542,6 +557,9 @@ namespace BeamMeUpATCA
                     @ScrollCamera.started += instance.OnScrollCamera;
                     @ScrollCamera.performed += instance.OnScrollCamera;
                     @ScrollCamera.canceled += instance.OnScrollCamera;
+                    @FocusCamera.started += instance.OnFocusCamera;
+                    @FocusCamera.performed += instance.OnFocusCamera;
+                    @FocusCamera.canceled += instance.OnFocusCamera;
                 }
             }
         }
@@ -567,6 +585,7 @@ namespace BeamMeUpATCA
             void OnSecondaryAction(InputAction.CallbackContext context);
             void OnTertiaryAction(InputAction.CallbackContext context);
             void OnScrollCamera(InputAction.CallbackContext context);
+            void OnFocusCamera(InputAction.CallbackContext context);
         }
     }
 }

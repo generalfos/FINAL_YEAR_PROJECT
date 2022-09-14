@@ -31,6 +31,12 @@ namespace BeamMeUpATCA
 
         }
 
+        public void FocusCamera(Vector2 focusPosition)
+        {
+            Vector3 targetLocation3D = focusPosition;
+            ActiveCamera.transform.position = targetLocation3D;
+        }
+
         private void Update() 
         {
             // TODO: Need to re-implement this with new hookup to Player.cs
