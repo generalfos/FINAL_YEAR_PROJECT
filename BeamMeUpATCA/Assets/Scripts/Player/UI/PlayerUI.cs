@@ -9,7 +9,7 @@ namespace BeamMeUpATCA
 
         private List<UnitUI> unitUIList;
         private int selectedUnits;
-        private Vector3 unitUIScreenPosition = new Vector3(150, 0, 0);
+        private Vector3 unitUIScreenPosition = new Vector3(83, 0, 0);
 
         private void Awake() {
             unitUIList = new List<UnitUI>();
@@ -24,7 +24,7 @@ namespace BeamMeUpATCA
 
         public void SelectUnit(Unit unit) 
         {
-            unitUIList[0].setUnitUI(unit.Name, unit.UnitColor, unit.UnitHealth);
+            unitUIList[0].setUnitUI(unit);
         }
 
         public void DeselectUnit(Unit unit) 
