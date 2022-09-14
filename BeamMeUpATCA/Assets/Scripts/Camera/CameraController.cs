@@ -35,7 +35,7 @@ namespace BeamMeUpATCA
 
         public void FocusCamera(Vector2 focusPosition)
         {
-            // Offsets positioning camera
+            // Offsets positioning camera for fairly tight view of target
             int yOffset = 30;
             int zOffset = -20;
             
@@ -44,7 +44,7 @@ namespace BeamMeUpATCA
             if (selectedObject == null) { return; }
             if (selectedObject.GetComponent<Building>() == null) { return; }
             
-            // Find the positions of the builiding and the camera and fi
+            // Find the positions of the building and camera - Use the difference to reposition the camera
             Vector3 objectPos = selectedObject.transform.position;
             Vector3 cameraPos = ActiveCamera.transform.position;
             Vector3 positionDiff = objectPos - cameraPos + new Vector3(0, yOffset, zOffset);
@@ -55,9 +55,6 @@ namespace BeamMeUpATCA
 
             ActiveCamera.transform.position += positionDiff;
 
-
-            // Vector3 targetLocation3D = focusPosition;
-            // ActiveCamera.transform.position = targetLocation3D;
         }
 
         private void Update() 
