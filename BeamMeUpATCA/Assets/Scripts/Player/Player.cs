@@ -81,13 +81,13 @@ namespace BeamMeUpATCA
                     new[] { new IASub(ctx => Application.Quit(), IASub.PREFORMED)}
                 },
                 {new IASubscriber(_actions["Command: Cancel"]), 
-                    new[] { new IASub(ctx => Commander.CommandUnits(new CancelCommand(this)), IASub.PREFORMED)}
+                    new[] { new IASub(ctx => Commander.CommandUnits<CancelCommand>(PointerPosition), IASub.PREFORMED)}
                 },
                 {new IASubscriber(_actions["Command: Move"]), 
-                    new[] { new IASub(ctx => Commander.CommandUnits(new MoveCommand(this)), IASub.PREFORMED)}
+                    new[] { new IASub(ctx => Commander.CommandUnits<MoveCommand>(PointerPosition), IASub.PREFORMED)}
                 },
                 {new IASubscriber(_actions["Command: Rotate"]), 
-                    new[] { new IASub(ctx => Commander.CommandUnits(new RotateCommand(this)), IASub.PREFORMED)}
+                    new[] { new IASub(ctx => Commander.CommandUnits<RotateCommand>(PointerPosition), IASub.PREFORMED)}
                 }
             };
 
