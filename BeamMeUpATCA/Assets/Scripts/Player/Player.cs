@@ -48,6 +48,7 @@ namespace BeamMeUpATCA
             if (_actions == null) { return Vector2.zero; }
             return _actions["Pointer"].ReadValue<Vector2>(); 
         }}
+            CameraFocus = _playerActions.FindAction((_cs + "Focus Camera"));
 
         private Dictionary<IASubscriber, IASub[]> ActionSubscriptions;
 
@@ -105,6 +106,7 @@ namespace BeamMeUpATCA
         {
             foreach (IASubscriber subscriber in ActionSubscriptions.Keys) { subscriber.RegisterSubscriptions(true);}
         }
+>>>>>>> 6828bf297cf7172566c8e167de6e9fc5f83f878f
 
         private void OnDisable() 
         {

@@ -348,7 +348,7 @@ namespace BeamMeUpATCA
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Command: Rotate"",
+                    ""action"": ""Focus Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
