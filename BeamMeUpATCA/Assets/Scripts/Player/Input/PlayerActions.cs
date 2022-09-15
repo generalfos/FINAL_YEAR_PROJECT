@@ -66,7 +66,7 @@ namespace BeamMeUpATCA
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Command: Rotate"",
+                    ""name"": ""Command: Stow"",
                     ""type"": ""Button"",
                     ""id"": ""2afb722b-f3dc-4c99-95b6-9890345dcf97"",
                     ""expectedControlType"": ""Button"",
@@ -389,7 +389,7 @@ namespace BeamMeUpATCA
             m_Default_PanCamera = m_Default.FindAction("Pan Camera", throwIfNotFound: true);
             m_Default_CommandCancel = m_Default.FindAction("Command: Cancel", throwIfNotFound: true);
             m_Default_CommandMove = m_Default.FindAction("Command: Move", throwIfNotFound: true);
-            m_Default_CommandRotate = m_Default.FindAction("Command: Rotate", throwIfNotFound: true);
+            m_Default_CommandStow = m_Default.FindAction("Command: Stow", throwIfNotFound: true);
             m_Default_Quit = m_Default.FindAction("Quit", throwIfNotFound: true);
             m_Default_PrimaryAction = m_Default.FindAction("Primary Action", throwIfNotFound: true);
             m_Default_SecondaryAction = m_Default.FindAction("Secondary Action", throwIfNotFound: true);
@@ -459,7 +459,7 @@ namespace BeamMeUpATCA
         private readonly InputAction m_Default_PanCamera;
         private readonly InputAction m_Default_CommandCancel;
         private readonly InputAction m_Default_CommandMove;
-        private readonly InputAction m_Default_CommandRotate;
+        private readonly InputAction m_Default_CommandStow;
         private readonly InputAction m_Default_Quit;
         private readonly InputAction m_Default_PrimaryAction;
         private readonly InputAction m_Default_SecondaryAction;
@@ -474,7 +474,7 @@ namespace BeamMeUpATCA
             public InputAction @PanCamera => m_Wrapper.m_Default_PanCamera;
             public InputAction @CommandCancel => m_Wrapper.m_Default_CommandCancel;
             public InputAction @CommandMove => m_Wrapper.m_Default_CommandMove;
-            public InputAction @CommandRotate => m_Wrapper.m_Default_CommandRotate;
+            public InputAction @CommandStow => m_Wrapper.m_Default_CommandStow;
             public InputAction @Quit => m_Wrapper.m_Default_Quit;
             public InputAction @PrimaryAction => m_Wrapper.m_Default_PrimaryAction;
             public InputAction @SecondaryAction => m_Wrapper.m_Default_SecondaryAction;
@@ -502,9 +502,9 @@ namespace BeamMeUpATCA
                     @CommandMove.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandMove;
                     @CommandMove.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandMove;
                     @CommandMove.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandMove;
-                    @CommandRotate.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandRotate;
-                    @CommandRotate.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandRotate;
-                    @CommandRotate.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandRotate;
+                    @CommandStow.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandStow;
+                    @CommandStow.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandStow;
+                    @CommandStow.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCommandStow;
                     @Quit.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnQuit;
                     @Quit.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnQuit;
                     @Quit.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnQuit;
@@ -539,9 +539,9 @@ namespace BeamMeUpATCA
                     @CommandMove.started += instance.OnCommandMove;
                     @CommandMove.performed += instance.OnCommandMove;
                     @CommandMove.canceled += instance.OnCommandMove;
-                    @CommandRotate.started += instance.OnCommandRotate;
-                    @CommandRotate.performed += instance.OnCommandRotate;
-                    @CommandRotate.canceled += instance.OnCommandRotate;
+                    @CommandStow.started += instance.OnCommandStow;
+                    @CommandStow.performed += instance.OnCommandStow;
+                    @CommandStow.canceled += instance.OnCommandStow;
                     @Quit.started += instance.OnQuit;
                     @Quit.performed += instance.OnQuit;
                     @Quit.canceled += instance.OnQuit;
@@ -579,7 +579,7 @@ namespace BeamMeUpATCA
             void OnPanCamera(InputAction.CallbackContext context);
             void OnCommandCancel(InputAction.CallbackContext context);
             void OnCommandMove(InputAction.CallbackContext context);
-            void OnCommandRotate(InputAction.CallbackContext context);
+            void OnCommandStow(InputAction.CallbackContext context);
             void OnQuit(InputAction.CallbackContext context);
             void OnPrimaryAction(InputAction.CallbackContext context);
             void OnSecondaryAction(InputAction.CallbackContext context);

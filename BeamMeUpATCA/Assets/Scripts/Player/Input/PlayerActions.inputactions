@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Command: Rotate",
+                    "name": "Command: Stow",
                     "type": "Button",
                     "id": "2afb722b-f3dc-4c99-95b6-9890345dcf97",
                     "expectedControlType": "Button",
