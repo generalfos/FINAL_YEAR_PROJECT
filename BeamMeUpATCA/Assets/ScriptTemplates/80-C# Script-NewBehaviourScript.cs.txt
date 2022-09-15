@@ -1,0 +1,19 @@
+using UnityEngine;
+
+namespace BeamMeUpATCA
+{
+    public class #SCRIPTNAME# : MonoBehaviour
+    {
+        // Link below for information on MonoBehaviour
+        // https://docs.unity3d.com/2020.3/Documentation/ScriptReference/MonoBehaviour.html
+
+        // Awake is init function. Start before first frame
+        private void Awake() {}
+        private void Start() {}
+        
+        // Update for loop per frame. FixedUpdate for loop per physics step.
+        // Update() counts in Time.deltaTime. FixedUpdate counts in Time.fixedDeltaTime.
+        private void Update() {}
+        private void FixedUpdate() {}
+    }
+}

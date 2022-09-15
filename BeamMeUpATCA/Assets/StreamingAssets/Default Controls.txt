@@ -1,0 +1,13 @@
+General Controls:
+	Primary Click - Left Mouse Button
+	Secondary Click - Right Mouse Button
+	Tertiary Click - Middle Mouse Button
+	Pointer - Mouse Position
+	Pan Camera - W,A,S,D or Arrow Keys
+	Pan Zoom - Mouse Scroll Wheel
+	Quit Game - Q
+
+Unit Controls:
+	Move Command - M
+	Rotate Command - R
+	Cancel Command - C
