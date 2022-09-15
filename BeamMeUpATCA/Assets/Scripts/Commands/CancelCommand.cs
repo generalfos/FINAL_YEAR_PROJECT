@@ -4,11 +4,12 @@ namespace BeamMeUpATCA
 {
     public class CancelCommand : Command
     {
-        public CancelCommand(bool skipQueue = true, bool resetQueue = true) 
-            : base(skipQueue, resetQueue) 
-            {
-                Name = "Cancel";
-            }
+        override protected void DefineCommand()
+        {
+            Name = "Cancel";
+            SkipQueue = true;
+            ResetQueue = true;
+        }
 
         public override void Execute() 
         {
