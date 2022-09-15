@@ -8,6 +8,8 @@ namespace BeamMeUpATCA
         public bool ResetQueue { protected set; get; }
         public string Name { protected set; get; }
 
+        public Vector3 Position { set; get; }
+
         private void Awake()
         {
             // Stops Update(), FixedUpdate(), & OnGUI() from being called.
@@ -21,9 +23,10 @@ namespace BeamMeUpATCA
 
         protected virtual void DefineCommand() 
         {
-            Name = "Command";
+            Name = "None";
             SkipQueue = false;
             ResetQueue = false;
+            Position = Vector3.zero;
         }
 
         public abstract void Execute();

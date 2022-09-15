@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace BeamMeUpATCA
 {
-    public class MoveCommand : Command
+    public class StowCommand : Command
     {
-        // Command Moves a building with a Moveable interface
+        // Command Stows a building with a Stowable interface
         override protected void DefineCommand()
         {
-            Name = "Move";
+            Name = "Stow";
         }
 
         // Called once when command is first executed

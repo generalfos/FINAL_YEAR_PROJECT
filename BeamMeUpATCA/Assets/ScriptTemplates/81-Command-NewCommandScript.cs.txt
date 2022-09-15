@@ -2,13 +2,15 @@ using UnityEngine;
 
 namespace BeamMeUpATCA
 {
-    public class MoveCommand : Command
+    public class #SCRIPTNAME# : Command
     {
-        // Command Moves a building with a Moveable interface
-        override protected void DefineCommand()
-        {
-            Name = "Move";
-        }
+        // Called by Command.Awake(). Define your command properties here.
+        // You should not need to use Awake() or Start() in this class.
+        // Name = "Name"; // Name of command.
+        // SkipQueue = false; // Gives this command priority
+        // ResetQueue = false; // Command clears command queue
+        // Position = Vector3.zero; // Position where command is issued.
+        override protected void DefineCommand() {}
 
         // Called once when command is first executed
         // Similar to Start()/Awake() but executed after both.
