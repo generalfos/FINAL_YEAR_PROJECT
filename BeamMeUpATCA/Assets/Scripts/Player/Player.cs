@@ -19,13 +19,8 @@ namespace BeamMeUpATCA
         [field: SerializeField] private CameraController PlayerCamera { get; set; }
         [field: SerializeField] private UnitCommander Commander { get; set; }
 
-        [SerializeField]
-        private CameraMover _cameraMover;
-        
-        private Camera _camera;
-        // private CameraFocus _cameraFocus;
-        private InputActionAsset _playerActions;
-        private HashSet<Unit> _selectedUnits;
+        private PlayerInput _playerInput;
+        private InputActionAsset _actions;
 
         private void Awake() 
         {
@@ -37,10 +32,10 @@ namespace BeamMeUpATCA
                 _playerInput.camera = Camera.main;
             }
 
-            // Setup camera and camera mover script
-            _camera = _playerInput.camera;
-            _cameraMover.PlayerCamera = _camera;
-            // _cameraFocus.PlayerCamera = _camera;
+            // Dependencies for PlayerCamera and Commander.
+            PlayerCamera.ActiveCamera = _playerInput.camera;
+            Commander.ActiveCamera = _playerInput.camera;
+            Commander.PlayerUI = _playerUI;
 
             DefineSubscriptions();
         }
@@ -48,39 +43,11 @@ namespace BeamMeUpATCA
 
         #region InputAction/Action Subscriptions
 
-        private InputAction _quit;
-
-        public InputAction PrimaryAction { get; private set; }
-        public InputAction SecondaryAction { get; private set; }
-        public InputAction TertiaryAction { get; private set; }
-        public InputAction Pointer { get; private set; }
-        public InputAction CameraPan { get; private set; }
-        public InputAction CameraScroll { get; private set; }
-        public InputAction CameraRotate { get; private set; }
-        public InputAction CameraFocus { get; private set;  }
-
-        private Dictionary<InputAction, Command> _commandActions;
-        private String _cs = "Default/";
-        private String _cmdString = "Command: ";
-
-        private void DefineInputActions()
+        private Vector2 PointerPosition { get 
         {
-            PrimaryAction = _playerActions.FindAction(_cs + "Primary Action");
-            SecondaryAction = _playerActions.FindAction(_cs + "Secondary Action");
-            TertiaryAction = _playerActions.FindAction(_cs + "Tertiary Action");
-            Pointer = _playerActions.FindAction(_cs + "Pointer");
-            CameraPan = _playerActions.FindAction(_cs + "Pan Camera");
-            CameraScroll = _playerActions.FindAction(_cs + "Scroll Camera");
-            CameraRotate = _playerActions.FindAction(_cs + "Rotate Camera");
-            CameraFocus = _playerActions.FindAction((_cs + "Focus Camera"));
-
-            _commandActions = new Dictionary<InputAction, Command>() 
-            {
-                {_playerActions.FindAction(_cs + _cmdString + "Cancel"), new CancelCommand()},
-                {_playerActions.FindAction(_cs + _cmdString + "Move"), new MoveCommand(this)},
-                {_playerActions.FindAction(_cs + _cmdString + "Rotate"), new RotateCommand(this)}
-            };
-        }
+            if (_actions == null) { return Vector2.zero; }
+            return _actions["Pointer"].ReadValue<Vector2>(); 
+        }}
 
         private Dictionary<IASubscriber, IASub[]> ActionSubscriptions;
 
@@ -124,11 +91,7 @@ namespace BeamMeUpATCA
                 }
             };
 
-            CameraScroll.started += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
-            CameraScroll.performed += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
-            CameraScroll.canceled += ctx => _cameraMover.CameraZoomAdjust = CameraScroll.ReadValue<float>();
-            // TODO
-            CameraFocus.performed += ctx => FocusCamera(Pointer.ReadValue<Vector2>());
+            AddSubscriptions();
         }
 
         private void AddSubscriptions()
@@ -140,25 +103,6 @@ namespace BeamMeUpATCA
                     subscriber.AddSubscription(sub);
                 }
             }
-        }
-        
-        /*
-         * Attempts to translate a Pointer position into a
-         * camera position
-         */
-        private void FocusCamera(Vector2 targetPos)
-        {
-            GameObject selectedBuilding = _playerSelector.SelectGameObject(_camera, Pointer, PrimaryAction);
-            if (selectedBuilding == null) { return; }
-            if (selectedBuilding.GetComponent<Building>() == null) { return; }
-
-            // Find current camera location
-            Vector3 currentPos = _camera.transform.position;
-            Debug.Log("CAMERA CURRENTLY AT: " + currentPos);
-            // Find difference between target location object and camera location
-            Vector3 buildingPos = selectedBuilding.transform.position;
-            Debug.Log(selectedBuilding.name + " positioned at " + buildingPos);
-            // Instruct camera to look above object and this diff using CameraMover()
         }
 
         private void OnEnable() 

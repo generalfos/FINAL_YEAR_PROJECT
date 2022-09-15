@@ -5,8 +5,6 @@ stages:
 
 build-game:
   stage: build
-  only:
-    - main
   before_script:
     - git lfs install
     - git lfs pull
