@@ -7,13 +7,12 @@ namespace BeamMeUpATCA
     {
         Func<Vector2> _worldPosition;
 
-        public TestCommand(Func<Vector2> worldPosition, bool skipQueue = false, bool resetQueue = false) 
-            : base(skipQueue, resetQueue) 
-            {
-                Name = "TestCommand";
-                _worldPosition = worldPosition;
-
-            }
+        override protected void DefineCommand() 
+        {
+            Name = "Test";
+            SkipQueue = false;
+            ResetQueue = false;
+        }
 
         public override void Execute() 
         {

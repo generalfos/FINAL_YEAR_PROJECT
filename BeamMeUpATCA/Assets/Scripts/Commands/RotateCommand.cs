@@ -8,11 +8,11 @@ namespace BeamMeUpATCA
         Ray RayCast;
         Player _player;
 
-        public RotateCommand(Player player, bool skipQueue = false, bool resetQueue = false)
-            : base(skipQueue, resetQueue)
+        override protected void DefineCommand()
         {
             Name = "Rotate";
-            _player = player;
+            SkipQueue = false;
+            ResetQueue = false;
         }
 
         public override void Execute()
@@ -35,6 +35,7 @@ namespace BeamMeUpATCA
             
             // Debug.Log("RotateCommand called");
         }
+
         public override bool IsFinished()
         {
             return true;

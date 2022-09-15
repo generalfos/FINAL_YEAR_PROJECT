@@ -117,7 +117,7 @@ namespace BeamMeUpATCA
             if (command == null ) { return; }
 
             Debug.Log("Destroying Command: " + command.Name);
-            
+
             Destroy(command);
         }
 
