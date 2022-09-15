@@ -15,7 +15,7 @@ namespace BeamMeUpATCA
             _player = player;
         }
 
-        public override void Execute(Unit unit)
+        public override void Execute()
         {
             // RayCast = Camera.main.ScreenPointToRay(_player.Pointer.ReadValue<Vector2>());
             // if (!Physics.Raycast(RayCast, out RayCastHit, 10000f))
@@ -34,7 +34,10 @@ namespace BeamMeUpATCA
             // }
             
             // Debug.Log("RotateCommand called");
-
+        }
+        public override bool IsFinished()
+        {
+            return true;
         }
     }
 }
