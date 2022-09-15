@@ -86,7 +86,7 @@ namespace BeamMeUpATCA
                 {new IASubscriber(_actions["Command: Move"]), 
                     new[] { new IASub(ctx => Commander.CommandUnits<MoveCommand>(PointerPosition), IASub.PREFORMED)}
                 },
-                {new IASubscriber(_actions["Command: Rotate"]), 
+                {new IASubscriber(_actions["Command: Stow"]), 
                     new[] { new IASub(ctx => Commander.CommandUnits<StowCommand>(PointerPosition), IASub.PREFORMED)}
                 }
             };

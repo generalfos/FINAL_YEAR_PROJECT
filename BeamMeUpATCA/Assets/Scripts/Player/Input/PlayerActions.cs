@@ -66,7 +66,7 @@ namespace BeamMeUpATCA
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Command: Rotate"",
+                    ""name"": ""Command: Stow"",
                     ""type"": ""Button"",
                     ""id"": ""2afb722b-f3dc-4c99-95b6-9890345dcf97"",
                     ""expectedControlType"": ""Button"",
@@ -357,7 +357,7 @@ namespace BeamMeUpATCA
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Command: Rotate"",
+                    ""action"": ""Command: Stow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -916,7 +916,7 @@ namespace BeamMeUpATCA
             m_World_PanCamera = m_World.FindAction("Pan Camera", throwIfNotFound: true);
             m_World_CommandCancel = m_World.FindAction("Command: Cancel", throwIfNotFound: true);
             m_World_CommandMove = m_World.FindAction("Command: Move", throwIfNotFound: true);
-            m_World_CommandRotate = m_World.FindAction("Command: Rotate", throwIfNotFound: true);
+            m_World_CommandStow = m_World.FindAction("Command: Stow", throwIfNotFound: true);
             m_World_Quit = m_World.FindAction("Quit", throwIfNotFound: true);
             m_World_PrimaryAction = m_World.FindAction("Primary Action", throwIfNotFound: true);
             m_World_SecondaryAction = m_World.FindAction("Secondary Action", throwIfNotFound: true);
@@ -998,7 +998,7 @@ namespace BeamMeUpATCA
         private readonly InputAction m_World_PanCamera;
         private readonly InputAction m_World_CommandCancel;
         private readonly InputAction m_World_CommandMove;
-        private readonly InputAction m_World_CommandRotate;
+        private readonly InputAction m_World_CommandStow;
         private readonly InputAction m_World_Quit;
         private readonly InputAction m_World_PrimaryAction;
         private readonly InputAction m_World_SecondaryAction;
@@ -1013,7 +1013,7 @@ namespace BeamMeUpATCA
             public InputAction @PanCamera => m_Wrapper.m_World_PanCamera;
             public InputAction @CommandCancel => m_Wrapper.m_World_CommandCancel;
             public InputAction @CommandMove => m_Wrapper.m_World_CommandMove;
-            public InputAction @CommandRotate => m_Wrapper.m_World_CommandRotate;
+            public InputAction @CommandStow => m_Wrapper.m_World_CommandStow;
             public InputAction @Quit => m_Wrapper.m_World_Quit;
             public InputAction @PrimaryAction => m_Wrapper.m_World_PrimaryAction;
             public InputAction @SecondaryAction => m_Wrapper.m_World_SecondaryAction;
@@ -1041,9 +1041,9 @@ namespace BeamMeUpATCA
                     @CommandMove.started -= m_Wrapper.m_WorldActionsCallbackInterface.OnCommandMove;
                     @CommandMove.performed -= m_Wrapper.m_WorldActionsCallbackInterface.OnCommandMove;
                     @CommandMove.canceled -= m_Wrapper.m_WorldActionsCallbackInterface.OnCommandMove;
-                    @CommandRotate.started -= m_Wrapper.m_WorldActionsCallbackInterface.OnCommandRotate;
-                    @CommandRotate.performed -= m_Wrapper.m_WorldActionsCallbackInterface.OnCommandRotate;
-                    @CommandRotate.canceled -= m_Wrapper.m_WorldActionsCallbackInterface.OnCommandRotate;
+                    @CommandStow.started -= m_Wrapper.m_WorldActionsCallbackInterface.OnCommandStow;
+                    @CommandStow.performed -= m_Wrapper.m_WorldActionsCallbackInterface.OnCommandStow;
+                    @CommandStow.canceled -= m_Wrapper.m_WorldActionsCallbackInterface.OnCommandStow;
                     @Quit.started -= m_Wrapper.m_WorldActionsCallbackInterface.OnQuit;
                     @Quit.performed -= m_Wrapper.m_WorldActionsCallbackInterface.OnQuit;
                     @Quit.canceled -= m_Wrapper.m_WorldActionsCallbackInterface.OnQuit;
@@ -1078,9 +1078,9 @@ namespace BeamMeUpATCA
                     @CommandMove.started += instance.OnCommandMove;
                     @CommandMove.performed += instance.OnCommandMove;
                     @CommandMove.canceled += instance.OnCommandMove;
-                    @CommandRotate.started += instance.OnCommandRotate;
-                    @CommandRotate.performed += instance.OnCommandRotate;
-                    @CommandRotate.canceled += instance.OnCommandRotate;
+                    @CommandStow.started += instance.OnCommandStow;
+                    @CommandStow.performed += instance.OnCommandStow;
+                    @CommandStow.canceled += instance.OnCommandStow;
                     @Quit.started += instance.OnQuit;
                     @Quit.performed += instance.OnQuit;
                     @Quit.canceled += instance.OnQuit;
@@ -1223,7 +1223,7 @@ namespace BeamMeUpATCA
             void OnPanCamera(InputAction.CallbackContext context);
             void OnCommandCancel(InputAction.CallbackContext context);
             void OnCommandMove(InputAction.CallbackContext context);
-            void OnCommandRotate(InputAction.CallbackContext context);
+            void OnCommandStow(InputAction.CallbackContext context);
             void OnQuit(InputAction.CallbackContext context);
             void OnPrimaryAction(InputAction.CallbackContext context);
             void OnSecondaryAction(InputAction.CallbackContext context);
