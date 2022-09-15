@@ -15,9 +15,14 @@ namespace BeamMeUpATCA
 
             }
 
-        public override void Execute(Unit unit) 
+        public override void Execute() 
         {
             Debug.Log("World Position: " + _worldPosition());
+        }
+
+        public override bool IsFinished()
+        {
+            return true;
         }
     }
 }

@@ -57,36 +57,129 @@ namespace BeamMeUpATCA
         #region Commanding
 
         private Queue<Command> commandQueue;
+        private Command activeCommand;
+        private Command priorityCommand;
         private Command nextCommand;
         
         public void AddCommand(Command command)
         {
-            // Guard Clause for determining if the command queue should be reset.
-            if (command.ResetQueue) { commandQueue.Clear(); }
 
-            commandQueue.Enqueue(command);
+            if (command.ResetQueue) 
+            {
+                // Destroy the entire command queue, next command and active command
+                DestroyCommandQueue();
+                DestroyStagedCommands();
+            }
 
-            // Sets next command to front of queue or the command parameter if skipQueue is true.
-            nextCommand = command.SkipQueue ? command : commandQueue.Dequeue();
+            if (command.SkipQueue) 
+            {
+                if (activeCommand != null) 
+                {
+                    activeCommand.enabled = false;
+                }
+
+                // Priority command holds the command queue hostage stopping ExecuteCommand()
+                // from being called until the priority command has finished executing.
+                priorityCommand = command;
+                priorityCommand.enabled = true;
+                priorityCommand.Execute();
+            } 
+            else 
+            {
+                commandQueue.Enqueue(command);
+                if (nextCommand == null) 
+                {
+                    nextCommand = commandQueue.Dequeue();
+                }
+            }
+
+
         }
 
-        public Command ExecuteCommand(Command command) 
+        private Command ExecuteCommand(Command command) 
         {
             // Guard Clause for determining if there is no next command.
             if (command == null) { return null; }
 
-            // Pass self
-            command.Execute(this);
+            // Indicate to the command it can be begin executing.
+            command.enabled = true;
+            command.Execute();
 
             // If there is a next command then return it. Otherwise return null.
             try { return commandQueue.Dequeue(); }
             catch (InvalidOperationException) { return null; }
         }
 
+        // Destroys a command instance.
+        private void DestroyCommand(Command command) 
+        {
+            // Guard Clause ensuring command is valid.
+            if (command == null ) { return; }
+
+            Debug.Log("Destroying Command: " + command.Name);
+            
+            Destroy(command);
+        }
+
+        // Clears Command Queue, NextCommand, and ActiveCommand and ensures Command instances are destroyed.
+        private void DestroyCommandQueue() 
+        {
+            while (commandQueue.Count > 0)
+            {
+                DestroyCommand(commandQueue.Dequeue());
+            }
+        }
+
+        private void DestroyStagedCommands() 
+        {
+            DestroyCommand(nextCommand);
+            nextCommand = null;
+            DestroyCommand(activeCommand);
+            activeCommand = null;
+        }
+
+        private void CommandUpdate() 
+        {
+            // No commands should be running while a priority command exists.
+            if (priorityCommand != null) 
+            {
+                // Guard Clause to allow priority command to run enabled.
+                if (!priorityCommand.IsFinished()) { return; }
+
+                DestroyCommand(priorityCommand);
+                priorityCommand = null;
+
+                // Restore whatever activeCommand was running.
+                if (activeCommand != null) 
+                {
+                    activeCommand.enabled = true;
+                }
+            } 
+            else 
+            {
+                // If the active command is null run the next command.
+                if (activeCommand == null && nextCommand != null)
+                {
+                    activeCommand = nextCommand;
+                    // ExecuteCommand() returns the next command in queue
+                    nextCommand = ExecuteCommand(activeCommand);
+                }
+                // Evaluation left to right validates Command.IsFinished() check.
+                if (activeCommand != null && activeCommand.IsFinished()) 
+                {
+                    // If Command.IsFinished() delete object and set activeCommand to null.
+                    DestroyCommand(activeCommand);
+                    activeCommand = null;
+                }
+
+            }
+
+            
+        }
+
         private void Update() 
         {
-            // ExecuteCommand() returns the next command in the queue.
-            nextCommand = ExecuteCommand(nextCommand);
+            CommandUpdate();
         }
         #endregion // Commanding
 

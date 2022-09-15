@@ -15,6 +15,16 @@ namespace BeamMeUpATCA
             Name = "Command";
         }
 
-        public abstract void Execute(Unit unit);
+        private void Awake()
+        {
+            // Stops Update(), FixedUpdate(), & OnGUI() from being called.
+            // ANY USES of MonoBehaviour outside of the above method should respect this.enabled
+            // For example if you use OnCollision() it should guard with `if (!this.enabled) {return;}`
+            enabled = false;
+        }
+
+        public abstract void Execute();
+
+        public abstract bool IsFinished();
     }
 }

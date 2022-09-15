@@ -10,9 +10,14 @@ namespace BeamMeUpATCA
                 Name = "Cancel";
             }
 
-        public override void Execute(Unit unit) 
+        public override void Execute() 
         {
-            Debug.Log("CancelCommand called");
+            Debug.Log("Cancel Command called");
+        }
+
+        public override bool IsFinished()
+        {
+            return true;
         }
     }
 }
