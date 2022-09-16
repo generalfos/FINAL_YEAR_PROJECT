@@ -14,6 +14,32 @@ namespace BeamMeUpATCA
         //public float RotationSpeed;
         //public float freeLookSensitivity;
 
+        [Header("Boundry Settings")]
+        public bool BoundryActive = false;
+
+        /**
+         * The Camera Boundaries can be a bit confusing, but here is an example
+         * of how they work. Below is a diagram of a projected Camera 
+         * perspective viewport and where each of the boundaries sit in the 
+         * 3D world space.
+         *
+         * (top left) --------------- (top) --------------- (top right)
+         *      \                                               /
+         *       \                                             /
+         *        \                                           /
+         *         \                                         /
+         *          \                                       /
+         *           \                                     /
+         *            \                                   /
+         *             \_____________(bottom)____________/
+         *
+         */
+
+        public float BoundryTop;
+        public float BoundryTopLeft;
+        public float BoundryTopRight;
+        public float BoundryBottom;
+
         // Setters for Camera
         public Camera ActiveCamera { private get; set; }
         public bool DragRotation { private get; set; }
@@ -86,10 +112,50 @@ namespace BeamMeUpATCA
 
         }
 
+        private const float BoundryOffset = 86;
+
+        /**
+         * This takes a given 3D coordinate position and then constrain it to
+         * the Boundry variables. The returned value is the new position.
+         */
+        private Vector3 BoundCamera(Vector3 cameraPosition) {
+            // Dont bound camera if not active
+            if (!BoundryActive) return cameraPosition;
+
+            // Calculated manually by placing a sphere in Unity and seeing what
+            // coordinates make it the edge of the Game Camera View and then 
+            // find the multiple.
+            const float BoundryOffset = 86; 
+
+            // Establish viewable positions based on its frustum
+            float bottomView = cameraPosition.z;
+            float topView = cameraPosition.z + BoundryOffset;
+            float leftView = cameraPosition.x - BoundryOffset;
+            float rightView = cameraPosition.x + BoundryOffset;
+
+            // Constrain camera Position
+            if (bottomView < BoundryBottom)  cameraPosition.z = BoundryBottom;
+            if (topView > BoundryTop)        cameraPosition.z = BoundryTop - BoundryOffset;
+            if (leftView < BoundryTopLeft)   cameraPosition.x = BoundryTopLeft + BoundryOffset;
+            if (rightView > BoundryTopRight) cameraPosition.x = BoundryTopRight - BoundryOffset;
+
+            // Set new camera position
+            return cameraPosition;
+        }
+
         private void LateUpdate() 
         {
-            // Debug.Log("CameraPosition: " + CameraPosition.ToString());
-            ActiveCamera.transform.position += CameraPosition;
+            // Get the current Camera Position
+            Vector3 updateCameraPosition = ActiveCamera.transform.position;
+
+            { /* Update Camera Positions */
+                updateCameraPosition += CameraPosition;
+                updateCameraPosition = BoundCamera(updateCameraPosition);
+            }
+
+            // Set the Final Camera Position
+            ActiveCamera.transform.position = updateCameraPosition;
+
             CameraPosition = Vector3.zero;
         }
         // TODO: Need to re-implement this with new hookup to Player.cs
