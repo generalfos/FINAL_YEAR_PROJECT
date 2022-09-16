@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -23872,15 +23872,51 @@ MonoBehaviour:
     m_ActionName: Default/Scroll Camera[/Mouse/scroll/up,/Mouse/scroll/down]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 690f3e88-9edd-4d8d-b729-75dda3de3338
-    m_ActionName: Default/Rotate Camera
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 67885096-b46f-4b52-9f4f-c8560d716464
     m_ActionName: Default/Focus Camera[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 23a2f45b-8fa0-46a0-886e-c98f119321d1
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8f29b5f4-3940-43a2-9ccc-cc303a9473b8
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 47e50e9a-90db-4f96-af47-7cead578400a
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1a50e71a-4a8c-4ba3-b365-1489e04675ae
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 66398d73-1823-4250-a9d9-1888a46998d0
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ca6c6d0f-1812-48d2-86e1-23c7d94a6807
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 34b691ab-bef3-4a93-b258-a16e642a54b1
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e5b7330c-dbfe-48a3-88fb-0aa916db3e1f
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a2a94a71-6d13-4889-87eb-608d5b084ab7
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 52160f55-1e50-4602-8a96-a3ae2f9a1145
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard & Mouse
-  m_DefaultActionMap: Default
+  m_DefaultActionMap: World
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1692210118}
 --- !u!114 &2030694050
@@ -25209,16 +25245,16 @@ MonoBehaviour:
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
-  m_PointAction: {fileID: 0}
-  m_MoveAction: {fileID: 0}
-  m_SubmitAction: {fileID: 0}
-  m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: 0}
-  m_MiddleClickAction: {fileID: 0}
-  m_RightClickAction: {fileID: 0}
-  m_ScrollWheelAction: {fileID: 0}
-  m_TrackedDevicePositionAction: {fileID: 0}
-  m_TrackedDeviceOrientationAction: {fileID: 0}
+  m_PointAction: {fileID: -3410330062307302151, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_MoveAction: {fileID: 1600756212628157053, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_SubmitAction: {fileID: 2307063897493810435, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_CancelAction: {fileID: -5843266135159347632, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_LeftClickAction: {fileID: 2353585986301534789, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_MiddleClickAction: {fileID: 3467686363133441736, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_RightClickAction: {fileID: 1453668334075953811, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_ScrollWheelAction: {fileID: -422677640172057788, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_TrackedDevicePositionAction: {fileID: -1659705242714718997, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: -6374841987073555380, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
