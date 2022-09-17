@@ -112,7 +112,7 @@
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Pointer",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -123,7 +123,7 @@
                     "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Command: Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -145,7 +145,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Pan Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -156,7 +156,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Pan Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -167,7 +167,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Pan Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -178,7 +178,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Pan Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -200,7 +200,7 @@
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Pan Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -211,7 +211,7 @@
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Pan Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -222,7 +222,7 @@
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Pan Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -233,7 +233,7 @@
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
+                    "groups": "",
                     "action": "Pan Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -867,22 +867,5 @@
             ]
         }
     ],
-    "controlSchemes": [
-        {
-            "name": "Keyboard & Mouse",
-            "bindingGroup": "Keyboard & Mouse",
-            "devices": [
-                {
-                    "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                },
-                {
-                    "devicePath": "<Mouse>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        }
-    ]
+    "controlSchemes": []
 }
