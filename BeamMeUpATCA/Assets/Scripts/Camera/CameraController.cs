@@ -34,11 +34,26 @@ namespace BeamMeUpATCA
          *             \_____________(bottom)____________/
          *
          */
+        
+        // World position that Boundaries define as the (0,0,0) point
+        [field: SerializeField]
+        public Vector3 BoundingPoint { get; set; } = Vector3.zero;
 
         public float BoundryTop;
         public float BoundryTopLeft;
         public float BoundryTopRight;
         public float BoundryBottom;
+
+        public float BoundingTop { get { return BoundryTop + BoundingPoint.z;}}
+        public float BoundingLeft { get { return BoundryTopLeft + BoundingPoint.x;}}
+        public float BoundingRight { get { return BoundryTopRight + BoundingPoint.x;}}
+        public float BoundingBottom { get { return BoundryBottom + BoundingPoint.z;}}
+
+        public float BoundryLowestHeight;
+        public float BoundryHighestHeight;
+
+        public float BoundingLowestHeight { get { return BoundryLowestHeight + BoundingPoint.y;}}
+        public float BoundingHighestHeight { get { return BoundryHighestHeight + BoundingPoint.y;}}
 
         // Setters for Camera
         public Camera ActiveCamera { private get; set; }
@@ -134,10 +149,23 @@ namespace BeamMeUpATCA
             float rightView = cameraPosition.x + BoundryOffset;
 
             // Constrain camera Position
-            if (bottomView < BoundryBottom)  cameraPosition.z = BoundryBottom;
-            if (topView > BoundryTop)        cameraPosition.z = BoundryTop - BoundryOffset;
-            if (leftView < BoundryTopLeft)   cameraPosition.x = BoundryTopLeft + BoundryOffset;
-            if (rightView > BoundryTopRight) cameraPosition.x = BoundryTopRight - BoundryOffset;
+            if (bottomView < BoundingBottom)  cameraPosition.z = BoundingBottom;
+            if (topView > BoundingTop)        cameraPosition.z = BoundingTop - BoundryOffset;
+            if (leftView < BoundingLeft)   cameraPosition.x = BoundingLeft + BoundryOffset;
+            if (rightView > BoundingRight) cameraPosition.x = BoundingRight - BoundryOffset;
+
+            // Set new camera position
+            return cameraPosition;
+        }
+
+        private Vector3 BoundCameraHeight(Vector3 cameraPosition) 
+        {
+            // Don't bound camera if not active
+            if (!BoundryActive) return cameraPosition;
+
+            // Constrain camera Position
+            if (cameraPosition.y < BoundingLowestHeight)  cameraPosition.y = BoundingLowestHeight;
+            if (cameraPosition.y > BoundingHighestHeight)  cameraPosition.y = BoundingHighestHeight;
 
             // Set new camera position
             return cameraPosition;
@@ -151,6 +179,7 @@ namespace BeamMeUpATCA
             { /* Update Camera Positions */
                 updateCameraPosition += CameraPosition;
                 updateCameraPosition = BoundCamera(updateCameraPosition);
+                updateCameraPosition = BoundCameraHeight(updateCameraPosition);
             }
 
             // Set the Final Camera Position
