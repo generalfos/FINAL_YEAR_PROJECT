@@ -40,6 +40,9 @@ namespace BeamMeUpATCA
         public float BoundryTopRight;
         public float BoundryBottom;
 
+        public float BoundryLowestHeight;
+        public float BoundryHighestHeight;
+
         // Setters for Camera
         public Camera ActiveCamera { private get; set; }
         public bool DragRotation { private get; set; }
@@ -143,6 +146,19 @@ namespace BeamMeUpATCA
             return cameraPosition;
         }
 
+        private Vector3 BoundCameraHeight(Vector3 cameraPosition) 
+        {
+            // Don't bound camera if not active
+            if (!BoundryActive) return cameraPosition;
+
+            // Constrain camera Position
+            if (cameraPosition.y < BoundryLowestHeight)  cameraPosition.y = BoundryLowestHeight;
+            if (cameraPosition.y > BoundryHighestHeight)  cameraPosition.y = BoundryHighestHeight;
+
+            // Set new camera position
+            return cameraPosition;
+        }
+
         private void LateUpdate() 
         {
             // Get the current Camera Position
@@ -151,6 +167,7 @@ namespace BeamMeUpATCA
             { /* Update Camera Positions */
                 updateCameraPosition += CameraPosition;
                 updateCameraPosition = BoundCamera(updateCameraPosition);
+                updateCameraPosition = BoundCameraHeight(updateCameraPosition);
             }
 
             // Set the Final Camera Position
