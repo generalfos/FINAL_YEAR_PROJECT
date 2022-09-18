@@ -8338,15 +8338,15 @@ MonoBehaviour:
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
-  m_PointAction: {fileID: -3410330062307302151, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
-  m_MoveAction: {fileID: 1600756212628157053, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
-  m_SubmitAction: {fileID: 2307063897493810435, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
-  m_CancelAction: {fileID: -5843266135159347632, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
-  m_LeftClickAction: {fileID: 2353585986301534789, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
-  m_MiddleClickAction: {fileID: 3467686363133441736, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
-  m_RightClickAction: {fileID: 1453668334075953811, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
-  m_ScrollWheelAction: {fileID: -422677640172057788, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
-  m_TrackedDevicePositionAction: {fileID: -1659705242714718997, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_PointAction: {fileID: -5859522426062457655, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_MoveAction: {fileID: 5602794469776035354, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_SubmitAction: {fileID: 3869633630188985126, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_CancelAction: {fileID: -9336291919808234, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_LeftClickAction: {fileID: 5710989860905138766, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_MiddleClickAction: {fileID: -5958076068156713613, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_RightClickAction: {fileID: 3925634247552801297, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_ScrollWheelAction: {fileID: -7612018928827006633, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 0}
   m_TrackedDeviceOrientationAction: {fileID: -6374841987073555380, guid: fda7faa6fd5b4d44e9e0d2860d0ee47d, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
