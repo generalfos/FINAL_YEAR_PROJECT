@@ -22,6 +22,10 @@ namespace BeamMeUpATCA
         [field: SerializeField] public GameObject Player { get; private set; }
         [field: SerializeField] public GameObject Camera { get; private set; }
         [field: SerializeField] public GameObject Engineer { get; private set; }
+        [field: SerializeField] public GameObject Canvas { get; private set; }
+
+        [field: SerializeField] public Vector3 CameraStartingPosition { get; private set; }
+        [field: SerializeField] public Quaternion CameraStartingRotation { get; private set; }
 
         // Position popup directly in centre of screen
         private Vector3 screenCenter = new Vector3(Screen.width/2, Screen.height/2, 0);
@@ -68,7 +72,7 @@ namespace BeamMeUpATCA
                 DestroyPrompt(currPopUp);
                 currPopUp = null;
             }
-            GameObject newPrompt = Instantiate(TutPopUpPrefab, screenCenter, Quaternion.identity, gameObject.transform);
+            GameObject newPrompt = Instantiate(TutPopUpPrefab, screenCenter, Quaternion.identity, Canvas.transform);
             // Get references to new text fields and button
             // Set text and button listner
             PopUp popup = newPrompt.GetComponent<PopUp>();
@@ -107,6 +111,12 @@ namespace BeamMeUpATCA
                 "\nSelect the engineer now by left clicking the unit with the mouse hovering over it. ");
         }
 
+        private void ResetCamera() 
+        {
+            Camera.transform.position = CameraStartingPosition;
+            Camera.transform.rotation = CameraStartingRotation;
+        }
+
         // Update to next tutorial stage on completion of a stage
         private void Update()
         {
@@ -119,6 +129,10 @@ namespace BeamMeUpATCA
                         break;
                     case 1:
                         EngineerTut();
+                        break;
+                    case 2:
+                        ResetCamera();
+                        tutSeqNo++;
                         break;
                 }
             }
