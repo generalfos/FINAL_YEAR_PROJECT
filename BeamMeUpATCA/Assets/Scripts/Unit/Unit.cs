@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using Object = UnityEngine.Object;
 
 
 namespace BeamMeUpATCA 
@@ -21,6 +22,8 @@ namespace BeamMeUpATCA
         [field: SerializeField] public int UnitHealth { get; private set; }
 
         [field: SerializeField] public float UnitMorale {get; private set; }
+        [field: SerializeField] private float inTownCounter;
+
 
         public Color UnitColor {get; private set;}
         
@@ -45,6 +48,7 @@ namespace BeamMeUpATCA
             }
 
             maxMorale = 100;
+            inTownCounter = 0;
             UnitMorale = maxMorale;
             moraleTickDmg = 1;
             tickCounter = 0;
@@ -186,7 +190,15 @@ namespace BeamMeUpATCA
         #region TickUpdates
 
         private void FixedUpdate() {
-            takeTickDamage();
+            if (inTownCounter == 0)  // Not in town
+            {
+                takeTickDamage();
+            }
+            else  // In town
+            {
+                decrementTownCounter();
+                UnitMorale = maxMorale;
+            }
         }
 
         private void takeTickDamage() {
@@ -203,7 +215,36 @@ namespace BeamMeUpATCA
                 tickCounter = 0;
             }
         }
+    
+        /*
+         * If a unit is in town, countdown the inTownCounter
+         */
+        private void decrementTownCounter()
+        {
+            tickCounter += Time.fixedDeltaTime;
+            if (tickCounter >= 3)
+            {
+                inTownCounter--;
+                tickCounter = 0;
+            }
+        }
+        
+        /*
+         * Sets the inTownCounter to send a unit to town
+         */
+        
+        private void goToTown()
+        {
+            inTownCounter = 20;
+        }
 
         #endregion //TickUpdates
+        
+    public float getInTownCounter()
+    {
+        return inTownCounter;
+    }
+    
+
     }
 }
