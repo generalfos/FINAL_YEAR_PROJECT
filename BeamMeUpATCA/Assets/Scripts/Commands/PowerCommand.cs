@@ -2,13 +2,13 @@ using UnityEngine;
 
 namespace BeamMeUpATCA
 {
-    public class GotoCommand : Command
+    public class PowerCommand : Command
     {
-        // Commands Unit to Command.Position using Pathfinder.
-        // Conditions: 1. Command.Position is a valid walkable position.
+        // Commands Unit to Power the building at the Command.Position
+        // Conditions:
         override protected void DefineCommand()
         {
-            Name = "Goto";
+            Name = "Power";
         }
 
         // Called once when command is first executed

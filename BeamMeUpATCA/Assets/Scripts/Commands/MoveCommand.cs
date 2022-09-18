@@ -4,7 +4,10 @@ namespace BeamMeUpATCA
 {
     public class MoveCommand : Command
     {
-        // Command Moves a building with a Moveable interface
+        // Commands Unit to Move a building to the Command.Position
+        // Conditions: 
+        // 1. Building exists at Command.Position and is Moveable.
+        // 2. Building.Lock = false;
         override protected void DefineCommand()
         {
             Name = "Move";

@@ -2,13 +2,14 @@ using UnityEngine;
 
 namespace BeamMeUpATCA
 {
-    public class GotoCommand : Command
+    public class LockCommand : Command
     {
-        // Commands Unit to Command.Position using Pathfinder.
-        // Conditions: 1. Command.Position is a valid walkable position.
+        // Commands Unit to Lock/Unlock a building at the Command.Position
+        // Conditions: 
+        // 1. Building exists at Command.Position and is Moveable.
         override protected void DefineCommand()
         {
-            Name = "Goto";
+            Name = "Lock";
         }
 
         // Called once when command is first executed

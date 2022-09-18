@@ -4,11 +4,13 @@ namespace BeamMeUpATCA
 {
     public class StowCommand : Command
     {
-        // Command Stows a building with a Stowable interface
+        // Commands Unit to Stow a building at the Command.Position
+        // Conditions:
         override protected void DefineCommand()
         {
             Name = "Stow";
         }
+
 
         // Called once when command is first executed
         // Similar to Start()/Awake() but executed after both.
