@@ -5,7 +5,7 @@ using UnityEngine;
 namespace BeamMeUpATCA
 {
 
-    public class BusStop : MonoBehaviour, Enterable
+    public class BusStop : MonoBehaviour, Workable
     {
         private List<Unit> inTown = new List<Unit>();
 
@@ -27,7 +27,7 @@ namespace BeamMeUpATCA
         /*
          * Adds a unit to the in town list
          */
-        public void Enter(Unit unit)
+        public void Work(Unit unit)
         {
             inTown.Add(unit);
             // Hide the unit
