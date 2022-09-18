@@ -11,6 +11,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 namespace BeamMeUpATCA
 {
@@ -18,6 +19,7 @@ namespace BeamMeUpATCA
     {
         // External references to game objects necessary for tutorial progress.
         [field: SerializeField] public GameObject TutPopUpPrefab { get; private set; }
+        [field: SerializeField] public GameObject Player { get; private set; }
         [field: SerializeField] public GameObject Camera { get; private set; }
         [field: SerializeField] public GameObject Engineer { get; private set; }
 
@@ -68,13 +70,11 @@ namespace BeamMeUpATCA
             }
             GameObject newPrompt = Instantiate(TutPopUpPrefab, screenCenter, Quaternion.identity, gameObject.transform);
             // Get references to new text fields and button
-            Text Title = newPrompt.transform.GetChild(0).GetChild(titleIndex).GetComponentInChildren<Text>();
-            Text Content = newPrompt.transform.GetChild(0).GetChild(contentIndex).GetComponentInChildren<Text>();
-            Button btn = newPrompt.transform.GetChild(0).GetChild(btnIndex).GetComponentInChildren<Button>();
             // Set text and button listner
-            Title.text = title;
-            Content.text = content;
-            btn.onClick.AddListener(HandleOk);
+            PopUp popup = newPrompt.GetComponent<PopUp>();
+            popup.update_title(title);
+            popup.update_content(content);
+            popup.attach_listener(HandleOk);
             currPopUp = newPrompt;
             popUpActive = true;
         }
@@ -92,6 +92,7 @@ namespace BeamMeUpATCA
         // Welcome message
         private void Intro()
         {
+            Debug.Log("Tutorial Sequence: Intro started");
             CreateNewPrompt("Welcome to the Beam Me Up ATCA Tutorial",
                 "In this tutorial you will manage the ATCA whilst it performs an observation of" +
                 " Betelguese");
@@ -120,6 +121,10 @@ namespace BeamMeUpATCA
                         EngineerTut();
                         break;
                 }
+            }
+            else
+            {
+                PlayerInput actionSet = Player.GetComponent<PlayerInput>();
             }
         }
     }
