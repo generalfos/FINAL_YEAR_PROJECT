@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections.Generic;
 
 namespace BeamMeUpATCA
@@ -39,6 +40,23 @@ namespace BeamMeUpATCA
             {
                 Debug.Log("Commanding " + unit.name + " to preform the " + command.Name + " command");
                 unit.AddCommand(command);
+            }
+        }
+
+        public void CommandUnits<T>(Vector2 position)
+        {
+            foreach (Unit unit in _selectedUnits) 
+            {
+                if (typeof(T).IsSubclassOf(typeof(Command))) 
+                {
+                    // Can't cast T directly to Command so we cast to object first. 
+                    // This is a safe cast as T is type checked at runtime to be a Command
+                    Command command = (Command)(object) unit.gameObject.AddComponent(typeof(T));
+                    Debug.Log("Commanding " + unit.name + " to preform the " + command.Name + " command");
+
+                    command.Position = position;
+                    unit.AddCommand(command);
+                }
             }
         }
     }

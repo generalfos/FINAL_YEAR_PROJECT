@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace BeamMeUpATCA
 {
-    public class MoveCommand : Command
+    public class GotoCommand : Command
     {
-        // Command Moves a building with a Moveable interface
+        // Command moves Unit to Position using pathfinder.
         override protected void DefineCommand()
         {
-            Name = "Move";
+            Name = "Goto";
         }
 
         // Called once when command is first executed
