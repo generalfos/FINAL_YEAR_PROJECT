@@ -11,7 +11,6 @@ namespace BeamMeUpATCA
     public abstract class Mendable : MonoBehaviour
     {
         private float maxHealth;
-        private float healthPool;
         private float tickDmg;
         private float dmgMultiplier;
         private float tickRepair;
@@ -19,6 +18,9 @@ namespace BeamMeUpATCA
         private bool isBroken;
         private float tickCounter;
         private Unit repairer;
+        
+        [field: SerializeField] private float healthPool;
+        [field: SerializeField] public bool isRepaired { get; private set; }
 
         private void Awake()
         {
@@ -30,27 +32,32 @@ namespace BeamMeUpATCA
             repMultiplier = 1f;
             isBroken = false;
             tickCounter = 0;
-            Unit repairer = null;
+            repairer = null;
+            isRepaired = true;
         }
         
-        private void FixedUpdate() 
+        private void Update() 
         {
+            // Are we damaging the building?
             if ((!isBroken || tickDmg < 0) && repairer is null)
             {
                 takeTickDamage();
+                isRepaired = false;
             }
-
+            
+            // Are we repairing the building
             if (repairer != null)
             {
                 if (healthPool != maxHealth) 
                 {
                     regainHealth();
                 }
+                // Building is full health!
                 else
                 {
                     // TODO - Do something when building is at full health
-                    Debug.Log("Building at full health");
-                    repairer = null;  // Stops the building getting repaired next update()
+                    isRepaired = true;
+                    repairer = null;  // Stops the building getting repaired next Update()
                     setRepMultiplier(1f);
                 }
             }
