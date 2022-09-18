@@ -50,29 +50,34 @@ namespace BeamMeUpATCA
                 {
                     // TODO - Do something when building is at full health
                     Debug.Log("Building at full health");
-                    repairer = null;
+                    repairer = null;  // Stops the building getting repaired next update()
+                    setRepMultiplier(1f);
                 }
             }
         }
-
         
         /*
          * Put a unit in the repairer field to kick off the repair process
          * Also adjusts the repMultiplier based on unit type
+         * Returns the mending unit aka the repairer
          */
         public Unit Mend(Unit unit)
         {
             repairer = unit;
-            //TODO - if unit type is scientist, then set repMultiplier to 0.75f
+            //TODO - if unit type is scientist, then set repMultiplier to 0.75f. Dependant on Unit implementation
+            if (unit.UnitClass == Unit.UnitType.Scientist)
+            {
+                setRepMultiplier(0.75f);
+            }
             return unit;
         }
-        
-        
+
         /*
         * If a unit has been assigned to repair a building, it gains HP
         * Cannot have more HP than maxHealth
+        * Returns the health pool following a heal
         */
-        private void regainHealth()
+        private float regainHealth()
         {
             tickCounter += Time.fixedDeltaTime;
             if (tickCounter >= 1)
@@ -86,9 +91,37 @@ namespace BeamMeUpATCA
                 healthPool = newHp;
                 tickCounter = 0;
             }
+            return healthPool;
         }
-
-        private void takeTickDamage()
+        
+        /*
+         * Changes the damage multiplier
+         * Typical case, dish takes extra damage during high wind / bushfire unless stowed
+         * Returns the new dmgModifier
+         */
+        public float setDmgMultiplier(float newModifier)
+        {
+            dmgMultiplier = newModifier;
+            return dmgMultiplier;
+        }
+        
+        /*
+         * Changes the repair multiplier
+         * Typical case, scientist will fix build at 0.75 the rate an engineer does
+         * Returns the new repair multiplier
+         */
+        public float setRepMultiplier(float newModifier)
+        {
+            repMultiplier = newModifier;
+            return repMultiplier;
+        }
+        
+        /*
+         * Reduces the health of a building
+         * Can't reduce a buildings health to below zero.
+         * Returns the health pool following a damage tick
+         */
+        private float takeTickDamage()
         {
             tickCounter += Time.fixedDeltaTime;
             if (tickCounter >= 1)
@@ -102,7 +135,7 @@ namespace BeamMeUpATCA
                     tickCounter = 0;
                 }
             }
+            return healthPool;
         }
-
     }
 }
