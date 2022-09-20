@@ -6,15 +6,17 @@ namespace BeamMeUpATCA
     {
         // Commands Unit to Move a building to the Command.Position
         // Conditions: 
-        // 1. Building exists at Command.Position and is Moveable.
-        // 2. Building.Lock = false;
-        override protected void DefineCommand()
+        // 1. Building exists at Command.Position
+        // 2. Building is Moveable.
+        // 3. Building.Lock = false;
+        // 4. Building is Enterable & this.unit has entered building
+        override protected void CommandAwake()
         {
             Name = "Move";
         }
 
-        // Called once when command is first executed
-        // Similar to Start()/Awake() but executed after both.
+        // Check Command conditions and call the relevant building interface method
+        // Ensure methods respect the expected call count (single vs multiple calls)
         public override void Execute() {}
 
         // Update for loop per frame. FixedUpdate for loop per physics step.

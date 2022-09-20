@@ -6,14 +6,16 @@ namespace BeamMeUpATCA
     {
         // Commands Unit to Work at the building at the Command.Position
         // Conditions:
-        override protected void DefineCommand()
+        // 1. Building exists at Command.Position
+        // 2. Building is Workable
+        // 3. Building is Enterable & this.unit has entered building
+        override protected void CommandAwake()
         {
             Name = "Work";
         }
 
-
-        // Called once when command is first executed
-        // Similar to Start()/Awake() but executed after both.
+        // Check Command conditions and call the relevant building interface method
+        // Ensure methods respect the expected call count (single vs multiple calls)
         public override void Execute() {}
 
         // Update for loop per frame. FixedUpdate for loop per physics step.

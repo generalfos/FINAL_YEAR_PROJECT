@@ -2,18 +2,23 @@ using UnityEngine;
 
 namespace BeamMeUpATCA
 {
-    public class MendCommand : Command
+    public class MendCommand : GotoCommand
     {
         // Commands Unit to Mend the building at the Command.Position
-        // Conditions: 1. Building exists at Command.Position and is Mendable
-        override protected void DefineCommand()
+        // Conditions: 
+        // 1. Building exists at Command.Position
+        // 2. Building is Mendable
+        override protected void CommandAwake()
         {
             Name = "Mend";
         }
 
-        // Called once when command is first executed
-        // Similar to Start()/Awake() but executed after both.
-        public override void Execute() {}
+        // Check Command conditions. If conditions met but the unit is not 
+        // at the building dock, call Pathfinder - Goto(Camera, Vector2)
+        // Check in Update() for (IsGotoFinished && CommandConditions).
+        // Ensure methods respect the expected call count (single vs multiple calls)
+        // of the building interface methods.
+        public override void Execute() { base.Execute(); }
 
         // Update for loop per frame. FixedUpdate for loop per physics step.
         // Update() counts in Time.deltaTime. FixedUpdate counts in Time.fixedDeltaTime.
@@ -22,15 +27,6 @@ namespace BeamMeUpATCA
 
         // Should return true if the command has finished execution. Goal condition.
         // Consider adding a timeout to the command if it doesn't have an guaranteed end state.
-        public override bool IsFinished() { return true; }
-
-        // Any code that needs to be called if command is paused should go here.
-        private void OnDisable() {}
-
-        // Any Code that needs to be called if command is unpause should go here.
-        private void OnEnable() {}
-
-        // Any cleanup code that needs to be called if command is destroyed should go here.
-        private void OnDestroy() {}
+        public override bool IsFinished() { return base.IsFinished(); }
     }
 }

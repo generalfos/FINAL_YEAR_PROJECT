@@ -6,14 +6,19 @@ namespace BeamMeUpATCA
     {
         // Commands Unit to Lock/Unlock a building at the Command.Position
         // Conditions: 
-        // 1. Building exists at Command.Position and is Moveable.
-        override protected void DefineCommand()
+        // 1. Building exists at Command.Position 
+        // 2. Building is Moveable.
+        // 3. Building is Enterable & this.unit has entered building
+        override protected void CommandAwake()
         {
             Name = "Lock";
         }
 
-        // Called once when command is first executed
-        // Similar to Start()/Awake() but executed after both.
+        // Check Command conditions. If conditions met but the unit is not 
+        // at the building dock, call Pathfinder - Goto(Camera, Vector2)
+        // Check in Update() for (IsGotoFinished && CommandConditions).
+        // Ensure methods respect the expected call count (single vs multiple calls)
+        // of the building interface methods.
         public override void Execute() {}
 
         // Update for loop per frame. FixedUpdate for loop per physics step.
