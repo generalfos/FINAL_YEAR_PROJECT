@@ -2,13 +2,15 @@ using UnityEngine;
 
 namespace BeamMeUpATCA
 {
-    public class StowCommand : GotoCommand
+    public class MendCommand : GotoCommand
     {
-        // Commands Unit to Stow a building at the Command.Position
-        // Conditions:
+        // Commands Unit to Mend the building at the Command.Position
+        // Conditions: 
+        // 1. Building exists at Command.Position
+        // 2. Building is Mendable
         override protected void CommandAwake()
         {
-            Name = "Stow";
+            Name = "Mend";
         }
 
         // Check Command conditions. If conditions met but the unit is not 

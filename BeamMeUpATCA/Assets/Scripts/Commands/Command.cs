@@ -2,32 +2,39 @@ using UnityEngine;
 
 namespace BeamMeUpATCA
 {
+    [RequireComponent(typeof(Unit))]
     public abstract class Command : MonoBehaviour
     {
-        public bool SkipQueue { protected set; get; }
-        public bool ResetQueue { protected set; get; }
-        public string Name { protected set; get; }
+        public bool SkipQueue { set; get; } = false;
+        public bool ResetQueue { set; get; } = false;
+        public string Name { protected set; get; } = "None";
 
-        public Vector3 Position { set; get; }
+        protected Unit unit;
+
+        // Public properties
+        // Initializers ensure behaviour will fail safely
+        public Camera ActiveCamera { set; protected get; }
+        public Vector3 Position { set; protected get; } = Vector3.zero;
 
         private void Awake()
         {
+            // RequireComponent ensures this GetComponent should not return null.
+            // As commands should not exist outside the context of a unit.
+            unit = this.gameObject.GetComponent<Unit>();
+            ActiveCamera = Camera.main;
+
             // Stops Update(), FixedUpdate(), & OnGUI() from being called.
             // ANY USES of MonoBehaviour outside of the above method should respect this.enabled
             // For example if you use OnCollision() it should guard with `if (!this.enabled) {return;}`
             enabled = false;
 
-            this.hideFlags = HideFlags.HideInInspector; // Prevents Commands showing up in inspector
-            DefineCommand();
+            // Prevents Commands showing up in inspector
+            this.hideFlags = HideFlags.HideInInspector; 
+
+            CommandAwake();
         }
 
-        protected virtual void DefineCommand() 
-        {
-            Name = "None";
-            SkipQueue = false;
-            ResetQueue = false;
-            Position = Vector3.zero;
-        }
+        protected abstract void CommandAwake();
 
         public abstract void Execute();
 

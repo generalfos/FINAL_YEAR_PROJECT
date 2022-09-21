@@ -5,7 +5,7 @@ namespace BeamMeUpATCA
     public class StopCommand : Command
     {
         // Command stops any currently running commands and clears the command queue.
-        override protected void DefineCommand()
+        override protected void CommandAwake()
         {
             Name = "Stop";
             SkipQueue = true;

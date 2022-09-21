@@ -2,17 +2,16 @@ using UnityEngine;
 
 namespace BeamMeUpATCA
 {
-    public class MoveCommand : Command
+    public class WorkCommand : Command
     {
-        // Commands Unit to Move a building to the Command.Position
-        // Conditions: 
+        // Commands Unit to Work at the building at the Command.Position
+        // Conditions:
         // 1. Building exists at Command.Position
-        // 2. Building is Moveable.
-        // 3. Building.Lock = false;
-        // 4. Building is Enterable & this.unit has entered building
+        // 2. Building is Workable
+        // 3. Building is Enterable & this.unit has entered building
         override protected void CommandAwake()
         {
-            Name = "Move";
+            Name = "Work";
         }
 
         // Check Command conditions and call the relevant building interface method
