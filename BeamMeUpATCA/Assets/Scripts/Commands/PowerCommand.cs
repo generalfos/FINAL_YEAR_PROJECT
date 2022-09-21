@@ -2,13 +2,15 @@ using UnityEngine;
 
 namespace BeamMeUpATCA
 {
-    public class StowCommand : GotoCommand
+    public class PowerCommand : GotoCommand
     {
-        // Commands Unit to Stow a building at the Command.Position
+        // Commands Unit to Power the building at the Command.Position
         // Conditions:
+        // 1. Building exists at Command.Position
+        // 2. Building is Powerable
         override protected void CommandAwake()
         {
-            Name = "Stow";
+            Name = "Power";
         }
 
         // Check Command conditions. If conditions met but the unit is not 

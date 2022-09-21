@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4954222200051739824}
   - component: {fileID: 8916592842209772276}
+  - component: {fileID: 467689488443993849}
   m_Layer: 0
   m_Name: TutorialPopUp
   m_TagString: Untagged
@@ -45,6 +46,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279036142915533037}
   m_CullTransparentMesh: 1
+--- !u!114 &467689488443993849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279036142915533037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33915f894dd9d8a4e8d37a6f8bd686e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Title>k__BackingField: {fileID: 8741947196893912622}
+  <Content>k__BackingField: {fileID: 8820419759283121265}
+  <Button>k__BackingField: {fileID: 5226947902064979193}
 --- !u!1 &2174447322621770597
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,8 +160,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
+    m_PressedColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
