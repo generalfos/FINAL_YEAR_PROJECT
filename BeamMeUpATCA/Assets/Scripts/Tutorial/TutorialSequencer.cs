@@ -105,7 +105,8 @@ namespace BeamMeUpATCA
         // Introducing engineers
         private void EngineerTut()
         {
-            Camera.transform.LookAt(Engineer.transform);
+            var cameraController = Camera.GetComponent<CameraController>();
+            cameraController.FocusCameraFree(Engineer.transform.position);
             CreateNewPrompt("Meet The Engineer", "The engineer is one of two main unit types " +
                 "which you will use while performing an observation with the ATCA. " +
                 "\nSelect the engineer now by left clicking the unit with the mouse hovering over it. ");

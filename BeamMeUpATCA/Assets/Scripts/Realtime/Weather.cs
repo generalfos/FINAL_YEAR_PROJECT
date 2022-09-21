@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Text.RegularExpressions;
 using UnityEngine.Networking;
 
 namespace BeamMeUpATCA
@@ -8,6 +9,8 @@ namespace BeamMeUpATCA
     {
         // Link below for information on MonoBehaviour
         // https://docs.unity3d.com/2020.3/Documentation/ScriptReference/MonoBehaviour.html
+
+        private Regex regex = new Regex(@"Australia Telescope (Culgoora)", RegexOptions.IgnoreCase);
 
         // Awake is init function. Start before first frame
         private void Awake() 
@@ -31,9 +34,9 @@ namespace BeamMeUpATCA
                         Debug.Log("Request Error");
                         break;
                 }
-
-                byte[] results = req.downloadHandler.data;
-                Debug.Log(results);
+                var doc = req.downloadHandler.text;
+                var captured_text = regex.Match(doc);
+                Debug.Log(string.Format("'{0}' found", captured_text.Value));
             }
         }
     }
