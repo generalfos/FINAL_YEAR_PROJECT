@@ -1,11 +1,11 @@
 using UnityEngine;
+using UnityEngine.AI;
 using System;
 using System.Collections.Generic;
-using Object = UnityEngine.Object;
-
 
 namespace BeamMeUpATCA 
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     public class Unit : MonoBehaviour
     {
         #region Unit Properties
@@ -24,6 +24,16 @@ namespace BeamMeUpATCA
         [field: SerializeField] public float UnitMorale {get; private set; }
         [field: SerializeField] private float inTownCounter;
 
+        private UnitPathfinder _pathfinder;
+        public UnitPathfinder Pathfinder {
+            get 
+            {
+                if (_pathfinder == null) 
+                {
+                    _pathfinder = new UnitPathfinder(this);
+                }
+                return _pathfinder;
+            }}
 
         public Color UnitColor {get; private set;}
         
@@ -46,7 +56,7 @@ namespace BeamMeUpATCA
                     UnitColor = Color.green;
                     break;
             }
-
+            
             maxMorale = 100;
             inTownCounter = 0;
             UnitMorale = maxMorale;
@@ -82,11 +92,10 @@ namespace BeamMeUpATCA
                     activeCommand.enabled = false;
                 }
 
-                // Priority command holds the command queue hostage stopping ExecuteCommand()
-                // from being called until the priority command has finished executing.
+                // Priority command holds the command queue hostage stopping activeCommand
+                // until the priority command has finished executing.
                 priorityCommand = command;
-                priorityCommand.enabled = true;
-                priorityCommand.Execute();
+                ExecuteCommand(priorityCommand);
             } 
             else 
             {
@@ -100,14 +109,20 @@ namespace BeamMeUpATCA
 
         }
 
-        private Command ExecuteCommand(Command command) 
+        private void ExecuteCommand(Command command) 
         {
-            // Guard Clause for determining if there is no next command.
-            if (command == null) { return null; }
+            if (command == null) { return; }
 
             // Indicate to the command it can be begin executing.
             command.enabled = true;
-            command.Execute();
+            command.Execute(); 
+        }
+
+        private Command ExecuteAndLoadCommand(Command command) 
+        {
+            if (command == null) { return null; }
+
+            ExecuteCommand(command);
 
             // If there is a next command then return it. Otherwise return null.
             try { return commandQueue.Dequeue(); }
@@ -166,7 +181,7 @@ namespace BeamMeUpATCA
                 {
                     activeCommand = nextCommand;
                     // ExecuteCommand() returns the next command in queue
-                    nextCommand = ExecuteCommand(activeCommand);
+                    nextCommand = ExecuteAndLoadCommand(activeCommand);
                 }
                 // Evaluation left to right validates Command.IsFinished() check.
                 if (activeCommand != null && activeCommand.IsFinished()) 
@@ -177,8 +192,6 @@ namespace BeamMeUpATCA
                 }
 
             }
-
-            
         }
 
         private void Update() 

@@ -52,9 +52,10 @@ namespace BeamMeUpATCA
                     // Can't cast T directly to Command so we cast to object first. 
                     // This is a safe cast as T is type checked at runtime to be a Command
                     Command command = (Command)(object) unit.gameObject.AddComponent(typeof(T));
-                    Debug.Log("Commanding " + unit.name + " to preform the " + command.Name + " command");
-
                     command.Position = position;
+                    command.ActiveCamera = ActiveCamera;
+
+                    Debug.Log("Commanding " + unit.name + " to preform the " + command.Name + " command");
                     unit.AddCommand(command);
                 }
             }
