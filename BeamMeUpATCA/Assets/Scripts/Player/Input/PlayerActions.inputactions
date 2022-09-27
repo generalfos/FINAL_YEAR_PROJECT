@@ -1,5 +1,5 @@
 {
-    "name": "Player Actions",
+    "name": "PlayerActions",
     "maps": [
         {
             "name": "World",
@@ -78,7 +78,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Command: Cancel",
+                    "name": "Command: Stop",
+                    "type": "Button",
+                    "id": "e8d2d6c7-8869-44da-9718-1668ec1d5e1a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Command: Enter",
                     "type": "Button",
                     "id": "d0334a76-73be-42d3-9e87-38bf158c8ae3",
                     "expectedControlType": "Button",
@@ -87,9 +96,36 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Command: Lock",
+                    "type": "Button",
+                    "id": "181db893-6a6d-45f0-aee9-cba9202f4344",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Command: Mend",
+                    "type": "Button",
+                    "id": "3d2e03a2-3284-4a2a-958a-98891ef20847",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Command: Move",
                     "type": "Button",
-                    "id": "12ce5bbf-6f70-4858-9f61-95a7011fd562",
+                    "id": "290a5759-9e55-478f-8e3d-ac17cf39cf62",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Command: Power",
+                    "type": "Button",
+                    "id": "374d52bf-c6cb-4fb1-9d48-b71b0f1fd2d5",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -98,7 +134,16 @@
                 {
                     "name": "Command: Stow",
                     "type": "Button",
-                    "id": "181db893-6a6d-45f0-aee9-cba9202f4344",
+                    "id": "f5f41dba-9c4d-40bc-a0ab-febda6fe73df",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Command: Work",
+                    "type": "Button",
+                    "id": "824d7c53-71e5-45c8-8202-156ce1c80d8b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -318,18 +363,51 @@
                 {
                     "name": "",
                     "id": "0e2f80df-d5c6-4fd8-8fd1-dd4a19ade473",
-                    "path": "<Keyboard>/c",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Command: Cancel",
+                    "action": "Command: Enter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "7a88d4dc-7607-420f-8294-b6b146ab6693",
-                    "path": "<Keyboard>/m",
+                    "id": "d91ae771-277f-4736-b6fd-cb2bffc35d2c",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Command: Stop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc099b08-e2f6-4253-bf93-f480062a8206",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Command: Mend",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c54a0f74-6122-4da9-bdbd-f727231570ce",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Command: Power",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88f1b373-2ec3-4905-a31c-64179df8afc2",
+                    "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -340,11 +418,33 @@
                 {
                     "name": "",
                     "id": "81c237a4-b9d5-493e-a603-42fb32d61e67",
-                    "path": "<Keyboard>/r",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Command: Lock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5cf93d77-1bda-4b94-896f-7859a9e15f64",
+                    "path": "<Keyboard>/6",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Command: Stow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6a8bfef-c355-4464-a1c8-0edd3e51d3b7",
+                    "path": "<Keyboard>/7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Command: Work",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

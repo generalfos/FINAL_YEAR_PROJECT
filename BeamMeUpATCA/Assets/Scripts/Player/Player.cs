@@ -61,7 +61,7 @@ namespace BeamMeUpATCA
                     new[] { new IASub(ctx => Commander.SelectUnit(PointerPosition), IASub.PREFORMED)}
                 },
                 {new IASubscriber(_actions["Secondary Action"]), 
-                    new[] { new IASub(ctx => Commander.DeselectAllUnits(), IASub.PREFORMED)}
+                    new[] { new IASub(ctx => Commander.CommandUnits<GotoCommand>(PointerPosition), IASub.PREFORMED)}
                 },
                 {new IASubscriber(_actions["Tertiary Action"]), 
                     new[] { 
@@ -80,14 +80,29 @@ namespace BeamMeUpATCA
                 {new IASubscriber(_actions["Quit"]), 
                     new[] { new IASub(ctx => Application.Quit(), IASub.PREFORMED)}
                 },
-                {new IASubscriber(_actions["Command: Cancel"]), 
+                {new IASubscriber(_actions["Command: Stop"]), 
                     new[] { new IASub(ctx => Commander.CommandUnits<StopCommand>(PointerPosition), IASub.PREFORMED)}
+                },
+                {new IASubscriber(_actions["Command: Enter"]), 
+                    new[] { new IASub(ctx => Commander.CommandUnits<EnterCommand>(PointerPosition), IASub.PREFORMED)}
+                },
+                {new IASubscriber(_actions["Command: Lock"]), 
+                    new[] { new IASub(ctx => Commander.CommandUnits<LockCommand>(PointerPosition), IASub.PREFORMED)}
+                },
+                {new IASubscriber(_actions["Command: Mend"]), 
+                    new[] { new IASub(ctx => Commander.CommandUnits<MendCommand>(PointerPosition), IASub.PREFORMED)}
                 },
                 {new IASubscriber(_actions["Command: Move"]), 
                     new[] { new IASub(ctx => Commander.CommandUnits<MoveCommand>(PointerPosition), IASub.PREFORMED)}
                 },
+                {new IASubscriber(_actions["Command: Power"]), 
+                    new[] { new IASub(ctx => Commander.CommandUnits<PowerCommand>(PointerPosition), IASub.PREFORMED)}
+                },
                 {new IASubscriber(_actions["Command: Stow"]), 
                     new[] { new IASub(ctx => Commander.CommandUnits<StowCommand>(PointerPosition), IASub.PREFORMED)}
+                },
+                {new IASubscriber(_actions["Command: Work"]), 
+                    new[] { new IASub(ctx => Commander.CommandUnits<WorkCommand>(PointerPosition), IASub.PREFORMED)}
                 }
             };
 
