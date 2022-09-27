@@ -17,7 +17,7 @@ namespace BeamMeUpATCA
         
         public void SelectUnit(Vector2 screenPoint) 
         {
-            GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, screenPoint, new List<string>{"Unit", "Array"});
+            GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, screenPoint, new [] {"Unit", "Array"});
             // Guard clause to check valid return from function.
             if (selectedObject == null) { return; }
             if (selectedObject.GetComponent<Unit>() == null) { return; }

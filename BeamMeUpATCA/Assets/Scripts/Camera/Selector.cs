@@ -7,20 +7,19 @@ namespace BeamMeUpATCA
 {
     public static class Selector
     {       
-        public static GameObject SelectGameObject(Camera camera, Vector2 screenPoint, List<string> selectableTags) 
+        public static GameObject SelectGameObject(Camera camera, Vector2 screenPoint, string[] selectableTags) 
         {
-            Ray RayCast = camera.ScreenPointToRay(screenPoint);
-            RaycastHit RayCastHit;
+            if (Physics.Raycast(camera.ScreenPointToRay(screenPoint), out RaycastHit hit, camera.farClipPlane)) 
+            {
 
-            // Guard clause to exit and return null if nothing is collided with the raycast.
-            if (!Physics.Raycast(RayCast, out RayCastHit, camera.farClipPlane)) { return null; } 
-
-            string RayCastHitTag = RayCastHit.transform.gameObject.tag;            
-
-            // Guard clause to exit and return null if object hit doesn't have a tag from selectableTags
-            if (!selectableTags.Contains(RayCastHitTag)) { return null; } 
-
-            return RayCastHit.transform.gameObject;
+                string RayCastHitTag = hit.transform.gameObject.tag;
+                foreach (string tag in selectableTags) 
+                {
+                    if (tag == RayCastHitTag) return hit.transform.gameObject;
+                }
+            } 
+            // No object was found with selectableTags
+            return null;
         }
 
         private static float[]AnglePatternOffset = {0f, 180f, -90f, 90f, -135f, 45f, 135f, -45f};

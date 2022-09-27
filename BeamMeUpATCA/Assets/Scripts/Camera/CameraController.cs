@@ -96,7 +96,7 @@ namespace BeamMeUpATCA
             int yOffset = 30;
             int zOffset = -20;
             
-            GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, focusPosition, new List<string>{"Building"});
+            GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, focusPosition, new[] {"Building"});
             // Guard clause to check valid return from function.
             if (selectedObject == null) { return; }
             if (selectedObject.GetComponent<Building>() == null) { return; }
