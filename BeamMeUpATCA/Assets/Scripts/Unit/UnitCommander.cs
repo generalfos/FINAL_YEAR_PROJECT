@@ -17,13 +17,22 @@ namespace BeamMeUpATCA
         
         public void SelectUnit(Vector2 screenPoint) 
         {
-            GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, screenPoint, new [] {"Unit", "Array"});
-            // Guard clause to check valid return from function.
-            if (selectedObject == null) { return; }
-            if (selectedObject.GetComponent<Unit>() == null) { return; }
+            GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, screenPoint, new [] {"Unit"});
+
+            // Left clicking on empty space will deselect all selected units.
+            if (selectedObject == null) {
+                DeselectAllUnits();
+                return;
+            }
 
             Unit selectedUnit = selectedObject.GetComponent<Unit>();
-            if (selectedUnit.UnitClass == Unit.UnitType.Array) { DeselectAllUnits(); }
+
+            // Guard clause to check if selected unit is actually a unit.
+            if (selectedUnit == null) { return; }
+
+            // Prevent selecting the same unit multiple times
+            if (_selectedUnits.Contains(selectedUnit)) { return; }
+
             this.PlayerUI.SelectUnit(selectedUnit);
             _selectedUnits.Add(selectedUnit);
         }
