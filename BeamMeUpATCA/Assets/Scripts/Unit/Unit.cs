@@ -17,6 +17,13 @@ namespace BeamMeUpATCA
             Array
         };
 
+        private static readonly Dictionary<UnitType, Color> ColorDict
+            = new Dictionary<UnitType, Color>
+        {
+            { UnitType.Engineer, Color.red },
+            { UnitType.Scientist, Color.blue }
+        };
+
         [field: SerializeField] public string Name {get; private set;}
         [field: SerializeField] public UnitType UnitClass {get; private set;}
         [field: SerializeField] public int UnitHealth { get; private set; }
@@ -24,29 +31,14 @@ namespace BeamMeUpATCA
         [field: SerializeField] public float UnitMorale {get; private set; }
         [field: SerializeField] private float inTownCounter;
 
-
-        public Color UnitColor {get; private set;}
+        // Sets color to black if UnitClass is not defined.
+        public Color UnitColor { get { return ColorDict[UnitClass] != null ? ColorDict[UnitClass] : Color.black; }}
         
         private float tickCounter;
         private float moraleTickDmg;
-
         private float maxMorale;
 
         private void Awake() {
-            switch (UnitClass) 
-            { 
-                case Unit.UnitType.Engineer:
-                    UnitColor = Color.red;
-                    break;
-
-                case Unit.UnitType.Scientist:
-                    UnitColor = Color.blue;
-                    break;
-                case Unit.UnitType.Array:
-                    UnitColor = Color.green;
-                    break;
-            }
-
             maxMorale = 100;
             inTownCounter = 0;
             UnitMorale = maxMorale;
