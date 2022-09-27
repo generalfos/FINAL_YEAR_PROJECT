@@ -4,32 +4,49 @@ namespace BeamMeUpATCA
 {
     public class GotoCommand : Command
     {
-        // Command moves Unit to Position using pathfinder.
-        override protected void DefineCommand()
+        protected bool IsGoingTo = false;
+        protected bool IsGotoFinished { 
+            get {return IsGoingTo && unit.Pathfinder.PathFinished();}}
+
+        // Commands Unit to Command.Position using Pathfinder.
+        // Conditions: 1. Command.Position is a valid walkable position.
+        override protected void CommandAwake()
         {
             Name = "Goto";
         }
 
-        // Called once when command is first executed
-        // Similar to Start()/Awake() but executed after both.
-        public override void Execute() {}
+        public override void Execute() 
+        {
+            Goto(ActiveCamera, Position);
+        }
 
-        // Update for loop per frame. FixedUpdate for loop per physics step.
-        // Update() counts in Time.deltaTime. FixedUpdate counts in Time.fixedDeltaTime.
-        private void Update() {}
-        private void FixedUpdate() {}
+        public override bool IsFinished() 
+        {
+            return IsGotoFinished;
+        }
+         
+        protected void Goto(Camera camera, Vector2 position) 
+        {
+            IsGoingTo = true;
+            unit.Pathfinder.Path(camera, position);
+        }
 
-        // Should return true if the command has finished execution. Goal condition.
-        // Consider adding a timeout to the command if it doesn't have an guaranteed end state.
-        public override bool IsFinished() { return true; }
+        protected virtual void OnDisable() 
+        {
+            // Pauses path if command is disabled
+            if (IsGoingTo) unit.Pathfinder.SetPausePath(true);
+        }
 
-        // Any code that needs to be called if command is paused should go here.
-        private void OnDisable() {}
+        protected virtual void OnEnable() 
+        {
+            // Unpauses path (if path existed) if command is enabled
+            if (IsGoingTo) unit.Pathfinder.SetPausePath(false);
+        }
 
-        // Any Code that needs to be called if command is unpause should go here.
-        private void OnEnable() {}
-
-        // Any cleanup code that needs to be called if command is destroyed should go here.
-        private void OnDestroy() {}
+        protected virtual void OnDestroy() 
+        {
+            // Destroy path is command is canceled.
+            if (IsGoingTo) unit.Pathfinder.CancelPath();
+        }
     }
 }
