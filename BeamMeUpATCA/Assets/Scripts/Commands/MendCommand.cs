@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BeamMeUpATCA
@@ -19,7 +20,8 @@ namespace BeamMeUpATCA
 
         public override void Execute() 
         {
-            GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, Position, new[]{"Building"});
+            // GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, Position, new[]{"Building"});
+            GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, Position, new List<string> {"Building"});
 
             // Try to get building assuming selected object is not null.
             try { building = selectedObject.GetComponent<Mendable>();
@@ -37,31 +39,28 @@ namespace BeamMeUpATCA
                 return; 
             }
 
-            if (building.Anchors.CanAnchor(unit.transform.position))
-            {
-                building.Mend(unit);
-            } 
-            else 
-            {
-                Vector3 position = building.Anchors.GetAnchorPoint();
-                Vector2 positionTemp = new Vector2(position.x, position.y);
-                Goto(ActiveCamera, ActiveCamera.WorldToScreenPoint(position));
-            }
+            // if (building.Anchors.CanAnchor(unit.transform.position))
+            // {
+            //     building.Mend(unit);
+            // } 
+            // else 
+            // {
+            //     Vector3 position = building.Anchors.GetAnchorPoint();
+            //     Vector2 positionTemp = new Vector2(position.x, position.y);
+            //     Goto(ActiveCamera, ActiveCamera.WorldToScreenPoint(position));
+            // }
         }
 
         // Update for loop per frame. FixedUpdate for loop per physics step.
         // Update() counts in Time.deltaTime. FixedUpdate counts in Time.fixedDeltaTime.
         private void Update() 
         {
-            if (building == null) Debug.Log("null?");
             if (building != null)
             {
-                Debug.Log("Building: not null");
-                if (building.Anchors.CanAnchor(unit.transform.position))
-                {
-                    Debug.Log("Anchor: can anchor");
-                    building.Mend(unit);
-                } 
+                // if (building.Anchors.CanAnchor(unit.transform.position))
+                // {
+                //     building.Mend(unit);
+                // } 
             }
         }
 
