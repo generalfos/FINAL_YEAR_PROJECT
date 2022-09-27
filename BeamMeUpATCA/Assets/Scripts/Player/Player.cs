@@ -35,7 +35,10 @@ namespace BeamMeUpATCA
             // Dependencies for PlayerCamera and Commander.
             PlayerCamera.ActiveCamera = _playerInput.camera;
             Commander.ActiveCamera = _playerInput.camera;
+
+            // Set codependency
             Commander.PlayerUI = _playerUI;
+            _playerUI.commander = Commander;
 
             DefineSubscriptions();
         }
