@@ -33,11 +33,6 @@ namespace BeamMeUpATCA
         private int tutSeqNo;
         private bool popUpActive;
 
-        // TODO: Introduce serialised fields for these elements or another more appropriate method
-        private const int titleIndex = 0;
-        private const int contentIndex = 1;
-        private const int btnIndex = 2;
-
         // Awake is init function. Start before first frame
         private void Awake() {
             tutSeqNo = 0;
@@ -105,11 +100,17 @@ namespace BeamMeUpATCA
         // Introducing engineers
         private void EngineerTut()
         {
-            var cameraController = Camera.GetComponent<CameraController>();
-            cameraController.FocusCameraFree(Engineer.transform.position);
+            CameraFocus(Engineer);
             CreateNewPrompt("Meet The Engineer", "The engineer is one of two main unit types " +
                 "which you will use while performing an observation with the ATCA. " +
                 "\nSelect the engineer now by left clicking the unit with the mouse hovering over it. ");
+        }
+
+        private void CameraFocus(GameObject obj)
+        {
+            Vector3 pos = obj.transform.position;
+            Camera.transform.position = Vector3.MoveTowards(CameraStartingPosition, new Vector3(obj.transform.position.x, 0f, obj.transform.position.z), (float) 1);
+            Camera.transform.LookAt(obj.transform.position);
         }
 
         private void ResetCamera() 

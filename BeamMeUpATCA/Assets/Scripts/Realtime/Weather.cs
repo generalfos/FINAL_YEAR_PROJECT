@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using System.Text.RegularExpressions;
-using UnityEngine.Networking;
+using System.Xml;
 
 namespace BeamMeUpATCA
 {
@@ -10,13 +11,16 @@ namespace BeamMeUpATCA
         // Link below for information on MonoBehaviour
         // https://docs.unity3d.com/2020.3/Documentation/ScriptReference/MonoBehaviour.html
 
+        const string table_pattern = "<table.*?>(.*?)</table>";
+        const string tr_pattern = "<tr>(.*?)</tr>";
+        const string td_pattern = "<td.*?>(.*?)</td>";
         private Regex regex = new Regex(@"Australia Telescope (Culgoora)", RegexOptions.IgnoreCase);
 
         // Awake is init function. Start before first frame
         private void Awake() 
         {
             Debug.Log("Weather start");
-            StartCoroutine(weatherGetRequest("https://ozforecast.com.au/cgi-bin/weatherstation.cgi?station=11001"));
+            // StartCoroutine(weatherGetRequest("https://ozforecast.com.au/cgi-bin/weatherstation.cgi?station=11001"));
         }
 
         private IEnumerator weatherGetRequest(string url)
@@ -34,9 +38,11 @@ namespace BeamMeUpATCA
                         Debug.Log("Request Error");
                         break;
                 }
-                var doc = req.downloadHandler.text;
-                var captured_text = regex.Match(doc);
-                Debug.Log(string.Format("'{0}' found", captured_text.Value));
+                var doc = req.downloadHandler.data;
+                // var elem = doc.GetElementById("ozf");
+                // Debug.Log(elem);
+                // var captured_text = regex.Match(doc);
+                // Debug.Log(string.Format("'{0}' found", captured_text.Value));
             }
         }
     }
