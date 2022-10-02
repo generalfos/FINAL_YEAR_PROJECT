@@ -15,6 +15,7 @@ namespace BeamMeUpATCA
         // Initializers ensure behaviour will fail safely
         public Camera ActiveCamera { set; protected get; }
         public Vector3 Position { set; protected get; } = Vector3.zero;
+        public int Offset { set; protected get; } = 0;
 
         private void Awake()
         {
