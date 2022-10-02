@@ -28,7 +28,7 @@ namespace BeamMeUpATCA
         protected void Goto(Camera camera, Vector2 position) 
         {
             IsGoingTo = true;
-            unit.Pathfinder.Path(camera, position);
+            unit.Pathfinder.Path(camera, position, Offset);
         }
 
         protected virtual void OnDisable() 

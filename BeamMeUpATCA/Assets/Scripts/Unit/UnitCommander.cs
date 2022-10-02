@@ -17,13 +17,22 @@ namespace BeamMeUpATCA
         
         public void SelectUnit(Vector2 screenPoint) 
         {
-            GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, screenPoint, new List<string>{"Unit", "Array"});
-            // Guard clause to check valid return from function.
-            if (selectedObject == null) { return; }
-            if (selectedObject.GetComponent<Unit>() == null) { return; }
+            GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, screenPoint, new [] {"Unit"});
+
+            // Left clicking on empty space will deselect all selected units.
+            if (selectedObject == null) {
+                DeselectAllUnits();
+                return;
+            }
 
             Unit selectedUnit = selectedObject.GetComponent<Unit>();
-            if (selectedUnit.UnitClass == Unit.UnitType.Array) { DeselectAllUnits(); }
+
+            // Guard clause to check if selected unit is actually a unit.
+            if (selectedUnit == null) { return; }
+
+            // Prevent selecting the same unit multiple times
+            if (_selectedUnits.Contains(selectedUnit)) { return; }
+
             this.PlayerUI.SelectUnit(selectedUnit);
             _selectedUnits.Add(selectedUnit);
         }
@@ -34,29 +43,25 @@ namespace BeamMeUpATCA
             _selectedUnits.Clear();
         }
 
-        public void CommandUnits(Command command)
-        {
-            foreach (Unit unit in _selectedUnits) 
-            {
-                Debug.Log("Commanding " + unit.name + " to preform the " + command.Name + " command");
-                unit.AddCommand(command);
-            }
-        }
-
         public void CommandUnits<T>(Vector2 position)
         {
-            foreach (Unit unit in _selectedUnits) 
+            for(var i = 0; i < _selectedUnits.Count; i ++) 
             {
                 if (typeof(T).IsSubclassOf(typeof(Command))) 
                 {
                     // Can't cast T directly to Command so we cast to object first. 
+                    object obj = (object) _selectedUnits[i].gameObject.AddComponent(typeof(T));
+
                     // This is a safe cast as T is type checked at runtime to be a Command
-                    Command command = (Command)(object) unit.gameObject.AddComponent(typeof(T));
+                    Command command = (Command) obj;
+
+                    // Command initialization
                     command.Position = position;
                     command.ActiveCamera = ActiveCamera;
+                    command.Offset = i;
 
-                    Debug.Log("Commanding " + unit.name + " to preform the " + command.Name + " command");
-                    unit.AddCommand(command);
+                    Debug.Log("Commanding " + _selectedUnits[i].name + " to preform the " + command.Name + " command");
+                    _selectedUnits[i].AddCommand(command);
                 }
             }
         }
