@@ -2,40 +2,36 @@ using UnityEngine;
 
 namespace BeamMeUpATCA
 {
-    public class Dish : Mendable
+    public class Dish : Mendable, Moveable, Enterable, Stowable
     {
-        // FIXME: @Jackson. The old array class is obsolete, your work has been moved here
-        // Please revaluate and implement as needed below.
-        
-        // public float angle;
-        // public bool isStowed;
+        public void Enter(Unit unit)
+        {
+            throw new System.NotImplementedException();
+        }
 
-        // public enum instruments {
-        //     High,
-        //     Mid,
-        //     Low
-        // }
+        public bool IsInside(Unit unit)
+        {
+            throw new System.NotImplementedException();
+        }
 
-        // public float wavelength;
-        // public float frequency;
+        public void Leave(Unit unit)
+        {
+            throw new System.NotImplementedException();
+        }
 
-        // public instruments instrumentConfig;
+        public void Move(Unit unit)
+        {
+            throw new System.NotImplementedException();
+        }
 
-        // public void Awake() {
-        //     frequency = 16000000000;
-        //     wavelength = 1/frequency;
-        //     instrumentConfig = instruments.High;
-        // }
+        public void Stow(Unit unit)
+        {
+            throw new System.NotImplementedException();
+        }
 
-        // public void setAngle(float newAngle) {
-        //     //TODO: Any sort of animation work needed to ensure a smooth visual transition between angles, plus actual changing of gameobject's angle
-        //     //TODO: Logic to change speed depending on number of workers?
-        //     int unitCount = this.getUnits().Count;
-        //     angle = newAngle;
-        // }
-
-        // public void toggleStow() {
-        //     isStowed = !isStowed;
-        // }
+        public bool ToggleLock(Unit unit)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
