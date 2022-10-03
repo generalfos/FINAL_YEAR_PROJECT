@@ -39,11 +39,11 @@ namespace BeamMeUpATCA
 
                 // Check for building to grab anchor point
                 Building building = hit.transform.gameObject.GetComponent<Building>();
-                // Need to uncomment below when `building interface` is merged into main
-                // if (building != null)
-                // {
-                //     return building.Anchors.GetAnchorPoint();
-                // }
+                
+                if (building != null)
+                {
+                    return building.Anchors.GetAnchorPoint();
+                }
 
                 NavMeshHit myNavHit;
                 if(NavMesh.SamplePosition(hit.point, out myNavHit, 100 , -1))
