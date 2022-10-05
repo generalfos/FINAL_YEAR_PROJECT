@@ -8,7 +8,7 @@ namespace BeamMeUpATCA
      * Set out as an abstract class as all Mendable buildings will have the same
      * implementation.
      */
-    public abstract class Mendable : MonoBehaviour
+    public abstract class Mendable : Building
     {
         private float maxHealth;
         private float tickDmg;
