@@ -1,9 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-
 using IASub = BeamMeUpATCA.InputActionSubscription;
 using IASubscriber = BeamMeUpATCA.InputActionSubscriber;
 
@@ -13,27 +10,28 @@ namespace BeamMeUpATCA
     [RequireComponent(typeof(PlayerInput))]
     public class Player : MonoBehaviour
     {
-        #region Player Setup
+        #region Player Initialization
 
+        // Dependencies assigned by active Scene - via the Inspector
         [SerializeField] private PlayerUI _playerUI;
         [field: SerializeField] public CameraController PlayerCamera { get; private set; }
         [field: SerializeField] private UnitCommander Commander { get; set; }
 
-        private PlayerInput _playerInput;
+        // Private references
         private InputActionAsset _actions;
 
         private void Awake() 
         {
-            _playerInput = gameObject.GetComponent<PlayerInput>();
-            _actions = _playerInput.actions;
+            PlayerInput playerInput = gameObject.GetComponent<PlayerInput>();
+            _actions = playerInput.actions;
 
-            if (_playerInput.camera == null) {
+            if (playerInput.camera == null) {
                 Debug.LogWarning("PlayerInput requires a camera to be set. Using MainCamera instead.");
-                _playerInput.camera = Camera.main;
+                playerInput.camera = Camera.main;
             }
 
             // Dependencies for PlayerCamera and Commander.
-            Commander.ActiveCamera = _playerInput.camera;
+            Commander.ActiveCamera = playerInput.camera;
 
             // Set codependency
             Commander.PlayerUI = _playerUI;
@@ -41,15 +39,19 @@ namespace BeamMeUpATCA
 
             DefineSubscriptions();
         }
-        #endregion // Player Setup
 
-        #region InputAction/Action Subscriptions
+        #endregion // End of 'Player Initialization'
 
-        private Vector2 PointerPosition { get 
+        #region Player InputAction Callbacks
+
+        private Vector2 PointerPosition
         {
-            if (_actions == null) { return Vector2.zero; }
-            return _actions["Pointer"].ReadValue<Vector2>(); 
-        }}
+            get
+            {
+                if (_actions == null) { return Vector2.zero; }
+                return _actions["Pointer"].ReadValue<Vector2>();
+            }
+        }
 
         private Dictionary<IASubscriber, IASub[]> ActionSubscriptions;
 
@@ -57,53 +59,53 @@ namespace BeamMeUpATCA
         {
             // Binds subscribers to subscriptions to allow actions to trigger any actions
             // https://gitlab.com/teamnamefinal/Beammeupatca/-/wikis/Unity/Guides/Creating-new-InputAction-event-handles
-            ActionSubscriptions = new Dictionary<IASubscriber, IASub[]>() 
+            ActionSubscriptions = new Dictionary<IASubscriber, IASub[]>()
             {
-                {new IASubscriber(_actions["Primary Action"]), 
+                {new IASubscriber(_actions["Primary Action"]),
                     new[] { new IASub(ctx => Commander.SelectUnit(PointerPosition), IASub.PREFORMED)}
                 },
-                {new IASubscriber(_actions["Secondary Action"]), 
+                {new IASubscriber(_actions["Secondary Action"]),
                     new[] { new IASub(ctx => Commander.CommandUnits<GotoCommand>(PointerPosition), IASub.PREFORMED)}
                 },
-                {new IASubscriber(_actions["Tertiary Action"]), 
-                    new[] { 
+                {new IASubscriber(_actions["Tertiary Action"]),
+                    new[] {
                         new IASub(ctx => PlayerCamera.DragRotation = true, (true, false, false)),
                         new IASub(ctx => PlayerCamera.DragRotation = false, (false, false, true))}
                 },
-                {new IASubscriber(_actions["Pan Camera"]), 
+                {new IASubscriber(_actions["Pan Camera"]),
                     new[] { new IASub(ctx => PlayerCamera.Camera2DAdjust = ctx.ReadValue<Vector2>(), IASub.UPDATE)}
                 },
-                {new IASubscriber(_actions["Scroll Camera"]), 
+                {new IASubscriber(_actions["Scroll Camera"]),
                     new[] { new IASub(ctx => PlayerCamera.CameraZoomAdjust = ctx.ReadValue<float>(), IASub.UPDATE)}
                 },
-                {new IASubscriber(_actions["Focus Camera"]), 
+                {new IASubscriber(_actions["Focus Camera"]),
                     new[] { new IASub(ctx =>  PlayerCamera.FocusCamera(PointerPosition), IASub.PREFORMED)}
                 },
-                {new IASubscriber(_actions["Quit"]), 
+                {new IASubscriber(_actions["Quit"]),
                     new[] { new IASub(ctx => Application.Quit(), IASub.PREFORMED)}
                 },
-                {new IASubscriber(_actions["Command: Stop"]), 
+                {new IASubscriber(_actions["Command: Stop"]),
                     new[] { new IASub(ctx => Commander.CommandUnits<StopCommand>(PointerPosition), IASub.PREFORMED)}
                 },
-                {new IASubscriber(_actions["Command: Enter"]), 
+                {new IASubscriber(_actions["Command: Enter"]),
                     new[] { new IASub(ctx => Commander.CommandUnits<EnterCommand>(PointerPosition), IASub.PREFORMED)}
                 },
-                {new IASubscriber(_actions["Command: Lock"]), 
+                {new IASubscriber(_actions["Command: Lock"]),
                     new[] { new IASub(ctx => Commander.CommandUnits<LockCommand>(PointerPosition), IASub.PREFORMED)}
                 },
-                {new IASubscriber(_actions["Command: Mend"]), 
+                {new IASubscriber(_actions["Command: Mend"]),
                     new[] { new IASub(ctx => Commander.CommandUnits<MendCommand>(PointerPosition), IASub.PREFORMED)}
                 },
-                {new IASubscriber(_actions["Command: Move"]), 
+                {new IASubscriber(_actions["Command: Move"]),
                     new[] { new IASub(ctx => Commander.CommandUnits<MoveCommand>(PointerPosition), IASub.PREFORMED)}
                 },
-                {new IASubscriber(_actions["Command: Power"]), 
+                {new IASubscriber(_actions["Command: Power"]),
                     new[] { new IASub(ctx => Commander.CommandUnits<PowerCommand>(PointerPosition), IASub.PREFORMED)}
                 },
-                {new IASubscriber(_actions["Command: Stow"]), 
+                {new IASubscriber(_actions["Command: Stow"]),
                     new[] { new IASub(ctx => Commander.CommandUnits<StowCommand>(PointerPosition), IASub.PREFORMED)}
                 },
-                {new IASubscriber(_actions["Command: Work"]), 
+                {new IASubscriber(_actions["Command: Work"]),
                     new[] { new IASub(ctx => Commander.CommandUnits<WorkCommand>(PointerPosition), IASub.PREFORMED)}
                 }
             };
@@ -113,25 +115,25 @@ namespace BeamMeUpATCA
 
         private void AddSubscriptions()
         {
-            foreach (IASubscriber subscriber in ActionSubscriptions.Keys) 
+            foreach (IASubscriber subscriber in ActionSubscriptions.Keys)
             {
-                foreach (IASub sub in ActionSubscriptions[subscriber]) 
+                foreach (IASub sub in ActionSubscriptions[subscriber])
                 {
                     subscriber.AddSubscription(sub);
                 }
             }
         }
 
-        private void OnEnable() 
+        private void OnEnable()
         {
-            foreach (IASubscriber subscriber in ActionSubscriptions.Keys) { subscriber.RegisterSubscriptions(true);}
+            foreach (IASubscriber subscriber in ActionSubscriptions.Keys) { subscriber.RegisterSubscriptions(true); }
         }
 
-        private void OnDisable() 
+        private void OnDisable()
         {
-            foreach (IASubscriber subscriber in ActionSubscriptions.Keys) { subscriber.RegisterSubscriptions(false);}
+            foreach (IASubscriber subscriber in ActionSubscriptions.Keys) { subscriber.RegisterSubscriptions(false); }
         }
 
-        #endregion // InputAction/Action Subscriptions
+        #endregion // End of 'Player InputAction Callbacks'
     }
 }
