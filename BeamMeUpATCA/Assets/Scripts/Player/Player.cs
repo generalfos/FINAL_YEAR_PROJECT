@@ -16,7 +16,7 @@ namespace BeamMeUpATCA
         #region Player Setup
 
         [SerializeField] private PlayerUI _playerUI;
-        [field: SerializeField] private CameraController PlayerCamera { get; set; }
+        [field: SerializeField] public CameraController PlayerCamera { get; private set; }
         [field: SerializeField] private UnitCommander Commander { get; set; }
 
         private PlayerInput _playerInput;
@@ -33,7 +33,6 @@ namespace BeamMeUpATCA
             }
 
             // Dependencies for PlayerCamera and Commander.
-            PlayerCamera.ActiveCamera = _playerInput.camera;
             Commander.ActiveCamera = _playerInput.camera;
 
             // Set codependency
