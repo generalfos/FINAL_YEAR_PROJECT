@@ -10,14 +10,14 @@
 			"seq_no": 1,
 			"title": "Meet The Engineer",
 			"content": "The engineer is one of two playable classes in Beam Me Up ATCA.\n
-						One of their main jobs is to keep the array running smoothly"
+One of their main jobs is to keep the array running smoothly"
 			},
 			{
 			"seq_no": 2,
 			"title": "Unit Health",
 			"content": "Each structure has a health bar that gradually drops in value.\n
-						As it drops it will negatively affect the performance of a structure.\n
-						For telescopes, it reduces the quality of a scan resulting in lower score."
+As it drops it will negatively affect the performance of a structure.\n
+For telescopes, it reduces the quality of a scan resulting in lower score."
 			},
 			{
 			"seq_no": 3,
