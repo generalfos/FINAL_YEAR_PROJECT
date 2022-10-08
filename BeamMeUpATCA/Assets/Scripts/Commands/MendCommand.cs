@@ -56,7 +56,7 @@ namespace BeamMeUpATCA
         public override bool IsFinished() 
         {
             if (!_conditionsMet) return true;
-            return _building && _building.isRepaired;
+            return _building && _building.IsRepaired;
         }
     }
 }

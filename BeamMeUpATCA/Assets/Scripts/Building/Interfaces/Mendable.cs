@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace BeamMeUpATCA
@@ -10,55 +11,58 @@ namespace BeamMeUpATCA
      */
     public abstract class Mendable : Building
     {
-        private float maxHealth;
-        private float tickDmg;
-        private float dmgMultiplier;
-        private float tickRepair;
-        private float repMultiplier;
-        private bool isBroken;
-        private float tickCounter;
-        private Unit repairer;
+        private float _maxHealth;
+        private float _tickDmg;
+        private float _dmgMultiplier;
+        private float _tickRepair;
+        private float _repMultiplier;
+        private bool _isBroken;
+        private float _tickCounter;
+        private Unit _repairer;
         
         [field: SerializeField] private float healthPool;
-        [field: SerializeField] public bool isRepaired { get; private set; }
+        [field: SerializeField] public bool IsRepaired { get; private set; }
 
-        private void Awake()
+        protected override void Awake()
         {
-            maxHealth = 100f;
+            // Call base.Awake to ensure Building Layer is set
+            base.Awake();
+            _maxHealth = 100f;
             healthPool = 100f;
-            tickDmg = 1f;
-            dmgMultiplier = 1f;
-            tickRepair = 5f;
-            repMultiplier = 1f;
-            isBroken = false;
-            tickCounter = 0;
-            repairer = null;
-            isRepaired = true;
+            _tickDmg = 1f;
+            _dmgMultiplier = 1f;
+            _tickRepair = 5f;
+            _repMultiplier = 1f;
+            _isBroken = false;
+            _tickCounter = 0;
+            _repairer = null;
+            IsRepaired = true;
         }
         
         private void Update() 
         {
             // Are we damaging the building?
-            if ((!isBroken || tickDmg < 0) && repairer is null)
+            if ((!_isBroken || _tickDmg < 0) && _repairer is null)
             {
-                takeTickDamage();
-                isRepaired = false;
+                TakeTickDamage();
+                IsRepaired = false;
             }
             
             // Are we repairing the building
-            if (repairer != null)
+            if (!(_repairer is null))
             {
-                if (healthPool != maxHealth) 
+                if (Math.Abs(_maxHealth - healthPool) > float.Epsilon) 
                 {
-                    regainHealth();
+                    RegainHealth();
                 }
                 // Building is full health!
                 else
                 {
                     // TODO - Do something when building is at full health
-                    isRepaired = true;
-                    repairer = null;  // Stops the building getting repaired next Update()
-                    setRepMultiplier(1f);
+                    healthPool = _maxHealth; // Accounts for floating point precision errors.
+                    IsRepaired = true;
+                    _repairer = null;  // Stops the building getting repaired next Update()
+                    SetRepMultiplier(1f);
                 }
             }
         }
@@ -70,11 +74,11 @@ namespace BeamMeUpATCA
          */
         public Unit Mend(Unit unit)
         {
-            repairer = unit;
+            _repairer = unit;
             //TODO - if unit type is scientist, then set repMultiplier to 0.75f. Dependant on Unit implementation
             if (unit.UnitClass == Unit.UnitType.Scientist)
             {
-                setRepMultiplier(0.75f);
+                SetRepMultiplier(0.75f);
             }
             return unit;
         }
@@ -84,20 +88,18 @@ namespace BeamMeUpATCA
         * Cannot have more HP than maxHealth
         * Returns the health pool following a heal
         */
-        private float regainHealth()
+        private float RegainHealth()
         {
-            tickCounter += Time.fixedDeltaTime;
-            if (tickCounter >= 1)
+            _tickCounter += Time.fixedDeltaTime;
+            if (_tickCounter < 1) return healthPool;
+            float newHp = healthPool + (_tickRepair * _repMultiplier);
+            if (newHp >= _maxHealth)
             {
-                float newHp = healthPool + (tickRepair * repMultiplier);
-                if (newHp >= maxHealth)
-                {
-                    newHp = maxHealth;
-                }
-                isBroken = false;
-                healthPool = newHp;
-                tickCounter = 0;
+                newHp = _maxHealth;
             }
+            _isBroken = false;
+            healthPool = newHp;
+            _tickCounter = 0;
             return healthPool;
         }
         
@@ -106,10 +108,10 @@ namespace BeamMeUpATCA
          * Typical case, dish takes extra damage during high wind / bushfire unless stowed
          * Returns the new dmgModifier
          */
-        public float setDmgMultiplier(float newModifier)
+        public float SetDmgMultiplier(float newModifier)
         {
-            dmgMultiplier = newModifier;
-            return dmgMultiplier;
+            _dmgMultiplier = newModifier;
+            return _dmgMultiplier;
         }
         
         /*
@@ -117,10 +119,10 @@ namespace BeamMeUpATCA
          * Typical case, scientist will fix build at 0.75 the rate an engineer does
          * Returns the new repair multiplier
          */
-        public float setRepMultiplier(float newModifier)
+        private float SetRepMultiplier(float newModifier)
         {
-            repMultiplier = newModifier;
-            return repMultiplier;
+            _repMultiplier = newModifier;
+            return _repMultiplier;
         }
         
         /*
@@ -128,18 +130,18 @@ namespace BeamMeUpATCA
          * Can't reduce a buildings health to below zero.
          * Returns the health pool following a damage tick
          */
-        private float takeTickDamage()
+        private float TakeTickDamage()
         {
-            tickCounter += Time.fixedDeltaTime;
-            if (tickCounter >= 1)
+            _tickCounter += Time.fixedDeltaTime;
+            if (_tickCounter >= 1)
             {
-                float newHp = healthPool - (tickDmg * dmgMultiplier);
+                float newHp = healthPool - (_tickDmg * _dmgMultiplier);
                 if (newHp <= 0)
                 {
                     newHp = 0;
-                    isBroken = true;
+                    _isBroken = true;
                     healthPool = newHp;
-                    tickCounter = 0;
+                    _tickCounter = 0;
                 }
             }
             return healthPool;

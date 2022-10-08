@@ -13,6 +13,8 @@ namespace BeamMeUpATCA
         private int _mask;
         private readonly string _layerName;
 
+        public static int Layer(int mask) => (int) Mathf.Log(mask, 2);
+
         private Mask(int layerMask, string layerName) { _mask = layerMask; _layerName = layerName; }
         private Mask(string layerName) : this(0, layerName) {}
 

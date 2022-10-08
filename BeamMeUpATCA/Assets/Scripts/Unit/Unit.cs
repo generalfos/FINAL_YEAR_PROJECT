@@ -10,6 +10,7 @@ namespace BeamMeUpATCA
     {
         #region Unit Properties
 
+        // Mask for checking Unit Layer.
         public Mask Mask => Mask.Unit;
 
         public enum UnitType
@@ -20,114 +21,123 @@ namespace BeamMeUpATCA
 
         private static readonly Dictionary<UnitType, Color> ColorDict
             = new Dictionary<UnitType, Color>
-        {
-            { UnitType.Engineer, Color.red },
-            { UnitType.Scientist, Color.blue }
-        };
+            {
+                { UnitType.Engineer, Color.red },
+                { UnitType.Scientist, Color.blue }
+            };
 
-        [field: SerializeField] public string Name {get; private set;}
-        [field: SerializeField] public UnitType UnitClass {get; private set;}
+        [field: SerializeField] public string Name { get; private set; }
+        [field: SerializeField] public UnitType UnitClass { get; private set; }
         [field: SerializeField] public int UnitHealth { get; private set; }
 
-        [field: SerializeField] public float UnitMorale {get; private set; }
+        [field: SerializeField] public float UnitMorale { get; private set; }
         [field: SerializeField] private float inTownCounter;
 
         private UnitPathfinder _pathfinder;
-        public UnitPathfinder Pathfinder {
-            get 
-            {
-                if (_pathfinder == null) 
-                {
-                    _pathfinder = new UnitPathfinder(this);
-                }
-                return _pathfinder;
-            }}
+        public UnitPathfinder Pathfinder => _pathfinder ??= new UnitPathfinder(this);
+
         // Sets color to black if UnitClass is not defined.
-        public Color UnitColor { get { return ColorDict[UnitClass] != null ? ColorDict[UnitClass] : Color.black; }}
-        
-        private float tickCounter;
-        private float moraleTickDmg;
+        public Color UnitColor => ColorDict[UnitClass];
 
-        private float maxMorale;
+        private float _tickCounter;
+        private float _moraleTickDmg;
+        private float _maxMorale;
 
-        private void Awake() {
-            maxMorale = 100;
+        private void Awake()
+        {
+            // Sets current layer of this.gameObject to match the appropriate Mask.Unit.
+            gameObject.layer = Mask.Layer(Mask);
+
+            _maxMorale = 100;
             inTownCounter = 0;
-            UnitMorale = maxMorale;
-            moraleTickDmg = 1;
-            tickCounter = 0;
+            UnitMorale = _maxMorale;
+            _moraleTickDmg = 1;
+            _tickCounter = 0;
 
-            commandQueue = new Queue<Command>();
+            _commandQueue = new Queue<Command>();
         }
 
         #endregion // Unit Properties
 
         #region Commanding
 
-        private Queue<Command> commandQueue;
-        private Command activeCommand;
-        private Command priorityCommand;
-        private Command nextCommand;
-        
+        private Queue<Command> _commandQueue;
+        private Command _activeCommand;
+        private Command _priorityCommand;
+        private Command _nextCommand;
+
         public void AddCommand(Command command)
         {
 
-            if (command.ResetQueue) 
+            if (command.ResetQueue)
             {
                 // Destroy the entire command queue, next command and active command
                 DestroyCommandQueue();
                 DestroyStagedCommands();
             }
 
-            if (command.SkipQueue) 
+            if (command.SkipQueue)
             {
-                if (activeCommand != null) 
+                if (_activeCommand != null)
                 {
-                    activeCommand.enabled = false;
+                    _activeCommand.enabled = false;
                 }
 
                 // Priority command holds the command queue hostage stopping activeCommand
                 // until the priority command has finished executing.
-                priorityCommand = command;
-                ExecuteCommand(priorityCommand);
-            } 
-            else 
+                _priorityCommand = command;
+                ExecuteCommand(_priorityCommand);
+            }
+            else
             {
-                commandQueue.Enqueue(command);
-                if (nextCommand == null) 
+                _commandQueue.Enqueue(command);
+                if (_nextCommand == null)
                 {
-                    nextCommand = commandQueue.Dequeue();
+                    _nextCommand = _commandQueue.Dequeue();
                 }
             }
-
-
         }
 
-        private void ExecuteCommand(Command command) 
+        private void ExecuteCommand(Command command)
         {
-            if (command == null) { return; }
+            if (command is null)
+            {
+                return;
+            }
 
             // Indicate to the command it can be begin executing.
             command.enabled = true;
-            command.Execute(); 
+            command.Execute();
         }
 
-        private Command ExecuteAndLoadCommand(Command command) 
+        private Command ExecuteAndLoadCommand(Command command)
         {
-            if (command == null) { return null; }
+            if (command is null)
+            {
+                return null;
+            }
 
             ExecuteCommand(command);
 
             // If there is a next command then return it. Otherwise return null.
-            try { return commandQueue.Dequeue(); }
-            catch (InvalidOperationException) { return null; }
+            try
+            {
+                return _commandQueue.Dequeue();
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
         }
 
         // Destroys a command instance.
-        private void DestroyCommand(Command command) 
+        private void DestroyCommand(Command command)
         {
             // Guard Clause ensuring command is valid.
-            if (command == null ) { return; }
+            if (command is null)
+            {
+                return;
+            }
 
             Debug.Log("Destroying Command: " + command.Name);
 
@@ -135,123 +145,119 @@ namespace BeamMeUpATCA
         }
 
         // Clears Command Queue, NextCommand, and ActiveCommand and ensures Command instances are destroyed.
-        private void DestroyCommandQueue() 
+        private void DestroyCommandQueue()
         {
-            while (commandQueue.Count > 0)
+            while (_commandQueue.Count > 0)
             {
-                DestroyCommand(commandQueue.Dequeue());
+                DestroyCommand(_commandQueue.Dequeue());
             }
         }
 
-        private void DestroyStagedCommands() 
+        // Clears next and active commands
+        private void DestroyStagedCommands()
         {
-            DestroyCommand(nextCommand);
-            nextCommand = null;
-            DestroyCommand(activeCommand);
-            activeCommand = null;
+            DestroyCommand(_nextCommand);
+            _nextCommand = null;
+            DestroyCommand(_activeCommand);
+            _activeCommand = null;
         }
 
-        private void CommandUpdate() 
+        private void CommandUpdate()
         {
             // No commands should be running while a priority command exists.
-            if (priorityCommand != null) 
+            if (!(_priorityCommand is null))
             {
                 // Guard Clause to allow priority command to run enabled.
-                if (!priorityCommand.IsFinished()) { return; }
+                if (!_priorityCommand.IsFinished())
+                {
+                    return;
+                }
 
-                DestroyCommand(priorityCommand);
-                priorityCommand = null;
+                DestroyCommand(_priorityCommand);
+                _priorityCommand = null;
 
                 // Restore whatever activeCommand was running.
-                if (activeCommand != null) 
+                if (!(_activeCommand is null))
                 {
-                    activeCommand.enabled = true;
+                    _activeCommand.enabled = true;
                 }
-            } 
-            else 
+            }
+            else
             {
                 // If the active command is null run the next command.
-                if (activeCommand == null && nextCommand != null)
+                if (_activeCommand is null && !(_nextCommand is null))
                 {
-                    activeCommand = nextCommand;
+                    _activeCommand = _nextCommand;
                     // ExecuteCommand() returns the next command in queue
-                    nextCommand = ExecuteAndLoadCommand(activeCommand);
-                }
-                // Evaluation left to right validates Command.IsFinished() check.
-                if (activeCommand != null && activeCommand.IsFinished()) 
-                {
-                    // If Command.IsFinished() delete object and set activeCommand to null.
-                    DestroyCommand(activeCommand);
-                    activeCommand = null;
+                    _nextCommand = ExecuteAndLoadCommand(_activeCommand);
                 }
 
+                // Evaluation left to right validates Command.IsFinished() check.
+                if (_activeCommand is null || !_activeCommand.IsFinished()) return;
+                // If Command.IsFinished() delete object and set activeCommand to null.
+                DestroyCommand(_activeCommand);
+                _activeCommand = null;
             }
         }
 
-        private void Update() 
+        private void Update()
         {
             CommandUpdate();
         }
+
         #endregion // Commanding
 
         #region TickUpdates
 
-        private void FixedUpdate() {
-            if (inTownCounter == 0)  // Not in town
+        private void FixedUpdate()
+        {
+            if (inTownCounter == 0) // Not in town
             {
-                takeTickDamage();
+                TakeTickDamage();
             }
-            else  // In town
+            else // In town
             {
-                decrementTownCounter();
-                UnitMorale = maxMorale;
+                DecrementTownCounter();
+                UnitMorale = _maxMorale;
             }
         }
 
-        private void takeTickDamage() {
-            tickCounter += Time.fixedDeltaTime;
-            if(tickCounter >= 3) {
-                float newMorale = UnitMorale - moraleTickDmg;
-                if(newMorale <= 0) {
-                    newMorale = 0;
-                }
-                if(newMorale >= maxMorale) {
-                    newMorale = maxMorale; //do not heal over full
-                }
-                UnitMorale = newMorale;
-                tickCounter = 0;
+        private void TakeTickDamage()
+        {
+            _tickCounter += Time.fixedDeltaTime;
+            if (_tickCounter < 3) return;
+            float newMorale = UnitMorale - _moraleTickDmg;
+            if (newMorale <= 0)
+            {
+                newMorale = 0;
             }
+
+            if (newMorale >= _maxMorale)
+            {
+                newMorale = _maxMorale; //do not heal over full
+            }
+            UnitMorale = newMorale;
+            _tickCounter = 0;
         }
-    
+
         /*
          * If a unit is in town, countdown the inTownCounter
          */
-        private void decrementTownCounter()
+        private void DecrementTownCounter()
         {
-            tickCounter += Time.fixedDeltaTime;
-            if (tickCounter >= 3)
-            {
-                inTownCounter--;
-                tickCounter = 0;
-            }
+            _tickCounter += Time.fixedDeltaTime;
+            if (_tickCounter < 3) return;
+            inTownCounter--;
+            _tickCounter = 0;
         }
-        
+
         /*
          * Sets the inTownCounter to send a unit to town
          */
-        
-        private void goToTown()
-        {
-            inTownCounter = 20;
-        }
+        private void GoToTown() { inTownCounter = 20; }
 
         #endregion //TickUpdates
-        
-    public float getInTownCounter()
-    {
-        return inTownCounter;
-    }
-    
 
+        public float GetInTownCounter() => inTownCounter;
     }
 }

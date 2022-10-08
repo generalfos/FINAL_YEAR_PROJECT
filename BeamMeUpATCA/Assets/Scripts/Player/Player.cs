@@ -116,7 +116,11 @@ namespace BeamMeUpATCA
 
         private void OnDisable()
         {
-            foreach (IASubscriber subscriber in _actionSubscriptions.Keys) { subscriber.RegisterSubscriptions(false); }
+            // Prevents NullReference leak on early exit (Game quit)
+            if (!(_actionSubscriptions is null))
+            {
+                foreach (IASubscriber subscriber in _actionSubscriptions.Keys) { subscriber.RegisterSubscriptions(false); }
+            }
         }
         #endregion // End of 'Player InputAction Callbacks'
     }

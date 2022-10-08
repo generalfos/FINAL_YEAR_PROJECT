@@ -14,7 +14,7 @@ namespace BeamMeUpATCA
             // Check each the inTownCounter for each unit in inTown
             foreach (Unit u in inTown)
             {
-                if (u.getInTownCounter() == 0)
+                if (u.GetInTownCounter() == 0)
                 {
                     Leave(u);
                     // Show the unit
