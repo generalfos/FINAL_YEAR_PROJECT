@@ -35,8 +35,8 @@ namespace BeamMeUpATCA
 
             // TODO: Refactor to remove codependency. Consider Decoupling PlayerUI from UnitCommander. Such that-
             // selection would be done in PlayerUI, which would then add/remove the units from the UnitCommander.
-            Commander.PlayerUI = UI;
-            UI.commander = Commander;
+            Commander.UI = UI;
+            UI.Commander = Commander;
 
             DefineSubscriptions();
         }

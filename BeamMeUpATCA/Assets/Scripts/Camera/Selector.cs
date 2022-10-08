@@ -26,11 +26,10 @@ namespace BeamMeUpATCA
         {
             if (Physics.Raycast(camera.ScreenPointToRay(screenPoint), out RaycastHit hit, camera.farClipPlane)) 
             {
-
-                string RayCastHitTag = hit.transform.gameObject.tag;
+                string rayCastHitTag = hit.transform.gameObject.tag;
                 foreach (string tag in selectableTags) 
                 {
-                    if (tag == RayCastHitTag) return hit.transform.gameObject;
+                    if (tag == rayCastHitTag) return hit.transform.gameObject;
                 }
             } 
             // No object was found with selectableTags
