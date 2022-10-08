@@ -45,7 +45,7 @@ namespace BeamMeUpATCA
 
         #region Player InputAction Callbacks
 
-        private Vector2 PointerPosition => Input.actions ? Vector2.zero : Input.actions["Pointer"].ReadValue<Vector2>();
+        private Vector2 PointerPosition => Input.actions ? Input.actions["Pointer"].ReadValue<Vector2>() : Vector2.zero;
 
         private Dictionary<IASubscriber, IASub[]> _actionSubscriptions;
 

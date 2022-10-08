@@ -14,6 +14,7 @@ namespace BeamMeUpATCA
             {
                 if (hit.transform.gameObject.TryGetComponent<IInteractable>(out IInteractable interactable))
                 {
+                    // Bitwise operation to check if the IInteractable.Mask is a sub-mask of selectionMask.
                     if (selectionMask == (selectionMask | interactable.Mask)) return interactable;
                 }
             } 
