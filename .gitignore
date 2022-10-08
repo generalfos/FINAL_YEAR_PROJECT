@@ -157,9 +157,6 @@ $RECYCLE.BIN/
 /BeamMeUpATCA/[Aa]ssets/[Ss]treamingAssets/aa.meta
 /BeamMeUpATCA/[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# Vscode
-**.vscode/ 
-BeamMeUpATCA/.idea/.idea.BeamMeUpATCA/.idea/indexLayout.xml
-BeamMeUpATCA/.idea/.idea.BeamMeUpATCA/.idea/projectSettingsUpdater.xml
-BeamMeUpATCA/.idea/.idea.BeamMeUpATCA/.idea/vcs.xml
-BeamMeUpATCA/.idea/.idea.BeamMeUpATCA/.idea/workspace.xml
+# Code Editor Files
+**.vscode/
+**.idea/

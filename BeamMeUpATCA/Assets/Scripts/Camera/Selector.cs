@@ -7,15 +7,30 @@ namespace BeamMeUpATCA
 {
     public static class Selector
     {       
-        public static GameObject SelectGameObject(Camera camera, Vector2 screenPoint, string[] selectableTags) 
+        public static IInteractable SelectGameObject(Camera camera, Vector2 screenPoint, int selectionMask) 
+        {
+            Ray ray = camera.ScreenPointToRay(screenPoint);
+            if (Physics.Raycast(ray, out RaycastHit hit, camera.farClipPlane, layerMask: selectionMask)) 
+            {
+                if (hit.transform.gameObject.TryGetComponent<IInteractable>(out IInteractable interactable))
+                {
+                    // Bitwise operation to check if the IInteractable.Mask is a sub-mask of selectionMask.
+                    if (selectionMask == (selectionMask | interactable.Mask)) return interactable;
+                }
+            } 
+            // No 'IIntractables' were found on the 'selectionMask' with the respective matching mask.
+            return null;
+        }
+        
+        [Obsolete("This overload is depreciated. Please use SelectGameObject(Camera, Vector2, int) instead")]
+        public static GameObject SelectGameObject(Camera camera, Vector2 screenPoint, IEnumerable<string> selectableTags) 
         {
             if (Physics.Raycast(camera.ScreenPointToRay(screenPoint), out RaycastHit hit, camera.farClipPlane)) 
             {
-
-                string RayCastHitTag = hit.transform.gameObject.tag;
+                string rayCastHitTag = hit.transform.gameObject.tag;
                 foreach (string tag in selectableTags) 
                 {
-                    if (tag == RayCastHitTag) return hit.transform.gameObject;
+                    if (tag == rayCastHitTag) return hit.transform.gameObject;
                 }
             } 
             // No object was found with selectableTags

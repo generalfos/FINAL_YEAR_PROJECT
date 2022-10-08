@@ -19,8 +19,8 @@ namespace BeamMeUpATCA
     {
         // External references to game objects necessary for tutorial progress.
         [field: SerializeField] public GameObject TutPopUpPrefab { get; private set; }
-        [field: SerializeField] public GameObject Player { get; private set; }
-        [field: SerializeField] public GameObject Camera { get; private set; }
+        [field: SerializeField] private Player ActivePlayer { get; set; }
+        private CameraController _activeCamera;
         [field: SerializeField] public GameObject Engineer { get; private set; }
         [field: SerializeField] public GameObject Canvas { get; private set; }
 
@@ -39,7 +39,9 @@ namespace BeamMeUpATCA
         private const int btnIndex = 2;
 
         // Awake is init function. Start before first frame
-        private void Awake() {
+        private void Awake()
+        {
+            _activeCamera = ActivePlayer.PlayerCamera;
             tutSeqNo = 0;
             popUpActive = false;
             Intro();
@@ -105,7 +107,8 @@ namespace BeamMeUpATCA
         // Introducing engineers
         private void EngineerTut()
         {
-            Camera.transform.LookAt(Engineer.transform);
+            //TODO Replace with CameraController.Focus...
+            _activeCamera.transform.LookAt(Engineer.transform);
             CreateNewPrompt("Meet The Engineer", "The engineer is one of two main unit types " +
                 "which you will use while performing an observation with the ATCA. " +
                 "\nSelect the engineer now by left clicking the unit with the mouse hovering over it. ");
@@ -113,8 +116,9 @@ namespace BeamMeUpATCA
 
         private void ResetCamera() 
         {
-            Camera.transform.position = CameraStartingPosition;
-            Camera.transform.rotation = CameraStartingRotation;
+            //TODO move this to CameraController
+            _activeCamera.transform.position = CameraStartingPosition;
+            _activeCamera.transform.rotation = CameraStartingRotation;
         }
 
         // Update to next tutorial stage on completion of a stage
@@ -138,7 +142,7 @@ namespace BeamMeUpATCA
             }
             else
             {
-                PlayerInput actionSet = Player.GetComponent<PlayerInput>();
+                PlayerInput actionSet = ActivePlayer.GetComponent<PlayerInput>();
             }
         }
     }

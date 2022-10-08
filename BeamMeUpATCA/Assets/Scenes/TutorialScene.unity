@@ -4579,10 +4579,6 @@ MonoBehaviour:
     m_ActionName: 'World/Command: Cancel[/Keyboard/c]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 12ce5bbf-6f70-4858-9f61-95a7011fd562
-    m_ActionName: 'World/Command: Move[/Keyboard/m]'
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 181db893-6a6d-45f0-aee9-cba9202f4344
     m_ActionName: 'World/Command: Stow[/Keyboard/r]'
   - m_PersistentCalls:
@@ -4617,6 +4613,30 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e34bc8b1-6d56-4581-8551-16995afc8670
     m_ActionName: UI/Scroll[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e8d2d6c7-8869-44da-9718-1668ec1d5e1a
+    m_ActionName: 'World/Command: Stop[/Keyboard/x]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3d2e03a2-3284-4a2a-958a-98891ef20847
+    m_ActionName: 'World/Command: Mend[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 290a5759-9e55-478f-8e3d-ac17cf39cf62
+    m_ActionName: 'World/Command: Move[/Keyboard/4]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 374d52bf-c6cb-4fb1-9d48-b71b0f1fd2d5
+    m_ActionName: 'World/Command: Power[/Keyboard/5]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f5f41dba-9c4d-40bc-a0ab-febda6fe73df
+    m_ActionName: 'World/Command: Stow[/Keyboard/6]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 824d7c53-71e5-45c8-8202-156ce1c80d8b
+    m_ActionName: 'World/Command: Work[/Keyboard/7]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: World
@@ -4634,9 +4654,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57535bbae29908469fa367e6c5030b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerUI: {fileID: 1047878534}
-  <PlayerCamera>k__BackingField: {fileID: 1157065298}
-  <Commander>k__BackingField: {fileID: 926663529}
+  playerCamera: {fileID: 1157065298}
+  playerInput: {fileID: 926663530}
+  commander: {fileID: 926663529}
+  playerUI: {fileID: 1047878534}
 --- !u!4 &926663532
 Transform:
   m_ObjectHideFlags: 0
@@ -5168,8 +5189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <TutPopUpPrefab>k__BackingField: {fileID: 1279036142915533037, guid: 7733404bf30d1a0458857c54d0327bf2, type: 3}
-  <Player>k__BackingField: {fileID: 926663528}
-  <Camera>k__BackingField: {fileID: 1157065294}
+  <ActivePlayer>k__BackingField: {fileID: 926663531}
   <Engineer>k__BackingField: {fileID: 1119936728}
   <Canvas>k__BackingField: {fileID: 1047878528}
   <CameraStartingPosition>k__BackingField: {x: 1000, y: 650, z: 50}
@@ -6137,6 +6157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c172f83f2aa06b41b4a22a18f45a51e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 1157065297}
   <CameraSpeed>k__BackingField: 275
   <CameraZoom>k__BackingField: 20
   <BoundaryActive>k__BackingField: 1

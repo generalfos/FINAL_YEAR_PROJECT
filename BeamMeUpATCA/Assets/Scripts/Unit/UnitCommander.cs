@@ -1,68 +1,65 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using BeamMeUpATCA.Extensions;
 
 namespace BeamMeUpATCA
 {
     public class UnitCommander : MonoBehaviour
     {
-        private List<Unit> _selectedUnits;
+        private Camera _camera;
+        public Camera ActiveCamera { 
+            private get { return this.SafeComponent<Camera>(ref _camera); }
+            set { _camera = value; }}
 
-        public PlayerUI PlayerUI { private get; set; }
-        public Camera ActiveCamera { private get; set; }
+        private PlayerUI _playerUI;
+        public PlayerUI UI { 
+            private get { return this.SafeComponent<PlayerUI>(ref _playerUI); }
+            set { _playerUI = value; }}
+  
+        // List of units that are currently selected.
+        private List<Unit> _selectedUnits;
 
         private void Awake() {
             _selectedUnits = new List<Unit>();
         }
-        
-        public void SelectUnit(Vector2 screenPoint) 
+
+        public void SelectUnit(Vector2 screenPoint)
         {
-            GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, screenPoint, new [] {"Unit"});
+            IInteractable interactable = Selector.SelectGameObject(ActiveCamera, screenPoint, Mask.Unit);
 
-            // Left clicking on empty space will deselect all selected units.
-            if (selectedObject == null) {
-                DeselectAllUnits();
-                return;
+            if (interactable is Unit selectedUnit)
+            {
+                // Prevent selecting the same unit multiple times
+                if (_selectedUnits.Contains(selectedUnit)) return;
+
+                this.UI.SelectUnit(selectedUnit);
+                _selectedUnits.Add(selectedUnit);
             }
-
-            Unit selectedUnit = selectedObject.GetComponent<Unit>();
-
-            // Guard clause to check if selected unit is actually a unit.
-            if (selectedUnit == null) { return; }
-
-            // Prevent selecting the same unit multiple times
-            if (_selectedUnits.Contains(selectedUnit)) { return; }
-
-            this.PlayerUI.SelectUnit(selectedUnit);
-            _selectedUnits.Add(selectedUnit);
         }
 
         public void DeselectAllUnits() 
         {
-            this.PlayerUI.DeselectAllUnits();
+            this.UI.DeselectAllUnits();
             _selectedUnits.Clear();
         }
 
-        public void CommandUnits<T>(Vector2 position)
+        public void CommandUnits<T>(Vector2 position) where T : Command
         {
             for(var i = 0; i < _selectedUnits.Count; i ++) 
             {
-                if (typeof(T).IsSubclassOf(typeof(Command))) 
-                {
-                    // Can't cast T directly to Command so we cast to object first. 
-                    object obj = (object) _selectedUnits[i].gameObject.AddComponent(typeof(T));
+                Command command = _selectedUnits[i].gameObject.AddComponent<T>();
 
-                    // This is a safe cast as T is type checked at runtime to be a Command
-                    Command command = (Command) obj;
+                // Command initialization
+                command.ActiveCamera = ActiveCamera;
+                command.Offset = i;
+                // TODO: Vector2 to Vector3 should be calculated on init, rather than when needed (like with pathfinder)
+                // TODO: This would require Pathfinder to also be refactored to take a Vector3 (instead of Vector2)
+                command.Position = position; 
 
-                    // Command initialization
-                    command.Position = position;
-                    command.ActiveCamera = ActiveCamera;
-                    command.Offset = i;
 
-                    Debug.Log("Commanding " + _selectedUnits[i].name + " to preform the " + command.Name + " command");
-                    _selectedUnits[i].AddCommand(command);
-                }
+                Debug.Log("Commanding " + _selectedUnits[i].name + " to preform the " + command.Name + " command");
+                _selectedUnits[i].AddCommand(command);
             }
         }
     }

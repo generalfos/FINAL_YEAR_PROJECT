@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-
 using IASub = BeamMeUpATCA.InputActionSubscription;
 using IASubscriber = BeamMeUpATCA.InputActionSubscriber;
+using BeamMeUpATCA.Extensions;
 
 
 namespace BeamMeUpATCA
@@ -13,126 +11,117 @@ namespace BeamMeUpATCA
     [RequireComponent(typeof(PlayerInput))]
     public class Player : MonoBehaviour
     {
-        #region Player Setup
+        #region Player Initialization
 
-        [SerializeField] private PlayerUI _playerUI;
-        [field: SerializeField] private CameraController PlayerCamera { get; set; }
-        [field: SerializeField] private UnitCommander Commander { get; set; }
+        // Public Properties
+        [SerializeField] private CameraController playerCamera;
+        public CameraController PlayerCamera => this.SafeComponent<CameraController>(ref playerCamera);
 
-        private PlayerInput _playerInput;
-        private InputActionAsset _actions;
+        // Private Properties
+        [SerializeField] private PlayerInput playerInput;
+        private PlayerInput Input => this.SafeComponent<PlayerInput>(ref playerInput);
 
-        private void Awake() 
+        [SerializeField] private UnitCommander commander;
+        private UnitCommander Commander => this.SafeComponent<UnitCommander>(ref commander);
+
+        [SerializeField] private PlayerUI playerUI;
+        private PlayerUI UI => this.SafeComponent<PlayerUI>(ref playerUI);
+
+        private void Awake()
         {
-            _playerInput = gameObject.GetComponent<PlayerInput>();
-            _actions = _playerInput.actions;
+            // Set camera references to the Player's CameraController camera. Accessing property
+            // Is okay as it handles the null checking and handles any missing inspector elements.
+            Commander.ActiveCamera = Input.camera = PlayerCamera.ActiveCamera;
 
-            if (_playerInput.camera == null) {
-                Debug.LogWarning("PlayerInput requires a camera to be set. Using MainCamera instead.");
-                _playerInput.camera = Camera.main;
-            }
-
-            // Dependencies for PlayerCamera and Commander.
-            PlayerCamera.ActiveCamera = _playerInput.camera;
-            Commander.ActiveCamera = _playerInput.camera;
-
-            // Set codependency
-            Commander.PlayerUI = _playerUI;
-            _playerUI.commander = Commander;
+            // TODO: Refactor to remove codependency. Consider Decoupling PlayerUI from UnitCommander. Such that-
+            // selection would be done in PlayerUI, which would then add/remove the units from the UnitCommander.
+            Commander.UI = UI;
+            UI.Commander = Commander;
 
             DefineSubscriptions();
         }
-        #endregion // Player Setup
 
-        #region InputAction/Action Subscriptions
+        #endregion // End of 'Player Initialization'
 
-        private Vector2 PointerPosition { get 
-        {
-            if (_actions == null) { return Vector2.zero; }
-            return _actions["Pointer"].ReadValue<Vector2>(); 
-        }}
+        #region Player InputAction Callbacks
 
-        private Dictionary<IASubscriber, IASub[]> ActionSubscriptions;
+        private Vector2 PointerPosition => Input.actions ? Input.actions["Pointer"].ReadValue<Vector2>() : Vector2.zero;
+
+        private Dictionary<IASubscriber, IASub[]> _actionSubscriptions;
 
         private void DefineSubscriptions()
         {
+            _actionSubscriptions = new Dictionary<IASubscriber, IASub[]>();
+            
+            // Check if PlayerInput exists. Fail safely if doesn't not.
+            if (!Input.actions) 
+            {
+                Debug.LogWarning("PlayerInput.actions isn't defined"
+                + "Failing dependencies safely. This will break input.", gameObject);
+                return;
+            }
             // Binds subscribers to subscriptions to allow actions to trigger any actions
             // https://gitlab.com/teamnamefinal/Beammeupatca/-/wikis/Unity/Guides/Creating-new-InputAction-event-handles
-            ActionSubscriptions = new Dictionary<IASubscriber, IASub[]>() 
-            {
-                {new IASubscriber(_actions["Primary Action"]), 
-                    new[] { new IASub(ctx => Commander.SelectUnit(PointerPosition), IASub.PREFORMED)}
-                },
-                {new IASubscriber(_actions["Secondary Action"]), 
-                    new[] { new IASub(ctx => Commander.CommandUnits<GotoCommand>(PointerPosition), IASub.PREFORMED)}
-                },
-                {new IASubscriber(_actions["Tertiary Action"]), 
-                    new[] { 
-                        new IASub(ctx => PlayerCamera.DragRotation = true, (true, false, false)),
-                        new IASub(ctx => PlayerCamera.DragRotation = false, (false, false, true))}
-                },
-                {new IASubscriber(_actions["Pan Camera"]), 
-                    new[] { new IASub(ctx => PlayerCamera.Camera2DAdjust = ctx.ReadValue<Vector2>(), IASub.UPDATE)}
-                },
-                {new IASubscriber(_actions["Scroll Camera"]), 
-                    new[] { new IASub(ctx => PlayerCamera.CameraZoomAdjust = ctx.ReadValue<float>(), IASub.UPDATE)}
-                },
-                {new IASubscriber(_actions["Focus Camera"]), 
-                    new[] { new IASub(ctx =>  PlayerCamera.FocusCamera(PointerPosition), IASub.PREFORMED)}
-                },
-                {new IASubscriber(_actions["Quit"]), 
-                    new[] { new IASub(ctx => Application.Quit(), IASub.PREFORMED)}
-                },
-                {new IASubscriber(_actions["Command: Stop"]), 
-                    new[] { new IASub(ctx => Commander.CommandUnits<StopCommand>(PointerPosition), IASub.PREFORMED)}
-                },
-                {new IASubscriber(_actions["Command: Enter"]), 
-                    new[] { new IASub(ctx => Commander.CommandUnits<EnterCommand>(PointerPosition), IASub.PREFORMED)}
-                },
-                {new IASubscriber(_actions["Command: Lock"]), 
-                    new[] { new IASub(ctx => Commander.CommandUnits<LockCommand>(PointerPosition), IASub.PREFORMED)}
-                },
-                {new IASubscriber(_actions["Command: Mend"]), 
-                    new[] { new IASub(ctx => Commander.CommandUnits<MendCommand>(PointerPosition), IASub.PREFORMED)}
-                },
-                {new IASubscriber(_actions["Command: Move"]), 
-                    new[] { new IASub(ctx => Commander.CommandUnits<MoveCommand>(PointerPosition), IASub.PREFORMED)}
-                },
-                {new IASubscriber(_actions["Command: Power"]), 
-                    new[] { new IASub(ctx => Commander.CommandUnits<PowerCommand>(PointerPosition), IASub.PREFORMED)}
-                },
-                {new IASubscriber(_actions["Command: Stow"]), 
-                    new[] { new IASub(ctx => Commander.CommandUnits<StowCommand>(PointerPosition), IASub.PREFORMED)}
-                },
-                {new IASubscriber(_actions["Command: Work"]), 
-                    new[] { new IASub(ctx => Commander.CommandUnits<WorkCommand>(PointerPosition), IASub.PREFORMED)}
-                }
-            };
+            
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Primary Action"]), 
+                new[] { new IASub(ctx => Commander.SelectUnit(PointerPosition), IASub.PREFORMED)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Secondary Action"]), 
+                new[] { new IASub(ctx => Commander.CommandUnits<GotoCommand>(PointerPosition), IASub.PREFORMED)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Tertiary Action"]), new[] {
+                new IASub(ctx => PlayerCamera.DragRotation = true, (true, false, false)),
+                new IASub(ctx => PlayerCamera.DragRotation = false, (false, false, true))});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Pan Camera"]), 
+                new[] { new IASub(ctx => PlayerCamera.Camera2DAdjust = ctx.ReadValue<Vector2>(), IASub.UPDATE)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Scroll Camera"]), 
+                new[] { new IASub(ctx => PlayerCamera.CameraZoomAdjust = ctx.ReadValue<float>(), IASub.UPDATE)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Focus Camera"]), 
+                new[] { new IASub(ctx =>  PlayerCamera.FocusCamera(PointerPosition), IASub.PREFORMED)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Quit"]), 
+                new[] { new IASub(ctx => Application.Quit(), IASub.PREFORMED)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Stop"]), 
+                new[] { new IASub(ctx => Commander.CommandUnits<StopCommand>(PointerPosition), IASub.PREFORMED)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Enter"]), 
+                new[] { new IASub(ctx => Commander.CommandUnits<EnterCommand>(PointerPosition), IASub.PREFORMED)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Lock"]), 
+                new[] { new IASub(ctx => Commander.CommandUnits<LockCommand>(PointerPosition), IASub.PREFORMED)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Mend"]), 
+                new[] { new IASub(ctx => Commander.CommandUnits<MendCommand>(PointerPosition), IASub.PREFORMED)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Move"]), 
+                new[] { new IASub(ctx => Commander.CommandUnits<MoveCommand>(PointerPosition), IASub.PREFORMED)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Power"]), 
+                new[] { new IASub(ctx => Commander.CommandUnits<PowerCommand>(PointerPosition), IASub.PREFORMED)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Stow"]), 
+                new[] { new IASub(ctx => Commander.CommandUnits<StowCommand>(PointerPosition), IASub.PREFORMED)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Work"]), 
+                new[] { new IASub(ctx => Commander.CommandUnits<WorkCommand>(PointerPosition), IASub.PREFORMED)});
 
             AddSubscriptions();
         }
 
         private void AddSubscriptions()
         {
-            foreach (IASubscriber subscriber in ActionSubscriptions.Keys) 
+            foreach (IASubscriber subscriber in _actionSubscriptions.Keys)
             {
-                foreach (IASub sub in ActionSubscriptions[subscriber]) 
+                foreach (IASub sub in _actionSubscriptions[subscriber])
                 {
                     subscriber.AddSubscription(sub);
                 }
             }
         }
 
-        private void OnEnable() 
+        private void OnEnable()
         {
-            foreach (IASubscriber subscriber in ActionSubscriptions.Keys) { subscriber.RegisterSubscriptions(true);}
+            foreach (IASubscriber subscriber in _actionSubscriptions.Keys) { subscriber.RegisterSubscriptions(true); }
         }
 
-        private void OnDisable() 
+        private void OnDisable()
         {
-            foreach (IASubscriber subscriber in ActionSubscriptions.Keys) { subscriber.RegisterSubscriptions(false);}
+            // Prevents NullReference leak on early exit (Game quit)
+            if (!(_actionSubscriptions is null))
+            {
+                foreach (IASubscriber subscriber in _actionSubscriptions.Keys) { subscriber.RegisterSubscriptions(false); }
+            }
         }
-
-        #endregion // InputAction/Action Subscriptions
+        #endregion // End of 'Player InputAction Callbacks'
     }
 }

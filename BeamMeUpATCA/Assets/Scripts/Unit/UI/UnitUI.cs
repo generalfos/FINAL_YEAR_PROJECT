@@ -41,7 +41,7 @@ namespace BeamMeUpATCA
             _UnitName.text = unit.Name;
             _UnitIcon.color = unit.UnitColor;
             _UnitHealthBar.value = (float) unit.UnitMorale / (float) 100;
-            _UnitHealthType.text = unit.UnitClass == Unit.UnitType.Array ? "Health" : "Morale";
+            _UnitHealthType.text = "Morale";
             // Debug.Log(_UnitHealthBar.value);
             gameObject.SetActive(true);
         }
