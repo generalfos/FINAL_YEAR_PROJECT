@@ -6,15 +6,16 @@ using System.Collections.Generic;
 namespace BeamMeUpATCA 
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class Unit : MonoBehaviour
+    public class Unit : MonoBehaviour, IInteractable
     {
         #region Unit Properties
+
+        public Mask Mask => Mask.Unit;
 
         public enum UnitType
         {
             Engineer,
-            Scientist,
-            Array
+            Scientist
         };
 
         private static readonly Dictionary<UnitType, Color> ColorDict

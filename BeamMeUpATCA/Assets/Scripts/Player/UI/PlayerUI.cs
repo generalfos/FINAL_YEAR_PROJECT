@@ -1,65 +1,67 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Object = UnityEngine.Object;
 
 namespace BeamMeUpATCA
 {
     public class PlayerUI : MonoBehaviour
     {
+        
+        public UnitCommander Commander { private get; set; }
 
-        private delegate void CommanderDelegate<T>(Vector2 position);
-        public UnitCommander commander { private get; set; }
-
-        public void IssueCommandToUnits<T>(Vector2 position) 
+        // Wrapper Function for UI elements to call to issue commands to Units.
+        // 
+        public void CommandUnits<T>(Vector2 position) where T : Command 
         {
-            if (commander == null) 
-            {
-                Debug.LogWarning("UnitCommander is null. Ensure dependency is met.");
-                return;
-            }
-
-            if (typeof(T).IsSubclassOf(typeof(Command))) 
-            {
-                CommanderDelegate<T> commandDel = ctx => commander.CommandUnits<T>(ctx);
-                commandDel(position);
-            } 
-            else Debug.LogWarning("Type must be a 'Command' type");
+            Commander.CommandUnits<T>(position);
         }
+        #region UnitUI
+        // TODO: Currently this is a 'HACK' implementation. The Select Unit just looks for the first UnitUI.
+        // TODO: Instead each Unit should have it's own unitUI element which is selected/deselected as needed.
+        [field: SerializeField] private GameObject UnitUIPrefab { get; set;}
+
+        private List<UnitUI> _unitUIList;
 
         private void Awake() {
-            unitUIList = new List<UnitUI>();
-            CreateNewUnitUI();
+            _unitUIList = new List<UnitUI>();
+
+            // TODO: UnitUI setup should be done in Start() to allow prefab awakes to trigger.
+            if (!(UnitUIPrefab is null)) CreateNewUnitUI(UnitUIPrefab);
         }
 
-        #region UnitUI
+        private readonly Vector3 _unitUIScreenPosition = new Vector3(83, 0, 0);
 
-        [field: SerializeField] public GameObject UnitUIPrefab {get; private set;}
-
-        private List<UnitUI> unitUIList;
-        private int selectedUnits;
-        private Vector3 unitUIScreenPosition = new Vector3(83, 0, 0);
-
-        private void CreateNewUnitUI() 
+        // TODO: Following internal TODO changes this function should take UnityEngine.Object instead of GameObject
+        private void CreateNewUnitUI(GameObject prefab)
         {
-            GameObject newUnitUI = Instantiate(UnitUIPrefab, unitUIScreenPosition, Quaternion.identity, gameObject.transform);
-            unitUIList.Add(newUnitUI.GetComponent<UnitUI>());
+            // TODO: The following should be replaced with PrefabUtility.InstantiatePrefab().
+            // https://docs.unity3d.com/ScriptReference/PrefabUtility.InstantiatePrefab.html
+            GameObject newUnitUI = Instantiate(prefab, _unitUIScreenPosition, Quaternion.identity, gameObject.transform);
+            // TODO: After refactor, remove check for object existence as prefab should be not-nullable.
+            if (UnitUIPrefab) _unitUIList.Insert(0, newUnitUI.GetComponent<UnitUI>());
+                
         }
 
         public void SelectUnit(Unit unit) 
         {
-            unitUIList[0].setUnitUI(unit);
+            // TODO: Read notes under "#region UnitUI"
+            if (_unitUIList.Count > 0) _unitUIList[0].setUnitUI(unit);
         }
 
         public void DeselectUnit(Unit unit) 
         {
-            unitUIList[0].clearUnitUI();
+            // TODO: Read notes under "#region UnitUI"
+            if (_unitUIList.Count > 0) _unitUIList[0].clearUnitUI();
         }
 
         public void DeselectAllUnits() 
         {
-            unitUIList[0].clearUnitUI();
+            // TODO: Read notes under "#region UnitUI"
+            // TODO: For all in _unitUIList -> item.clearUnitUI()
+            if (_unitUIList.Count > 0) _unitUIList[0].clearUnitUI();
         }
 
-        #endregion
+        #endregion // End of 'UnitUI'
     }
 }
