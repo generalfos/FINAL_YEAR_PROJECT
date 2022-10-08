@@ -23,27 +23,19 @@ namespace BeamMeUpATCA
         private void Awake() {
             _selectedUnits = new List<Unit>();
         }
-        
-        public void SelectUnit(Vector2 screenPoint) 
+
+        public void SelectUnit(Vector2 screenPoint)
         {
-            GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, screenPoint, new [] {"Unit"});
+            IInteractable interactable = Selector.SelectGameObject(ActiveCamera, screenPoint, Mask.Unit);
 
-            // Left clicking on empty space will deselect all selected units.
-            if (!selectedObject) {
-                DeselectAllUnits();
-                return;
+            if (interactable is Unit selectedUnit)
+            {
+                // Prevent selecting the same unit multiple times
+                if (_selectedUnits.Contains(selectedUnit)) return;
+
+                this.UI.SelectUnit(selectedUnit);
+                _selectedUnits.Add(selectedUnit);
             }
-
-            Unit selectedUnit = selectedObject.GetComponent<Unit>();
-
-            // Guard clause to check if selected unit is actually a unit.
-            if (selectedUnit == null) { return; }
-
-            // Prevent selecting the same unit multiple times
-            if (_selectedUnits.Contains(selectedUnit)) { return; }
-
-            this.UI.SelectUnit(selectedUnit);
-            _selectedUnits.Add(selectedUnit);
         }
 
         public void DeselectAllUnits() 

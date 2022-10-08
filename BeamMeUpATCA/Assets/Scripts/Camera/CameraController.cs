@@ -92,22 +92,22 @@ namespace BeamMeUpATCA
             int yOffset = 30;
             int zOffset = -20;
 
-            GameObject selectedObject = Selector.SelectGameObject(ActiveCamera, focusPosition, new[] { "Building" });
-            // Guard clause to check valid return from function.
-            if (selectedObject == null) { return; }
-            if (selectedObject.GetComponent<Building>() == null) { return; }
+            IInteractable interactable = Selector.SelectGameObject(ActiveCamera, focusPosition, Mask.Building);
 
-            // Find the positions of the building and camera - Use the difference to reposition the camera
-            Vector3 objectPos = selectedObject.transform.position;
-            Vector3 cameraPos = ActiveCamera.transform.position;
-            Vector3 positionDiff = objectPos - cameraPos + new Vector3(0, yOffset, zOffset);
+            if (interactable is Building building)
+            {
+                // Find the positions of the building and camera - Use the difference to reposition the camera
+                Vector3 cameraPos = ActiveCamera.transform.position;
+                Vector3 buildingPos = building.transform.position;
+                Vector3 positionDiff = buildingPos - cameraPos + new Vector3(0, yOffset, zOffset);
 
-            //TODO
-            Debug.Log(selectedObject.name + " is at " + objectPos);
-            Debug.Log("Camera is at " + cameraPos);
+                //TODO
+                Debug.Log(building.name + " is at " + buildingPos);
+                Debug.Log("Camera is at " + cameraPos);
 
-            ActiveCamera.transform.position += positionDiff;
-
+                cameraPos += positionDiff;
+                ActiveCamera.transform.position = cameraPos;
+            }
         }
 
         // Vector3 for storying the adjustment of the camera position.
