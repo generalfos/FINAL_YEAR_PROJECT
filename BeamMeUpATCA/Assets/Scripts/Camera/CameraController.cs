@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using BeamMeUpATCA.Extensions;
 using UnityEngine;
 
 namespace BeamMeUpATCA
@@ -11,19 +12,7 @@ namespace BeamMeUpATCA
 
         [field: Header("Camera Settings")]
         [SerializeField] private Camera _camera;
-        public Camera ActiveCamera {
-            get
-            {
-                if (_camera == null)
-                {
-                    Debug.LogWarning("CameraController requires a valid 'Camera' inspector field."
-                        + "Failing dependencies safely. This may lead to instability.", gameObject);
-                    // Return an attached Camera, otherwise attach one and return it.
-                    _camera = TryGetComponent<Camera>(out Camera cam) ? cam : gameObject.AddComponent<Camera>();
-                }
-                return _camera;
-            }
-        }
+        public Camera ActiveCamera => this.SafeComponent<Camera>(ref _camera);
 
         [field: SerializeField] public float CameraSpeed { get; set; } = 20f;
         [field: SerializeField] public float CameraZoom { get; set; } = 5f;
