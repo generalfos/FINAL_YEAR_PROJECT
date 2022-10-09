@@ -27,7 +27,7 @@ namespace BeamMeUpATCA
             };
 
         [field: SerializeField] public string Name { get; private set; }
-        [field: SerializeField] public UnitType UnitClass { get; private set; }
+        [field: SerializeField] public UnitType UnitClass { get; private set; } = UnitType.Engineer;
         [field: SerializeField] public int UnitHealth { get; private set; }
 
         [field: SerializeField] public float UnitMorale { get; private set; }
@@ -35,6 +35,8 @@ namespace BeamMeUpATCA
 
         private UnitPathfinder _pathfinder;
         public UnitPathfinder Pathfinder => _pathfinder ??= new UnitPathfinder(this);
+
+        public bool IsInsideBuilding { get; set; } = false;
 
         // Sets color to black if UnitClass is not defined.
         public Color UnitColor => ColorDict[UnitClass];

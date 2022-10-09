@@ -4,25 +4,30 @@ namespace BeamMeUpATCA
 {
     public class GotoCommand : Command
     {
-        protected bool IsGoingTo = false;
-        protected bool IsGotoFinished { 
-            get {return IsGoingTo && unit.Pathfinder.PathFinished();}}
+        private bool IsGoingTo = false;
+        private bool IsGotoFinished => IsGoingTo && unit.Pathfinder.PathFinished();
 
         // Commands Unit to Command.Position using Pathfinder.
         // Conditions: 1. Command.Position is a valid walkable position.
-        override protected void CommandAwake()
+        protected override void CommandAwake()
         {
             Name = "Goto";
         }
+        
+        private bool _conditionsMet = false;
 
         public override void Execute() 
         {
+            // Action which cannot be preformed from inside a building.
+            if (unit.IsInsideBuilding) return;
+            
+            _conditionsMet = true;
             Goto(ActiveCamera, Position);
         }
 
         public override bool IsFinished() 
         {
-            return IsGotoFinished;
+            return IsGotoFinished || !_conditionsMet;
         }
          
         protected void Goto(Camera camera, Vector2 position) 
