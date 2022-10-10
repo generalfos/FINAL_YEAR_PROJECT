@@ -20,73 +20,73 @@ namespace BeamMeUpATCA
 {
     public class Datum
     {
-        public int sort_order;
-        public int wmo;
-        public string name;
-        public string history_product;
-        public string local_date_time;
-        public string local_date_time_full;
-        public string aifstime_utc;
-        public double lat;
-        public double lon;
-        public double apparent_t;
-        public string cloud;
-        public int? cloud_base_m;
-        public int? cloud_oktas;
-        public string cloud_type;
-        public object cloud_type_id;
-        public double delta_t;
-        public int gust_kmh;
-        public int gust_kt;
-        public double air_temp;
-        public double dewpt;
-        public double press;
-        public double press_msl;
-        public double press_qnh;
-        public string press_tend;
-        public string rain_trace;
-        public int rel_hum;
-        public string sea_state;
-        public string swell_dir_worded;
-        public object swell_height;
-        public object swell_period;
-        public string vis_km;
-        public string weather;
-        public string wind_dir;
-        public int wind_spd_kmh;
-        public int wind_spd_kt;
+        public int sort_order { get; set; }
+        public int wmo { get; set; }
+        public string name { get; set; }
+        public string history_product { get; set; }
+        public string local_date_time { get; set; }
+        public string local_date_time_full { get; set; }
+        public string aifstime_utc { get; set; }
+        public double lat { get; set; }
+        public double lon { get; set; }
+        public double apparent_t { get; set; }
+        public string cloud { get; set; }
+        public int? cloud_base_m { get; set; }
+        public int? cloud_oktas { get; set; }
+        public string cloud_type { get; set; }
+        public object cloud_type_id { get; set; }
+        public double delta_t { get; set; }
+        public int gust_kmh { get; set; }
+        public int gust_kt { get; set; }
+        public double air_temp { get; set; }
+        public double dewpt { get; set; }
+        public double press { get; set; }
+        public double press_msl { get; set; }
+        public double press_qnh { get; set; }
+        public string press_tend { get; set; }
+        public string rain_trace { get; set; }
+        public int rel_hum { get; set; }
+        public string sea_state { get; set; }
+        public string swell_dir_worded { get; set; }
+        public object swell_height { get; set; }
+        public object swell_period { get; set; }
+        public string vis_km { get; set; }
+        public string weather { get; set; }
+        public string wind_dir { get; set; }
+        public int wind_spd_kmh { get; set; }
+        public int wind_spd_kt { get; set; }
     }
 
     public class Header
     {
-        public string refresh_message;
-        public string ID;
-        public string main_ID;
-        public string name;
-        public string state_time_zone;
-        public string time_zone;
-        public string product_name;
-        public string state;
+        public string refresh_message { get; set; }
+        public string ID { get; set; }
+        public string main_ID { get; set; }
+        public string name { get; set; }
+        public string state_time_zone { get; set; }
+        public string time_zone { get; set; }
+        public string product_name { get; set; }
+        public string state { get; set; }
     }
 
     public class Notice
     {
-        public string copyright;
-        public string copyright_url;
-        public string disclaimer_url;
-        public string feedback_url;
+        public string copyright { get; set; }
+        public string copyright_url { get; set; }
+        public string disclaimer_url { get; set; }
+        public string feedback_url { get; set; }
     }
 
     public class Observations
     {
-        public List<Notice> notice;
-        public List<Header> header;
-        public List<Datum> data;
+        public List<Notice> notice { get; set; }
+        public List<Header> header { get; set; }
+        public List<Datum> data { get; set; }
     }
 
-    public class ObservationsRoot
+    public class Root
     {
-        public Observations observations;
+        public Observations observations { get; set; }
     }
 
 
@@ -126,8 +126,8 @@ namespace BeamMeUpATCA
                         Debug.LogError("Request Error; " + req.result);
                         break;
                 }
-                string jsonString = req.downloadHandler.text;
-                var record = JsonConvert.DeserializeObject<ObservationsRoot>(jsonString);
+                string jsonString = jsonData.text;
+                var record = JsonConvert.DeserializeObject<Root>(jsonString);
                 Debug.Log(record);
                 // var elem = doc.GetElementById("ozf");
                 // Debug.Log(elem);
