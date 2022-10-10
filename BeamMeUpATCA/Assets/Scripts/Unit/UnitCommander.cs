@@ -36,6 +36,10 @@ namespace BeamMeUpATCA
                 this.UI.SelectUnit(selectedUnit);
                 _selectedUnits.Add(selectedUnit);
             }
+            else
+            {
+                DeselectAllUnits();
+            }
         }
 
         public void DeselectAllUnits() 
