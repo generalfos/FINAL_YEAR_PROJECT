@@ -19,7 +19,7 @@ namespace BeamMeUpATCA
         public override void Execute() 
         {
             // Action which cannot be preformed from inside a building.
-            if (unit.IsInsideBuilding) return;
+            if (!(unit.BuildingInside is null)) return;
             
             _conditionsMet = true;
             Goto(ActiveCamera, Position);

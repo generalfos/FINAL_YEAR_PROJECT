@@ -36,7 +36,7 @@ namespace BeamMeUpATCA
         private UnitPathfinder _pathfinder;
         public UnitPathfinder Pathfinder => _pathfinder ??= new UnitPathfinder(this);
 
-        public bool IsInsideBuilding { get; set; } = false;
+        public Building BuildingInside { get; set; }
 
         // Sets color to black if UnitClass is not defined.
         public Color UnitColor => ColorDict[UnitClass];
