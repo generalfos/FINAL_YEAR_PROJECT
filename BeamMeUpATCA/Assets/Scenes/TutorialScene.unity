@@ -486,6 +486,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 681667305}
     m_Modifications:
+    - target: {fileID: 919132149155446097, guid: bdae1d7d9f3a4f745a05d9320e2bdda5, type: 3}
+      propertyPath: m_TagString
+      value: Building
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e655963a280844a409f6d56016e04869, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -533,10 +537,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e655963a280844a409f6d56016e04869, type: 3}
       propertyPath: m_Name
       value: ControlRoom
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: bdae1d7d9f3a4f745a05d9320e2bdda5, type: 3}
-      propertyPath: m_TagString
-      value: Building
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e655963a280844a409f6d56016e04869, type: 3}
@@ -1394,6 +1394,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 681667305}
     m_Modifications:
+    - target: {fileID: 919132149155446097, guid: f51b3b4ce1d0fa648a53d379d7d045cc, type: 3}
+      propertyPath: m_TagString
+      value: Building
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: adae3c94369987f499a5c6471787d05c, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1441,10 +1445,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: adae3c94369987f499a5c6471787d05c, type: 3}
       propertyPath: m_Name
       value: tree01_baked (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: f51b3b4ce1d0fa648a53d379d7d045cc, type: 3}
-      propertyPath: m_TagString
-      value: Building
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adae3c94369987f499a5c6471787d05c, type: 3}
@@ -1679,7 +1679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63bb971f6edc77a46a7c707c7695db5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeCamera: {fileID: 0}
+  activeCamera: {fileID: 1157065297}
 --- !u!4 &227637230
 Transform:
   m_ObjectHideFlags: 0
@@ -3212,6 +3212,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 681667305}
     m_Modifications:
+    - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
+      propertyPath: m_TagString
+      value: Building
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d280d51840134a47862a97937eaab97, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -3259,10 +3263,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2d280d51840134a47862a97937eaab97, type: 3}
       propertyPath: m_Name
       value: tree03_baked (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
-      propertyPath: m_TagString
-      value: Building
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d280d51840134a47862a97937eaab97, type: 3}
@@ -4283,6 +4283,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 934531388}
     m_Modifications:
+    - target: {fileID: 919132149155446097, guid: f51b3b4ce1d0fa648a53d379d7d045cc, type: 3}
+      propertyPath: m_TagString
+      value: Building
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2eee0fe7185c8694aa80cd3150aae4fc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4342,10 +4346,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2eee0fe7185c8694aa80cd3150aae4fc, type: 3}
       propertyPath: m_Name
       value: busStop
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: f51b3b4ce1d0fa648a53d379d7d045cc, type: 3}
-      propertyPath: m_TagString
-      value: Building
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2eee0fe7185c8694aa80cd3150aae4fc, type: 3}
@@ -6960,9 +6960,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57535bbae29908469fa367e6c5030b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerUI: {fileID: 1047878534}
-  <PlayerCamera>k__BackingField: {fileID: 1157065298}
-  <Commander>k__BackingField: {fileID: 926663529}
+  playerCamera: {fileID: 1157065298}
+  playerInput: {fileID: 926663530}
+  commander: {fileID: 926663529}
+  playerUI: {fileID: 1047878534}
 --- !u!4 &926663532
 Transform:
   m_ObjectHideFlags: 0
@@ -7448,12 +7449,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <TutPopUpPrefab>k__BackingField: {fileID: 1279036142915533037, guid: 7733404bf30d1a0458857c54d0327bf2, type: 3}
-  <Player>k__BackingField: {fileID: 926663528}
-  <Camera>k__BackingField: {fileID: 1157065294}
+  <ActivePlayer>k__BackingField: {fileID: 926663531}
   <Engineer>k__BackingField: {fileID: 1119936728}
   <Canvas>k__BackingField: {fileID: 1047878528}
-  <CameraStartingPosition>k__BackingField: {x: 1000, y: 650, z: 50}
-  <CameraStartingRotation>k__BackingField: {x: 0.42261827, y: 0, z: 0, w: 0.90630776}
+  <CameraStartingPosition>k__BackingField: {x: 2010, y: 60, z: 1235}
+  <CameraStartingRotation>k__BackingField: {x: 0.34202012, y: 0, z: 0, w: 0.9396926}
 --- !u!114 &1047878534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8700,13 +8700,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157065294}
-  m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 2010, y: 50, z: 1235}
+  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 2010, y: 60, z: 1235}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 926663532}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
 --- !u!81 &1157065296
 AudioListener:
   m_ObjectHideFlags: 0
@@ -8770,16 +8770,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c172f83f2aa06b41b4a22a18f45a51e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CameraSpeed>k__BackingField: 275
-  <CameraZoom>k__BackingField: 20
+  _camera: {fileID: 1157065297}
+  <CameraSpeed>k__BackingField: 20
+  <CameraZoom>k__BackingField: 3
   <BoundaryActive>k__BackingField: 1
-  <BoundingPoint>k__BackingField: {x: 1000, y: 650, z: 50}
-  _boundaryTop: 2000
-  _boundaryBottom: 0
-  _boundaryTopRight: 2500
-  _boundaryTopLeft: -2500
-  _boundaryHighestHeight: 200
-  _boundaryLowestHeight: -350
+  <BoundingPoint>k__BackingField: {x: 2010, y: 60, z: 1235}
+  _boundaryTop: 275
+  _boundaryBottom: -100
+  _boundaryTopRight: 850
+  _boundaryTopLeft: -850
+  _boundaryHighestHeight: 40
+  _boundaryLowestHeight: -10
 --- !u!1001 &1185936968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10503,6 +10504,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
+--- !u!1 &1356955412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1356955414}
+  - component: {fileID: 1356955413}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!114 &1356955413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356955412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a422a52138554cca842ea0e3632ed6e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persistent: 1
+--- !u!4 &1356955414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356955412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1372207463
 GameObject:
   m_ObjectHideFlags: 0
@@ -13397,6 +13442,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 681667305}
     m_Modifications:
+    - target: {fileID: 919132149155446097, guid: 7ff378131d494f04cb7e3c9e4eb0af84, type: 3}
+      propertyPath: m_TagString
+      value: Building
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d280d51840134a47862a97937eaab97, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -13444,10 +13493,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2d280d51840134a47862a97937eaab97, type: 3}
       propertyPath: m_Name
       value: tree03_baked (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 7ff378131d494f04cb7e3c9e4eb0af84, type: 3}
-      propertyPath: m_TagString
-      value: Building
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d280d51840134a47862a97937eaab97, type: 3}

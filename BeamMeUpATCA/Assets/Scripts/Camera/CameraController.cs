@@ -115,17 +115,13 @@ namespace BeamMeUpATCA
 
         private void Update()
         {
-            if (Camera2DAdjust.x != 0 || Camera2DAdjust.y != 0 || CameraZoomAdjust != 0)
-            {
-                float CameraMoveInc = CameraSpeed * Time.deltaTime;
-                float CameraZoomInc = CameraZoom * Time.deltaTime;
+            if (Camera2DAdjust.x == 0 && Camera2DAdjust.y == 0 && CameraZoomAdjust == 0) return;
+            
+            float xIncrement = Camera2DAdjust.x * CameraSpeed;
+            float zIncrement = Camera2DAdjust.y * CameraSpeed;
+            float yIncrement = CameraZoomAdjust * CameraZoom;
 
-                float xIncrement = Camera2DAdjust.x * CameraMoveInc;
-                float zIncrement = Camera2DAdjust.y * CameraMoveInc;
-                float yIncrement = CameraZoomAdjust * CameraZoomInc;
-
-                CameraPosition = new Vector3(xIncrement, yIncrement, zIncrement);
-            }
+            CameraPosition = new Vector3(xIncrement, yIncrement, zIncrement);
         }
 
         // Calculated manually by placing a sphere in Unity and seeing what
@@ -175,6 +171,7 @@ namespace BeamMeUpATCA
         {
             // Get the current Camera Position
             Vector3 updateCameraPosition = ActiveCamera.transform.position;
+            Vector3 oldCameraPosition = updateCameraPosition;
 
             { /* Update Camera Positions */
                 updateCameraPosition += CameraPosition;
@@ -183,7 +180,7 @@ namespace BeamMeUpATCA
             }
 
             // Set the Final Camera Position
-            ActiveCamera.transform.position = updateCameraPosition;
+            ActiveCamera.transform.position = Vector3.Lerp(oldCameraPosition, updateCameraPosition, Time.deltaTime);
 
             CameraPosition = Vector3.zero;
         }
