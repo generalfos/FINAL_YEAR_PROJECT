@@ -187,5 +187,46 @@ namespace BeamMeUpATCA
 
             CameraPosition = Vector3.zero;
         }
+
+
+        /**
+         * This is a function that can be called from anywhere without context.
+         * It will re-align its positioning to have a `target` object in the 
+         * middle of the viewport. To call this function you can do the 
+         * following:
+         *
+         *      using BeamMeUpATCA; // Only necessary if not in the namespace
+         *
+         *      Transform target = ... // The thing you want to focus on.
+         *      CameraController.CameraFocus(Camera.main, target.transform);
+         *
+         * @param camera        - The source camera to re-align.
+         * @param target        - A target Transform to focus on.
+         * @param camera_angle  - An optional field that defaults to 50deg on
+         *                        the X-Axis. This is used to calculate how far
+         *                        the camera should be away on the X-Axis
+         * @param camera_height - An optional field that defaults to 300 on the
+         *                        Y-Axis, for the height to set the camera to.
+         * @param camera_offset - An optional field that defaults to 80 on
+         *                        the X-Axis. This is used to fine tune the 
+         *                        focused object on the X-Axis.
+         */
+        public static void CameraFocus(Camera camera, Transform target, 
+                float camera_angle = 50.0f, 
+                float camera_height = 300.0f, 
+                float camera_offset = 80.0f)
+        {
+            // Calculate the Offset using Trig
+            float offset = camera_height * Mathf.Tan(90.0f - camera_angle);
+            offset += camera_offset;
+
+            // Calculate the new camera's position
+            Vector3 new_position = new Vector3(target.position.x, 
+                                               camera_height, 
+                                               target.position.z + offset);
+
+            // Set the new position to the camera
+            camera.transform.position = new_position;
+        }
     }
 }

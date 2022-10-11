@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5150888267855979227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8391910471901180442}
+  m_Layer: 0
+  m_Name: RailGravel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8391910471901180442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5150888267855979227}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8182670271539983880}
+  - {fileID: 8656483771084268687}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &623909161769700913
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8391910471901180442}
+    m_Modifications:
+    - target: {fileID: 8729732348325607481, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729732348325607481, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729732348325607481, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729732348325607481, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729732348325607481, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729732348325607481, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729732348325607481, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729732348325607481, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729732348325607481, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729732348325607481, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729732348325607481, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729732348325607481, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729732348325607485, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+      propertyPath: m_Name
+      value: RailGravel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+--- !u!4 &8182670271539983880 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8729732348325607481, guid: ef2676702b14a8849955cb26f86c6646, type: 3}
+  m_PrefabInstance: {fileID: 623909161769700913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3038421850856033827
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8391910471901180442}
+    m_Modifications:
+    - target: {fileID: 3855874165973373449, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+      propertyPath: m_Name
+      value: RailSpurGravel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789644569416375730, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85453c81ce272db4cb151adb2e8113d3, type: 2}
+    - target: {fileID: 5911157798810839724, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911157798810839724, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911157798810839724, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911157798810839724, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911157798810839724, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 57
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911157798810839724, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911157798810839724, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911157798810839724, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911157798810839724, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911157798810839724, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911157798810839724, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911157798810839724, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+--- !u!4 &8656483771084268687 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5911157798810839724, guid: 8c9af1a048aa7cf48a30b9015b4d09ca, type: 3}
+  m_PrefabInstance: {fileID: 3038421850856033827}
+  m_PrefabAsset: {fileID: 0}
