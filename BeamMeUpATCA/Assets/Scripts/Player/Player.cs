@@ -25,7 +25,7 @@ namespace BeamMeUpATCA
         private UnitCommander Commander => this.SafeComponent<UnitCommander>(ref commander);
 
         [SerializeField] private PlayerUI playerUI;
-        private PlayerUI UI => this.SafeComponent<PlayerUI>(ref playerUI);
+        public PlayerUI UI => this.SafeComponent<PlayerUI>(ref playerUI);
 
         private void Awake()
         {
