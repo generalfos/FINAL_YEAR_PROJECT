@@ -34,7 +34,6 @@ namespace BeamMeUpATCA
                 else
                 {
                     Vector3 position = _building.Anchors.GetAnchorPoint();
-                    Vector2 positionTemp = new Vector2(position.x, position.y);
                     Goto(ActiveCamera, ActiveCamera.WorldToScreenPoint(position));
                 }
             }
@@ -53,10 +52,7 @@ namespace BeamMeUpATCA
 
         // Should return true if the command has finished execution. Goal condition.
         // Consider adding a timeout to the command if it doesn't have an guaranteed end state.
-        public override bool IsFinished() 
-        {
-            if (!_conditionsMet) return true;
-            return _building && _building.IsRepaired;
-        }
+        public override bool IsFinished() => !_conditionsMet || (_building && _building.IsRepaired);
+        
     }
 }
