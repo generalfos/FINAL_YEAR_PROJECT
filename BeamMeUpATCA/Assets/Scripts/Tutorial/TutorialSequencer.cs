@@ -15,6 +15,7 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System;
 
 namespace BeamMeUpATCA
 {
@@ -76,20 +77,14 @@ namespace BeamMeUpATCA
         private PopUpRoot data;
         private int tutSeqNo;
         private bool popUpActive;
+        private bool tutFinished;
 
         // Awake is init function. Start before first frame
         private void Awake() {
             tutSeqNo = 0;
             popUpActive = false;
+            tutFinished = false;
             data = JsonConvert.DeserializeObject<PopUpRoot>(jsonData.text);
-        // PopUpDatum pop = new PopUpDatum();
-        // pop.title = "Hello";
-        // pop.content = "Content";
-        // PopUpRoot popList = new PopUpList();
-        // popList.popUpData = new List<PopUpDatum>();
-        // popList.popUpData.Add(pop);
-        // string jsonString = JsonConvert.SerializeObject(popList);
-        // Debug.LogFormat("Json Doc:" + jsonString);
         }
 
         // Tear down prompts after use
@@ -98,13 +93,13 @@ namespace BeamMeUpATCA
             Destroy(prompt);
         }
 
-        // Temporarily hide prompts
+        // Temporarily hide a prompt
         static private void HidePrompt(GameObject prompt)
         {
             prompt.SetActive(false);
         }
 
-        // Unhide prompt
+        // Unhide a prompt
         static private void ShowPrompt(GameObject prompt)
         {
             prompt.SetActive(true);
@@ -140,28 +135,16 @@ namespace BeamMeUpATCA
             tutSeqNo += 1;
         }
 
-        // Welcome message
-        private void Intro()
-        {
-            PopUpDatum datum = data.popUpDatum[tutSeqNo];
-            Debug.Log("Tutorial Sequence: Intro started");
-            CreateNewPrompt(datum.title, datum.content);
-        }
-
         // Handles moving to and displaying next tutorial popup
         private void EnterNextTutPhase()
         {
-            PopUpDatum datum = data.popUpDatum[tutSeqNo];
-            CreateNewPrompt(datum.title, datum.content);
-        }
-
-        // Introducing engineers (DEPRECATED)
-        private void EngineerTut()
-        {
-            CameraFocus(Engineer);
-            CreateNewPrompt("Meet The Engineer", "The engineer is one of two main unit types " +
-                "which you will use while performing an observation with the ATCA. " +
-                "\nSelect the engineer now by left clicking the unit with the mouse hovering over it. ");
+            try {
+                PopUpDatum datum = data.popUpDatum[tutSeqNo];
+                CreateNewPrompt(datum.title, datum.content);
+            }
+            catch (ArgumentOutOfRangeException) {
+                tutFinished = true;
+            }
         }
 
         private void CameraFocus(GameObject obj)
@@ -180,13 +163,8 @@ namespace BeamMeUpATCA
         // Update to next tutorial stage on completion of a stage
         private void Update()
         {
-            if (!popUpActive)
-            {
+            if (!popUpActive && !tutFinished) {
                 EnterNextTutPhase();
-            }
-            else
-            {
-                PlayerInput actionSet = Player.GetComponent<PlayerInput>();
             }
         }
     }

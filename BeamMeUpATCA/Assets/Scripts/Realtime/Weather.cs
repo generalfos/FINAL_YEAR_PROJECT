@@ -126,7 +126,7 @@ namespace BeamMeUpATCA
                         Debug.LogError("Request Error; " + req.result);
                         break;
                 }
-                string jsonString = jsonData.text;
+                string jsonString = req.downloadHandler.text;
                 var record = JsonConvert.DeserializeObject<Root>(jsonString);
                 Debug.Log(record);
                 // var elem = doc.GetElementById("ozf");
