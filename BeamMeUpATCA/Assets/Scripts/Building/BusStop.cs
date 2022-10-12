@@ -56,6 +56,8 @@ namespace BeamMeUpATCA
         }
         
         
+        // TODO: Upon further thinking as BusStop defines it's own Enter functionality we could just
+        // TODO: Have BusStops only be enterable. Having Right-Clicks on buildings automatically call Enter
         /*
          * This is what gets called when we want to send a unit to town
          */
@@ -66,7 +68,11 @@ namespace BeamMeUpATCA
             //TODO Now that work() explicitly requires entering a building, this should be changed
             unit.GetComponent<Renderer>().enabled = false;
         }
-        
-        
+
+        public Unit WorkingUnit { get; set; }
+        public void Rest(Unit unit)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

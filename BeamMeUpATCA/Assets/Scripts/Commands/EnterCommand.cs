@@ -33,6 +33,7 @@ namespace BeamMeUpATCA
             if (((Building)_building).Anchors.CanAnchor(unit.transform.position))
             {
                 _building.Enter(unit);
+                unit.BuildingInside = (Building)_building;
             }
             else
             {
@@ -49,6 +50,7 @@ namespace BeamMeUpATCA
             if (((Building)_building).Anchors.CanAnchor(unit.transform.position))
             {
                 _building.Enter(unit);
+                unit.BuildingInside = (Building)_building;
             }
         }
 
