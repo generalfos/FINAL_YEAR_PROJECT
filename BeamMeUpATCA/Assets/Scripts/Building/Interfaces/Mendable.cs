@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BeamMeUpATCA
@@ -9,98 +10,97 @@ namespace BeamMeUpATCA
      * Set out as an abstract class as all Mendable buildings will have the same
      * implementation.
      */
-    public abstract class Mendable : Building
+    public class Mendable : Building
     {
-        private float _maxHealth;
-        private float _tickDmg;
-        private float _dmgMultiplier;
-        private float _tickRepair;
-        private float _repMultiplier;
-        private bool _isBroken;
-        private float _tickCounter;
-        private Unit _repairer;
+        [Header("Health")] 
+        [SerializeField] public float maxHealth = 100f;
+        private float _health;
+        private float Health
+        {
+            get => _health;
+            set => _health = Mathf.Clamp(value, 0f, maxHealth);
+        }
+        [field: Header("Damage Rates")]
+        [SerializeField] private float dmgMultiplier = 1f;
+        [SerializeField] private float damageInterval = 3f;
+        [SerializeField] private float repairInterval = 3f;
         
-        [field: SerializeField] private float healthPool;
-        [field: SerializeField] public bool IsRepaired { get; private set; }
+        [field: Header("Repair Rates")]
+        [SerializeField] private float defaultRepairRate = 1f;
+        [SerializeField] private float scientistRepairPercent = 0.75f;
+        [SerializeField] private float engineerRepairPercent = 1f;
+        
+        public bool IsRepaired => (Health >= maxHealth);
+        private bool IsBroken => (Health <= 0f);
 
         protected override void Awake()
         {
-            // Call base.Awake to ensure Building Layer is set
             base.Awake();
-            _maxHealth = 100f;
-            healthPool = 100f;
-            _tickDmg = 1f;
-            _dmgMultiplier = 1f;
-            _tickRepair = 5f;
-            _repMultiplier = 1f;
-            _isBroken = false;
-            _tickCounter = 0;
-            _repairer = null;
-            IsRepaired = true;
+            Repairers = new List<Unit>();
+            Health = maxHealth;
         }
-        
+
         protected virtual void Update() 
         {
             // Are we damaging the building?
-            if ((!_isBroken || _tickDmg < 0) && _repairer is null)
+            if (!IsBroken && (Repairers.Count <= 0))
             {
-                TakeTickDamage();
-                IsRepaired = false;
+                TakeDamage(Time.deltaTime);
+                _repairTick = 0f;
+            }
+            else // We repairing the building
+            {
+                _damageTick = 0f;
+                foreach (Unit unit in Repairers)
+                {
+                    if (Health < maxHealth) 
+                    {
+                        RegainHealth(unit, Time.deltaTime);
+                    }
+                    else
+                    {
+                        // Second iteration to remove all repairers
+                        foreach (Unit unitSecond in Repairers)
+                        {
+                            RemoveMender(unitSecond);
+                        }
+                    }
+                }
+
             }
             
-            // Are we repairing the building
-            if (!(_repairer is null))
-            {
-                if (Math.Abs(_maxHealth - healthPool) > float.Epsilon) 
-                {
-                    RegainHealth();
-                }
-                // Building is full health!
-                else
-                {
-                    // TODO - Do something when building is at full health
-                    healthPool = _maxHealth; // Accounts for floating point precision errors.
-                    IsRepaired = true;
-                    _repairer = null;  // Stops the building getting repaired next Update()
-                    SetRepMultiplier(1f);
-                }
-            }
-        }
-        
-        /*
-         * Put a unit in the repairer field to kick off the repair process
-         * Also adjusts the repMultiplier based on unit type
-         * Returns the mending unit aka the repairer
-         */
-        public Unit Mend(Unit unit)
-        {
-            _repairer = unit;
-            //TODO - if unit type is scientist, then set repMultiplier to 0.75f. Dependant on Unit implementation
-            if (unit.UnitClass == Unit.UnitType.Scientist)
-            {
-                SetRepMultiplier(0.75f);
-            }
-            return unit;
         }
 
+        private List<Unit> Repairers { get; set; }
+        
+        public void Mend(Unit unit) { if (!(Repairers.Contains(unit))) Repairers.Add(unit); }
+
+        public bool IsMender(Unit unit) => Repairers.Contains(unit);
+        
+        public void RemoveMender(Unit unit) { if (Repairers.Contains(unit)) Repairers.Remove(unit); }
+        
+        private float _repairTick = 0f;
         /*
         * If a unit has been assigned to repair a building, it gains HP
         * Cannot have more HP than maxHealth
         * Returns the health pool following a heal
         */
-        private float RegainHealth()
+        private void RegainHealth(Unit unit, float time)
         {
-            _tickCounter += Time.fixedDeltaTime;
-            if (_tickCounter < 1) return healthPool;
-            float newHp = healthPool + (_tickRepair * _repMultiplier);
-            if (newHp >= _maxHealth)
+            float unitRepairSpeed = defaultRepairRate;
+                
+            // Set Observation bonus depending on UnitClass of working unit
+            unitRepairSpeed = unit.UnitClass switch
             {
-                newHp = _maxHealth;
-            }
-            _isBroken = false;
-            healthPool = newHp;
-            _tickCounter = 0;
-            return healthPool;
+                Unit.UnitType.Engineer => engineerRepairPercent * unitRepairSpeed,
+                Unit.UnitType.Scientist => scientistRepairPercent * unitRepairSpeed,
+                _ => unitRepairSpeed
+            };
+            _repairTick += Time.deltaTime * unitRepairSpeed;
+            if (_repairTick < repairInterval) return;
+            
+            _repairTick = 0f;
+            Health += repairInterval;
         }
         
         /*
@@ -110,41 +110,23 @@ namespace BeamMeUpATCA
          */
         public float SetDmgMultiplier(float newModifier)
         {
-            _dmgMultiplier = newModifier;
-            return _dmgMultiplier;
+            dmgMultiplier = newModifier;
+            return dmgMultiplier;
         }
-        
-        /*
-         * Changes the repair multiplier
-         * Typical case, scientist will fix build at 0.75 the rate an engineer does
-         * Returns the new repair multiplier
-         */
-        private float SetRepMultiplier(float newModifier)
-        {
-            _repMultiplier = newModifier;
-            return _repMultiplier;
-        }
-        
+
+        private float _damageTick = 0f;
         /*
          * Reduces the health of a building
          * Can't reduce a buildings health to below zero.
          * Returns the health pool following a damage tick
          */
-        private float TakeTickDamage()
+        private void TakeDamage(float time)
         {
-            _tickCounter += Time.fixedDeltaTime;
-            if (_tickCounter >= 1)
-            {
-                float newHp = healthPool - (_tickDmg * _dmgMultiplier);
-                if (newHp <= 0)
-                {
-                    newHp = 0;
-                    _isBroken = true;
-                    healthPool = newHp;
-                    _tickCounter = 0;
-                }
-            }
-            return healthPool;
+            _damageTick += Time.deltaTime * dmgMultiplier;
+            if (_damageTick < damageInterval) return;
+            
+            _damageTick = 0f;
+            Health -= damageInterval;
         }
     }
 }
