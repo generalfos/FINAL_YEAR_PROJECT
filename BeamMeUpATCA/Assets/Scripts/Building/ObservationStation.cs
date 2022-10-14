@@ -10,15 +10,23 @@ namespace BeamMeUpATCA
         [SerializeField] private float defaultBonus = 1f;
         [SerializeField] private float engineerBonus;
         [SerializeField] private float scientistBonus;
-        public float ObservationBonus { get; private set; }
+        
+        private float _observationBonus;
+        public float ObservationBonus
+        {
+            // If building is not powered return 0f (No observation)
+            get => IsPowered ? _observationBonus : 0f;
+            private set => _observationBonus = value;
+        }
 
         private List<Unit> _unitsInside;
+
 
         protected override void Awake()
         {
             base.Awake();
             _unitsInside = new List<Unit>();
-            ObservationBonus = defaultBonus;
+            _observationBonus = defaultBonus;
         }
 
         // If unit is not already in Building add them to the list.
@@ -37,11 +45,11 @@ namespace BeamMeUpATCA
             WorkingUnit = unit;
             
             // Set Observation bonus depending on UnitClass of working unit
-            ObservationBonus = WorkingUnit.UnitClass switch
+            _observationBonus = WorkingUnit.UnitClass switch
             {
                 Unit.UnitType.Engineer => engineerBonus,
                 Unit.UnitType.Scientist => scientistBonus,
-                _ => ObservationBonus
+                _ => _observationBonus
             };
         }
 
@@ -52,7 +60,7 @@ namespace BeamMeUpATCA
             if (WorkingUnit == unit) WorkingUnit = null;
 
             // If unit leaves building set observation bonus to default bonus
-            if (WorkingUnit is null) ObservationBonus = defaultBonus;
+            if (WorkingUnit is null) _observationBonus = defaultBonus;
         }
     }
 }

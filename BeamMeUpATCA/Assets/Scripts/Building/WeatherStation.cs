@@ -5,6 +5,9 @@ namespace BeamMeUpATCA
 {
     public class WeatherStation : Mendable, Enterable, Workable
     {
+        [field: Header("Weather Frequency Updates")]
+        [SerializeField] [Tooltip("Updates/Second")] private float defaultFrequency = 1f;
+
         private List<Unit> _unitsInside;
 
         protected override void Awake()
