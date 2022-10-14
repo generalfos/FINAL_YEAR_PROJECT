@@ -39,7 +39,7 @@ namespace BeamMeUpATCA
             IsRepaired = true;
         }
         
-        private void Update() 
+        protected virtual void Update() 
         {
             // Are we damaging the building?
             if ((!_isBroken || _tickDmg < 0) && _repairer is null)
