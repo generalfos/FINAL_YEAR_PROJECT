@@ -1,31 +1,41 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BeamMeUpATCA
 {
     public class WeatherStation : Mendable, Enterable, Workable
     {
-        public void Enter(Unit unit)
+        private List<Unit> _unitsInside;
+
+        protected override void Awake()
         {
-            throw new System.NotImplementedException();
+            base.Awake();
+            _unitsInside = new List<Unit>();
         }
 
-        public bool IsInside(Unit unit)
-        {
-            throw new System.NotImplementedException();
-        }
+        // If unit is not already in Building add them to the list.
+        public void Enter(Unit unit) {if (!(IsInside(unit))) _unitsInside.Add(unit); }
 
-        public void Leave(Unit unit)
-        {
-            throw new System.NotImplementedException();
-        }
+        // Check if unit list contains the unit
+        public bool IsInside(Unit unit) => _unitsInside.Contains(unit);
 
-        public void Work(Unit unit)
-        {
-            throw new System.NotImplementedException();
-        }
+        // If unit is inside the building remove them from the list.
+        public void Leave(Unit unit) { if (IsInside(unit)) _unitsInside.Remove(unit); }
+
+        // If unit is not working, and work slot is empty add them to the slot
+        public void Work(Unit unit) { WorkingUnit ??= unit; }
 
         public Unit WorkingUnit { get; set; }
-        public void Rest(Unit unit)
+        public void Rest(Unit unit) { if (WorkingUnit == unit) WorkingUnit = null; }
+
+        protected override void Update()
+        {
+            base.Update();
+
+            if (!(WorkingUnit is null)) Weather(Time.deltaTime);
+        }
+        
+        private void Weather(float time)
         {
             throw new System.NotImplementedException();
         }
