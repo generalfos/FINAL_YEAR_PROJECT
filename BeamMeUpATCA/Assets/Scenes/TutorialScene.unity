@@ -1609,7 +1609,6 @@ MonoBehaviour:
   <UnitClass>k__BackingField: 1
   <UnitHealth>k__BackingField: 0
   <UnitMorale>k__BackingField: 0
-  inTownCounter: 0
 --- !u!65 &222425665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1708,14 +1707,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 234041199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ecda63f644332429f233100970f8d7, type: 3}
+  m_Script: {fileID: 11500000, guid: a33a8181c657d5e409a6a47a0140a874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: A1
-  <UnitClass>k__BackingField: 2
-  <UnitHealth>k__BackingField: 100
-  <UnitMorale>k__BackingField: 0
-  inTownCounter: 0
+  <Anchors>k__BackingField:
+    anchorPoints: []
+    anchorRadius: 0
+  healthPool: 0
+  <IsRepaired>k__BackingField: 0
 --- !u!65 &234041201
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1729,28 +1728,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 20, z: 8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &234041202
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234041199}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!4 &241466686 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
@@ -1766,7 +1743,7 @@ GameObject:
   m_Component:
   - component: {fileID: 249600928}
   m_Layer: 0
-  m_Name: Arrays
+  m_Name: Dishes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1790,7 +1767,7 @@ Transform:
   - {fileID: 129231180}
   - {fileID: 942673223}
   m_Father: {fileID: 934531388}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &267754473 stripped
 Transform:
@@ -1807,11 +1784,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 934531388}
+    m_TransformParent: {fileID: 1690759419}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 937fb08882956ca48baa85e3e1102318, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 937fb08882956ca48baa85e3e1102318, type: 3}
       propertyPath: m_LocalScale.x
@@ -1827,15 +1804,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 937fb08882956ca48baa85e3e1102318, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1962.1
+      value: 2.2912598
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 937fb08882956ca48baa85e3e1102318, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.328
+      value: 1.0379982
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 937fb08882956ca48baa85e3e1102318, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1251.529
+      value: 2.5290527
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 937fb08882956ca48baa85e3e1102318, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2789,14 +2766,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 411040466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ecda63f644332429f233100970f8d7, type: 3}
+  m_Script: {fileID: 11500000, guid: a33a8181c657d5e409a6a47a0140a874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: A5
-  <UnitClass>k__BackingField: 2
-  <UnitHealth>k__BackingField: 100
-  <UnitMorale>k__BackingField: 0
-  inTownCounter: 0
+  <Anchors>k__BackingField:
+    anchorPoints: []
+    anchorRadius: 0
+  healthPool: 0
+  <IsRepaired>k__BackingField: 0
 --- !u!65 &411040468
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2810,28 +2787,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 20, z: 8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &411040469
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 411040466}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1001 &436294671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3312,7 +3267,7 @@ Transform:
   - {fileID: 1419725241}
   - {fileID: 2006926929}
   m_Father: {fileID: 934531388}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &475414015
 PrefabInstance:
@@ -4345,7 +4300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2eee0fe7185c8694aa80cd3150aae4fc, type: 3}
       propertyPath: m_Name
-      value: busStop
+      value: BusStop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2eee0fe7185c8694aa80cd3150aae4fc, type: 3}
@@ -7011,7 +6966,6 @@ Transform:
   m_Children:
   - {fileID: 601079596}
   - {fileID: 1961779207}
-  - {fileID: 1691068313}
   - {fileID: 1690759419}
   - {fileID: 1211660522}
   - {fileID: 249600928}
@@ -7094,29 +7048,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8433904437737376621, guid: 827813d400f176244b332fd60e46d0dc, type: 3}
   m_PrefabInstance: {fileID: 1909970973}
   m_PrefabAsset: {fileID: 0}
---- !u!195 &942673224
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942673222}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 0
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &942673225
+--- !u!114 &942673224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7125,14 +7057,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 942673222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ecda63f644332429f233100970f8d7, type: 3}
+  m_Script: {fileID: 11500000, guid: a33a8181c657d5e409a6a47a0140a874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: A6
-  <UnitClass>k__BackingField: 2
-  <UnitHealth>k__BackingField: 100
-  <UnitMorale>k__BackingField: 0
-  inTownCounter: 0
+  <Anchors>k__BackingField:
+    anchorPoints: []
+    anchorRadius: 0
+  healthPool: 0
+  <IsRepaired>k__BackingField: 0
 --- !u!65 &942673226
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8041,7 +7973,6 @@ MonoBehaviour:
   <UnitClass>k__BackingField: 0
   <UnitHealth>k__BackingField: 0
   <UnitMorale>k__BackingField: 0
-  inTownCounter: 0
 --- !u!65 &1119936730
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8366,14 +8297,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1127853805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ecda63f644332429f233100970f8d7, type: 3}
+  m_Script: {fileID: 11500000, guid: a33a8181c657d5e409a6a47a0140a874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: A2
-  <UnitClass>k__BackingField: 2
-  <UnitHealth>k__BackingField: 40
-  <UnitMorale>k__BackingField: 0
-  inTownCounter: 0
+  <Anchors>k__BackingField:
+    anchorPoints: []
+    anchorRadius: 0
+  healthPool: 0
+  <IsRepaired>k__BackingField: 0
 --- !u!65 &1127853807
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8387,28 +8318,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 20, z: 8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &1127853808
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127853805}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1001 &1136304702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8484,7 +8393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8391910471901180442, guid: 419faa46947bc204a987ea09115b0d08, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8391910471901180442, guid: 419faa46947bc204a987ea09115b0d08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8633,7 +8542,6 @@ MonoBehaviour:
   <UnitClass>k__BackingField: 1
   <UnitHealth>k__BackingField: 0
   <UnitMorale>k__BackingField: 0
-  inTownCounter: 0
 --- !u!65 &1153798042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9007,14 +8915,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1211397296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ecda63f644332429f233100970f8d7, type: 3}
+  m_Script: {fileID: 11500000, guid: a33a8181c657d5e409a6a47a0140a874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: A4
-  <UnitClass>k__BackingField: 2
-  <UnitHealth>k__BackingField: 100
-  <UnitMorale>k__BackingField: 0
-  inTownCounter: 0
+  <Anchors>k__BackingField:
+    anchorPoints: []
+    anchorRadius: 0
+  healthPool: 0
+  <IsRepaired>k__BackingField: 0
 --- !u!65 &1211397298
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9028,28 +8936,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 20, z: 8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &1211397299
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211397296}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &1211660521
 GameObject:
   m_ObjectHideFlags: 0
@@ -9116,7 +9002,7 @@ Transform:
   - {fileID: 278443746}
   - {fileID: 447475937}
   m_Father: {fileID: 934531388}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1215177830
 GameObject:
@@ -11296,6 +11182,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cabf1b8651e5b224bbed4bee1b2bc0be, type: 3}
   m_PrefabInstance: {fileID: 1690759418}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1453790598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453790597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa82324942c4430888f8450bb4241a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Anchors>k__BackingField:
+    anchorPoints: []
+    anchorRadius: 0
+  healthPool: 0
+  <IsRepaired>k__BackingField: 0
+  defaultFrequency: 0.016666668
+  scientistFrequency: 0.2
+  engineerFrequency: 0.06666667
 --- !u!1 &1476096591
 GameObject:
   m_ObjectHideFlags: 0
@@ -11455,6 +11361,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a53e3f9a59fb7544838b9b8f48edf2f, type: 3}
   m_PrefabInstance: {fileID: 1961779206}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1483904418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483904417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c266dbc53ae74496a763aa934395542b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Anchors>k__BackingField:
+    anchorPoints: []
+    anchorRadius: 0
+  healthPool: 0
+  <IsRepaired>k__BackingField: 0
+  defaultBonus: 1
+  engineerBonus: 1.5
+  scientistBonus: 2
 --- !u!1 &1494742998
 GameObject:
   m_ObjectHideFlags: 0
@@ -11854,7 +11780,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7be5b55e3129b104fa574980467ed7f2, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7be5b55e3129b104fa574980467ed7f2, type: 3}
       propertyPath: m_LocalScale.x
@@ -11910,7 +11836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7be5b55e3129b104fa574980467ed7f2, type: 3}
       propertyPath: m_Name
-      value: engineerShed
+      value: EngineerStation
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7be5b55e3129b104fa574980467ed7f2, type: 3}
       propertyPath: m_TagString
@@ -12305,7 +12231,6 @@ MonoBehaviour:
   <UnitClass>k__BackingField: 1
   <UnitHealth>k__BackingField: 0
   <UnitMorale>k__BackingField: 0
-  inTownCounter: 0
 --- !u!65 &1610236702
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12480,14 +12405,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1619815784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ecda63f644332429f233100970f8d7, type: 3}
+  m_Script: {fileID: 11500000, guid: a33a8181c657d5e409a6a47a0140a874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: A3
-  <UnitClass>k__BackingField: 2
-  <UnitHealth>k__BackingField: 100
-  <UnitMorale>k__BackingField: 0
-  inTownCounter: 0
+  <Anchors>k__BackingField:
+    anchorPoints: []
+    anchorRadius: 0
+  healthPool: 0
+  <IsRepaired>k__BackingField: 0
 --- !u!65 &1619815786
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12501,28 +12426,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 20, z: 8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &1619815787
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619815784}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &1624580634
 GameObject:
   m_ObjectHideFlags: 0
@@ -13240,7 +13143,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cabf1b8651e5b224bbed4bee1b2bc0be, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cabf1b8651e5b224bbed4bee1b2bc0be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13284,7 +13187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cabf1b8651e5b224bbed4bee1b2bc0be, type: 3}
       propertyPath: m_Name
-      value: WeatherStationBuilding
+      value: WeatherStation
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cabf1b8651e5b224bbed4bee1b2bc0be, type: 3}
@@ -13292,11 +13195,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cabf1b8651e5b224bbed4bee1b2bc0be, type: 3}
   m_PrefabInstance: {fileID: 1690759418}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1691068313 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 937fb08882956ca48baa85e3e1102318, type: 3}
-  m_PrefabInstance: {fileID: 282212831}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1694099622
 GameObject:
@@ -13442,10 +13340,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 681667305}
     m_Modifications:
-    - target: {fileID: 919132149155446097, guid: 7ff378131d494f04cb7e3c9e4eb0af84, type: 3}
-      propertyPath: m_TagString
-      value: Building
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d280d51840134a47862a97937eaab97, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -13493,6 +13387,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2d280d51840134a47862a97937eaab97, type: 3}
       propertyPath: m_Name
       value: tree03_baked (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7ff378131d494f04cb7e3c9e4eb0af84, type: 3}
+      propertyPath: m_TagString
+      value: Building
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d280d51840134a47862a97937eaab97, type: 3}
@@ -14884,7 +14782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 509114175671642675, guid: 4aafc11d2d93aaf45be1d9112d0a44b7, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 509114175671642675, guid: 4aafc11d2d93aaf45be1d9112d0a44b7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15803,7 +15701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7a53e3f9a59fb7544838b9b8f48edf2f, type: 3}
       propertyPath: m_Name
-      value: ControlRoom
+      value: ObservationStation
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a53e3f9a59fb7544838b9b8f48edf2f, type: 3}
@@ -16989,6 +16887,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7be5b55e3129b104fa574980467ed7f2, type: 3}
   m_PrefabInstance: {fileID: 1569349962}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2119800694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119800693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff30ebfe1fbc4aaeb00d58559e5d435b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Anchors>k__BackingField:
+    anchorPoints: []
+    anchorRadius: 0
+  healthPool: 0
+  <IsRepaired>k__BackingField: 0
+  defaultReductionPercent: 0.25
+  scientistReductionPercent: 0.5
+  engineerReductionPercent: 0.75
+  <BackupPowerMaxDuration>k__BackingField: 60
+  <BackupPowerRecoverTime>k__BackingField: 60
 --- !u!4 &2131681316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
