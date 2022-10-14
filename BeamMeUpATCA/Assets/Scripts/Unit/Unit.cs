@@ -29,9 +29,7 @@ namespace BeamMeUpATCA
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public UnitType UnitClass { get; private set; } = UnitType.Engineer;
         [field: SerializeField] public int UnitHealth { get; private set; }
-
         [field: SerializeField] public float UnitMorale { get; private set; }
-        [field: SerializeField] private float inTownCounter;
 
         private UnitPathfinder _pathfinder;
         public UnitPathfinder Pathfinder => _pathfinder ??= new UnitPathfinder(this);
@@ -40,8 +38,7 @@ namespace BeamMeUpATCA
 
         // Sets color to black if UnitClass is not defined.
         public Color UnitColor => ColorDict[UnitClass];
-
-        private float _tickCounter;
+        
         private float _moraleTickDmg;
         private float _maxMorale;
 
@@ -51,10 +48,8 @@ namespace BeamMeUpATCA
             gameObject.layer = Mask.Layer(Mask);
 
             _maxMorale = 100;
-            inTownCounter = 0;
             UnitMorale = _maxMorale;
             _moraleTickDmg = 1;
-            _tickCounter = 0;
 
             _commandQueue = new Queue<Command>();
         }
@@ -190,29 +185,22 @@ namespace BeamMeUpATCA
         private void Update()
         {
             CommandUpdate();
+
+            if (BuildingInside is BusStop)
+            {
+                UnitMorale = _maxMorale;
+            } else
+            {
+                TakeTickDamage();
+            }
         }
 
         #endregion // Commanding
 
         #region TickUpdates
 
-        private void FixedUpdate()
-        {
-            if (inTownCounter == 0) // Not in town
-            {
-                TakeTickDamage();
-            }
-            else // In town
-            {
-                DecrementTownCounter();
-                UnitMorale = _maxMorale;
-            }
-        }
-
         private void TakeTickDamage()
         {
-            _tickCounter += Time.fixedDeltaTime;
-            if (_tickCounter < 3) return;
             float newMorale = UnitMorale - _moraleTickDmg;
             if (newMorale <= 0)
             {
@@ -224,27 +212,8 @@ namespace BeamMeUpATCA
                 newMorale = _maxMorale; //do not heal over full
             }
             UnitMorale = newMorale;
-            _tickCounter = 0;
         }
-
-        /*
-         * If a unit is in town, countdown the inTownCounter
-         */
-        private void DecrementTownCounter()
-        {
-            _tickCounter += Time.fixedDeltaTime;
-            if (_tickCounter < 3) return;
-            inTownCounter--;
-            _tickCounter = 0;
-        }
-
-        /*
-         * Sets the inTownCounter to send a unit to town
-         */
-        private void GoToTown() { inTownCounter = 20; }
-
+        
         #endregion //TickUpdates
-
-        public float GetInTownCounter() => inTownCounter;
     }
 }
