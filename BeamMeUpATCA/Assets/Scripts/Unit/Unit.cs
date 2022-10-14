@@ -102,10 +102,7 @@ namespace BeamMeUpATCA
 
         private void ExecuteCommand(Command command)
         {
-            if (command is null)
-            {
-                return;
-            }
+            if (command is null) return;
 
             // Indicate to the command it can be begin executing.
             command.enabled = true;
@@ -114,22 +111,12 @@ namespace BeamMeUpATCA
 
         private Command ExecuteAndLoadCommand(Command command)
         {
-            if (command is null)
-            {
-                return null;
-            }
+            if (command is null) return null;
 
             ExecuteCommand(command);
 
             // If there is a next command then return it. Otherwise return null.
-            try
-            {
-                return _commandQueue.Dequeue();
-            }
-            catch (InvalidOperationException)
-            {
-                return null;
-            }
+            return _commandQueue.Count != 0 ? _commandQueue.Dequeue() : null;
         }
 
         // Destroys a command instance.
@@ -141,8 +128,7 @@ namespace BeamMeUpATCA
                 return;
             }
 
-            Debug.Log("Destroying Command: " + command.Name);
-
+            // Debug.Log("Destroying Command: " + command.Name);
             Destroy(command);
         }
 
@@ -164,16 +150,14 @@ namespace BeamMeUpATCA
             _activeCommand = null;
         }
 
+        // Handles execution order of commands
         private void CommandUpdate()
         {
             // No commands should be running while a priority command exists.
             if (!(_priorityCommand is null))
             {
                 // Guard Clause to allow priority command to run enabled.
-                if (!_priorityCommand.IsFinished())
-                {
-                    return;
-                }
+                if (!_priorityCommand.IsFinished()) return;
 
                 DestroyCommand(_priorityCommand);
                 _priorityCommand = null;
@@ -196,6 +180,7 @@ namespace BeamMeUpATCA
 
                 // Evaluation left to right validates Command.IsFinished() check.
                 if (_activeCommand is null || !_activeCommand.IsFinished()) return;
+                
                 // If Command.IsFinished() delete object and set activeCommand to null.
                 DestroyCommand(_activeCommand);
                 _activeCommand = null;
