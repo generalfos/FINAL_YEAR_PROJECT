@@ -6,6 +6,18 @@ namespace BeamMeUpATCA
 {
     public class EngineerStation : Mendable, Enterable, Workable, Powerable
     {
+        [field: Header("Engineer Global Damage Reductions")]
+        [SerializeField] private float defaultReductionPercent = 0.25f;
+        [SerializeField] private float scientistReductionPercent = 0.50f;
+        [SerializeField] private float engineerReductionPercent = 0.75f;
+        
+        private float _reductionPercent;
+        public float ReductionPercent
+        {
+            // If building is not powered return 0f (No observation)
+            get => IsPowered ? _reductionPercent : 0f;
+            private set => _reductionPercent = value;
+        }
 
         [field: Header("Backup Power")]
         [field: SerializeField] private float BackupPowerMaxDuration { get; set; } = 60f;
@@ -35,42 +47,56 @@ namespace BeamMeUpATCA
         public void Leave(Unit unit) { if (IsInside(unit)) _unitsInside.Remove(unit); }
 
         // If unit is not working, and work slot is empty add them to the slot
-        public void Work(Unit unit) { WorkingUnit ??= unit; }
+        public void Work(Unit unit)
+        {
+            if (!(WorkingUnit is null)) return;
+            WorkingUnit = unit;
+            
+            // Set Observation bonus depending on UnitClass of working unit
+            _reductionPercent = WorkingUnit.UnitClass switch
+            {
+                Unit.UnitType.Engineer => engineerReductionPercent,
+                Unit.UnitType.Scientist => scientistReductionPercent,
+                _ => _reductionPercent
+            };
+        }
 
         public Unit WorkingUnit { get; set; }
-        public void Rest(Unit unit) { if (WorkingUnit == unit) WorkingUnit = null; }
+
+        public void Rest(Unit unit)
+        {
+             if (WorkingUnit == unit) WorkingUnit = null;
+             // If unit leaves building set observation bonus to default bonus
+             if (WorkingUnit is null) _reductionPercent = defaultReductionPercent;
+        }
 
         protected override void Update()
         {
             base.Update();
 
-            if (!(WorkingUnit is null)) Engineer(Time.deltaTime);
+            // Run/Restore Generator
+            Generator(Time.deltaTime);
+        }
 
+        public void TogglePower() { IsGeneratorOn = !IsGeneratorOn; }
+
+        private void Generator(float time)
+        {
             if (IsGeneratorOn)
             {
                 // Drain power
-                _backupPowerCounter -= Time.deltaTime;
+                _backupPowerCounter -= time;
                 
                 // If power is above 0 keep generator going
-                if (_backupPowerCounter > 0) return;
-                
-                _backupPowerCounter = 0f;
-                IsGeneratorOn = false;
+                IsGeneratorOn = _backupPowerCounter > 0;
             }
             else
             {
                 // Restore power at rate to match BackupPowerRecoverTime
-                _backupPowerCounter += Time.deltaTime * (BackupPowerMaxDuration / BackupPowerRecoverTime);
-                // Clamp value so it doesn't go over MaxDuration.
-                _backupPowerCounter = Mathf.Clamp(_backupPowerCounter, min:0, max:BackupPowerMaxDuration);
+                _backupPowerCounter += time * (BackupPowerMaxDuration / BackupPowerRecoverTime);
             }
+            // Clamp power between 0 and BackupPowerMaxDuration
+            _backupPowerCounter = Mathf.Clamp(_backupPowerCounter, min: 0, max: BackupPowerMaxDuration);
         }
-        
-        private void Engineer(float time)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void TogglePower() { IsGeneratorOn = !IsGeneratorOn; }
     }
 }

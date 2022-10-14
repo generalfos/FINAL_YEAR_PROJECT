@@ -8,8 +8,8 @@ namespace BeamMeUpATCA
 
         [field: Header("Observation Multiplier Bonuses")]
         [SerializeField] private float defaultBonus = 1f;
-        [SerializeField] private float engineerBonus;
-        [SerializeField] private float scientistBonus;
+        [SerializeField] private float engineerBonus = 1.5f;
+        [SerializeField] private float scientistBonus = 2f;
         
         private float _observationBonus;
         public float ObservationBonus
