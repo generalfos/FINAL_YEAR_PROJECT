@@ -33,7 +33,13 @@ namespace BeamMeUpATCA
             if (((Building)_building).Anchors.CanAnchor(unit.transform.position))
             {
                 _building.Enter(unit);
-                unit.BuildingInside = (Building)_building;
+                // Check if enter was successful
+                if (_building.IsInside(unit)) 
+                    unit.EnterBuilding((Building) _building);
+                else
+                {
+                    _conditionsMet = false;
+                }
             }
             else
             {
@@ -50,7 +56,13 @@ namespace BeamMeUpATCA
             if (((Building)_building).Anchors.CanAnchor(unit.transform.position))
             {
                 _building.Enter(unit);
-                unit.BuildingInside = (Building)_building;
+                // Check if enter was successful
+                if (_building.IsInside(unit)) 
+                    unit.EnterBuilding((Building) _building);
+                else
+                {
+                    _conditionsMet = false;
+                }
             }
         }
 

@@ -28,22 +28,19 @@ namespace BeamMeUpATCA
 
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public UnitType UnitClass { get; private set; } = UnitType.Engineer;
-        [field: SerializeField] public int UnitHealth { get; private set; }
-
         [field: SerializeField] public float UnitMorale { get; private set; }
-        [field: SerializeField] private float inTownCounter;
 
         private UnitPathfinder _pathfinder;
         public UnitPathfinder Pathfinder => _pathfinder ??= new UnitPathfinder(this);
 
-        public Building BuildingInside { get; set; }
-
         // Sets color to black if UnitClass is not defined.
         public Color UnitColor => ColorDict[UnitClass];
-
-        private float _tickCounter;
+        
         private float _moraleTickDmg;
         private float _maxMorale;
+
+        [Obsolete("This is being replaced in new building feature branch")]
+        public float GetInTownCounter() => 0f;
 
         private void Awake()
         {
@@ -51,15 +48,59 @@ namespace BeamMeUpATCA
             gameObject.layer = Mask.Layer(Mask);
 
             _maxMorale = 100;
-            inTownCounter = 0;
             UnitMorale = _maxMorale;
             _moraleTickDmg = 1;
-            _tickCounter = 0;
 
             _commandQueue = new Queue<Command>();
         }
 
-        #endregion // Unit Properties
+        #endregion // End of 'Unit Properties'
+        
+        #region Enter Building
+
+        public Building BuildingInside { get; private set; } = null;
+
+        private Renderer _renderer;
+        private Renderer Renderer => _renderer ??= GetComponent<Renderer>();
+        
+        private Collider _collider;
+        private Collider Collider => _collider ??= GetComponent<Collider>();
+
+        public void EnterBuilding(Building building)
+        {
+            // Set self inside building to building arg
+            BuildingInside = building;
+            
+            // Hide unit, disable clicking, and set unit inside building.
+            Renderer.enabled = false;
+            Collider.enabled = false;
+
+            // Set X and Z positions of Unit. Y height is kept to prevent world clipping
+            Vector3 buildingPos = BuildingInside.transform.position;
+            Transform unitTransform = transform;
+            unitTransform.position = new Vector3(buildingPos.x, unitTransform.position.y, buildingPos.z);
+        }
+        
+        public void ExitBuilding()
+        {
+            // If Building is null then exit building does nothing just return
+            if (BuildingInside is null) return;
+            
+            // Hide unit, disable clicking, and set unit inside building.
+            Renderer.enabled = true;
+            Collider.enabled = true;
+
+            // Set X and Z positions of Unit. Y height is kept to prevent world clipping
+            Vector3 buildingAnchorPos = BuildingInside.Anchors.GetAnchorPoint();
+            Transform unitTransform = transform;
+            unitTransform.position = new Vector3(buildingAnchorPos.x, unitTransform.position.y, buildingAnchorPos.z);
+            
+            // Set self inside building to null
+            BuildingInside = null;
+        }
+
+        #endregion // End of 'Enter Building'
+        
 
         #region Commanding
 
@@ -102,10 +143,7 @@ namespace BeamMeUpATCA
 
         private void ExecuteCommand(Command command)
         {
-            if (command is null)
-            {
-                return;
-            }
+            if (command is null) return;
 
             // Indicate to the command it can be begin executing.
             command.enabled = true;
@@ -114,35 +152,21 @@ namespace BeamMeUpATCA
 
         private Command ExecuteAndLoadCommand(Command command)
         {
-            if (command is null)
-            {
-                return null;
-            }
+            if (command is null) return null;
 
             ExecuteCommand(command);
 
             // If there is a next command then return it. Otherwise return null.
-            try
-            {
-                return _commandQueue.Dequeue();
-            }
-            catch (InvalidOperationException)
-            {
-                return null;
-            }
+            return _commandQueue.Count != 0 ? _commandQueue.Dequeue() : null;
         }
 
         // Destroys a command instance.
         private void DestroyCommand(Command command)
         {
             // Guard Clause ensuring command is valid.
-            if (command is null)
-            {
-                return;
-            }
+            if (command is null)return;
 
-            Debug.Log("Destroying Command: " + command.Name);
-
+            // Debug.Log("Destroying Command: " + command.Name);
             Destroy(command);
         }
 
@@ -164,16 +188,14 @@ namespace BeamMeUpATCA
             _activeCommand = null;
         }
 
+        // Handles execution order of commands
         private void CommandUpdate()
         {
             // No commands should be running while a priority command exists.
             if (!(_priorityCommand is null))
             {
                 // Guard Clause to allow priority command to run enabled.
-                if (!_priorityCommand.IsFinished())
-                {
-                    return;
-                }
+                if (!_priorityCommand.IsFinished()) return;
 
                 DestroyCommand(_priorityCommand);
                 _priorityCommand = null;
@@ -196,6 +218,7 @@ namespace BeamMeUpATCA
 
                 // Evaluation left to right validates Command.IsFinished() check.
                 if (_activeCommand is null || !_activeCommand.IsFinished()) return;
+                
                 // If Command.IsFinished() delete object and set activeCommand to null.
                 DestroyCommand(_activeCommand);
                 _activeCommand = null;
@@ -205,29 +228,22 @@ namespace BeamMeUpATCA
         private void Update()
         {
             CommandUpdate();
-        }
 
-        #endregion // Commanding
-
-        #region TickUpdates
-
-        private void FixedUpdate()
-        {
-            if (inTownCounter == 0) // Not in town
+            if (BuildingInside is BusStop)
+            {
+                UnitMorale = _maxMorale;
+            } else
             {
                 TakeTickDamage();
             }
-            else // In town
-            {
-                DecrementTownCounter();
-                UnitMorale = _maxMorale;
-            }
         }
+
+        #endregion // End of 'Commanding'
+
+        #region Morale Degradation
 
         private void TakeTickDamage()
         {
-            _tickCounter += Time.fixedDeltaTime;
-            if (_tickCounter < 3) return;
             float newMorale = UnitMorale - _moraleTickDmg;
             if (newMorale <= 0)
             {
@@ -239,27 +255,8 @@ namespace BeamMeUpATCA
                 newMorale = _maxMorale; //do not heal over full
             }
             UnitMorale = newMorale;
-            _tickCounter = 0;
         }
-
-        /*
-         * If a unit is in town, countdown the inTownCounter
-         */
-        private void DecrementTownCounter()
-        {
-            _tickCounter += Time.fixedDeltaTime;
-            if (_tickCounter < 3) return;
-            inTownCounter--;
-            _tickCounter = 0;
-        }
-
-        /*
-         * Sets the inTownCounter to send a unit to town
-         */
-        private void GoToTown() { inTownCounter = 20; }
-
-        #endregion //TickUpdates
-
-        public float GetInTownCounter() => inTownCounter;
+        
+        #endregion // End of 'Morale Degradation'
     }
 }

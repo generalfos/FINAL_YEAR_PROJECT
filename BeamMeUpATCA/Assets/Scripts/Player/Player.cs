@@ -94,7 +94,8 @@ namespace BeamMeUpATCA
                 new[] { new IASub(ctx => Commander.CommandUnits<StowCommand>(PointerPosition), IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Work"]), 
                 new[] { new IASub(ctx => Commander.CommandUnits<WorkCommand>(PointerPosition), IASub.PREFORMED)});
-
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Leave"]), 
+                new[] { new IASub(ctx => Commander.CommandUnits<LeaveCommand>(PointerPosition), IASub.PREFORMED)});
             AddSubscriptions();
         }
 
