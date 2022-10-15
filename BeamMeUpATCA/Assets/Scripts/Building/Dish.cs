@@ -4,32 +4,112 @@ namespace BeamMeUpATCA
 {
     public class Dish : Mendable, Moveable, Enterable, Stowable
     {
-        public void Enter(Unit unit)
+        // Dish only allows single unit inside
+        private Unit _unitInsideSlot;
+        
+        [field: Header("Dish Rotation")]
+        [SerializeField] private float rotationSpeed = 2.5f;
+        [SerializeField] private GameObject turret = null;
+        [SerializeField] private GameObject dish = null;
+        
+        private Quaternion _dishRotationStart = Quaternion.identity;
+        private Quaternion _dishRotationEnd = Quaternion.identity;
+        private float _dishRotationPercent = 0f;
+        
+        private Quaternion _turretRotationStart = Quaternion.identity;
+        private Quaternion _turretRotationEnd = Quaternion.identity;
+        private float _turretRotationPercent = 0f;
+        
+        private float _unstowedAltitude = 0f;
+        private float _unstowedAzimuth = 0f;
+        
+        protected override void Awake()
         {
-            throw new System.NotImplementedException();
+            base.Awake();
+            _unitInsideSlot = null;
+
+            _dishRotationStart = _dishRotationEnd = dish.transform.localRotation;
+            _dishRotationPercent = 1f;
+            
+            _turretRotationStart =_turretRotationEnd = turret.transform.localRotation;
+            _turretRotationPercent = 1f;
+            
+            // Convert altitude to negative value as for world coordinate system.
+            _unstowedAltitude = -dish.transform.localEulerAngles.z;
+            _unstowedAzimuth = turret.transform.localEulerAngles.y;
+
+            if (IsStowed) AltazCoordinates(90f, _unstowedAzimuth);
         }
 
-        public bool IsInside(Unit unit)
+        protected override void Update()
         {
-            throw new System.NotImplementedException();
+            base.Update();
+            StowHanding();
+
+            if (_dishRotationPercent < 1f)
+            {
+                _dishRotationPercent += Time.deltaTime * rotationSpeed;
+                _dishRotationPercent = Mathf.Clamp(_dishRotationPercent, 0, 1f);
+                dish.transform.localRotation =
+                    Quaternion.Slerp(_dishRotationStart, _dishRotationEnd, _dishRotationPercent);
+            }
+
+            if (_turretRotationPercent < 1f)
+            {
+                _turretRotationPercent += Time.deltaTime * rotationSpeed;
+                _turretRotationPercent = Mathf.Clamp(_turretRotationPercent, 0, 1f);
+                turret.transform.localRotation = 
+                    Quaternion.Slerp(_turretRotationStart, _turretRotationEnd, _turretRotationPercent);
+            }
         }
 
-        public void Leave(Unit unit)
+        public void AltazCoordinates(float altitude, float azimuth)
         {
-            throw new System.NotImplementedException();
+            // Store current value to compare and Quaternion.Slerp
+            _dishRotationStart = dish.transform.localRotation;
+            _turretRotationStart = turret.transform.localRotation;
+            
+            // Convert altitude to negative value as for world coordinate system.
+            _dishRotationEnd = Quaternion.Euler(0, 0, -altitude);
+            _turretRotationEnd = Quaternion.Euler(0, azimuth, 0);
+
+            // Reset percentage of rotation. If values are the same set job to 100% done.
+            _dishRotationPercent = _dishRotationStart == _dishRotationEnd ? 1f : 0f;
+            _turretRotationPercent = _turretRotationStart == _turretRotationEnd ? 1f : 0f;
         }
+
+        // If the dish enter slot is free add the unit to it
+        public void Enter(Unit unit) { _unitInsideSlot ??= unit; }
+
+        // Check if unit list contains the unit
+        public bool IsInside(Unit unit) => unit == _unitInsideSlot;
+
+        // If unit is inside the building remove them from the list.
+        public void Leave(Unit unit) { if (IsInside(unit)) _unitInsideSlot = null; }
 
         public void Move(Unit unit)
         {
+            if (unit != _unitInsideSlot) return;
+            
             throw new System.NotImplementedException();
         }
 
-        public void Stow(Unit unit)
+        [field: SerializeField] public bool IsStowed { get; private set; } = false;
+        public void ToggleStow() { IsStowed = !IsStowed; }
+
+        private void StowHanding()
         {
-            throw new System.NotImplementedException();
+            // If it's stowed set altitude to 90f (directly up), else set it to previous state.
+            AltazCoordinates(IsStowed ? 90f : _unstowedAltitude, _unstowedAzimuth);
+
+            if (IsStowed) return;
+            // If rotation is in a final state store its changes.
+            if (_dishRotationPercent >= 1f) _unstowedAltitude = -dish.transform.localEulerAngles.z;
+            if (_dishRotationPercent >= 1f) _unstowedAzimuth = turret.transform.localEulerAngles.y;
         }
 
-        public bool ToggleLock(Unit unit)
+        public bool IsLocked { get; private set; }
+        void Moveable.ToggleLock(Unit unit)
         {
             throw new System.NotImplementedException();
         }
