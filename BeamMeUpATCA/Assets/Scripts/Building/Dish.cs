@@ -47,17 +47,16 @@ namespace BeamMeUpATCA
             _unstowedAltitude = -dish.transform.localEulerAngles.z;
             _unstowedAzimuth = turret.transform.localEulerAngles.y;
 
-            if (IsStowed) AltazCoordinates(90f, _unstowedAzimuth);
+            if (stowedState) AltazCoordinates(90f, _unstowedAzimuth);
         }
 
         protected override void Update()
         {
             base.Update();
-            StowHanding();
 
             if (_dishRotationPercent < 1f)
             {
-                _dishRotationPercent += Time.deltaTime * rotationSpeed;
+                _dishRotationPercent += (Time.deltaTime * rotationSpeed);
                 _dishRotationPercent = Mathf.Clamp(_dishRotationPercent, 0, 1f);
                 dish.transform.localRotation =
                     Quaternion.Slerp(_dishRotationStart, _dishRotationEnd, _dishRotationPercent);
@@ -65,7 +64,7 @@ namespace BeamMeUpATCA
 
             if (_turretRotationPercent < 1f)
             {
-                _turretRotationPercent += Time.deltaTime * rotationSpeed;
+                _turretRotationPercent += (Time.deltaTime * rotationSpeed);
                 _turretRotationPercent = Mathf.Clamp(_turretRotationPercent, 0, 1f);
                 turret.transform.localRotation = 
                     Quaternion.Slerp(_turretRotationStart, _turretRotationEnd, _turretRotationPercent);
@@ -81,10 +80,16 @@ namespace BeamMeUpATCA
             // Convert altitude to negative value as for world coordinate system.
             _dishRotationEnd = Quaternion.Euler(0, 0, -altitude);
             _turretRotationEnd = Quaternion.Euler(0, azimuth, 0);
+            
+            // Comparision of Quaternion values
+            float tolerance = 0.0001f;
+            bool dishComparison = (1 - Mathf.Abs(Quaternion.Dot(_dishRotationStart, _dishRotationEnd)) < tolerance);
+            bool turretComparison = (1 - Mathf.Abs(Quaternion.Dot(_turretRotationStart, _turretRotationEnd)) < tolerance);
 
             // Reset percentage of rotation. If values are the same set job to 100% done.
-            _dishRotationPercent = _dishRotationStart == _dishRotationEnd ? 1f : 0f;
-            _turretRotationPercent = _turretRotationStart == _turretRotationEnd ? 1f : 0f;
+            _dishRotationPercent = dishComparison ? 1f : 0;
+            _turretRotationPercent = turretComparison ? 1f : 0;
+            
         }
 
         // If the dish enter slot is free add the unit to it
@@ -104,18 +109,28 @@ namespace BeamMeUpATCA
             throw new System.NotImplementedException();
         }
 
-        [field: SerializeField] public bool IsStowed { get; private set; } = false;
-        public void ToggleStow() { IsStowed = !IsStowed; }
+        [field: SerializeField] private bool stowedState = false;
+        public bool IsStowed 
+        {
+            get
+            {
+                HandleStow();
+                return stowedState;
+            }
+            set => stowedState = value;
+        }
+        
+        public void ToggleStow() { stowedState = !stowedState; }
 
-        private void StowHanding()
+        private void HandleStow()
         {
             // If it's stowed set altitude to 90f (directly up), else set it to previous state.
-            AltazCoordinates(IsStowed ? 90f : _unstowedAltitude, _unstowedAzimuth);
+            AltazCoordinates(stowedState ? 90f : _unstowedAltitude, stowedState ? 0f : _unstowedAzimuth);
             
             // Set Locked to true if IsStowed, else keep Lock state
-            IsLocked = IsStowed ? IsStowed : IsLocked;
+            IsLocked = stowedState ? stowedState : IsLocked;
             
-            if (IsStowed) return;
+            if (stowedState) return;
             // If rotation is in a final state store its changes.
             if (_dishRotationPercent >= 1f) _unstowedAltitude = -dish.transform.localEulerAngles.z;
             if (_dishRotationPercent >= 1f) _unstowedAzimuth = turret.transform.localEulerAngles.y;
