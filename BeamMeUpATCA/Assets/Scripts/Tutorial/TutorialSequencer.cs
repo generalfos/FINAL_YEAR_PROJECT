@@ -149,21 +149,6 @@ namespace BeamMeUpATCA
             }
         }
 
-        private void CameraFocus(GameObject obj)
-        {
-<<<<<<< HEAD
-            //TODO Replace with CameraController.Focus...
-            _activeCamera.transform.LookAt(Engineer.transform);
-            CreateNewPrompt("Meet The Engineer", "The engineer is one of two main unit types " +
-                "which you will use while performing an observation with the ATCA. " +
-                "\nSelect the engineer now by left clicking the unit with the mouse hovering over it. ");
-=======
-            Vector3 pos = obj.transform.position;
-            Camera.transform.position = Vector3.MoveTowards(CameraStartingPosition, new Vector3(obj.transform.position.x, 0f, obj.transform.position.z), (float) 1);
-            Camera.transform.LookAt(obj.transform.position);
->>>>>>> webscraping
-        }
-
         private void ResetCamera() 
         {
             //TODO move this to CameraController
@@ -174,30 +159,8 @@ namespace BeamMeUpATCA
         // Update to next tutorial stage on completion of a stage
         private void Update()
         {
-<<<<<<< HEAD
-            if (!popUpActive)
-            {
-                switch (tutSeqNo)
-                {
-                    case 0:
-                        Intro();
-                        break;
-                    case 1:
-                        EngineerTut();
-                        break;
-                    case 2:
-                        ResetCamera();
-                        tutSeqNo++;
-                        break;
-                }
-            }
-            else
-            {
-                PlayerInput actionSet = ActivePlayer.GetComponent<PlayerInput>();
-=======
             if (!popUpActive && !tutFinished) {
                 EnterNextTutPhase();
->>>>>>> webscraping
             }
         }
     }
