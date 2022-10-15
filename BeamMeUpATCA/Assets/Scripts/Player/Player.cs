@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using IASub = BeamMeUpATCA.InputActionSubscription;
 using IASubscriber = BeamMeUpATCA.InputActionSubscriber;
 using BeamMeUpATCA.Extensions;
+using UnityEngine.EventSystems;
 
 
 namespace BeamMeUpATCA
@@ -63,10 +64,14 @@ namespace BeamMeUpATCA
             // Binds subscribers to subscriptions to allow actions to trigger any actions
             // https://gitlab.com/teamnamefinal/Beammeupatca/-/wikis/Unity/Guides/Creating-new-InputAction-event-handles
             
-            _actionSubscriptions.Add(new IASubscriber(Input.actions["Primary Action"]), 
-                new[] { new IASub(ctx => Commander.SelectUnit(PointerPosition), IASub.PREFORMED)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Primary Action"]),
+                new[] { new IASub(ctx =>
+                { if (!IsOnUI) 
+                    { Commander.SelectUnit(PointerPosition); }}, IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Secondary Action"]), 
-                new[] { new IASub(ctx => Commander.CommandUnits<GotoCommand>(PointerPosition), IASub.PREFORMED)});
+                new[] { new IASub(ctx =>
+                { if (!IsOnUI) 
+                    { Commander.CommandUnits<GotoCommand>(PointerPosition); }}, IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Tertiary Action"]), new[] {
                 new IASub(ctx => PlayerCamera.DragRotation = true, (true, false, false)),
                 new IASub(ctx => PlayerCamera.DragRotation = false, (false, false, true))});
@@ -108,6 +113,13 @@ namespace BeamMeUpATCA
                 }
             }
         }
+
+        private void Update()
+        {
+            IsOnUI = EventSystem.current.IsPointerOverGameObject();
+        }
+
+        private static bool IsOnUI { get; set; }
 
         private void OnEnable()
         {
