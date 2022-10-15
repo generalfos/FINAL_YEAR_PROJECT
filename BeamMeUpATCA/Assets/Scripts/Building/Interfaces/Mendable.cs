@@ -73,7 +73,7 @@ namespace BeamMeUpATCA
 
         private List<Unit> Repairers { get; set; }
         
-        public void Mend(Unit unit) { if (!(Repairers.Contains(unit))) Repairers.Add(unit); }
+        public virtual void Mend(Unit unit) { if (!(Repairers.Contains(unit))) Repairers.Add(unit); }
 
         public bool IsMender(Unit unit) => Repairers.Contains(unit);
         

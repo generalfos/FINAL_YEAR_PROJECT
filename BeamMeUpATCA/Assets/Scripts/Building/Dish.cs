@@ -26,7 +26,6 @@ namespace BeamMeUpATCA
         private float _unstowedAltitude = 0f;
         private float _unstowedAzimuth = 0f;
 
-        
         protected override void Awake()
         {
             base.Awake();
@@ -99,7 +98,9 @@ namespace BeamMeUpATCA
 
         public void Move(Unit unit)
         {
-            if (unit != _unitInsideSlot) return;
+            // If the unit inside the array is not the one calling move, or the dish is locked return
+            if (unit != _unitInsideSlot || IsLocked) return;
+            
             throw new System.NotImplementedException();
         }
 
@@ -110,7 +111,10 @@ namespace BeamMeUpATCA
         {
             // If it's stowed set altitude to 90f (directly up), else set it to previous state.
             AltazCoordinates(IsStowed ? 90f : _unstowedAltitude, _unstowedAzimuth);
-
+            
+            // Set Locked to true if IsStowed, else keep Lock state
+            IsLocked = IsStowed ? IsStowed : IsLocked;
+            
             if (IsStowed) return;
             // If rotation is in a final state store its changes.
             if (_dishRotationPercent >= 1f) _unstowedAltitude = -dish.transform.localEulerAngles.z;
@@ -118,9 +122,13 @@ namespace BeamMeUpATCA
         }
 
         public bool IsLocked { get; private set; }
-        void Moveable.ToggleLock(Unit unit)
+
+        public void ToggleLock(Unit unit) { IsLocked = !IsLocked; }
+
+        public override void Mend(Unit unit)
         {
-            throw new System.NotImplementedException();
+            // Only allow locking if the building isLocked
+            if (IsLocked) base.Mend(unit);
         }
     }
 }
