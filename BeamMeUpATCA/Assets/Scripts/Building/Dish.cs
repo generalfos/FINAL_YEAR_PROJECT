@@ -6,6 +6,9 @@ namespace BeamMeUpATCA
     {
         // Dish only allows single unit inside
         private Unit _unitInsideSlot;
+
+        [field: Header("Dish Position")]
+        [SerializeField] private JunctionBox currentJunction = null;
         
         [field: Header("Dish Rotation")]
         [SerializeField] private float rotationSpeed = 2.5f;
@@ -22,10 +25,17 @@ namespace BeamMeUpATCA
         
         private float _unstowedAltitude = 0f;
         private float _unstowedAzimuth = 0f;
+
         
         protected override void Awake()
         {
             base.Awake();
+
+            // TODO: Change to call move function.
+            transform.localPosition = currentJunction is null
+                ? transform.localPosition
+                : currentJunction.ArrangementSlot.transform.position;
+
             _unitInsideSlot = null;
 
             _dishRotationStart = _dishRotationEnd = dish.transform.localRotation;
@@ -90,7 +100,6 @@ namespace BeamMeUpATCA
         public void Move(Unit unit)
         {
             if (unit != _unitInsideSlot) return;
-            
             throw new System.NotImplementedException();
         }
 
