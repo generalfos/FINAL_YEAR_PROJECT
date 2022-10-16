@@ -1,75 +1,92 @@
+using System.Collections.Generic;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
+using BeamMeUpATCA.Extensions;
 
 namespace BeamMeUpATCA
 {
     public class Dish : Mendable, Moveable, Enterable, Stowable
     {
+        #region Dish Initialization
+
         // Dish only allows single unit inside
         private Unit _unitInsideSlot;
-
+        
         [field: Header("Dish Position")]
-        [SerializeField] private JunctionBox currentJunction = null;
+        [SerializeField] private float movementSpeed = 1.5f;
+        [SerializeField] private JunctionBox currentJunction;
+
+        private Queue<JunctionBox> _pathwayToGoalBox;
+        private double _dishMovementPercent;
         
         [field: Header("Dish Rotation")]
         [SerializeField] private float rotationSpeed = 2.5f;
-        [SerializeField] private GameObject turret = null;
-        [SerializeField] private GameObject dish = null;
+        [SerializeField] private GameObject turret;
+        [SerializeField] private GameObject dish;
         
         private Quaternion _dishRotationStart = Quaternion.identity;
         private Quaternion _dishRotationEnd = Quaternion.identity;
-        private float _dishRotationPercent = 0f;
+        private float _dishRotationPercent;
         
         private Quaternion _turretRotationStart = Quaternion.identity;
         private Quaternion _turretRotationEnd = Quaternion.identity;
-        private float _turretRotationPercent = 0f;
+        private float _turretRotationPercent;
         
-        private float _unstowedAltitude = 0f;
-        private float _unstowedAzimuth = 0f;
+        private float _unstowedAltitude;
+        private float _unstowedAzimuth;
 
         protected override void Awake()
         {
             base.Awake();
+    
+            _pathwayToGoalBox = new Queue<JunctionBox>();
+            
+            // If a junction is defined dock to it
+            if (currentJunction)
+            {
+                currentJunction.Dock(this);
+            
+                // Update dish position to arrangement slot's position
+                transform.position = currentJunction.ArrangementSlot.position;
+            }
+            else
+            {
+                Debug.LogWarning("JunctionBox is not set on dish", this);
+            }
 
-            // TODO: Change to call move function.
-            transform.localPosition = currentJunction is null
-                ? transform.localPosition
-                : currentJunction.ArrangementSlot.transform.position;
-
+            // Default no units inside
             _unitInsideSlot = null;
 
+            // Default Dish rotation values
             _dishRotationStart = _dishRotationEnd = dish.transform.localRotation;
-            _dishRotationPercent = 1f;
-            
             _turretRotationStart =_turretRotationEnd = turret.transform.localRotation;
+
+            _dishMovementPercent = 1f;
+            _dishRotationPercent = 1f;
             _turretRotationPercent = 1f;
             
             // Convert altitude to negative value as for world coordinate system.
             _unstowedAltitude = -dish.transform.localEulerAngles.z;
             _unstowedAzimuth = turret.transform.localEulerAngles.y;
 
-            if (stowedState) AltazCoordinates(90f, _unstowedAzimuth);
+            if (stowedState) AltazCoordinates(90.0f, 0.0f);
         }
 
         protected override void Update()
         {
             base.Update();
-
-            if (_dishRotationPercent < 1f)
+            
+            // Update calls for movement and rotation
+            HandleRotation(Time.deltaTime);
+            if (_dishRotationPercent >= 1f && _turretRotationPercent >= 1f)
             {
-                _dishRotationPercent += (Time.deltaTime * rotationSpeed);
-                _dishRotationPercent = Mathf.Clamp(_dishRotationPercent, 0, 1f);
-                dish.transform.localRotation =
-                    Quaternion.Slerp(_dishRotationStart, _dishRotationEnd, _dishRotationPercent);
-            }
-
-            if (_turretRotationPercent < 1f)
-            {
-                _turretRotationPercent += (Time.deltaTime * rotationSpeed);
-                _turretRotationPercent = Mathf.Clamp(_turretRotationPercent, 0, 1f);
-                turret.transform.localRotation = 
-                    Quaternion.Slerp(_turretRotationStart, _turretRotationEnd, _turretRotationPercent);
+                HandleMovement(Time.deltaTime);
             }
         }
+
+        #endregion // End of 'Dish Initialization'
+        #region Rotating
 
         public void AltazCoordinates(float altitude, float azimuth)
         {
@@ -77,21 +94,189 @@ namespace BeamMeUpATCA
             _dishRotationStart = dish.transform.localRotation;
             _turretRotationStart = turret.transform.localRotation;
             
-            // Convert altitude to negative value as for world coordinate system.
-            _dishRotationEnd = Quaternion.Euler(0, 0, -altitude);
-            _turretRotationEnd = Quaternion.Euler(0, azimuth, 0);
+            // Translate given altitude to the localRotation of dish and clamp rotation to 90 degrees.
+            altitude = (360.0f - (altitude % 360f)) % 360f;
+            altitude = altitude == 0 ? 0f : Mathf.Clamp(altitude, 270f, 360f);
+
+            azimuth %= 360.0f;
+
+            _dishRotationEnd = Quaternion.Euler(0, 0, (float) altitude);
+            _turretRotationEnd = Quaternion.Euler(0, (float) azimuth, 0);
             
             // Comparision of Quaternion values
-            float tolerance = 0.0001f;
+            const float tolerance = 0.00001f;
             bool dishComparison = (1 - Mathf.Abs(Quaternion.Dot(_dishRotationStart, _dishRotationEnd)) < tolerance);
             bool turretComparison = (1 - Mathf.Abs(Quaternion.Dot(_turretRotationStart, _turretRotationEnd)) < tolerance);
 
             // Reset percentage of rotation. If values are the same set job to 100% done.
-            _dishRotationPercent = dishComparison ? 1f : 0;
-            _turretRotationPercent = turretComparison ? 1f : 0;
-            
+            _dishRotationPercent = dishComparison ? 1f : 0f;
+            _turretRotationPercent = turretComparison ? 1f : 0f;
         }
 
+        private void HandleRotation(float time)
+        {
+            bool isDishRotating = _dishRotationPercent < 1f;
+            bool isTurretRotating = _turretRotationPercent < 1f;
+            
+            if (isDishRotating)
+            {
+                _dishRotationPercent += time * rotationSpeed;
+                _dishRotationPercent = Mathf.Clamp( _dishRotationPercent, 0f, 1f);
+                dish.transform.localRotation =
+                    Quaternion.Slerp(_dishRotationStart, _dishRotationEnd, _dishRotationPercent);
+            }
+            else
+            {
+                dish.transform.localRotation = _dishRotationEnd;
+                _unstowedAltitude = IsStowed ? _unstowedAltitude : -dish.transform.localEulerAngles.z;
+            }
+
+            if (isTurretRotating)
+            {
+                _turretRotationPercent += time * rotationSpeed;
+                _turretRotationPercent = Mathf.Clamp(_turretRotationPercent, 0, 1f);
+                turret.transform.localRotation = 
+                    Quaternion.Slerp(_turretRotationStart, _turretRotationEnd, _turretRotationPercent);
+            }
+            else
+            {
+                turret.transform.localRotation = _turretRotationEnd;
+                _unstowedAzimuth = IsStowed ? _unstowedAzimuth : turret.transform.localEulerAngles.y;
+            }
+
+            if (!isDishRotating && !isTurretRotating && !IsStowed && _previousLockState.Item1)
+            {
+                IsLocked = _previousLockState.Item2;
+                _previousLockState.Item1 = false;
+            }
+        }
+
+        #endregion // End of 'Rotating'
+        #region Moving
+
+        private bool IsMoving { get; set; }
+        private bool _isStartedMoving;
+        private JunctionBox _currentGoalBox;
+        
+        public void Move(Unit unit, Transform positionAnchor)
+        {
+            // If the unit inside the array is not the one calling move, or the dish is locked return
+            if (unit != _unitInsideSlot || IsLocked || IsMoving) return;
+            
+            JunctionBox goalBox = positionAnchor.gameObject.GetComponentInParent<JunctionBox>();
+
+            // If goalBox is not a valid JunctionBox, return
+            if (!goalBox) return;
+
+            // Get pathway to goalBox
+            _pathwayToGoalBox = goalBox.DockPath(currentJunction);
+
+            _isStartedMoving = IsMoving = (_pathwayToGoalBox.Count > 0);
+            
+            // If is moving stow, else leave stowed state.
+            IsStowed = IsMoving ? IsMoving : IsStowed;
+        }
+
+        private void HandleMovement(float time)
+        {
+            if (!IsMoving) return;
+            
+            // Dock all paths to goalBox
+            if (_isStartedMoving)
+            {
+                _isStartedMoving = false;
+
+                // First position of queue is array's currentJunction, so we skip it first.
+                _currentGoalBox = _pathwayToGoalBox.Count > 0 ? _pathwayToGoalBox.Dequeue() : null;
+                _dishMovementPercent = 1f;
+            }
+            
+            // If there is any nodes in pathway queue move
+            if (_currentGoalBox)
+            {
+                // Dish is if finished previous movement, look for next
+                if (_dishMovementPercent >= 1f)
+                {
+                    currentJunction.Undock();
+                    currentJunction = _currentGoalBox;
+                    currentJunction.Dock(this);
+                    
+                    _currentGoalBox = _pathwayToGoalBox.Count > 0 ? _pathwayToGoalBox.Dequeue() : null;
+                    _dishMovementPercent = 0f;
+                }
+                else
+                {
+                    Vector3 startPosition = currentJunction.ArrangementSlot.position;
+                    Vector3 endPosition = _currentGoalBox.ArrangementSlot.position;
+                    
+                    float distance = Vector3.Distance(startPosition, endPosition);
+                    _dishMovementPercent += time * (movementSpeed / distance);
+                    _dishMovementPercent = Mathf.Clamp((float) _dishMovementPercent, 0, 1f);
+
+                    transform.position =
+                        Vector3.Lerp(startPosition, endPosition, (float) _dishMovementPercent);
+                }
+            }
+            else
+            {
+                IsStowed = IsMoving = false;
+                _dishMovementPercent = 1f;
+            }
+        }
+
+        #endregion // End of 'Moving'
+        #region Stowing
+
+        [field: SerializeField] private bool stowedState;
+        
+        // To update stowing in editor
+        private void OnValidate()
+        {
+            stowedState = stowedState || IsMoving;
+            HandleStow();
+        }
+        
+        public bool IsStowed 
+        {
+            get => stowedState;
+
+            private set
+            {
+                bool previousStowState = stowedState;
+                stowedState = value || (stowedState && IsMoving);
+                if (previousStowState != value) HandleStow();
+            }
+            
+        }
+        
+        public void ToggleStow() { stowedState = !stowedState; }
+
+        private void HandleStow()
+        {
+            // If it's stowed set altitude to 90f (directly up), else set it to previous state.
+            AltazCoordinates(stowedState ? 90.0f : _unstowedAltitude, stowedState ? 0.0f : _unstowedAzimuth);
+            
+            // Set Locked to true if IsStowed, else keep Lock state
+            if (stowedState && !IsLocked)
+            {
+                _previousLockState = (true, IsLocked);
+                IsLocked = true;
+            }
+        }
+
+        #endregion // End of 'Stowing'
+        #region Locking
+        
+        // First bool = a previous lock state is stored, second is the lock state
+        private (bool, bool) _previousLockState;
+        [field: SerializeField] public bool IsLocked { get; private set; }
+
+        public void ToggleLock(Unit unit) { IsLocked = !IsLocked; }
+        
+        #endregion // End of 'Locking'
+
+        #region Entering
+        
         // If the dish enter slot is free add the unit to it
         public void Enter(Unit unit) { _unitInsideSlot ??= unit; }
 
@@ -101,49 +286,15 @@ namespace BeamMeUpATCA
         // If unit is inside the building remove them from the list.
         public void Leave(Unit unit) { if (IsInside(unit)) _unitInsideSlot = null; }
 
-        public void Move(Unit unit)
-        {
-            // If the unit inside the array is not the one calling move, or the dish is locked return
-            if (unit != _unitInsideSlot || IsLocked) return;
-            
-            throw new System.NotImplementedException();
-        }
-
-        [field: SerializeField] private bool stowedState = false;
-        public bool IsStowed 
-        {
-            get
-            {
-                HandleStow();
-                return stowedState;
-            }
-            set => stowedState = value;
-        }
+        #endregion // End of 'Entering'
+        #region Mending
         
-        public void ToggleStow() { stowedState = !stowedState; }
-
-        private void HandleStow()
-        {
-            // If it's stowed set altitude to 90f (directly up), else set it to previous state.
-            AltazCoordinates(stowedState ? 90f : _unstowedAltitude, stowedState ? 0f : _unstowedAzimuth);
-            
-            // Set Locked to true if IsStowed, else keep Lock state
-            IsLocked = stowedState ? stowedState : IsLocked;
-            
-            if (stowedState) return;
-            // If rotation is in a final state store its changes.
-            if (_dishRotationPercent >= 1f) _unstowedAltitude = -dish.transform.localEulerAngles.z;
-            if (_dishRotationPercent >= 1f) _unstowedAzimuth = turret.transform.localEulerAngles.y;
-        }
-
-        public bool IsLocked { get; private set; }
-
-        public void ToggleLock(Unit unit) { IsLocked = !IsLocked; }
-
         public override void Mend(Unit unit)
         {
             // Only allow locking if the building isLocked
             if (IsLocked) base.Mend(unit);
         }
+        
+        #endregion // End of 'Mending'
     }
 }

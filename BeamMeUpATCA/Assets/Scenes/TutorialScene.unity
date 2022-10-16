@@ -7063,7 +7063,7 @@ PrefabInstance:
     - target: {fileID: 7927623839296212002, guid: 42f2677eced4d04409d1d995028e8fe6, type: 3}
       propertyPath: currentJunction
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5325340873356350065}
     - target: {fileID: 8433904437737376621, guid: 42f2677eced4d04409d1d995028e8fe6, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -7271,7 +7271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483bb968cfa220147a8d654d1bf19b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <jsonData>k__BackingField: {fileID: 0}
+  <jsonData>k__BackingField: {fileID: 4900000, guid: b5ded724abafdde4881ae98bfb02bb8d, type: 3}
   <TutPopUpPrefab>k__BackingField: {fileID: 1279036142915533037, guid: 7733404bf30d1a0458857c54d0327bf2, type: 3}
   <Engineer>k__BackingField: {fileID: 1119936728}
   <Canvas>k__BackingField: {fileID: 1047878528}
@@ -17351,6 +17351,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
   m_PrefabInstance: {fileID: 5325340873356350063}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5325340873356350065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+  m_PrefabInstance: {fileID: 5325340873356350063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8341d81a47ef493f8a532bfa9b7c1d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5391147532192068490
 PrefabInstance:
   m_ObjectHideFlags: 0

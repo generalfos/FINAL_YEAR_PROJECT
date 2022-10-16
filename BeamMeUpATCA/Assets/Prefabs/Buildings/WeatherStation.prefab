@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 5574204411258053787}
   - component: {fileID: 5391147530827277836}
   - component: {fileID: 2798762394852738855}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WeatherStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}

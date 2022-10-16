@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using BeamMeUpATCA.Extensions;
 using UnityEngine;
 
@@ -56,6 +57,21 @@ namespace BeamMeUpATCA
         [SerializeField] private PlayerUI playerUI;
         public static PlayerUI UI => Instance.SafeComponent<PlayerUI>(ref Instance.playerUI);
         
+        private Building[] _buildings;
+        public static Building[] Buildings => Instance._buildings ??= FindObjectsOfType<Building>();
+
+        public static List<T> GetBuildings<T>() where T : Building
+        {
+            List<T> buildingList = new List<T>();
+            foreach (Building building in Buildings) 
+            {
+                if (building is T buildingOfT) {
+                    buildingList.Add(buildingOfT);
+                }
+            }
+            return buildingList;
+        }
+
         private void Awake()
         {
             // For singleton management

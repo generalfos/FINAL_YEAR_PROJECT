@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 5166831651531054697}
   - component: {fileID: 4629418384719694886}
   - component: {fileID: 1649066327129766571}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ObservationStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}

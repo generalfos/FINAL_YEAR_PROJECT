@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 8433904437737376621}
   - component: {fileID: 2247031994665216946}
   - component: {fileID: 7927623839296212002}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Array
   m_TagString: Array
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ MonoBehaviour:
   rotationSpeed: 2.5
   turret: {fileID: 3423442496130751063}
   dish: {fileID: 6610624388357075951}
-  <IsStowed>k__BackingField: 0
+  stowedState: 0
 --- !u!1 &3423442496130751063
 GameObject:
   m_ObjectHideFlags: 0
