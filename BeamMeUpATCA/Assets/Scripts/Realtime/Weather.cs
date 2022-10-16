@@ -5,7 +5,7 @@
  * and then modifying the game state to reflect this.
  * 
  * @author: Joel Foster
- * @last_edited: 4/10/2022 22:03
+ * @last_edited: 16/10/2022 22:03
  */
 
 using UnityEngine;
@@ -13,7 +13,10 @@ using UnityEngine.Networking;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using HtmlAgilityPack;
+
 // using System.Text.RegularExpressions;
 
 namespace BeamMeUpATCA
@@ -99,40 +102,118 @@ namespace BeamMeUpATCA
         // const string tr_pattern = "<tr>(.*?)</tr>";
         // const string td_pattern = "<td.*?>(.*?)</td>";
         // private Regex regex = new Regex(@"Australia Telescope (Culgoora)", RegexOptions.IgnoreCase);
-        [SerializeField]
-        TextAsset jsonData;
+
+        private int curr_temp;
+        private double azimuth;
+        private double elevation;
 
         private void Awake() 
         {
             Debug.Log("Weather start");
             // http://www.bom.gov.au/fwo/IDN60801/IDN60801.95734.json
             // https://ozforecast.com.au/cgi-bin/weatherstation.cgi?station=11001
-            StartCoroutine(weatherGetRequest("http://www.bom.gov.au/fwo/IDN60801/IDN60801.95734.json"));
+            // https://www.narrabri.atnf.csiro.au/cgi-bin/Public/atca_live.cgi/
+            StartCoroutine(dataCSIROGetRequest("https://www.narrabri.atnf.csiro.au/cgi-bin/Public/atca_live.cgi/"));
+            StartCoroutine(ozWeatherGetRequest("https://ozforecast.com.au/cgi-bin/weatherstation.cgi?station=11001"));
+            // StartCoroutine(weatherCurrentGetRequest("http://www.bom.gov.au/fwo/IDN60801/IDN60801.95734.json"));
+            // StartCoroutine(weatherPredictionGetRequest("https://ozforecast.com.au/cgi-bin/weatherstation.cgi?station=11001"));
         }
 
-        private IEnumerator weatherGetRequest(string url)
+        private IEnumerator dataCSIROGetRequest(string url)
+        {
+            using (UnityWebRequest req = UnityWebRequest.Get(url))
+            {
+                yield return req.SendWebRequest();
+
+                checkReqStatus(req);
+
+                // Parse HTML
+                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                doc.LoadHtml(req.downloadHandler.text);
+                HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("//div[@class='box']/text()");
+                HtmlNodeCollection nodes2 = doc.DocumentNode.SelectNodes("//div[@class='box']/*");
+                string weatherStatus = ((HtmlTextNode)nodes[4]).InnerText;
+                string antennaStates = ((HtmlTextNode)nodes[7]).InnerText;
+                string observationState = ((HtmlTextNode)nodes[8]).InnerText;
+
+                // Retrieve Current Temp
+                Regex tempRegex = new Regex(@"\d+ degrees Celsius", RegexOptions.IgnoreCase);
+                Match tempMatch = tempRegex.Match(weatherStatus);
+                string tempString = Regex.Match(tempMatch.Value, @"\d+").Value;
+                curr_temp = Int32.Parse(tempString);
+
+                // Retrieve which antennas are stowed
+                Regex stowRegex = new Regex(@"antenna \d is stowed", RegexOptions.IgnoreCase);
+                MatchCollection matchList = stowRegex.Matches(antennaStates);
+
+                // Retrieve azimuth
+                Regex azimuthRegex = new Regex(@"azimuth of \d+\.\d+ degrees", RegexOptions.IgnoreCase);
+                Match azimuthMatch = azimuthRegex.Match(observationState);
+                string azimuthString = Regex.Match(azimuthMatch.Value, @"\d+\.\d+").Value;
+                azimuth = Double.Parse(azimuthString);
+
+                // Retrieve elevation
+                Regex elevationRegex = new Regex(@"elevation of \d+\.\d+ degrees", RegexOptions.IgnoreCase);
+                Match elevationMatch = elevationRegex.Match(observationState);
+                string elevationString = Regex.Match(elevationMatch.Value, @"\d+\.\d+").Value;
+                elevation = Double.Parse(elevationString);
+
+                // Retrieve 
+                Debug.Log(nodes);
+            }
+        }
+
+        private IEnumerator bomWeatherGetRequest(string url)
         { 
             using (UnityWebRequest req = UnityWebRequest.Get(url))
             {
                 req.SetRequestHeader("user-agent", "");
                 yield return req.SendWebRequest();
 
-                switch (req.result)
-                {
-                    case UnityWebRequest.Result.Success:
-                        Debug.Log(":\nReceived: " + req.downloadHandler.text);
-                        break;
-                    default:
-                        Debug.LogError("Request Error; " + req.result);
-                        break;
-                }
+                checkReqStatus(req);
+
                 string jsonString = req.downloadHandler.text;
-                var record = JsonConvert.DeserializeObject<Root>(jsonString);
+                Root record = JsonConvert.DeserializeObject<Root>(jsonString);
                 Debug.Log(record);
-                // var elem = doc.GetElementById("ozf");
-                // Debug.Log(elem);
-                // var captured_text = regex.Match(doc);
-                // Debug.Log(string.Format("'{0}' found", captured_text.Value));
+            }
+        }
+
+        private IEnumerator ozWeatherGetRequest(string url)
+        {
+            using (UnityWebRequest req = UnityWebRequest.Get(url))
+            {
+                yield return req.SendWebRequest();
+
+                checkReqStatus(req);
+
+                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                doc.LoadHtml(req.downloadHandler.text);
+                HtmlNodeCollection tables = doc.DocumentNode.SelectNodes("//div[@class='dontprint']/table");
+                string data = tables[0].InnerText;
+                Debug.Log("End");
+            }
+        }
+
+        private IEnumerator weatherPredictionGetRequest(string url)
+        {
+            using (UnityWebRequest req = UnityWebRequest.Get(url))
+            {
+                yield return req.SendWebRequest();
+
+                checkReqStatus(req);
+            }
+        }
+
+        private void checkReqStatus(UnityWebRequest req)
+        {
+            switch (req.result)
+            {
+                case UnityWebRequest.Result.Success:
+                    Debug.Log(":\nReceived: " + req.downloadHandler.text);
+                    break;
+                default:
+                    Debug.LogError("Request Error; " + req.result);
+                    break;
             }
         }
     }
