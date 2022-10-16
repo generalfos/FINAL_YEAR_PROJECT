@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BeamMeUpATCA
@@ -49,6 +50,22 @@ namespace BeamMeUpATCA
         // Shortcut to get GameManager's active player. Again if multiple player exist this would break.
         // Systems would have to get UI for the correct player object.
         public PlayerUI UI => Player.UI; 
+
+        private Building[] _buildings;
+        public Building[] Buildings => _buildings ??= FindObjectsOfType<Building>();
+
+        public List<T> GetBuildings<T>() where T : Building
+        {
+            List<T> buildingList = new List<T>();
+            foreach (Building building in Buildings) 
+            {
+                if (building is T buildingOfT) {
+                    buildingList.Add(buildingOfT);
+                }
+            }
+            return buildingList;
+        }
+
         private void Awake()
         {
             // For singleton management
