@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5498123932669647159}
   - component: {fileID: 4710214964532090956}
   - component: {fileID: 1961372224636117939}
-  m_Layer: 0
+  - component: {fileID: 7867387003865309912}
+  m_Layer: 8
   m_Name: ArrangementSlot
   m_TagString: ConfigSlot
   m_Icon: {fileID: 0}
@@ -95,6 +96,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 10, z: 1}
   m_Center: {x: 0.00000047683716, y: 4.5, z: 0.0000009536452}
+--- !u!114 &7867387003865309912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84539592780226255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e030f237930f5044a68173f141c275d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2292623077212986030
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +121,7 @@ GameObject:
   - component: {fileID: 347328003271506811}
   - component: {fileID: 7339026480650777550}
   - component: {fileID: 369940739698785219}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: JunctionBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
