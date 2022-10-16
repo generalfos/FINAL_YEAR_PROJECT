@@ -13,6 +13,7 @@ using UnityEngine.Networking;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using HtmlAgilityPack;
@@ -103,17 +104,21 @@ namespace BeamMeUpATCA
         // const string td_pattern = "<td.*?>(.*?)</td>";
         // private Regex regex = new Regex(@"Australia Telescope (Culgoora)", RegexOptions.IgnoreCase);
 
-        private int curr_temp;
-        private double azimuth;
-        private double elevation;
+        private int currTemp;
+        private double currAzimuth;
+        private double currElevation;
+        private string currObservationTarget;
+        private string currConfig;
+        private List<int> currStowedArrays;
 
         private void Awake() 
         {
             Debug.Log("Weather start");
+            currStowedArrays = new List<int>();
             // http://www.bom.gov.au/fwo/IDN60801/IDN60801.95734.json
             // https://ozforecast.com.au/cgi-bin/weatherstation.cgi?station=11001
             // https://www.narrabri.atnf.csiro.au/cgi-bin/Public/atca_live.cgi/
-            StartCoroutine(dataCSIROGetRequest("https://www.narrabri.atnf.csiro.au/cgi-bin/Public/atca_live.cgi/"));
+            // StartCoroutine(dataCSIROGetRequest("https://www.narrabri.atnf.csiro.au/cgi-bin/Public/atca_live.cgi/"));
             StartCoroutine(ozWeatherGetRequest("https://ozforecast.com.au/cgi-bin/weatherstation.cgi?station=11001"));
             // StartCoroutine(weatherCurrentGetRequest("http://www.bom.gov.au/fwo/IDN60801/IDN60801.95734.json"));
             // StartCoroutine(weatherPredictionGetRequest("https://ozforecast.com.au/cgi-bin/weatherstation.cgi?station=11001"));
@@ -130,35 +135,51 @@ namespace BeamMeUpATCA
                 // Parse HTML
                 HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
                 doc.LoadHtml(req.downloadHandler.text);
-                HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("//div[@class='box']/text()");
-                HtmlNodeCollection nodes2 = doc.DocumentNode.SelectNodes("//div[@class='box']/*");
-                string weatherStatus = ((HtmlTextNode)nodes[4]).InnerText;
-                string antennaStates = ((HtmlTextNode)nodes[7]).InnerText;
-                string observationState = ((HtmlTextNode)nodes[8]).InnerText;
+                HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("//div[@class='box']/*");
+                string weatherStatus = (nodes[3].NextSibling).InnerText;
+                string antennaStates = (nodes[8].NextSibling).InnerText;
+                string observationTarget = (nodes[9]).InnerText;
+                string observationState = (nodes[9].NextSibling).InnerText;
+                string configState = (nodes[10]).InnerText;
 
                 // Retrieve Current Temp
                 Regex tempRegex = new Regex(@"\d+ degrees Celsius", RegexOptions.IgnoreCase);
                 Match tempMatch = tempRegex.Match(weatherStatus);
                 string tempString = Regex.Match(tempMatch.Value, @"\d+").Value;
-                curr_temp = Int32.Parse(tempString);
+                currTemp = Int32.Parse(tempString);
 
                 // Retrieve which antennas are stowed
-                Regex stowRegex = new Regex(@"antenna \d is stowed", RegexOptions.IgnoreCase);
-                MatchCollection matchList = stowRegex.Matches(antennaStates);
+                Regex stowRegex = new Regex(@"antenna \d+(([ ]*,[ ]*\d+)+)? is stowed", RegexOptions.IgnoreCase);
+                Match stowMatch = stowRegex.Match(antennaStates);
+                MatchCollection stowedArrays = Regex.Matches(stowMatch.Value, @"\d");
+                var matchList = (from Match m in Regex.Matches(stowMatch.Value, @"\d") select m.Value);
+                foreach (string array in matchList)
+                {
+                    int arrayNo = Int32.Parse(array);
+                    currStowedArrays.Add(arrayNo);
+                }
+
+                // Retrieve observation target
+                currObservationTarget = observationTarget; 
 
                 // Retrieve azimuth
                 Regex azimuthRegex = new Regex(@"azimuth of \d+\.\d+ degrees", RegexOptions.IgnoreCase);
                 Match azimuthMatch = azimuthRegex.Match(observationState);
                 string azimuthString = Regex.Match(azimuthMatch.Value, @"\d+\.\d+").Value;
-                azimuth = Double.Parse(azimuthString);
+                currAzimuth = Double.Parse(azimuthString);
 
                 // Retrieve elevation
                 Regex elevationRegex = new Regex(@"elevation of \d+\.\d+ degrees", RegexOptions.IgnoreCase);
                 Match elevationMatch = elevationRegex.Match(observationState);
                 string elevationString = Regex.Match(elevationMatch.Value, @"\d+\.\d+").Value;
-                elevation = Double.Parse(elevationString);
+                currElevation = Double.Parse(elevationString);
 
-                // Retrieve 
+                // Retrieve current config
+                Regex configRegex = new Regex(@"\w+ array", RegexOptions.IgnoreCase);
+                Match configMatch = configRegex.Match(configState);
+                string configString = Regex.Match(configMatch.Value, @"\d+").Value;
+                currConfig = configString.Trim();
+
                 Debug.Log(nodes);
             }
         }
@@ -189,7 +210,10 @@ namespace BeamMeUpATCA
                 HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
                 doc.LoadHtml(req.downloadHandler.text);
                 HtmlNodeCollection tables = doc.DocumentNode.SelectNodes("//div[@class='dontprint']/table");
-                string data = tables[0].InnerText;
+                string tableString = tables[0].InnerText;
+                Regex ozDataRegex = new Regex(@"(?: Australia Telescope \(Culgoora\)).+");
+                string dataString = ozDataRegex.Match(tableString).Value;
+                string[] dataArgs = dataString.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 Debug.Log("End");
             }
         }
