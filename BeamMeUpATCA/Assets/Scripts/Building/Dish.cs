@@ -41,11 +41,19 @@ namespace BeamMeUpATCA
             base.Awake();
     
             _pathwayToGoalBox = new Queue<JunctionBox>();
-            // If a junction is defined dock to it
-            if (currentJunction) currentJunction.Dock(this);
             
-            // Update dish position to arrangement slot's position
-            transform.position = currentJunction.ArrangementSlot.position;
+            // If a junction is defined dock to it
+            if (currentJunction)
+            {
+                currentJunction.Dock(this);
+            
+                // Update dish position to arrangement slot's position
+                transform.position = currentJunction.ArrangementSlot.position;
+            }
+            else
+            {
+                Debug.LogWarning("JunctionBox is not set on dish", this);
+            }
 
             // Default no units inside
             _unitInsideSlot = null;
