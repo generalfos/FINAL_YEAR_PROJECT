@@ -52,7 +52,10 @@ namespace BeamMeUpATCA
         [Obsolete("If you can make a good case for using this, remove this obsolete attribute. Public to allow some code to not break.")]
         public static Player Player => Instance._player ??= FindObjectsOfType<Player>()[0];
         
+        // TODO: Change GameManager.Player to private and remove obsolete tag + #pragma lines below.
+        #pragma warning disable 0618
         public static CameraController CameraController => Player.PlayerCamera;
+        #pragma warning restore 0618
 
         [SerializeField] private PlayerUI playerUI;
         public static PlayerUI UI => Instance.SafeComponent<PlayerUI>(ref Instance.playerUI);
