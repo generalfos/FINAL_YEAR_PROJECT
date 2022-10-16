@@ -25,19 +25,11 @@ namespace BeamMeUpATCA
         [SerializeField] private UnitCommander commander;
         private UnitCommander Commander => this.SafeComponent<UnitCommander>(ref commander);
 
-        [SerializeField] private PlayerUI playerUI;
-        public PlayerUI UI => this.SafeComponent<PlayerUI>(ref playerUI);
-
         private void Awake()
         {
             // Set camera references to the Player's CameraController camera. Accessing property
             // Is okay as it handles the null checking and handles any missing inspector elements.
             Commander.ActiveCamera = Input.camera = PlayerCamera.ActiveCamera;
-
-            // TODO: Refactor to remove codependency. Consider Decoupling PlayerUI from UnitCommander. Such that-
-            // selection would be done in PlayerUI, which would then add/remove the units from the UnitCommander.
-            Commander.UI = UI;
-            UI.Commander = Commander;
 
             DefineSubscriptions();
         }

@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using BeamMeUpATCA.Extensions;
 using UnityEngine;
 
 namespace BeamMeUpATCA
@@ -39,22 +41,26 @@ namespace BeamMeUpATCA
             }
         }
 
-        public static bool IsQuitting { get; private set; }
+        private static bool IsQuitting { get; set; }
         private void OnApplicationQuit() { IsQuitting = true; }
         #endregion // End of 'Singleton Management'
 
         // Returns the first player found and sets the private representation of player to match.
         // If this system was to support multiplayer searches for players would have to be indexed
         private Player _player;
-        public Player Player => _player ??= FindObjectsOfType<Player>()[0];
-        // Shortcut to get GameManager's active player. Again if multiple player exist this would break.
-        // Systems would have to get UI for the correct player object.
-        public PlayerUI UI => Player.UI; 
+        
+        [Obsolete("If you can make a good case for using this, remove this obsolete attribute. Public to allow some code to not break.")]
+        public static Player Player => Instance._player ??= FindObjectsOfType<Player>()[0];
+        
+        public static CameraController CameraController => Player.PlayerCamera;
 
+        [SerializeField] private PlayerUI playerUI;
+        public static PlayerUI UI => Instance.SafeComponent<PlayerUI>(ref Instance.playerUI);
+        
         private Building[] _buildings;
-        public Building[] Buildings => _buildings ??= FindObjectsOfType<Building>();
+        public static Building[] Buildings => Instance._buildings ??= FindObjectsOfType<Building>();
 
-        public List<T> GetBuildings<T>() where T : Building
+        public static List<T> GetBuildings<T>() where T : Building
         {
             List<T> buildingList = new List<T>();
             foreach (Building building in Buildings) 

@@ -1,21 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
-using Object = UnityEngine.Object;
 
 namespace BeamMeUpATCA
 {
     public class PlayerUI : MonoBehaviour
     {
-        
-        public UnitCommander Commander { private get; set; }
-
-        // Wrapper Function for UI elements to call to issue commands to Units.
-        // 
-        public void CommandUnits<T>(Vector2 position) where T : Command 
-        {
-            Commander.CommandUnits<T>(position);
-        }
         #region UnitUI
         // TODO: Currently this is a 'HACK' implementation. The Select Unit just looks for the first UnitUI.
         // TODO: Instead each Unit should have it's own unitUI element which is selected/deselected as needed.

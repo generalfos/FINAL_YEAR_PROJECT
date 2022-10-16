@@ -63,7 +63,7 @@ namespace BeamMeUpATCA
         [field: SerializeField] public TextAsset jsonData { get; private set; }
         // External references to game objects necessary for tutorial progress.
         [field: SerializeField] public GameObject TutPopUpPrefab { get; private set; }
-        [field: SerializeField] private Player ActivePlayer { get; set; }
+
         private CameraController _activeCamera;
         [field: SerializeField] public GameObject Engineer { get; private set; }
         [field: SerializeField] public GameObject Canvas { get; private set; }
@@ -82,7 +82,7 @@ namespace BeamMeUpATCA
         // Awake is init function. Start before first frame
         private void Awake()
         {
-            _activeCamera = ActivePlayer.PlayerCamera;
+            _activeCamera = GameManager.CameraController;
             tutSeqNo = 0;
             popUpActive = false;
             tutFinished = false;
@@ -152,6 +152,7 @@ namespace BeamMeUpATCA
         private void ResetCamera() 
         {
             //TODO move this to CameraController
+            //TODO: _activeCamera here is not a camera. It's a CameraController.
             _activeCamera.transform.position = CameraStartingPosition;
             _activeCamera.transform.rotation = CameraStartingRotation;
         }
