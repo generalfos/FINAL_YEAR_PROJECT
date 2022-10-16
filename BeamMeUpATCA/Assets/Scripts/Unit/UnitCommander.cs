@@ -12,11 +12,6 @@ namespace BeamMeUpATCA
             private get { return this.SafeComponent<Camera>(ref _camera); }
             set { _camera = value; }}
 
-        private PlayerUI _playerUI;
-        public PlayerUI UI { 
-            private get { return this.SafeComponent<PlayerUI>(ref _playerUI); }
-            set { _playerUI = value; }}
-  
         // List of units that are currently selected.
         private List<Unit> _selectedUnits;
 
@@ -33,7 +28,7 @@ namespace BeamMeUpATCA
                 // Prevent selecting the same unit multiple times
                 if (_selectedUnits.Contains(selectedUnit)) return;
 
-                this.UI.SelectUnit(selectedUnit);
+                GameManager.UI.SelectUnit(selectedUnit);
                 _selectedUnits.Add(selectedUnit);
             }
             else
@@ -42,9 +37,9 @@ namespace BeamMeUpATCA
             }
         }
 
-        public void DeselectAllUnits() 
+        private void DeselectAllUnits() 
         {
-            this.UI.DeselectAllUnits();
+            GameManager.UI.DeselectAllUnits();
             _selectedUnits.Clear();
         }
 
