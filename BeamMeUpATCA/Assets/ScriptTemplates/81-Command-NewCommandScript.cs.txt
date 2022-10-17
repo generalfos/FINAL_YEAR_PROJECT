@@ -10,7 +10,7 @@ namespace BeamMeUpATCA
         // SkipQueue = false; // Gives this command priority
         // ResetQueue = false; // Command clears command queue
         // Position = Vector3.zero; // Position where command is issued.
-        override protected void DefineCommand() {}
+        protected override void CommandAwake() {}
 
         // Called once when command is first executed
         // Similar to Start()/Awake() but executed after both.

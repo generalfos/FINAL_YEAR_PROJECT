@@ -33,13 +33,14 @@ namespace BeamMeUpATCA
         private UnitPathfinder _pathfinder;
         public UnitPathfinder Pathfinder => _pathfinder ??= new UnitPathfinder(this);
 
-        public Building BuildingInside { get; set; }
-
         // Sets color to black if UnitClass is not defined.
         public Color UnitColor => ColorDict[UnitClass];
         
         private float _moraleTickDmg;
         private float _maxMorale;
+
+        [Obsolete("This is being replaced in new building feature branch")]
+        public float GetInTownCounter() => 0f;
 
         private void Awake()
         {
@@ -53,7 +54,53 @@ namespace BeamMeUpATCA
             _commandQueue = new Queue<Command>();
         }
 
-        #endregion // Unit Properties
+        #endregion // End of 'Unit Properties'
+        
+        #region Enter Building
+
+        public Building BuildingInside { get; private set; } = null;
+
+        private Renderer _renderer;
+        private Renderer Renderer => _renderer ??= GetComponent<Renderer>();
+        
+        private Collider _collider;
+        private Collider Collider => _collider ??= GetComponent<Collider>();
+
+        public void EnterBuilding(Building building)
+        {
+            // Set self inside building to building arg
+            BuildingInside = building;
+            
+            // Hide unit, disable clicking, and set unit inside building.
+            Renderer.enabled = false;
+            Collider.enabled = false;
+
+            // Set X and Z positions of Unit. Y height is kept to prevent world clipping
+            Vector3 buildingPos = BuildingInside.transform.position;
+            Transform unitTransform = transform;
+            unitTransform.position = new Vector3(buildingPos.x, unitTransform.position.y, buildingPos.z);
+        }
+        
+        public void ExitBuilding()
+        {
+            // If Building is null then exit building does nothing just return
+            if (BuildingInside is null) return;
+            
+            // Hide unit, disable clicking, and set unit inside building.
+            Renderer.enabled = true;
+            Collider.enabled = true;
+
+            // Set X and Z positions of Unit. Y height is kept to prevent world clipping
+            Vector3 buildingAnchorPos = BuildingInside.Anchors.GetAnchorPoint();
+            Transform unitTransform = transform;
+            unitTransform.position = new Vector3(buildingAnchorPos.x, unitTransform.position.y, buildingAnchorPos.z);
+            
+            // Set self inside building to null
+            BuildingInside = null;
+        }
+
+        #endregion // End of 'Enter Building'
+        
 
         #region Commanding
 
@@ -117,10 +164,7 @@ namespace BeamMeUpATCA
         private void DestroyCommand(Command command)
         {
             // Guard Clause ensuring command is valid.
-            if (command is null)
-            {
-                return;
-            }
+            if (command is null)return;
 
             // Debug.Log("Destroying Command: " + command.Name);
             Destroy(command);
@@ -194,9 +238,9 @@ namespace BeamMeUpATCA
             }
         }
 
-        #endregion // Commanding
+        #endregion // End of 'Commanding'
 
-        #region TickUpdates
+        #region Morale Degradation
 
         private void TakeTickDamage()
         {
@@ -213,6 +257,6 @@ namespace BeamMeUpATCA
             UnitMorale = newMorale;
         }
         
-        #endregion //TickUpdates
+        #endregion // End of 'Morale Degradation'
     }
 }

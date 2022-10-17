@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1828348691772819567}
   - component: {fileID: 2221717243862309304}
   - component: {fileID: 1647449697562692495}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EngineerStation
   m_TagString: EngineerShed
   m_Icon: {fileID: 0}

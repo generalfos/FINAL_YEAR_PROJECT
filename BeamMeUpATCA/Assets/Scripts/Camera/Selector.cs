@@ -55,22 +55,25 @@ namespace BeamMeUpATCA
                 // Check for building to grab anchor point
                 Building building = hit.transform.gameObject.GetComponent<Building>();
                 
-                if (building != null)
+                if (!(building is null))
                 {
                     return building.Anchors.GetAnchorPoint();
                 }
 
-                NavMeshHit myNavHit;
-                if(NavMesh.SamplePosition(hit.point, out myNavHit, 100 , -1))
+                if(NavMesh.SamplePosition(hit.point, out NavMeshHit myNavHit, 100 , -1))
                 {
                     result = myNavHit.position;
                 }
-                result = hit.point;
+                else
+                {
+                    result = hit.point;
+                }
+
             }
             // If this isn't unit 1 then add offset to result destination.
             if (unitOffset != 0) 
             {
-            result += Quaternion.Euler(0, startingAngle + loopAngle, 0) * (Vector3.forward * unitSpacing);
+                result += Quaternion.Euler(0, startingAngle + loopAngle, 0) * (Vector3.forward * unitSpacing);
             }
             return result;
         }
