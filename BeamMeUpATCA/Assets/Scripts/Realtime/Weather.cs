@@ -5,7 +5,7 @@
  * and then modifying the game state to reflect this.
  * 
  * @author: Joel Foster
- * @last_edited: 4/10/2022 22:03
+ * @last_edited: 16/10/2022 22:03
  */
 
 using UnityEngine;
@@ -13,7 +13,11 @@ using UnityEngine.Networking;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using HtmlAgilityPack;
+
 // using System.Text.RegularExpressions;
 
 namespace BeamMeUpATCA
@@ -99,40 +103,141 @@ namespace BeamMeUpATCA
         // const string tr_pattern = "<tr>(.*?)</tr>";
         // const string td_pattern = "<td.*?>(.*?)</td>";
         // private Regex regex = new Regex(@"Australia Telescope (Culgoora)", RegexOptions.IgnoreCase);
-        [SerializeField]
-        TextAsset jsonData;
+
+        private int currTemp;
+        private double currAzimuth;
+        private double currElevation;
+        private string currObservationTarget;
+        private string currConfig;
+        private List<int> currStowedArrays;
 
         private void Awake() 
         {
             Debug.Log("Weather start");
+            currStowedArrays = new List<int>();
             // http://www.bom.gov.au/fwo/IDN60801/IDN60801.95734.json
             // https://ozforecast.com.au/cgi-bin/weatherstation.cgi?station=11001
-            StartCoroutine(weatherGetRequest("http://www.bom.gov.au/fwo/IDN60801/IDN60801.95734.json"));
+            // https://www.narrabri.atnf.csiro.au/cgi-bin/Public/atca_live.cgi/
+            // StartCoroutine(dataCSIROGetRequest("https://www.narrabri.atnf.csiro.au/cgi-bin/Public/atca_live.cgi/"));
+            StartCoroutine(ozWeatherGetRequest("https://ozforecast.com.au/cgi-bin/weatherstation.cgi?station=11001"));
+            // StartCoroutine(weatherCurrentGetRequest("http://www.bom.gov.au/fwo/IDN60801/IDN60801.95734.json"));
+            // StartCoroutine(weatherPredictionGetRequest("https://ozforecast.com.au/cgi-bin/weatherstation.cgi?station=11001"));
         }
 
-        private IEnumerator weatherGetRequest(string url)
+        private IEnumerator dataCSIROGetRequest(string url)
+        {
+            using (UnityWebRequest req = UnityWebRequest.Get(url))
+            {
+                yield return req.SendWebRequest();
+
+                checkReqStatus(req);
+
+                // Parse HTML
+                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                doc.LoadHtml(req.downloadHandler.text);
+                HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("//div[@class='box']/*");
+                string weatherStatus = (nodes[3].NextSibling).InnerText;
+                string antennaStates = (nodes[8].NextSibling).InnerText;
+                string observationTarget = (nodes[9]).InnerText;
+                string observationState = (nodes[9].NextSibling).InnerText;
+                string configState = (nodes[10]).InnerText;
+
+                // Retrieve Current Temp
+                Regex tempRegex = new Regex(@"\d+ degrees Celsius", RegexOptions.IgnoreCase);
+                Match tempMatch = tempRegex.Match(weatherStatus);
+                string tempString = Regex.Match(tempMatch.Value, @"\d+").Value;
+                currTemp = Int32.Parse(tempString);
+
+                // Retrieve which antennas are stowed
+                Regex stowRegex = new Regex(@"antenna \d+(([ ]*,[ ]*\d+)+)? is stowed", RegexOptions.IgnoreCase);
+                Match stowMatch = stowRegex.Match(antennaStates);
+                MatchCollection stowedArrays = Regex.Matches(stowMatch.Value, @"\d");
+                var matchList = (from Match m in Regex.Matches(stowMatch.Value, @"\d") select m.Value);
+                foreach (string array in matchList)
+                {
+                    int arrayNo = Int32.Parse(array);
+                    currStowedArrays.Add(arrayNo);
+                }
+
+                // Retrieve observation target
+                currObservationTarget = observationTarget; 
+
+                // Retrieve azimuth
+                Regex azimuthRegex = new Regex(@"azimuth of \d+\.\d+ degrees", RegexOptions.IgnoreCase);
+                Match azimuthMatch = azimuthRegex.Match(observationState);
+                string azimuthString = Regex.Match(azimuthMatch.Value, @"\d+\.\d+").Value;
+                currAzimuth = Double.Parse(azimuthString);
+
+                // Retrieve elevation
+                Regex elevationRegex = new Regex(@"elevation of \d+\.\d+ degrees", RegexOptions.IgnoreCase);
+                Match elevationMatch = elevationRegex.Match(observationState);
+                string elevationString = Regex.Match(elevationMatch.Value, @"\d+\.\d+").Value;
+                currElevation = Double.Parse(elevationString);
+
+                // Retrieve current config
+                Regex configRegex = new Regex(@"\w+ array", RegexOptions.IgnoreCase);
+                Match configMatch = configRegex.Match(configState);
+                string configString = Regex.Match(configMatch.Value, @"\d+").Value;
+                currConfig = configString.Trim();
+
+                Debug.Log(nodes);
+            }
+        }
+
+        private IEnumerator bomWeatherGetRequest(string url)
         { 
             using (UnityWebRequest req = UnityWebRequest.Get(url))
             {
                 req.SetRequestHeader("user-agent", "");
                 yield return req.SendWebRequest();
 
-                switch (req.result)
-                {
-                    case UnityWebRequest.Result.Success:
-                        Debug.Log(":\nReceived: " + req.downloadHandler.text);
-                        break;
-                    default:
-                        Debug.LogError("Request Error; " + req.result);
-                        break;
-                }
+                checkReqStatus(req);
+
                 string jsonString = req.downloadHandler.text;
-                var record = JsonConvert.DeserializeObject<Root>(jsonString);
+                Root record = JsonConvert.DeserializeObject<Root>(jsonString);
                 Debug.Log(record);
-                // var elem = doc.GetElementById("ozf");
-                // Debug.Log(elem);
-                // var captured_text = regex.Match(doc);
-                // Debug.Log(string.Format("'{0}' found", captured_text.Value));
+            }
+        }
+
+        private IEnumerator ozWeatherGetRequest(string url)
+        {
+            using (UnityWebRequest req = UnityWebRequest.Get(url))
+            {
+                yield return req.SendWebRequest();
+
+                checkReqStatus(req);
+
+                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                doc.LoadHtml(req.downloadHandler.text);
+                HtmlNodeCollection tables = doc.DocumentNode.SelectNodes("//div[@class='dontprint']/table");
+                string tableString = tables[0].InnerText;
+                Regex ozDataRegex = new Regex(@"(?: Australia Telescope \(Culgoora\)).+");
+                string dataString = ozDataRegex.Match(tableString).Value;
+                string[] dataArgs = dataString.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                Debug.Log("End");
+            }
+        }
+
+        private IEnumerator weatherPredictionGetRequest(string url)
+        {
+            using (UnityWebRequest req = UnityWebRequest.Get(url))
+            {
+                yield return req.SendWebRequest();
+
+                checkReqStatus(req);
+            }
+        }
+
+        private void checkReqStatus(UnityWebRequest req)
+        {
+            switch (req.result)
+            {
+                case UnityWebRequest.Result.Success:
+                    Debug.Log(":\nReceived: " + req.downloadHandler.text);
+                    break;
+                default:
+                    Debug.LogError("Request Error; " + req.result);
+                    break;
             }
         }
     }
