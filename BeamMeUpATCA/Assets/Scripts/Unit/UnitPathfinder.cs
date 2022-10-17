@@ -9,7 +9,7 @@ namespace BeamMeUpATCA
         // This value was calculated manually to find a distance smaller than two collision
         // bounds on units. If we change the scale of the environnement or want tighter/wider
         // path on multiple unit commands this value will need to be adjusted.
-        float UNIT_OFFSET_SPACING = 35f;
+        float UNIT_OFFSET_SPACING = 2.5f;
 
         NavMeshAgent agent;
 
@@ -50,7 +50,8 @@ namespace BeamMeUpATCA
         {
             if (!agent.isOnNavMesh || agent.pathPending) return false;
             if (agent.remainingDistance > agent.stoppingDistance) return false;
-            if (agent.hasPath || agent.velocity.sqrMagnitude != 0f) return false;
+            // Was causing pathing to never finish in some cases. TODO: Implement better termination conditions
+            // if (agent.hasPath || agent.velocity.sqrMagnitude != 0f) return false;
             return true;
         }
     }
