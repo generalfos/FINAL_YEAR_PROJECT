@@ -199,20 +199,22 @@ namespace BeamMeUpATCA
          *
          * @param camera        - The source camera to re-align.
          * @param target        - A target Transform to focus on.
-         * @param camera_angle  - An optional field that defaults to 50deg on
+         * @param camera_angle  - An optional field that defaults to 52deg on
          *                        the X-Axis. This is used to calculate how far
          *                        the camera should be away on the X-Axis
-         * @param camera_height - An optional field that defaults to 300 on the
+         * @param camera_height - An optional field that defaults to 70 on the
          *                        Y-Axis, for the height to set the camera to.
          * @param camera_offset - An optional field that defaults to 80 on
          *                        the X-Axis. This is used to fine tune the 
          *                        focused object on the X-Axis.
          */
         public static void CameraFocus(Camera camera, Transform target, 
-                float camera_angle = 50.0f, 
-                float camera_height = 300.0f, 
-                float camera_offset = 80.0f)
+                float camera_angle = 52.0f, 
+                float camera_height = 70.0f, 
+                float camera_offset = -50.0f)
         {
+            if (camera is null) return;
+
             // Calculate the Offset using Trig
             float offset = camera_height * Mathf.Tan(90.0f - camera_angle);
             offset += camera_offset;

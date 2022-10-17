@@ -29,6 +29,8 @@ namespace BeamMeUpATCA
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public UnitType UnitClass { get; private set; } = UnitType.Engineer;
         [field: SerializeField] public float UnitMorale { get; private set; }
+        [field: SerializeField] public Canvas UnitCanvas { get; private set; }
+
 
         private UnitPathfinder _pathfinder;
         public UnitPathfinder Pathfinder => _pathfinder ??= new UnitPathfinder(this);
@@ -50,6 +52,15 @@ namespace BeamMeUpATCA
             _maxMorale = 100;
             UnitMorale = _maxMorale;
             _moraleTickDmg = 1;
+
+            // Fetching the Canvas from Child
+            UnitCanvas = this.GetComponentInChildren<Canvas>();
+            if (UnitCanvas == null) Debug.LogWarningFormat("Unable to find a world space canvas in unit {0}'s children", this.gameObject.name);
+            else {
+                // Turn canvas off if it exists, this will be activated by
+                // external scripts to display things such as Unit Selection.
+                UnitCanvas.gameObject.SetActive(false);
+            }
 
             _commandQueue = new Queue<Command>();
         }
