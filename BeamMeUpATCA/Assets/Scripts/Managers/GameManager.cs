@@ -57,8 +57,8 @@ namespace BeamMeUpATCA
         public static CameraController CameraController => Player.PlayerCamera;
         #pragma warning restore 0618
 
-        [SerializeField] private PlayerUI playerUI;
-        public static PlayerUI UI => Instance.SafeComponent<PlayerUI>(ref Instance.playerUI);
+        [SerializeField] private UIManager playerUI;
+        public static UIManager UI => Instance.SafeComponent<UIManager>(ref Instance.playerUI);
         
         private Building[] _buildings;
         public static Building[] Buildings => Instance._buildings ??= FindObjectsOfType<Building>();

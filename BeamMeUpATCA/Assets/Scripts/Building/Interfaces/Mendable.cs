@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BeamMeUpATCA
 {
@@ -15,11 +16,21 @@ namespace BeamMeUpATCA
         [Header("Health")] 
         [SerializeField] public float maxHealth = 100f;
         private float _health;
-        private float Health
+        public float Health
         {
             get => _health;
-            set => _health = Mathf.Clamp(value, 0f, maxHealth);
+            set {
+                _health = Mathf.Clamp(value, 0f, maxHealth);
+
+                // Update the UI
+                if (!(healthIndicator is null)) 
+                    healthIndicator.color = GameManager.UI.GetMendableColour(_health, maxHealth, healthScheme);
+            }
         }
+
+        [SerializeField] private UIManager.ColorScheme healthScheme;
+        public Image healthIndicator;
+
         [field: Header("Damage Rates")]
         [SerializeField] private float dmgMultiplier = 1f;
         [SerializeField] private float damageInterval = 3f;
