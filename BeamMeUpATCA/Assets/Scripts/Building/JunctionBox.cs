@@ -25,11 +25,13 @@ namespace BeamMeUpATCA
             base.Awake();
 
             // If ArrangementSlot exists hide it's mesh and set it's layer to dishslot
-            if (!ArrangementSlot)
+            #if !UNITY_EDITOR
+            if (ArrangementSlot)
             {
                 ArrangementSlot.GetComponent<MeshRenderer>().enabled = false;
                 ArrangementSlot.gameObject.layer = Mask.Layer(Mask.DishSlot);
             }
+            #endif
 
             // If not transform is assigned use this.gameObject's transform
             ArrangementSlot = ArrangementSlot ? ArrangementSlot : transform;

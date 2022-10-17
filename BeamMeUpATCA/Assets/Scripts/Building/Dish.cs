@@ -70,7 +70,7 @@ namespace BeamMeUpATCA
             _unstowedAltitude = -dish.transform.localEulerAngles.z;
             _unstowedAzimuth = turret.transform.localEulerAngles.y;
 
-            if (stowedState) AltazCoordinates(90.0f, 0.0f);
+            if (IsStowed) AltazCoordinates(90.0f, 0.0f);
         }
 
         protected override void Update()
@@ -227,42 +227,43 @@ namespace BeamMeUpATCA
         #endregion // End of 'Moving'
         #region Stowing
 
+        // NOTE: EDITOR ONLY
         [field: SerializeField] private bool stowedState;
-        
-        // To update stowing in editor
         private void OnValidate()
         {
-            stowedState = stowedState || IsMoving;
-            HandleStow();
+            IsStowed = stowedState;
         }
-        
-        public bool IsStowed 
-        {
-            get => stowedState;
 
+        private bool _isStowed = false;
+        public bool IsStowed
+        {
+            get => _isStowed;
             private set
             {
-                bool previousStowState = stowedState;
-                stowedState = value || (stowedState && IsMoving);
-                if (previousStowState != value) HandleStow();
+                // Toggle stow except if moving, in which case force true
+                _isStowed = value || (IsMoving && IsMoving);
+                
+                // Update editor value
+                stowedState = IsStowed;
+                if (IsStowed)
+                {
+                    // Set Locked to true if IsStowed, else keep Lock state
+                    if (!IsLocked)
+                    {
+                        _previousLockState = (true, IsLocked);
+                        IsLocked = true;
+                    }
+                    // If it's stowed set altitude to 90f (directly up).
+                    AltazCoordinates(90f, 0f);
+                }
+                else
+                {
+                    AltazCoordinates(_unstowedAltitude, _unstowedAzimuth);
+                }
             }
-            
         }
-        
-        public void ToggleStow() { stowedState = !stowedState; }
 
-        private void HandleStow()
-        {
-            // If it's stowed set altitude to 90f (directly up), else set it to previous state.
-            AltazCoordinates(stowedState ? 90.0f : _unstowedAltitude, stowedState ? 0.0f : _unstowedAzimuth);
-            
-            // Set Locked to true if IsStowed, else keep Lock state
-            if (stowedState && !IsLocked)
-            {
-                _previousLockState = (true, IsLocked);
-                IsLocked = true;
-            }
-        }
+        public void ToggleStow() { IsStowed = !IsStowed; }
 
         #endregion // End of 'Stowing'
         #region Locking
