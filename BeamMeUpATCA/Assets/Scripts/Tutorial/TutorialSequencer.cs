@@ -61,13 +61,16 @@ namespace BeamMeUpATCA
         }
 
         // External reference to stored text data
-        [field: SerializeField] public TextAsset jsonData { get; private set; }
+        [field: SerializeField]
+        private TextAsset jsonData { get; set; }
         // External references to game objects necessary for tutorial progress.
-        [field: SerializeField] public GameObject TutPopUpPrefab { get; private set; }
-
+        [field: SerializeField]
+        private GameObject TutPopUpPrefab { get; set; }
         private CameraController _activeCamera;
-        [field: SerializeField] public GameObject Engineer { get; private set; }
-        [field: SerializeField] public GameObject Canvas { get; private set; }
+        [field: SerializeField]
+        private GameObject Engineer { get; set; }
+        [field: SerializeField]
+        private GameObject Canvas { get; set; }
 
         // Position popup directly in centre of screen
         private Vector3 screenCenter = new Vector3(Screen.width/2, Screen.height/2, 0);
