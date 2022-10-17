@@ -4,7 +4,7 @@ namespace BeamMeUpATCA
 {
     public class GotoCommand : Command
     {
-        private bool IsGoingTo = false;
+        protected bool IsGoingTo = false;
         private bool IsGotoFinished => IsGoingTo && unit.Pathfinder.PathFinished();
 
         // Commands Unit to Command.Position using Pathfinder.
