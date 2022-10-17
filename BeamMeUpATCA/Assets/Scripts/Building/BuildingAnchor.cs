@@ -10,7 +10,7 @@ namespace BeamMeUpATCA
         private Transform[] anchorPoints; // All possible anchor points
 
         [SerializeField]
-        private float anchorRadius; // Distance to anchor point to be considered docked
+        private float anchorRadius = 1f; // Distance to anchor point to be considered docked
 
         /**
          * This function should be called by external scripts/objects. It will

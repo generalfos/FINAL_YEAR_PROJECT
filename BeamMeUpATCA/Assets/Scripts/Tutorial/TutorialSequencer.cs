@@ -6,20 +6,64 @@
  * of in game events during the tutorial scene.
  * 
  * @author: Joel Foster
- * @last_edited: 12/09/2022 21:38
+ * @last_edited: 4/10/2022 21:38
  */
 
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Collections;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using System;
 
 namespace BeamMeUpATCA
 {
+    enum TutSeqStage
+    {
+        Welcome,
+        EngineerIntro,
+        HealthIntro,
+        CriticalHealth,
+        RepairProgress,
+        RailFix,
+        MoraleIntro,
+        ScientistIntro,
+        StationingUnit,
+        WeatherStation,
+        EngineerReturn,
+        RadioSignals,
+        Storm,
+        MultiUnitCommand,
+        MoraleLoss,
+        PowerLoss,
+        ScientistObserving,
+        ArrayConfiguation,
+        ScoreIncrease,
+        Overheating,
+        OverheatingFix,
+        End
+    }
+
+    public class PopUpDatum
+    {
+        public int seq_no { get; set; }
+        public string title { get; set; }
+        public string content { get; set; }
+    }
+
+    public class PopUpRoot
+    {
+        public List<PopUpDatum> popUpDatum { get; set; }
+    }
+
     public class TutorialSequencer : MonoBehaviour
     {
+        // External reference to stored text data
+        [field: SerializeField] public TextAsset jsonData { get; private set; }
         // External references to game objects necessary for tutorial progress.
         [field: SerializeField] public GameObject TutPopUpPrefab { get; private set; }
-        [field: SerializeField] private Player ActivePlayer { get; set; }
+
         private CameraController _activeCamera;
         [field: SerializeField] public GameObject Engineer { get; private set; }
         [field: SerializeField] public GameObject Canvas { get; private set; }
@@ -30,21 +74,19 @@ namespace BeamMeUpATCA
         // Position popup directly in centre of screen
         private Vector3 screenCenter = new Vector3(Screen.width/2, Screen.height/2, 0);
         private GameObject currPopUp;
+        private PopUpRoot data;
         private int tutSeqNo;
         private bool popUpActive;
-
-        // TODO: Introduce serialised fields for these elements or another more appropriate method
-        private const int titleIndex = 0;
-        private const int contentIndex = 1;
-        private const int btnIndex = 2;
+        private bool tutFinished;
 
         // Awake is init function. Start before first frame
         private void Awake()
         {
-            _activeCamera = ActivePlayer.PlayerCamera;
+            _activeCamera = GameManager.CameraController;
             tutSeqNo = 0;
             popUpActive = false;
-            Intro();
+            tutFinished = false;
+            data = JsonConvert.DeserializeObject<PopUpRoot>(jsonData.text);
         }
 
         // Tear down prompts after use
@@ -53,13 +95,13 @@ namespace BeamMeUpATCA
             Destroy(prompt);
         }
 
-        // Temporarily hide prompts
+        // Temporarily hide a prompt
         static private void HidePrompt(GameObject prompt)
         {
             prompt.SetActive(false);
         }
 
-        // Unhide prompt
+        // Unhide a prompt
         static private void ShowPrompt(GameObject prompt)
         {
             prompt.SetActive(true);
@@ -76,7 +118,7 @@ namespace BeamMeUpATCA
             }
             GameObject newPrompt = Instantiate(TutPopUpPrefab, screenCenter, Quaternion.identity, Canvas.transform);
             // Get references to new text fields and button
-            // Set text and button listner
+            // Set text and button listener
             PopUp popup = newPrompt.GetComponent<PopUp>();
             popup.update_title(title);
             popup.update_content(content);
@@ -85,7 +127,7 @@ namespace BeamMeUpATCA
             popUpActive = true;
         }
         
-        // Resolver for Tutorial Ok clicked
+        // Resolver for Ok Acknowledgement
         private void HandleOk()
         {
             Debug.Log("Button Clicked");
@@ -95,28 +137,22 @@ namespace BeamMeUpATCA
             tutSeqNo += 1;
         }
 
-        // Welcome message
-        private void Intro()
+        // Handles moving to and displaying next tutorial popup
+        private void EnterNextTutPhase()
         {
-            Debug.Log("Tutorial Sequence: Intro started");
-            CreateNewPrompt("Welcome to the Beam Me Up ATCA Tutorial",
-                "In this tutorial you will manage the ATCA whilst it performs an observation of" +
-                " Betelguese");
-        }
-
-        // Introducing engineers
-        private void EngineerTut()
-        {
-            //TODO Replace with CameraController.Focus...
-            _activeCamera.transform.LookAt(Engineer.transform);
-            CreateNewPrompt("Meet The Engineer", "The engineer is one of two main unit types " +
-                "which you will use while performing an observation with the ATCA. " +
-                "\nSelect the engineer now by left clicking the unit with the mouse hovering over it. ");
+            try {
+                PopUpDatum datum = data.popUpDatum[tutSeqNo];
+                CreateNewPrompt(datum.title, datum.content);
+            }
+            catch (ArgumentOutOfRangeException) {
+                tutFinished = true;
+            }
         }
 
         private void ResetCamera() 
         {
             //TODO move this to CameraController
+            //TODO: _activeCamera here is not a camera. It's a CameraController.
             _activeCamera.transform.position = CameraStartingPosition;
             _activeCamera.transform.rotation = CameraStartingRotation;
         }
@@ -124,25 +160,8 @@ namespace BeamMeUpATCA
         // Update to next tutorial stage on completion of a stage
         private void Update()
         {
-            if (!popUpActive)
-            {
-                switch (tutSeqNo)
-                {
-                    case 0:
-                        Intro();
-                        break;
-                    case 1:
-                        EngineerTut();
-                        break;
-                    case 2:
-                        ResetCamera();
-                        tutSeqNo++;
-                        break;
-                }
-            }
-            else
-            {
-                PlayerInput actionSet = ActivePlayer.GetComponent<PlayerInput>();
+            if (!popUpActive && !tutFinished) {
+                EnterNextTutPhase();
             }
         }
     }

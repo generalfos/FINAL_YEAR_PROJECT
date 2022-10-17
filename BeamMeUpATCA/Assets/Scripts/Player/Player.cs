@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using IASub = BeamMeUpATCA.InputActionSubscription;
 using IASubscriber = BeamMeUpATCA.InputActionSubscriber;
 using BeamMeUpATCA.Extensions;
+using UnityEngine.EventSystems;
 
 
 namespace BeamMeUpATCA
@@ -24,19 +25,11 @@ namespace BeamMeUpATCA
         [SerializeField] private UnitCommander commander;
         private UnitCommander Commander => this.SafeComponent<UnitCommander>(ref commander);
 
-        [SerializeField] private PlayerUI playerUI;
-        public PlayerUI UI => this.SafeComponent<PlayerUI>(ref playerUI);
-
         private void Awake()
         {
             // Set camera references to the Player's CameraController camera. Accessing property
             // Is okay as it handles the null checking and handles any missing inspector elements.
             Commander.ActiveCamera = Input.camera = PlayerCamera.ActiveCamera;
-
-            // TODO: Refactor to remove codependency. Consider Decoupling PlayerUI from UnitCommander. Such that-
-            // selection would be done in PlayerUI, which would then add/remove the units from the UnitCommander.
-            Commander.UI = UI;
-            UI.Commander = Commander;
 
             DefineSubscriptions();
         }
@@ -63,10 +56,14 @@ namespace BeamMeUpATCA
             // Binds subscribers to subscriptions to allow actions to trigger any actions
             // https://gitlab.com/teamnamefinal/Beammeupatca/-/wikis/Unity/Guides/Creating-new-InputAction-event-handles
             
-            _actionSubscriptions.Add(new IASubscriber(Input.actions["Primary Action"]), 
-                new[] { new IASub(ctx => Commander.SelectUnit(PointerPosition), IASub.PREFORMED)});
+            _actionSubscriptions.Add(new IASubscriber(Input.actions["Primary Action"]),
+                new[] { new IASub(ctx =>
+                { if (!IsOnUI) 
+                    { Commander.SelectUnit(PointerPosition); }}, IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Secondary Action"]), 
-                new[] { new IASub(ctx => Commander.CommandUnits<GotoCommand>(PointerPosition), IASub.PREFORMED)});
+                new[] { new IASub(ctx =>
+                { if (!IsOnUI) 
+                    { Commander.CommandUnits<GotoCommand>(PointerPosition); }}, IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Tertiary Action"]), new[] {
                 new IASub(ctx => PlayerCamera.DragRotation = true, (true, false, false)),
                 new IASub(ctx => PlayerCamera.DragRotation = false, (false, false, true))});
@@ -109,6 +106,13 @@ namespace BeamMeUpATCA
                 }
             }
         }
+
+        private void Update()
+        {
+            IsOnUI = EventSystem.current.IsPointerOverGameObject();
+        }
+
+        private static bool IsOnUI { get; set; }
 
         private void OnEnable()
         {
