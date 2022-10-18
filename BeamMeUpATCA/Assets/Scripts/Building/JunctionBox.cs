@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using System.IO;
-using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace BeamMeUpATCA
 {
@@ -18,7 +16,9 @@ namespace BeamMeUpATCA
         [field: SerializeField] private bool IsSouthPaired { get; set; }
         [field: SerializeField] private bool IsEastPaired { get; set; }
         [field: SerializeField] private bool IsWestPaired { get; set; }
-        
+
+        [field: SerializeField] public string Name { get; set; }
+
 
         protected override void Awake()
         {
@@ -35,6 +35,9 @@ namespace BeamMeUpATCA
 
             // If not transform is assigned use this.gameObject's transform
             ArrangementSlot = ArrangementSlot ? ArrangementSlot : transform;
+
+            Regex rg = new Regex(@"(?<=\().+?(?=\))");
+            Name = rg.Matches(this.gameObject.name)[0].Value;
         }
         
         private Dish _dockedDish = null;

@@ -12,7 +12,10 @@ namespace BeamMeUpATCA
 
         // Dish only allows single unit inside
         private Unit _unitInsideSlot;
-        
+
+        [field: Header("Dish ID")]
+        public int dishId;
+
         [field: Header("Dish Position")]
         [SerializeField] private float movementSpeed = 1.5f;
         [SerializeField] private JunctionBox currentJunction;
@@ -43,17 +46,7 @@ namespace BeamMeUpATCA
             _pathwayToGoalBox = new Queue<JunctionBox>();
             
             // If a junction is defined dock to it
-            if (currentJunction)
-            {
-                currentJunction.Dock(this);
-            
-                // Update dish position to arrangement slot's position
-                transform.position = currentJunction.ArrangementSlot.position;
-            }
-            else
-            {
-                Debug.LogWarning("JunctionBox is not set on dish", this);
-            }
+            SnapJunctionBox(currentJunction);
 
             // Default no units inside
             _unitInsideSlot = null;
@@ -224,6 +217,17 @@ namespace BeamMeUpATCA
             }
         }
 
+        // Snaps Dish to argument JunctionBox when not moving
+        public void SnapJunctionBox(JunctionBox box)
+        {
+            if (IsMoving || !currentJunction || !box) return;
+            
+            currentJunction.Undock();
+            currentJunction = box;
+            currentJunction.Dock(this);
+            transform.position = currentJunction.ArrangementSlot.position;
+        }
+
         #endregion // End of 'Moving'
         #region Stowing
 
@@ -238,7 +242,7 @@ namespace BeamMeUpATCA
         public bool IsStowed
         {
             get => _isStowed;
-            private set
+            set
             {
                 // Toggle stow except if moving, in which case force true
                 _isStowed = value || (IsMoving && IsMoving);
@@ -275,7 +279,6 @@ namespace BeamMeUpATCA
         public void ToggleLock() { IsLocked = !IsLocked; }
         
         #endregion // End of 'Locking'
-
         #region Entering
         
         // If the dish enter slot is free add the unit to it
