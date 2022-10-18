@@ -58,8 +58,9 @@ namespace BeamMeUpATCA
         }
         
         // If still waiting to get to the building.position keep checking in update
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
             if (!(Building)_building || !(unit.BuildingInside is null)) return;
             if (((Building)_building).Anchors.CanAnchor(unit.transform.position) && IsGoingTo)
             {

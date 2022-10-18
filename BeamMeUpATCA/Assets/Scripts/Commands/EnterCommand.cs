@@ -23,6 +23,8 @@ namespace BeamMeUpATCA
             // Action which cannot be preformed from inside a building.
             if (!(unit.BuildingInside is null)) return;
             
+            Debug.Log("Enter!");
+            
             IInteractable interactable = Selector.SelectGameObject(ActiveCamera, Position, Mask.Building);
 
             // If interactable is null or not enterable this will fail and conditions will not be met.
@@ -43,6 +45,7 @@ namespace BeamMeUpATCA
             }
             else
             {
+                Debug.Log("Enter! Enter");
                 Vector3 position = ((Building)_building).Anchors.GetAnchorPoint();
                 Goto(ActiveCamera, ActiveCamera.WorldToScreenPoint(position));
             }
@@ -50,8 +53,9 @@ namespace BeamMeUpATCA
 
         // Update for loop per frame. FixedUpdate for loop per physics step.
         // Update() counts in Time.deltaTime. FixedUpdate counts in Time.fixedDeltaTime.
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
             if (!(Building)_building) return;
             if (((Building)_building).Anchors.CanAnchor(unit.transform.position))
             {

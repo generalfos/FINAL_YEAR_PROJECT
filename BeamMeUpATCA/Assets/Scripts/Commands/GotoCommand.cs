@@ -9,31 +9,37 @@ namespace BeamMeUpATCA
 
         // Commands Unit to Command.Position using Pathfinder.
         // Conditions: 1. Command.Position is a valid walkable position.
-        protected override void CommandAwake()
-        {
-            Name = "Goto";
-        }
-        
-        private bool _conditionsMet = false;
+        protected override void CommandAwake() { Name = "Goto"; }
 
+        private bool AbleToPath { get; set; } = false;
+        
         public override void Execute() 
         {
             // Action which cannot be preformed from inside a building.
-            if (!(unit.BuildingInside is null)) return;
+            if (unit.BuildingInside) return;
             
-            _conditionsMet = true;
+            AbleToPath = true;
             Goto(ActiveCamera, Position);
         }
 
         public override bool IsFinished() 
         {
-            return IsGotoFinished || !_conditionsMet;
+            return IsGotoFinished || !AbleToPath;
         }
-         
-        protected void Goto(Camera camera, Vector2 position) 
+
+        // Keep checking is a path has been calculated 
+        private bool _isPathCalculated = false;
+        protected virtual void Update()
+        {
+            if (!_isPathCalculated) _isPathCalculated = unit.Pathfinder.RunPathing();
+        }
+
+        protected void Goto(Camera cam, Vector2 position) 
         {
             IsGoingTo = true;
-            unit.Pathfinder.Path(camera, position, Offset);
+            unit.Pathfinder.Path(cam, position, Offset);
+
+            unit.Pathfinder.DontDestroyPathOnCancel();
         }
 
         protected virtual void OnDisable() 

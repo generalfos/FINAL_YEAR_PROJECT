@@ -21,7 +21,7 @@ namespace BeamMeUpATCA
         {
             // RequireComponent ensures this GetComponent should not return null.
             // As commands should not exist outside the context of a unit.
-            unit = this.gameObject.GetComponent<Unit>();
+            unit = gameObject.GetComponent<Unit>();
             ActiveCamera = Camera.main;
 
             // Stops Update(), FixedUpdate(), & OnGUI() from being called.
@@ -30,7 +30,7 @@ namespace BeamMeUpATCA
             enabled = false;
 
             // Prevents Commands showing up in inspector
-            this.hideFlags = HideFlags.HideInInspector; 
+            hideFlags = HideFlags.HideInInspector; 
 
             CommandAwake();
         }

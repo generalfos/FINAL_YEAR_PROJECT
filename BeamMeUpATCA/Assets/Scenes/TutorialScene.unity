@@ -8420,7 +8420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0000066757}
+  m_AnchoredPosition: {x: 0, y: 0.0000076293945}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &464982147
@@ -16908,6 +16908,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain
       objectReference: {fileID: 0}
+    - target: {fileID: 2708439443833481467, guid: d8e5534083f59e149bfe91b4cfb61f27, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2708439443833481470, guid: d8e5534083f59e149bfe91b4cfb61f27, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -18117,7 +18121,6 @@ GameObject:
   - component: {fileID: 1047878530}
   - component: {fileID: 1047878529}
   - component: {fileID: 1047878533}
-  - component: {fileID: 1047878534}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -18248,18 +18251,6 @@ MonoBehaviour:
   <TutPopUpPrefab>k__BackingField: {fileID: 1279036142915533037, guid: 7733404bf30d1a0458857c54d0327bf2, type: 3}
   <Engineer>k__BackingField: {fileID: 0}
   <Canvas>k__BackingField: {fileID: 1047878528}
---- !u!114 &1047878534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047878528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f0202d9b15e4e949a30779414660bda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1049246781 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -21971,7 +21962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <SunLight>k__BackingField: {fileID: 1215177830}
-  rotationSpeed: 2
+  rotationSpeed: 0.1
 --- !u!1 &1400720622
 GameObject:
   m_ObjectHideFlags: 0

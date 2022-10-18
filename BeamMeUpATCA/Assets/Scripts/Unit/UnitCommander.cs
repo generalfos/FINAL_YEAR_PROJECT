@@ -48,7 +48,7 @@ namespace BeamMeUpATCA
             _selectedUnits.Clear();
         }
 
-        public void CommandUnits<T>(Vector2 position) where T : Command
+        public void CommandUnits<T>(bool queue, Vector2 position) where T : Command
         {
             int offset = 0;
             foreach (Unit unit in _selectedUnits)
@@ -61,8 +61,14 @@ namespace BeamMeUpATCA
                 command.Offset = offset;
                 // TODO: Vector2 to Vector3 should be calculated on init, rather than when needed (like with pathfinder)
                 // TODO: This would require Pathfinder to also be refactored to take a Vector3 (instead of Vector2)
-                command.Position = position; 
-                
+                command.Position = position;
+
+                if (!queue)
+                {
+                    command.SkipQueue = true;
+                    command.ResetQueue = true;
+                }
+
                 #if UNITYEDITOR
                 Debug.Log("Commanding " + _selectedUnits[i].name + " to preform the " + command.Name + " command");
                 #endif
@@ -76,6 +82,7 @@ namespace BeamMeUpATCA
 
         public Type ToggleCommandCheck(Type command, Unit unit)
         {
+            // Checks if building is workable/enterable for toggle handling
             Building building = unit.BuildingInside;
             if (command == typeof(EnterCommand))
             {

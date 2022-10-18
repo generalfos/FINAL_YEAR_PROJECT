@@ -39,6 +39,8 @@ namespace BeamMeUpATCA
         #region Player InputAction Callbacks
 
         private Vector2 PointerPosition => Input.actions ? Input.actions["Pointer"].ReadValue<Vector2>() : Vector2.zero;
+        
+        private bool ModKey => Input.actions && Input.actions["ModKey"].IsPressed();
 
         private Dictionary<IASubscriber, IASub[]> _actionSubscriptions;
 
@@ -63,7 +65,7 @@ namespace BeamMeUpATCA
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Secondary Action"]), 
                 new[] { new IASub(ctx =>
                 { if (!IsOnUI) 
-                    { Commander.CommandUnits<GotoCommand>(PointerPosition); }}, IASub.PREFORMED)});
+                    { Commander.CommandUnits<GotoCommand>(ModKey, PointerPosition); }}, IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Tertiary Action"]), new[] {
                 new IASub(ctx => PlayerCamera.DragRotation = true, (true, false, false)),
                 new IASub(ctx => PlayerCamera.DragRotation = false, (false, false, true))});
@@ -76,23 +78,23 @@ namespace BeamMeUpATCA
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Quit"]), 
                 new[] { new IASub(ctx => Application.Quit(), IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Stop"]), 
-                new[] { new IASub(ctx => Commander.CommandUnits<StopCommand>(PointerPosition), IASub.PREFORMED)});
+                new[] { new IASub(ctx => Commander.CommandUnits<StopCommand>(ModKey, PointerPosition), IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Enter"]), 
-                new[] { new IASub(ctx => Commander.CommandUnits<EnterCommand>(PointerPosition), IASub.PREFORMED)});
+                new[] { new IASub(ctx => Commander.CommandUnits<EnterCommand>(ModKey, PointerPosition), IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Lock"]), 
-                new[] { new IASub(ctx => Commander.CommandUnits<LockCommand>(PointerPosition), IASub.PREFORMED)});
+                new[] { new IASub(ctx => Commander.CommandUnits<LockCommand>(ModKey, PointerPosition), IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Mend"]), 
-                new[] { new IASub(ctx => Commander.CommandUnits<MendCommand>(PointerPosition), IASub.PREFORMED)});
+                new[] { new IASub(ctx => Commander.CommandUnits<MendCommand>(ModKey, PointerPosition), IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Move"]), 
-                new[] { new IASub(ctx => Commander.CommandUnits<MoveCommand>(PointerPosition), IASub.PREFORMED)});
+                new[] { new IASub(ctx => Commander.CommandUnits<MoveCommand>(ModKey, PointerPosition), IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Power"]), 
-                new[] { new IASub(ctx => Commander.CommandUnits<PowerCommand>(PointerPosition), IASub.PREFORMED)});
+                new[] { new IASub(ctx => Commander.CommandUnits<PowerCommand>(ModKey, PointerPosition), IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Stow"]), 
-                new[] { new IASub(ctx => Commander.CommandUnits<StowCommand>(PointerPosition), IASub.PREFORMED)});
+                new[] { new IASub(ctx => Commander.CommandUnits<StowCommand>(ModKey, PointerPosition), IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Work"]), 
-                new[] { new IASub(ctx => Commander.CommandUnits<WorkCommand>(PointerPosition), IASub.PREFORMED)});
+                new[] { new IASub(ctx => Commander.CommandUnits<WorkCommand>(ModKey, PointerPosition), IASub.PREFORMED)});
             _actionSubscriptions.Add(new IASubscriber(Input.actions["Command: Leave"]), 
-                new[] { new IASub(ctx => Commander.CommandUnits<LeaveCommand>(PointerPosition), IASub.PREFORMED)});
+                new[] { new IASub(ctx => Commander.CommandUnits<LeaveCommand>(ModKey, PointerPosition), IASub.PREFORMED)});
             AddSubscriptions();
         }
 

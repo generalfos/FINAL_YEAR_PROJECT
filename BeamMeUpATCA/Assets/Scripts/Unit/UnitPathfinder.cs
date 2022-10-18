@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using System.IO;
+using BeamMeUpATCA.Extensions;
 
 namespace BeamMeUpATCA
 {
@@ -9,50 +11,70 @@ namespace BeamMeUpATCA
         // This value was calculated manually to find a distance smaller than two collision
         // bounds on units. If we change the scale of the environnement or want tighter/wider
         // path on multiple unit commands this value will need to be adjusted.
-        float UNIT_OFFSET_SPACING = 2.5f;
+        private const float UnitOffsetSpacing = 2.5f;
 
-        NavMeshAgent agent;
+        private NavMeshAgent _agent;
+        private NavMeshAgent Agent => _unit.SafeComponent<NavMeshAgent>(ref _agent);
 
-        public UnitPathfinder(Unit unit) 
+        private readonly Unit _unit;
+
+        public UnitPathfinder(Unit unit)
         {
-            try 
+            _unit = unit;
+            _agent = unit.GetComponent<NavMeshAgent>();
+            endPosition = unit.transform.position;
+        }
+
+        private bool _pathFound = false;
+        private bool _pathPersistent = false;
+        private NavMeshPath _path = new NavMeshPath();
+        private Vector3 endPosition;
+        
+        public void Path(Camera camera, Vector2 position, int unitOffset) 
+        {
+            if (!Agent.isOnNavMesh) return;
+            float unitSpacing = UnitOffsetSpacing * (Agent.radius * 2);
+            
+            Vector3 selectorPosition = Selector.NearestWalkable(camera, position, unitOffset, unitSpacing);
+            if (Vector3.Distance(endPosition, selectorPosition) >= 0.15f)
             {
-                agent = unit.GetComponent<NavMeshAgent>();
-            }
-            catch (NullReferenceException) 
-            {
-                Debug.LogWarning("Unable to find a NavMeshAgent. Failing safely.");
-                agent = unit.gameObject.AddComponent<NavMeshAgent>();
+                _pathPersistent = _pathFound = false;
+                endPosition = selectorPosition;
+                Agent.CalculatePath(endPosition, _path);
             }
         }
 
-        public void Path(Camera camera, Vector2 position, int unitOffset) 
+        public void DontDestroyPathOnCancel()
         {
-            if (!agent.isOnNavMesh) return;
-            float unitSpacing = UNIT_OFFSET_SPACING * (agent.radius * 2);
-            // See Selector.NearestWalkableHACK() Comments for more information.
-            agent.SetDestination(Selector.NearestWalkable(camera, position, unitOffset, unitSpacing));
+            _pathPersistent = true;
         }
 
         public void CancelPath() 
         {
-            if (!agent.isOnNavMesh || !agent.hasPath ) return;
-            agent.ResetPath();
+            if (Agent.isOnNavMesh && !_pathPersistent) Agent.ResetPath();
         }
 
         public void SetPausePath(bool pause) 
         {
-            if (!agent.isOnNavMesh || !agent.hasPath) return;
-            agent.isStopped = pause;
+            // Only pause path if it's not persistent
+            if (Agent.isOnNavMesh)
+            {
+                Agent.isStopped = (!_pathPersistent || !pause) && pause;
+            }
         }
 
-        public bool PathFinished() 
+        public bool RunPathing()
         {
-            if (!agent.isOnNavMesh || agent.pathPending) return false;
-            if (agent.remainingDistance > agent.stoppingDistance) return false;
-            // Was causing pathing to never finish in some cases. TODO: Implement better termination conditions
-            // if (agent.hasPath || agent.velocity.sqrMagnitude != 0f) return false;
+            _pathFound = _path.status == NavMeshPathStatus.PathComplete;
+            if (!_pathFound) return false;
+            Agent.SetPath(_path);
             return true;
+        }
+
+        public bool PathFinished()
+        {
+            if (!Agent.isOnNavMesh || Agent.pathPending || !_pathFound) return false;
+            return Agent.remainingDistance <= Agent.stoppingDistance;
         }
     }
 }
