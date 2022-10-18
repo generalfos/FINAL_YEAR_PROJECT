@@ -58,8 +58,7 @@ namespace BeamMeUpATCA
         [SerializeField] private UIManager playerUI;
         public static UIManager UI => Instance.SafeComponent<UIManager>(ref Instance.playerUI);
         
-        private Building[] _buildings;
-        public static Building[] Buildings => Instance._buildings ??= FindObjectsOfType<Building>();
+        public static Building[] Buildings => FindObjectsOfType<Building>();
 
         public static List<T> GetBuildings<T>() where T : Building
         {
