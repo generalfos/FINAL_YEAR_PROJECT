@@ -27,6 +27,11 @@ namespace BeamMeUpATCA
             // Check if enter was successful
             if (!enterable.IsInside(unit)) 
                 unit.ExitBuilding();
+            if (building is Workable workable && Equals(workable.WorkingUnit, unit))
+            {
+                workable.Rest(unit);
+            }
+
             else
             {
                 _conditionsMet = false;
