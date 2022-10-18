@@ -16,6 +16,9 @@ namespace BeamMeUpATCA
         [field: Header("Dish ID")]
         public int dishId;
 
+        public AudioSource rotationSound;
+        public bool soundPlaying;
+
         [field: Header("Dish Position")]
         [SerializeField] private float movementSpeed = 1.5f;
         [SerializeField] private JunctionBox currentJunction;
@@ -35,7 +38,7 @@ namespace BeamMeUpATCA
         private Quaternion _turretRotationStart = Quaternion.identity;
         private Quaternion _turretRotationEnd = Quaternion.identity;
         private float _turretRotationPercent;
-        
+
         private float _unstowedAltitude;
         private float _unstowedAzimuth;
 
@@ -110,6 +113,20 @@ namespace BeamMeUpATCA
         {
             bool isDishRotating = _dishRotationPercent < 1f;
             bool isTurretRotating = _turretRotationPercent < 1f;
+
+            if (isDishRotating || isTurretRotating || IsMoving)
+            {
+                if (!soundPlaying)
+                {
+                    soundPlaying = true;
+                    if(rotationSound) rotationSound.Play();
+                }
+            }
+            else if (soundPlaying)
+            {
+                if(rotationSound) rotationSound.Stop();
+                soundPlaying = false;
+            }
             
             if (isDishRotating)
             {
@@ -172,6 +189,21 @@ namespace BeamMeUpATCA
 
         private void HandleMovement(float time)
         {
+            if (IsMoving || _dishMovementPercent < 1f || IsStowed)
+            {
+                if (!soundPlaying)
+                {
+                    soundPlaying = true;
+                    Debug.Log("Test");
+                    if (rotationSound) rotationSound.Play();
+                }
+            }
+            else if (soundPlaying)
+            {
+                if(rotationSound) rotationSound.Stop();
+                soundPlaying = false;
+            }
+            
             if (!IsMoving) return;
             
             // Dock all paths to goalBox
