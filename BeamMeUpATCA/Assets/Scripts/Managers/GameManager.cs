@@ -78,6 +78,19 @@ namespace BeamMeUpATCA
             // For singleton management
             if (persistent)DontDestroyOnLoad(gameObject);
         }
+
+
+        [SerializeField] private bool showcaseMode = false;
+        [SerializeField] private List<GameObject> showcaseObjsToRemove;
+        private void Update() {
+            if (Input.GetKeyDown(KeyCode.LeftBracket)) {
+                showcaseMode = !showcaseMode;
+                
+                foreach (GameObject obj in showcaseObjsToRemove) {
+                    obj.SetActive(!showcaseMode);
+                }
+            }
+        }
         
     }
 }
