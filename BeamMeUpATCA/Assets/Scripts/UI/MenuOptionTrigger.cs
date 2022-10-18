@@ -7,6 +7,9 @@ namespace BeamMeUpATCA
 {
     public class MenuOptionTrigger : EventTrigger
     {
+        
+        public AudioSource HoverSound { get; set; }
+        public AudioSource ClickSound { get; set; }
         public Button Button { get; set; }
         public TextMeshProUGUI Text { get; set; }
 
@@ -24,6 +27,9 @@ namespace BeamMeUpATCA
         private float _initialButtonSize;
         private float _buttonSize;
 
+        private float _initalHoverVolume;
+        private float _initalClickVolume;
+
         private Color _initalColor;
         private Color _color;
 
@@ -31,24 +37,36 @@ namespace BeamMeUpATCA
 
         private void Awake()
         {
-            if (!Text || !Button) return;
+            if (!Text || !Button || !HoverSound || !ClickSound) return;
             _setup = true;
 
             _initialCharacterSpacing = Text.characterSpacing;
             _initialFontSize = Text.fontSize;
             _initalColor = Text.color;
+            _initalHoverVolume = HoverSound.volume;
+            _initalClickVolume = ClickSound.volume;
         }
 
+        public override void OnPointerClick(PointerEventData eventData)
+        {
+            if (!ClickSound) return;
+            ClickSound.Play();
+        } 
+
+        public bool AudioToPlay;
+        
         public override void OnPointerEnter(PointerEventData eventData) => PointerEnter();
         public void PointerEnter()
         {
-            if (!Text || !Button) return;
+            if (!Text || !Button || !HoverSound || !ClickSound) return;
 
             _characterSpacing = HoverSpacing;
             _fontSize = _initialFontSize * HoverFont;
             _color = HoverFontColor;
             Text.fontMaterial.SetFloat(ShaderUtilities.ID_GlowPower, 0f);
-
+            HoverSound.volume = 0f;
+            HoverSound.Stop();
+            AudioToPlay = true;
 
             _interpolationValue = 0.3f;
         }
@@ -56,7 +74,7 @@ namespace BeamMeUpATCA
         public override void OnPointerExit(PointerEventData eventData) => PointerExit();
         public void PointerExit()
         {
-            if (!Text || !Button) return;
+            if (!Text || !Button ||  !HoverSound || !ClickSound) return;
 
             _characterSpacing = _initialCharacterSpacing;
             _fontSize = _initialFontSize;
@@ -74,6 +92,13 @@ namespace BeamMeUpATCA
 
             if (_interpolationValue < 1f)
             {
+                if (AudioToPlay)
+                {
+                    HoverSound.volume = _initalHoverVolume;
+                    HoverSound.Play();
+                    AudioToPlay = false;
+                }
+
                 _interpolationValue += Time.deltaTime * AnimationSpeed;
                 // Smooth out transitions
                 Text.characterSpacing = Mathf.Lerp(Text.characterSpacing, _characterSpacing, _interpolationValue);
