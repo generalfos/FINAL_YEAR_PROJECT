@@ -166,7 +166,7 @@ namespace BeamMeUpATCA
                 success = CheckReqStatus(req);
                 if (!success)
                 {
-                    Debug.LogError("DataCSIROGetRequest: HTTP Request Failed");
+                    Debug.LogWarning("DataCSIROGetRequest: HTTP Request Failed");
                     CSIROReqFin = true;
                     yield break;
                 }
@@ -190,7 +190,7 @@ namespace BeamMeUpATCA
                 }
                 catch (Exception)
                 {
-                    Debug.LogError("dataCSIROGetRequest: Invalid data page format retrieved from website");
+                    Debug.LogWarning("dataCSIROGetRequest: Invalid data page format retrieved from website");
                     CSIROReqFin = true;
                     yield break;
                 }
@@ -208,7 +208,7 @@ namespace BeamMeUpATCA
                     success = Int32.TryParse(tempString, out tempInt);
                     if (!success)
                     {
-                        Debug.LogError("dataCSIROGetRequest: Invalid temperature format retrieved from website");
+                        Debug.LogWarning("dataCSIROGetRequest: Invalid temperature format retrieved from website");
                         CSIROReqFin = true;
                         yield break;
                     }
@@ -233,7 +233,7 @@ namespace BeamMeUpATCA
                     }
                     catch (Exception)
                     {
-                        Debug.LogError("dataCSIROGetRequest: Invalid data page format retrieved from website");
+                        Debug.LogWarning("dataCSIROGetRequest: Invalid data page format retrieved from website");
                         CSIROReqFin = true;
                         yield break;
                     }
@@ -248,7 +248,7 @@ namespace BeamMeUpATCA
                     success = Int32.TryParse(array, out arrayNo);
                     if (!success)
                     {
-                        Debug.LogError("dataCSIROGetRequest: Invalid stowed array no retrieved from website");
+                        Debug.LogWarning("dataCSIROGetRequest: Invalid stowed array no retrieved from website");
                         CSIROReqFin = true;
                         yield break;
                     }
@@ -262,7 +262,7 @@ namespace BeamMeUpATCA
                 string configString = Regex.Match(configMatch.Value, @"\w+ ").Value;
                 if (configString == null)
                 {
-                    Debug.LogError("dataCSIROGetRequest: Invalid array config retrieved from website");
+                    Debug.LogWarning("dataCSIROGetRequest: Invalid array config retrieved from website");
                     CSIROReqFin = true;
                     yield break;
                 }
@@ -284,7 +284,7 @@ namespace BeamMeUpATCA
                     success = Int32.TryParse(azimuthString, out tempInt);
                     if (!success)
                     {
-                        Debug.LogError("dataCSIROGetRequest: Invalid azimuth retrieved from website");
+                        Debug.LogWarning("dataCSIROGetRequest: Invalid azimuth retrieved from website");
                         CSIROReqFin = true;
                         yield break;
                     }
@@ -303,7 +303,7 @@ namespace BeamMeUpATCA
                     success = Int32.TryParse(azimuthString, out tempInt);
                     if (!success)
                     {
-                        Debug.LogError("dataCSIROGetRequest: Invalid azimuth retrieved from website");
+                        Debug.LogWarning("dataCSIROGetRequest: Invalid azimuth retrieved from website");
                         CSIROReqFin = true;
                         yield break;
                     }
@@ -331,7 +331,7 @@ namespace BeamMeUpATCA
                 success = CheckReqStatus(req);
                 if (!success)
                 {
-                    Debug.LogError("BOMWeatherGetRequest: HTTP Request Failed");
+                    Debug.LogWarning("BOMWeatherGetRequest: HTTP Request Failed");
                     yield break;
                 }
                 string jsonString = req.downloadHandler.text;
@@ -342,7 +342,7 @@ namespace BeamMeUpATCA
                 }
                 catch (Exception)
                 {
-                    Debug.LogError("BOMWeatherGetRequest: Error occurred while deserialising JSON");
+                    Debug.LogWarning("BOMWeatherGetRequest: Error occurred while deserialising JSON");
                     yield break;
                 }
                 #region Data Parsing
@@ -371,7 +371,7 @@ namespace BeamMeUpATCA
                     success = Double.TryParse(datum.rain_trace, out currRainfall);
                     if (!success)
                     {
-                        Debug.LogError("BOMWeatherGetRequest: Invalid rainfall format stored in JSON data");
+                        Debug.LogWarning("BOMWeatherGetRequest: Invalid rainfall format stored in JSON data");
                         yield break;
                     }
                     rainRetrieved = true;
@@ -393,7 +393,7 @@ namespace BeamMeUpATCA
                 success = CheckReqStatus(req);
                 if (!success)
                 {
-                    Debug.LogError("OZWeatherGetRequest: HTTP Request Failed");
+                    Debug.LogWarning("OZWeatherGetRequest: HTTP Request Failed");
                     OZReqFin = true;
                     yield break;
                 }
@@ -413,7 +413,7 @@ namespace BeamMeUpATCA
                 // Validate that the data string is in the correct format
                 if (dataArgs.Length != 12)
                 {
-                    Debug.LogError("OZWeatherGetRequest: Invalid format for latest observation retrieved from website");
+                    Debug.LogWarning("OZWeatherGetRequest: Invalid format for latest observation retrieved from website");
                     yield break;
                 }
                 string timeString = dataArgs[1];
@@ -432,7 +432,7 @@ namespace BeamMeUpATCA
                 }
                 catch (Exception)
                 {
-                    Debug.LogError("OZWeatherGetRequest: Invalid time retrieved from website");
+                    Debug.LogWarning("OZWeatherGetRequest: Invalid time retrieved from website");
                     OZReqFin = true;
                     yield break;
                 }
@@ -442,7 +442,7 @@ namespace BeamMeUpATCA
                     success = Double.TryParse(tempString, out currTemp);
                     if (!success)
                     {
-                        Debug.LogError("OZWeatherGetRequest: Invalid temp format retrieved from website");
+                        Debug.LogWarning("OZWeatherGetRequest: Invalid temp format retrieved from website");
                         OZReqFin = true;
                         yield break;
                     }
@@ -451,7 +451,7 @@ namespace BeamMeUpATCA
                 success = Int32.TryParse(windSpeedString, out currWindSpd);
                 if (!success)
                 {
-                    Debug.LogError("OZWeatherGetRequest: Invalid wind speed retrieved from website");
+                    Debug.LogWarning("OZWeatherGetRequest: Invalid wind speed retrieved from website");
                     OZReqFin = true;
                     yield break;
                 }
@@ -459,7 +459,7 @@ namespace BeamMeUpATCA
                 success = Int32.TryParse(gustSpeedString, out currGustSpd);
                 if (!success)
                 {
-                    Debug.LogError("OZWeatherGetRequest: Invalid gust speed retrieved from website");
+                    Debug.LogWarning("OZWeatherGetRequest: Invalid gust speed retrieved from website");
                     OZReqFin = true;
                     yield break;
                 }
@@ -469,7 +469,7 @@ namespace BeamMeUpATCA
                 success = Double.TryParse(rainString, out currRainfall);
                 if (!success)
                 {
-                    Debug.LogError("OZWeatherGetRequest: Invalid rainfall retrieved from website");
+                    Debug.LogWarning("OZWeatherGetRequest: Invalid rainfall retrieved from website");
                     OZReqFin = true;
                     yield break;
                 }
@@ -487,7 +487,7 @@ namespace BeamMeUpATCA
                 case UnityWebRequest.Result.Success:
                     return true;
                 default:
-                    Debug.LogError("UnityWebRequest Error");
+                    Debug.LogWarning("UnityWebRequest Error");
                     break;
             }
             return false;
