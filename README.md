@@ -46,7 +46,7 @@ ATCA position data. This information is gathered from the following:
 A couple of external plugins were used to make API Development easier:
 
 - `Json.Net` - For JSON Parsing
-- `HTMLAgilityPack` - For Making REST API Calls
+- `HTMLAgilityPack` - For HTML Parsing and Traversal
   
 > These aren't necessary to build the project
 
