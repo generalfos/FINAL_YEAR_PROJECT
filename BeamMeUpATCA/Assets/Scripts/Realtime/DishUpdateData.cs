@@ -15,17 +15,33 @@ namespace BeamMeUpATCA
             dishes = GameManager.GetBuildings<Dish>();
         }
 
+        private float altitudeOld;
+        private float azimuthOld;
+        public float randomSampleTimer = 100f;
         private void Update()
         {
-            foreach (Dish dish in dishes)
+
+            if (randomSampleTimer >= 100f)
             {
-                if (!dish.IsStowed)
+                altitudeOld = altitude;
+                azimuthOld = azimuth;
+                altitude = Random.Range(0, 90f);
+                azimuth = Random.Range(0, 360f);
+                randomSampleTimer = 0f;
+            }
+            else
+            {
+                randomSampleTimer += Time.deltaTime;
+                foreach (Dish dish in dishes)
                 {
-                    dish.AltazCoordinates(altitude, azimuth);
+                    if (!dish.IsStowed)
+                    {
+
+                        float alt = Mathf.Lerp(altitudeOld, altitude, randomSampleTimer / 100f);
+                        float az = Mathf.Lerp(azimuthOld, azimuth, randomSampleTimer / 100f);
+                        dish.AltazCoordinates(alt, az);
+                    }
                 }
-                
-                //altitude += Time.deltaTime;
-                //azimuth += Time.deltaTime;
             }
         }
     }
