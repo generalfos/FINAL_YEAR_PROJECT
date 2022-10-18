@@ -87,7 +87,6 @@ namespace BeamMeUpATCA
             tutFinished = false;
             data = JsonConvert.DeserializeObject<PopUpRoot>(jsonData.text);
             popUp = PopUpObj.GetComponent<PopUp>();
-            popUp.attach_listener(HandleOk);
             PopUpDatum datum = data.popUpDatum[0];
             UpdatePrompt(datum.title, datum.content);
         }
@@ -115,7 +114,7 @@ namespace BeamMeUpATCA
         }
         
         // Resolver for Ok Acknowledgement
-        private void HandleOk()
+        public void HandleOk()
         {
             popUpActive = false;
             HidePrompt(PopUpObj);

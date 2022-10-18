@@ -23073,7 +23073,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <jsonData>k__BackingField: {fileID: 4900000, guid: b5ded724abafdde4881ae98bfb02bb8d, type: 3}
-  <TutPopUpPrefab>k__BackingField: {fileID: 1279036142915533037, guid: 7733404bf30d1a0458857c54d0327bf2, type: 3}
   _activeCamera: {fileID: 1157065298}
   <Engineer>k__BackingField: {fileID: 1119897308}
   <Canvas>k__BackingField: {fileID: 1047878528}
@@ -37440,6 +37439,34 @@ PrefabInstance:
     - target: {fileID: 4954222200051739824, guid: 7733404bf30d1a0458857c54d0327bf2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226947902064979193, guid: 7733404bf30d1a0458857c54d0327bf2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226947902064979193, guid: 7733404bf30d1a0458857c54d0327bf2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226947902064979193, guid: 7733404bf30d1a0458857c54d0327bf2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1047878533}
+    - target: {fileID: 5226947902064979193, guid: 7733404bf30d1a0458857c54d0327bf2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226947902064979193, guid: 7733404bf30d1a0458857c54d0327bf2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleOk
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226947902064979193, guid: 7733404bf30d1a0458857c54d0327bf2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BeamMeUpATCA.TutorialSequencer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226947902064979193, guid: 7733404bf30d1a0458857c54d0327bf2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7733404bf30d1a0458857c54d0327bf2, type: 3}
