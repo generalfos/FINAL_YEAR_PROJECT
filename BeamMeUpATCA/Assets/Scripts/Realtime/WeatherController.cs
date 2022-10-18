@@ -15,6 +15,8 @@ namespace BeamMeUpATCA
         private GameObject SunLight { get; set; }
         private Quaternion currRotation;
 
+        [SerializeField] private float rotationSpeed = 2f;
+
         // Awake is init function. Start before first frame
         private void Awake() {}
         
@@ -22,7 +24,7 @@ namespace BeamMeUpATCA
         // Update() counts in Time.deltaTime. FixedUpdate counts in Time.fixedDeltaTime.
         private void Update() {
             currRotation = SunLight.transform.rotation;
-            SunLight.transform.Rotate(new Vector3(currRotation.x + 1, 0, 0));
+            SunLight.transform.Rotate(new Vector3(currRotation.x + (Time.deltaTime * rotationSpeed), 0, 0));
         }
 
         private void FixedUpdate() {}
