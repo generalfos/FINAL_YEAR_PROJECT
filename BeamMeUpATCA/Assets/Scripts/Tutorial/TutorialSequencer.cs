@@ -65,16 +65,15 @@ namespace BeamMeUpATCA
         private TextAsset jsonData { get; set; }
         // External references to game objects necessary for tutorial progress.
         [field: SerializeField]
-        private GameObject TutPopUpPrefab { get; set; }
         private CameraController _activeCamera;
         [field: SerializeField]
         private GameObject Engineer { get; set; }
         [field: SerializeField]
         private GameObject Canvas { get; set; }
+        [field: SerializeField]
+        private GameObject PopUpObj { get; set; }
+        private PopUp popUp;
 
-        // Position popup directly in centre of screen
-        private Vector3 screenCenter = new Vector3(Screen.width/2, Screen.height/2, 0);
-        private GameObject currPopUp;
         private PopUpRoot data;
         private int tutSeqNo;
         private bool popUpActive;
@@ -83,17 +82,14 @@ namespace BeamMeUpATCA
         // Awake is init function. Start before first frame
         private void Awake()
         {
-            _activeCamera = GameManager.CameraController;
             tutSeqNo = 0;
             popUpActive = false;
             tutFinished = false;
             data = JsonConvert.DeserializeObject<PopUpRoot>(jsonData.text);
-        }
-
-        // Tear down prompts after use
-        private void DestroyPrompt(GameObject prompt)
-        {
-            Destroy(prompt);
+            popUp = PopUpObj.GetComponent<PopUp>();
+            popUp.attach_listener(HandleOk);
+            PopUpDatum datum = data.popUpDatum[0];
+            UpdatePrompt(datum.title, datum.content);
         }
 
         // Temporarily hide a prompt
@@ -109,32 +105,20 @@ namespace BeamMeUpATCA
         }
 
         // General method for instantiating a new prompt
-        private void CreateNewPrompt(string title, string content)
+        private void UpdatePrompt(string title, string content)
         {
-            // Only allow one active popup at any given time
-            if (currPopUp)
-            {
-                DestroyPrompt(currPopUp);
-                currPopUp = null;
-            }
-            GameObject newPrompt = Instantiate(TutPopUpPrefab, screenCenter, Quaternion.identity, Canvas.transform);
             // Get references to new text fields and button
-            // Set text and button listener
-            PopUp popup = newPrompt.GetComponent<PopUp>();
-            popup.update_title(title);
-            popup.update_content(content);
-            popup.attach_listener(HandleOk);
-            currPopUp = newPrompt;
+            // Set text
+            popUp.update_title(title);
+            popUp.update_content(content);
             popUpActive = true;
         }
         
         // Resolver for Ok Acknowledgement
         private void HandleOk()
         {
-            Debug.Log("OK Button Clicked");
-            DestroyPrompt(currPopUp);
-            currPopUp = null;
             popUpActive = false;
+            HidePrompt(PopUpObj);
             tutSeqNo += 1;
         }
 
@@ -143,10 +127,10 @@ namespace BeamMeUpATCA
         {
             try {
                 PopUpDatum datum = data.popUpDatum[tutSeqNo];
-                CreateNewPrompt(datum.title, datum.content);
+                UpdatePrompt(datum.title, datum.content);
+                ShowPrompt(PopUpObj);
                 if (tutSeqNo == (int)TutSeqStage.EngineerIntro)
                 {
-                    Debug.Log("Focused");
                     _activeCamera.FocusCamera(Engineer.transform.position);
                 }
             }

@@ -1,5 +1,5 @@
 /** 
- * Weather.cs
+ * UrlLink.cs
  * 
  * This script provides a method to call which opens relevant Webpages
  * in the users default browser so that they have avenues to learn more about

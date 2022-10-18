@@ -26093,8 +26093,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a422a52138554cca842ea0e3632ed6e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persistent: 1
+  persistent: 0
   playerUI: {fileID: 0}
+  showcaseMode: 0
+  showcaseObjsToRemove: []
 --- !u!4 &1356955414
 Transform:
   m_ObjectHideFlags: 0
