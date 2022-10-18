@@ -129,10 +129,6 @@ namespace BeamMeUpATCA
                 PopUpDatum datum = data.popUpDatum[tutSeqNo];
                 UpdatePrompt(datum.title, datum.content);
                 ShowPrompt(PopUpObj);
-                if (tutSeqNo == (int)TutSeqStage.EngineerIntro)
-                {
-                    _activeCamera.FocusCamera(Engineer.transform.position);
-                }
             }
             catch (ArgumentOutOfRangeException)
             {
