@@ -19,17 +19,22 @@ namespace BeamMeUpATCA
             _selectedUnits = new List<Unit>();
         }
 
+        public void SelectUnit(Unit unit)
+        {
+            // Prevent selecting the same unit multiple times
+            if (_selectedUnits.Contains(unit)) return;
+
+            GameManager.UI.SelectUnit(unit);
+            _selectedUnits.Add(unit);
+        }
+
         public void SelectUnit(Vector2 screenPoint)
         {
             IInteractable interactable = Selector.SelectGameObject(ActiveCamera, screenPoint, Mask.Unit);
 
             if (interactable is Unit selectedUnit)
             {
-                // Prevent selecting the same unit multiple times
-                if (_selectedUnits.Contains(selectedUnit)) return;
-
-                GameManager.UI.SelectUnit(selectedUnit);
-                _selectedUnits.Add(selectedUnit);
+                SelectUnit(selectedUnit);
             }
             else
             {
@@ -37,7 +42,7 @@ namespace BeamMeUpATCA
             }
         }
 
-        private void DeselectAllUnits() 
+        public void DeselectAllUnits() 
         {
             GameManager.UI.DeselectAllUnits();
             _selectedUnits.Clear();

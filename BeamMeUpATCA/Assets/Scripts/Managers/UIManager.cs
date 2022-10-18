@@ -7,7 +7,7 @@ namespace BeamMeUpATCA
     public class UIManager : MonoBehaviour
     {
 
-        #region MendableIndicators
+        #region MendableMoralIndicators
 
             /**
              * These values shouldn't be editable in the inspector. The colour
@@ -31,8 +31,8 @@ namespace BeamMeUpATCA
              *                          maxVal, 
              *                          UIManager.ColorScheme.DISH);
              *
-             * @param current   - The current value between 0.0f and max
-             * @param max       - The maximum value current can be 
+             * @param current   - The current value between 0.0f and max.
+             * @param max       - The maximum value current can be.
              * @param scheme    - What colour scheme should the resulting colour
              *                    be from?
              * @return - A resulting colour indexed by current/max ratio in the 
@@ -46,9 +46,50 @@ namespace BeamMeUpATCA
             }
         #endregion
 
+        #region UnitState 
+            [Header("Unit States")]
+            [field: SerializeField] private Sprite ShedIcon;
+            [field: SerializeField] private Sprite IdleIcon;
+            [field: SerializeField] private Sprite MoveIcon;
+            [field: SerializeField] private Sprite ObservationIcon;
+            [field: SerializeField] private Sprite RepairIcon;
+            [field: SerializeField] private Sprite WeatherIcon;
+
+            public enum UnitState { SHED, IDLE, MOVE, OBS, REPAIR, WEATHER };
+
+            /**
+             * Using a given state, fetch the correct Icon Sprite for the given 
+             * state. This allows external scripts to consistently get the right 
+             * icons uniformally. An example:
+             *
+             *      using BeamMeUpATCA; // Only necessary if not in the namespace 
+             *
+             *      Image result = GameManager.UI.GetUnitState(UIManager.UnitState.MOVE); 
+             *
+             * @param state - The state the Unit is currently in.
+             * @return - The dedicated icon sprite for the given state.
+             */
+            public Sprite GetUnitState(UnitState state) {
+                switch (state) {
+                    case UnitState.SHED:        return ShedIcon;
+                    case UnitState.MOVE:        return MoveIcon;
+                    case UnitState.OBS:         return ObservationIcon;
+                    case UnitState.REPAIR:      return RepairIcon;
+                    case UnitState.WEATHER:     return WeatherIcon;
+                }
+
+                // Any unexpected State should be Idle
+                return IdleIcon;
+            }
+
+
+        #endregion
+
 
         #region UnitSelection
+            [Header("Unit Selection")] 
             [field: SerializeField] private List<Unit> selected_units;
+            [field: SerializeField] private Text selected_text;
 
             /**
              * Sets the Select Indicator for a given unit to be visible or 
@@ -65,9 +106,22 @@ namespace BeamMeUpATCA
                 unit.UnitCanvas.gameObject.SetActive(visable);
             }
 
+            private void updateSelectedTest() {
+                if (selected_text is null) return;
+
+                string combined_text = "";
+
+                foreach (Unit unit in selected_units) 
+                    combined_text += (combined_text == "") ? unit.Name : "\n" + unit.Name;
+                
+                selected_text.text = combined_text;
+            }
+
             public void SelectUnit(Unit unit) {
                 setUnitsIndicator(unit, true);
                 selected_units.Add(unit); // Keep track of selected units
+
+                updateSelectedTest();
             }
 
             public void DeselectUnit(Unit unit) {
@@ -77,6 +131,17 @@ namespace BeamMeUpATCA
             public void DeselectAllUnits() {
                 foreach (Unit unit in selected_units) DeselectUnit(unit);
                 selected_units.Clear(); // Clear all selected units
+
+                updateSelectedTest();
+            }
+
+            public void CameraFocusSelect(Unit target) {
+                if (target is null) return;
+
+                GameManager.UnitCommander.DeselectAllUnits();
+                GameManager.UnitCommander.SelectUnit(target);
+
+                CameraFocus(target.gameObject);
             }
 
             public void CameraFocus(GameObject target) {

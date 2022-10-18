@@ -23,7 +23,7 @@ namespace BeamMeUpATCA
         private PlayerInput Input => this.SafeComponent<PlayerInput>(ref playerInput);
 
         [SerializeField] private UnitCommander commander;
-        private UnitCommander Commander => this.SafeComponent<UnitCommander>(ref commander);
+        public UnitCommander Commander => this.SafeComponent<UnitCommander>(ref commander);
 
         private void Awake()
         {
