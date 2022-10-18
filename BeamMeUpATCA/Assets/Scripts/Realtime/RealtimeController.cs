@@ -1,3 +1,14 @@
+/** 
+ * RealtimeController.cs
+ * 
+ * This script manages the scene's weather, lighting and array configuration.
+ * Updates are either based on real time data (in real time mode) or are arbitrarily made
+ * when outside of real time mode.
+ * 
+ * @author: Joel Foster
+ * @last_edited: 18/10/2022 21:38
+ */
+
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -28,10 +39,10 @@ namespace BeamMeUpATCA
         private float altitude;
         private float azimuth;
         private double rainfall;
-        private Quaternion currRotation;
 
         private float timePassed;
 
+        // All current valid array configurations
         private static readonly Dictionary<string, string[]> validConfigs = new Dictionary<string, string[]>()
         {
             { "6A", new string[] { "W4", "W45", "W102", "W173", "W195" } },
@@ -85,20 +96,27 @@ namespace BeamMeUpATCA
         private void UpdateArrayState()
         {
             // Guard clause to prevent dish updates without data
-            if (!weatherData.stowedArraysRetrieved ||
-                !weatherData.azimuthRetrieved || 
-                !weatherData.elevationRetrieved)
+            if (!weatherData.stowedArraysRetrieved)
             {
                 return;
             }
             foreach (Dish dish in dishes)
             {
+                if (dish == null)
+                {
+                    continue;
+                }
                 // Update stow states
                 if (weatherData.currStowedArrays.Contains(dish.dishId))
                 {
                     dish.IsStowed = true;
                 }
                 // Validate azimuth and elevation values
+                if (!weatherData.azimuthRetrieved ||
+                !weatherData.elevationRetrieved)
+                {
+                    continue;
+                }
                 if (weatherData.currElevation < 0 ||
                         weatherData.currElevation > 90)
                 {
@@ -124,6 +142,7 @@ namespace BeamMeUpATCA
             string[] dishPositions;
             string dishPosition;
 
+            // Validate inputs
             if (!weatherData.configRetrieved)
             {
                 return;
@@ -133,7 +152,8 @@ namespace BeamMeUpATCA
                 return;
             }
 
-                try
+            // Retrieve current positions of arrays
+            try
             {
                 dishPositions = validConfigs[weatherData.currConfig];
             }
@@ -152,7 +172,7 @@ namespace BeamMeUpATCA
                 }
                 try
                 {
-                    dishPosition = dishPositions[id - 1];
+                    dishPosition = dishPositions[id-1];
                 }
                 catch (Exception)
                 {
@@ -191,36 +211,43 @@ namespace BeamMeUpATCA
                 {
                     activeRain = lightRain;
                     lightRainActive = true;
+                    rain.SetActive(false);
+                    heavyRain.SetActive(false);
                 }
                 else if (rainfall <= 10)
                 {
                     activeRain = rain;
                     rainActive = true;
+                    lightRain.SetActive(false);
+                    heavyRain.SetActive(false);
                 }
                 else
                 {
                     activeRain = heavyRain;
+                    rain.SetActive(false);
+                    lightRain.SetActive(false);
                 }
-                rain.SetActive(false);
-                lightRain.SetActive(false);
-                heavyRain.SetActive(false);
                 activeRain.SetActive(true);
             }
             else
             {
-                rain.SetActive(false);
-                lightRain.SetActive(false);
-                heavyRain.SetActive(false);
+                // Update based on stored variable value
                 if (rainActive)
                 {
+                    lightRain.SetActive(false);
+                    heavyRain.SetActive(false);
                     rain.SetActive(true);
                 }
                 else if (heavyRainActive)
                 {
+                    rain.SetActive(false);
+                    lightRain.SetActive(false);
                     heavyRain.SetActive(true);
                 }
                 else if (lightRainActive)
                 {
+                    rain.SetActive(false);
+                    heavyRain.SetActive(false);
                     lightRain.SetActive(true);
                 }
             }
@@ -240,6 +267,7 @@ namespace BeamMeUpATCA
                 dayStart = dayStart.Date + ts;
                 TimeSpan timeDiff = time - dayStart;
                 double hrs = timeDiff.TotalHours;
+                // Sun rotates over the site between 6 am and 6 pm
                 if (hrs < 6 || hrs > 18)
                 {
                     SunLight.transform.eulerAngles = new Vector3(0, 90, 0);
@@ -254,6 +282,7 @@ namespace BeamMeUpATCA
                 timePassed += Time.deltaTime;
                 if (timePassed > 60f)
                 {
+                    // Slowly moves sun every 60 seconds 
                     SunLight.transform.Rotate(new Vector3(1, 0, 0));
                     timePassed = 0f;
                 }

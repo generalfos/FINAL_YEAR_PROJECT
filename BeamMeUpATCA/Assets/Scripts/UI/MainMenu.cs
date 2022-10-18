@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 namespace BeamMeUpATCA
 {
@@ -8,6 +9,7 @@ namespace BeamMeUpATCA
     {
         public void Awake()
         {
+            Screen.SetResolution(1920, 1080, true);
             AudioListener.volume = Volume;
         }
 

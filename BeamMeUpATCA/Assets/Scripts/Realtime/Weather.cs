@@ -19,12 +19,11 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using HtmlAgilityPack;
 
-// using System.Text.RegularExpressions;
-
 namespace BeamMeUpATCA
 {
     public class Weather : MonoBehaviour
     {
+        /* Classes to serialise JSON data */
         public class Datum
         {
             public int sort_order { get; set; }
@@ -130,9 +129,6 @@ namespace BeamMeUpATCA
             timePassed = 0f;
             ResetState();
             UpdateData();
-            // http://www.bom.gov.au/fwo/IDN60801/IDN60801.95734.json
-            // https://ozforecast.com.au/cgi-bin/weatherstation.cgi?station=11001
-            // https://www.narrabri.atnf.csiro.au/cgi-bin/Public/atca_live.cgi/
         }
 
         private void ResetState()
@@ -221,6 +217,27 @@ namespace BeamMeUpATCA
                 tempRetrieved = true;
 
                 // Retrieve which antennas are stowed
+                // Handle all antennas are stowed edge case
+                if (antennaStates.Replace("\n", "") == "All antennas are stowed.") {
+                    // All arrays are stowed
+                    currStowedArrays.Add(1);
+                    currStowedArrays.Add(2);
+                    currStowedArrays.Add(3);
+                    currStowedArrays.Add(4);
+                    currStowedArrays.Add(5);
+                    currStowedArrays.Add(6);
+                    // Update true config position in HTML
+                    try
+                    {
+                        configState = nodes[9].InnerText;
+                    }
+                    catch (Exception)
+                    {
+                        Debug.LogError("dataCSIROGetRequest: Invalid data page format retrieved from website");
+                        CSIROReqFin = true;
+                        yield break;
+                    }
+                }
                 Regex stowRegex = new Regex(@"antenna \d+(([ ]*,[ ]*\d+)+)? is stowed", RegexOptions.IgnoreCase);
                 Match stowMatch = stowRegex.Match(antennaStates);
                 MatchCollection stowedArrays = Regex.Matches(stowMatch.Value, @"\d");
@@ -238,6 +255,19 @@ namespace BeamMeUpATCA
                     currStowedArrays.Add(arrayNo);
                 }
                 stowedArraysRetrieved = true;
+
+                // Retrieve current config
+                Regex configRegex = new Regex(@"\w+ array", RegexOptions.IgnoreCase);
+                Match configMatch = configRegex.Match(configState);
+                string configString = Regex.Match(configMatch.Value, @"\w+ ").Value;
+                if (configString == null)
+                {
+                    Debug.LogError("dataCSIROGetRequest: Invalid array config retrieved from website");
+                    CSIROReqFin = true;
+                    yield break;
+                }
+                currConfig = configString.Trim();
+                configRetrieved = true;
 
                 // Retrieve observation target
                 currObservationTarget = observationTarget;
@@ -281,18 +311,6 @@ namespace BeamMeUpATCA
                 }
                 elevationRetrieved = true;
 
-                // Retrieve current config
-                Regex configRegex = new Regex(@"\w+ array", RegexOptions.IgnoreCase);
-                Match configMatch = configRegex.Match(configState);
-                string configString = Regex.Match(configMatch.Value, @"\w+ ").Value;
-                if (configString == null)
-                {
-                    Debug.LogError("dataCSIROGetRequest: Invalid array config retrieved from website");
-                    CSIROReqFin = true;
-                    yield break;
-                }
-                currConfig = configString.Trim();
-                configRetrieved = true;
                 #endregion
                 CSIROReqFin = true;
             }
@@ -381,14 +399,18 @@ namespace BeamMeUpATCA
                 }
 
                 #region Data Retrieval
+                // Read in HTML
                 HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
                 doc.LoadHtml(req.downloadHandler.text);
                 HtmlNodeCollection tables = doc.DocumentNode.SelectNodes("//table");
+                // Retrieve data string
                 string tableString = tables[5].InnerText;
                 Regex ozDataRegex = new Regex(@"(?: Today).*");
                 string dataString = ozDataRegex.Match(tableString).Value;
                 
+                // Split data string into an arg array
                 string[] dataArgs = dataString.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                // Validate that the data string is in the correct format
                 if (dataArgs.Length != 12)
                 {
                     Debug.LogError("OZWeatherGetRequest: Invalid format for latest observation retrieved from website");
@@ -403,6 +425,7 @@ namespace BeamMeUpATCA
                 #endregion
 
                 #region Data Parsing
+                // Parse data strings and store in global variables
                 try
                 {
                     currTime = DateTime.Parse(timeString);
@@ -480,6 +503,7 @@ namespace BeamMeUpATCA
         private void Update()
         {
             timePassed += Time.deltaTime;
+            // Update data every 15 mins.
             if (timePassed > 900)
             {
                 ResetState();
