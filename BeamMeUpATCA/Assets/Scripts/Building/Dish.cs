@@ -272,7 +272,7 @@ namespace BeamMeUpATCA
         private (bool, bool) _previousLockState;
         [field: SerializeField] public bool IsLocked { get; private set; }
 
-        public void ToggleLock(Unit unit) { IsLocked = !IsLocked; }
+        public void ToggleLock() { IsLocked = !IsLocked; }
         
         #endregion // End of 'Locking'
 
