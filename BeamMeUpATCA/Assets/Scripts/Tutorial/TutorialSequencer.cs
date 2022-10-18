@@ -112,7 +112,7 @@ namespace BeamMeUpATCA
             popUp.update_content(content);
             popUpActive = true;
         }
-        
+
         // Resolver for Ok Acknowledgement
         public void HandleOk()
         {
@@ -124,7 +124,8 @@ namespace BeamMeUpATCA
         // Handles moving to and displaying next tutorial popup
         private void EnterNextTutPhase()
         {
-            try {
+            try
+            {
                 PopUpDatum datum = data.popUpDatum[tutSeqNo];
                 UpdatePrompt(datum.title, datum.content);
                 ShowPrompt(PopUpObj);
@@ -133,7 +134,8 @@ namespace BeamMeUpATCA
                     _activeCamera.FocusCamera(Engineer.transform.position);
                 }
             }
-            catch (ArgumentOutOfRangeException) {
+            catch (ArgumentOutOfRangeException)
+            {
                 tutFinished = true;
             }
         }
@@ -141,7 +143,8 @@ namespace BeamMeUpATCA
         // Update to next tutorial stage on completion of a stage
         private void Update()
         {
-            if (!popUpActive && !tutFinished) {
+            if (!popUpActive && !tutFinished)
+            {
                 EnterNextTutPhase();
             }
         }
