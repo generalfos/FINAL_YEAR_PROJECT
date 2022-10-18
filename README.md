@@ -1,29 +1,58 @@
 # Beam me up, ATCA
-### By Jackson, Jayden, Joel, Lachlan, Robert and Thomas
+> 19th October 2022 (By `teamname.final`)
 
-To download and open this project on your computer ensure you have [UnityHub](https://unity3d.com/get-unity/download) installed and lauched.
+Beam Me Up ATCA is a real-time strategy (RTS) and micro-management style game 
+based on the operation of the Australian Telescope Compact Array (also known as 
+ATCA or the Paul Wild Observatory). 
 
-Ensure you have the version `Editor 2020.3.38f1` LTS installed. Do not upgrade the project to a newer LTS if it becomes available during development as this could cause potential problems.
+## Getting Started
 
-## Git
+If you want to run the application without building it, you can go [here][1] to 
+get the latest build for windows. Alternatively if you want to build the 
+application from scratch, or if you don't have a Windows machine do the 
+following.
 
-`git clone` the project and run `git lfs install` to setup up LFS correctly.
+### How to Build
 
-## Source Tree
+#### Prerequisites
 
-Run the following commands on Source Tree for Git LFS.
+To build this project you will need a couple of things:
 
-Update Embedded: 
-**Tools** -> **Options** -> **Git and press Update Embedded**
+- [Unity3D][2] (`Editor 2020.3.38f1`)
 
-Initialize Git LFS: 
-**Repository** -> **Git LFS** -> **Initialize Repository**
+Using the Unity Editor Hub, click the drop down button next to `Open` and click
+`Add project from disk`. The folder to select is the `BeamMeUpATCA` folder in 
+the same directory as this README.
 
----
+#### Build
 
-Navigate to **Projects** -> **Open (↓)** -> **Add project from disk**. Then navigate to your repository folder and add the "BeamMeUpATCA" folder. Unity will then load the project and the sample scene should load up.
+After opening the project in the right version of the Unity3D editor, navigate
+to `File -> Build Settings`. Click build and a directory to build to. Run the
+executable.
 
-## Dependancies:
-- git
-- git-lfs
-- untityhub
+## External Data
+
+### API
+
+The project relies on three API endpoints to get some live weather data and 
+ATCA position data. This information is gathered from the following:
+
+- [Bureau of Meterology][3]
+- [OzForecast][4] 
+- [CSIRO: Australia Telescope National Facility][5]
+
+### Unity Plugins
+
+A couple of external plugins were used to make API Development easier:
+
+- `Json.Net` - For JSON Parsing
+- `HTMLAgilityPack` - For Making REST API Calls
+  
+> These aren't necessary to build the project
+
+
+[1]: https://jaydenbne.itch.io/beammeupatca?password=DECO3801
+[2]: https://unity.com/
+[3]: http://www.bom.gov.au/fwo/IDN60801/IDN60801.95734.json
+[4]: https://ozforecast.com.au/cgi-bin/weatherstation.cgi?station=11001
+[5]: https://www.narrabri.atnf.csiro.au/cgi-bin/Public/atca_live.cgi/
