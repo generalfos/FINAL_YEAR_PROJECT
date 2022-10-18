@@ -20,6 +20,11 @@ namespace BeamMeUpATCA
             SceneManager.LoadSceneAsync(sceneIndex);
         }
         
+        public static void Play(string sceneName)
+        {
+            SceneManager.LoadSceneAsync(sceneName);
+        }
+        
         public static void SetVolume(float volumeAmount)
         {
             Volume = volumeAmount;

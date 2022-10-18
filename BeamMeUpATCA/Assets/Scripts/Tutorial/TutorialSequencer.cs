@@ -86,6 +86,8 @@ namespace BeamMeUpATCA
             popUpActive = false;
             tutFinished = false;
             data = JsonConvert.DeserializeObject<PopUpRoot>(jsonData.text);
+            
+            PopUpObj.SetActive(true);
             popUp = PopUpObj.GetComponent<PopUp>();
             PopUpDatum datum = data.popUpDatum[0];
             UpdatePrompt(datum.title, datum.content);

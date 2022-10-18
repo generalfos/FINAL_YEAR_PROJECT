@@ -7,6 +7,8 @@ namespace BeamMeUpATCA
     public class MenuOptions : MonoBehaviour
     {
         [SerializeField] private Button[] Options;
+        [field: SerializeField] public AudioSource ButtonOnHoverSound { get; set; }
+        [field: SerializeField] public AudioSource ButtonOnClickSound { get; set; }
 
         private void Awake()
         {
@@ -19,6 +21,9 @@ namespace BeamMeUpATCA
                     ? trigger : button.gameObject.AddComponent<MenuOptionTrigger>();
 
                 menuTrigger.Button = button;
+                menuTrigger.ClickSound = ButtonOnClickSound;
+                menuTrigger.HoverSound = ButtonOnHoverSound;
+                
                 
                 Transform child = null;
                 // Find child text object. If it doesn't exist create a new dummy text object
