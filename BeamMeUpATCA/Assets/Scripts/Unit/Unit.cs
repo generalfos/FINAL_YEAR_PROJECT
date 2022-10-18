@@ -260,7 +260,7 @@ namespace BeamMeUpATCA
 
         private void UnitStateUpdate() {
             // Check if the Unit is doing nothing (IDLE)
-            if (_commandQueue.Count == 0 && _activeCommand is null && _priorityCommand is null && BuildingInside is null) {
+            if (_commandQueue.Count == 0 && _activeCommand is null && _executingCommand is null && BuildingInside is null) {
                 UnitState = UIManager.UnitState.IDLE;
                 return;
             }
