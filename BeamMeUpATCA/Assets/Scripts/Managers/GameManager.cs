@@ -49,13 +49,11 @@ namespace BeamMeUpATCA
         // If this system was to support multiplayer searches for players would have to be indexed
         private Player _player;
         
-        [Obsolete("If you can make a good case for using this, remove this obsolete attribute. Public to allow some code to not break.")]
-        public static Player Player => Instance._player ??= FindObjectsOfType<Player>()[0];
+        private static Player Player => Instance._player ??= FindObjectsOfType<Player>()[0];
         
-        // TODO: Change GameManager.Player to private and remove obsolete tag + #pragma lines below.
-        #pragma warning disable 0618
         public static CameraController CameraController => Player.PlayerCamera;
-        #pragma warning restore 0618
+        
+        public static UnitCommander UnitCommander => Player.Commander;
 
         [SerializeField] private UIManager playerUI;
         public static UIManager UI => Instance.SafeComponent<UIManager>(ref Instance.playerUI);
