@@ -37,6 +37,10 @@ namespace BeamMeUpATCA
         
         private void Update()
         {
+            if (_inTown == null || _inTown.Keys == null)
+            {
+                return;
+            }
             // Check each the inTownCounter for each unit in inTown
             foreach (Unit unit in _inTown.Keys)
             {
