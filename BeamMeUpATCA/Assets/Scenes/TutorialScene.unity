@@ -135,26 +135,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 769.131
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1426721847}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 933635121}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -203,6 +183,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 769.131
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1426721847}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 933635121}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &32700719
@@ -291,11 +291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &55303425 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8885838841231851326, guid: 8400bd0051d54fe418dbd282f4b7b8ba, type: 3}
-  m_PrefabInstance: {fileID: 8615877059557235321}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &60540244
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,10 +468,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 681667305}
     m_Modifications:
-    - target: {fileID: 919132149155446097, guid: bdae1d7d9f3a4f745a05d9320e2bdda5, type: 3}
-      propertyPath: m_TagString
-      value: Building
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e655963a280844a409f6d56016e04869, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -557,6 +548,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bdae1d7d9f3a4f745a05d9320e2bdda5, type: 3}
+      propertyPath: m_TagString
+      value: Building
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e655963a280844a409f6d56016e04869, type: 3}
 --- !u!4 &85353206 stripped
@@ -603,26 +598,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 60.324
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W98)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1647564437}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1335133260}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -671,6 +646,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 60.324
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W98)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1647564437}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1335133260}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &104328297
@@ -1570,7 +1565,7 @@ Transform:
   - {fileID: 276731667}
   - {fileID: 543450652632088573}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &165398320 stripped
 Transform:
@@ -1968,6 +1963,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a4de34b662a3d8418d4c789e61d2a20, type: 3}
+--- !u!1 &248288409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 248288410}
+  m_Layer: 5
+  m_Name: UnitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &248288410
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248288409}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 453292621}
+  m_Father: {fileID: 1694099623}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.12752084, y: 0.19700001}
+  m_AnchorMax: {x: 0.22412503, y: 0.711741}
+  m_AnchoredPosition: {x: 0.46411133, y: -0.11090088}
+  m_SizeDelta: {x: -0.32873535, y: -0.22180176}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &249600927
 GameObject:
   m_ObjectHideFlags: 0
@@ -2180,30 +2211,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -309.1605
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W147)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1782477498}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1049246784}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 28
@@ -2251,6 +2258,30 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -309.1605
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W147)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1782477498}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1049246784}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -7261,30 +7292,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -497.673
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W172)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1830588217}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 675433718}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -7332,6 +7339,30 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -497.673
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W172)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1830588217}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 675433718}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -7436,22 +7467,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 799.293
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W0)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1426721847}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -7500,6 +7515,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 799.293
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W0)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1426721847}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &371532710
@@ -7509,26 +7540,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -256.377
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W140)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 2145110357}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1274079209}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -7577,6 +7588,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -256.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W140)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 2145110357}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1274079209}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!4 &372357906 stripped
@@ -7602,30 +7633,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 29
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -316.701
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W148)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1274079209}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 451769506}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 29
@@ -7673,6 +7680,30 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -316.701
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W148)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1274079209}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 451769506}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -8095,26 +8126,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 452.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W45)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 259526415}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 708308320}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -8163,6 +8174,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 452.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W45)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 259526415}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 708308320}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &444012082
@@ -8249,11 +8280,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1356955415}
         m_TargetAssemblyTypeName: BeamMeUpATCA.UIManager, Assembly-CSharp
-        m_MethodName: CameraFocus
+        m_MethodName: CameraFocusSelect
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 851164411}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 7448922191966162118}
+          m_ObjectArgumentAssemblyTypeName: BeamMeUpATCA.Unit, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8313,6 +8344,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8341d81a47ef493f8a532bfa9b7c1d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &453292618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 453292621}
+  - component: {fileID: 453292620}
+  - component: {fileID: 453292619}
+  m_Layer: 5
+  m_Name: SelectedUnit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &453292619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453292618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 18
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &453292620
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453292618}
+  m_CullTransparentMesh: 1
+--- !u!224 &453292621
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453292618}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 248288410}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0.0000066757}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &464982147
 GameObject:
   m_ObjectHideFlags: 0
@@ -8510,34 +8620,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -37.7025
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W111)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 714376446}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 122982679}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -8585,6 +8667,34 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -37.7025
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W111)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 714376446}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 122982679}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -8689,26 +8799,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 693.726
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W14)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 372357909}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 2140354245}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -8757,6 +8847,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 693.726
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 372357909}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 2140354245}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &510019488
@@ -9032,26 +9142,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -573.078
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W182)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 675433718}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 191433279}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -9100,6 +9190,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -573.078
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W182)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 675433718}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 191433279}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &544179332
@@ -9297,30 +9407,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 37
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -671.1045
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W195)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 2022921066}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1878578178}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -9369,6 +9455,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -671.1045
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W195)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 2022921066}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1878578178}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &560830412
@@ -9378,26 +9488,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 784.212
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1353041207}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1807191813}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -9446,6 +9536,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 784.212
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1353041207}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1807191813}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!224 &564516757 stripped
@@ -10337,7 +10447,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &675433715 stripped
 Transform:
@@ -15397,6 +15507,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8341d81a47ef493f8a532bfa9b7c1d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &709392544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 709392545}
+  - component: {fileID: 709392547}
+  - component: {fileID: 709392546}
+  m_Layer: 5
+  m_Name: Icon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &709392545
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709392544}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1799543945}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -14, y: -14}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &709392546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709392544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 35c44e03857f43e4db0ccb9f609ba02c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &709392547
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709392544}
+  m_CullTransparentMesh: 1
 --- !u!4 &714376443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -15613,26 +15798,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 738.969
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 933635121}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 856523673}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -15681,6 +15846,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 738.969
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 933635121}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 856523673}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &768687708
@@ -15851,6 +16036,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788671394}
+  m_CullTransparentMesh: 1
+--- !u!1 &791310161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 791310162}
+  - component: {fileID: 791310164}
+  - component: {fileID: 791310163}
+  m_Layer: 5
+  m_Name: Icon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &791310162
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791310161}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2043767250}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -14, y: -14}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &791310163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791310161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 8948afabd53e0c644be01ee3716a005b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &791310164
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791310161}
   m_CullTransparentMesh: 1
 --- !u!1 &801031992
 GameObject:
@@ -16450,11 +16710,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: adae3c94369987f499a5c6471787d05c, type: 3}
   m_PrefabInstance: {fileID: 831599233}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &851164411 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1521788543927097459, guid: 73096aa8a0fe52844b5d821d90ede35b, type: 3}
-  m_PrefabInstance: {fileID: 7448922191966162117}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &856523670 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -16572,26 +16827,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -429.8085
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W163)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1049246784}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1830588217}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -16640,6 +16875,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -429.8085
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W163)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1049246784}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1830588217}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &888915524
@@ -16910,7 +17165,7 @@ Transform:
   - {fileID: 681667305}
   - {fileID: 1386797199}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &926663528
 GameObject:
@@ -17104,7 +17359,7 @@ Transform:
   - {fileID: 2116382148}
   - {fileID: 802789772}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &933635118 stripped
 Transform:
@@ -17158,7 +17413,7 @@ Transform:
   - {fileID: 1141401048}
   - {fileID: 1900189427}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &938444969
 PrefabInstance:
@@ -18009,7 +18264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0202d9b15e4e949a30779414660bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <UnitUIPrefab>k__BackingField: {fileID: 4343944076344967195, guid: f8b48a0583abe484e9a814357b77431f, type: 3}
 --- !u!4 &1049246781 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -18229,26 +18483,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 30.162
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W102)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1335133260}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 919132148190808503}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -18297,6 +18531,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30.162
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W102)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1335133260}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 919132148190808503}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &1086875835
@@ -18616,6 +18870,81 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7620428260226701925, guid: 7a4de34b662a3d8418d4c789e61d2a20, type: 3}
   m_PrefabInstance: {fileID: 1090586102}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1096930979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1096930980}
+  - component: {fileID: 1096930982}
+  - component: {fileID: 1096930981}
+  m_Layer: 5
+  m_Name: Icon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1096930980
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096930979}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1952626313}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -14.000001, y: -14.000001}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1096930981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096930979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9d2dc9db549dfa742a76ca388f3c1b24, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1096930982
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096930979}
+  m_CullTransparentMesh: 1
 --- !u!1 &1116670733
 GameObject:
   m_ObjectHideFlags: 0
@@ -19276,26 +19605,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 557.997
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W32)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 2140354245}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 652429111}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -19344,6 +19653,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 557.997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 2140354245}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 652429111}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &1157065294
@@ -19477,26 +19806,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -625.8615
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W189)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 2098089804}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 2022921066}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -19545,6 +19854,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -625.8615
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W189)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 2098089804}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 2022921066}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &1185936968
@@ -20098,30 +20427,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -135.729
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W124)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1929622100}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 67393433}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -20169,6 +20474,30 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -135.729
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W124)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1929622100}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 67393433}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -20254,30 +20583,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -22.6215
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W109)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 593556201}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 714376446}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -20326,6 +20631,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.6215
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W109)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 593556201}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 714376446}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &1273106734
@@ -20335,26 +20664,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 165.891
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W84)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 708308320}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1941899195}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -20403,6 +20712,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 165.891
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W84)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 708308320}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1941899195}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!4 &1274079206 stripped
@@ -20522,26 +20851,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 316.701
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W64)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 652429111}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1647564437}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -20590,6 +20899,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 316.701
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W64)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 652429111}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1647564437}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &1297813782
@@ -20843,30 +21172,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -143.2695
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W125)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1328068455}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 165398323}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -20915,6 +21220,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -143.2695
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W125)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1328068455}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 165398323}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &1319016716
@@ -20924,26 +21253,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 754.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1807191813}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1913988718}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -20992,6 +21301,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 754.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1807191813}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1913988718}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!4 &1328068452 stripped
@@ -21185,11 +21514,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1356955415}
         m_TargetAssemblyTypeName: BeamMeUpATCA.UIManager, Assembly-CSharp
-        m_MethodName: CameraFocus
+        m_MethodName: CameraFocusSelect
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1387707282}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 1382161951125269671}
+          m_ObjectArgumentAssemblyTypeName: BeamMeUpATCA.Unit, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -21233,6 +21562,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346506442}
   m_CullTransparentMesh: 1
+--- !u!1 &1351576632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1351576633}
+  - component: {fileID: 1351576635}
+  - component: {fileID: 1351576634}
+  m_Layer: 5
+  m_Name: Icon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1351576633
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351576632}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1920844250}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -14, y: -14}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1351576634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351576632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: fcaa7afb8b37a3d47a8648c0a3f873db, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1351576635
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351576632}
+  m_CullTransparentMesh: 1
 --- !u!4 &1353041204 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -21256,30 +21660,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -165.891
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W128)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 67393433}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 2145110357}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -21328,6 +21708,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -165.891
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W128)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 67393433}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 2145110357}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &1356955412
@@ -21374,7 +21778,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1356955415
 MonoBehaviour:
@@ -21388,7 +21792,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ea67ec090126c4e8b94b10018ef74f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShedIcon: {fileID: 21300000, guid: 5927803a7275d6a45bfec3101cbc0927, type: 3}
+  IdleIcon: {fileID: 21300000, guid: 44f78b2e86dc9d447b5b3ab3c783ad84, type: 3}
+  MoveIcon: {fileID: 21300000, guid: 8632b8161dab3f94f91849ca80c65022, type: 3}
+  ObservationIcon: {fileID: 21300000, guid: 4246744dc3d7caf4bb67d8c75dfb5169, type: 3}
+  RepairIcon: {fileID: 21300000, guid: 0ca4dbca2487b2e4882bdaa526c1b557, type: 3}
+  WeatherIcon: {fileID: 21300000, guid: c45185bede44f634981ee7cde1d3b05e, type: 3}
   selected_units: []
+  selected_text: {fileID: 453292619}
 --- !u!224 &1362920988 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7620428260226701925, guid: 7a4de34b662a3d8418d4c789e61d2a20, type: 3}
@@ -22182,18 +22593,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 39
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2252.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W392) [-95.267x]
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -22241,6 +22640,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2252.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W392) [-95.267x]
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -22363,26 +22774,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 31
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -467.511
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W168)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 451769506}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1163475037}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 31
@@ -22431,6 +22822,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -467.511
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W168)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 451769506}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1163475037}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &1557588957
@@ -22679,30 +23090,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -52.7835
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W113)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 122982679}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1328068455}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -22750,6 +23137,30 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -52.7835
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W113)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 122982679}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1328068455}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -22861,20 +23272,6 @@ MonoBehaviour:
   <IsSouthPaired>k__BackingField: 0
   <IsEastPaired>k__BackingField: 0
   <IsWestPaired>k__BackingField: 0
---- !u!4 &1585954893
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1395603131}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1587280341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22882,26 +23279,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 723.888
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W10)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1913988718}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 372357909}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -22950,6 +23327,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 723.888
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1913988718}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 372357909}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &1587565510
@@ -23203,26 +23600,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 38
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -678.645
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W196)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 224822893}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -23270,6 +23647,26 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -678.645
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W196)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 224822893}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -23357,11 +23754,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1356955415}
         m_TargetAssemblyTypeName: BeamMeUpATCA.UIManager, Assembly-CSharp
-        m_MethodName: CameraFocus
+        m_MethodName: CameraFocusSelect
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 55303425}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 8615877059557235322}
+          m_ObjectArgumentAssemblyTypeName: BeamMeUpATCA.Unit, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -23683,7 +24080,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1673136012 stripped
 RectTransform:
@@ -23866,26 +24263,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 708.807
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W12)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 856523673}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 468690390}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -23934,6 +24311,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 708.807
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 856523673}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 468690390}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &1694099622
@@ -23964,14 +24361,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 248288410}
   m_Father: {fileID: 1047878532}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -960, y: 83}
-  m_SizeDelta: {x: 1920, y: 165}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.15114816}
+  m_AnchoredPosition: {x: 0, y: 1.5}
+  m_SizeDelta: {x: 0, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1694099624
 MonoBehaviour:
@@ -24396,34 +24794,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -45.243
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W112)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 92734409}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1929622100}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -24472,6 +24842,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -45.243
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W112)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 92734409}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1929622100}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &1779229787
@@ -24481,30 +24879,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -173.4315
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W129)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 165398323}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1782477498}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -24553,6 +24927,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -173.4315
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W129)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 165398323}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1782477498}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!4 &1782477495 stripped
@@ -24600,7 +24998,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 709392545}
   m_Father: {fileID: 1047878532}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24655,11 +25054,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1356955415}
         m_TargetAssemblyTypeName: BeamMeUpATCA.UIManager, Assembly-CSharp
-        m_MethodName: CameraFocus
+        m_MethodName: CameraFocusSelect
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 55303425}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 8615877059557235322}
+          m_ObjectArgumentAssemblyTypeName: BeamMeUpATCA.Unit, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -24685,7 +25084,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 585f2af7c3384b0479372f237a1df9d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e1670fe998b6a7c4396cd8201e5ebd10, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24803,11 +25202,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1356955415}
         m_TargetAssemblyTypeName: BeamMeUpATCA.UIManager, Assembly-CSharp
-        m_MethodName: CameraFocus
+        m_MethodName: CameraFocusSelect
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1914915291}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 5076565081615082085}
+          m_ObjectArgumentAssemblyTypeName: BeamMeUpATCA.Unit, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -24954,30 +25353,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -505.2135
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W173)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1163475037}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 2098089804}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -25025,6 +25400,30 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -505.2135
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W173)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1163475037}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 2098089804}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -25606,11 +26005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8341d81a47ef493f8a532bfa9b7c1d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1914915291 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3409895444231715154, guid: c9d5c9a1d881d3747bafa95a152ed721, type: 3}
-  m_PrefabInstance: {fileID: 5076565081615082084}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1916130436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25618,34 +26012,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -30.162
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W110)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1142446734}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 92734409}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -25694,6 +26060,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30.162
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W110)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1142446734}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 92734409}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &1920844249
@@ -25725,7 +26119,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1351576633}
   m_Father: {fileID: 1047878532}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25780,11 +26175,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1356955415}
         m_TargetAssemblyTypeName: BeamMeUpATCA.UIManager, Assembly-CSharp
-        m_MethodName: CameraFocus
+        m_MethodName: CameraFocusSelect
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1914915291}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 5076565081615082085}
+          m_ObjectArgumentAssemblyTypeName: BeamMeUpATCA.Unit, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -25810,7 +26205,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7e3d0c6485270de4f99b597089596c95, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e1670fe998b6a7c4396cd8201e5ebd10, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26145,7 +26540,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1096930980}
   m_Father: {fileID: 1047878532}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26200,11 +26596,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1356955415}
         m_TargetAssemblyTypeName: BeamMeUpATCA.UIManager, Assembly-CSharp
-        m_MethodName: CameraFocus
+        m_MethodName: CameraFocusSelect
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1387707282}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 1382161951125269671}
+          m_ObjectArgumentAssemblyTypeName: BeamMeUpATCA.Unit, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -26230,7 +26626,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ebe2e7ae872a0564ba32dd2afcdb72a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e1670fe998b6a7c4396cd8201e5ebd10, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26669,7 +27065,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 791310162}
   m_Father: {fileID: 1047878532}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26724,11 +27121,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1356955415}
         m_TargetAssemblyTypeName: BeamMeUpATCA.UIManager, Assembly-CSharp
-        m_MethodName: CameraFocus
+        m_MethodName: CameraFocusSelect
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 851164411}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 7448922191966162118}
+          m_ObjectArgumentAssemblyTypeName: BeamMeUpATCA.Unit, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -26754,7 +27151,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b873fd8a47821bc40aa270e081bd8559, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e1670fe998b6a7c4396cd8201e5ebd10, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26858,26 +27255,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 678.645
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W16)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 468690390}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 259526415}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -26926,6 +27303,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 678.645
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 468690390}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 259526415}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &2080514321
@@ -26935,26 +27332,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 45.243
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W100)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1941899195}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1976526518}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -27003,6 +27380,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 45.243
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W100)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1941899195}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1976526518}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &2083747531
@@ -27299,26 +27696,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 36
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -633.402
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W190)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 191433279}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 224822893}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -27367,6 +27744,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -633.402
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W190)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 191433279}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 224822893}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!4 &2140354242 stripped
@@ -27678,12 +28075,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7437937723908387349, guid: 8113db850516f2e4f904dc6543a7c766, type: 3}
+      propertyPath: actionIndicator
+      value: 
+      objectReference: {fileID: 1346506445}
+    - target: {fileID: 7437937723908387349, guid: 8113db850516f2e4f904dc6543a7c766, type: 3}
+      propertyPath: healthIndicator
+      value: 
+      objectReference: {fileID: 1096930981}
     - target: {fileID: 7780448990190212175, guid: 8113db850516f2e4f904dc6543a7c766, type: 3}
       propertyPath: m_Name
       value: ChiefEngineerMary
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8113db850516f2e4f904dc6543a7c766, type: 3}
+--- !u!114 &1382161951125269671 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7437937723908387349, guid: 8113db850516f2e4f904dc6543a7c766, type: 3}
+  m_PrefabInstance: {fileID: 1382161951125269670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ecda63f644332429f233100970f8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2221717242550963918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27881,6 +28297,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 155091835}
     m_Modifications:
+    - target: {fileID: 2563401438675574536, guid: c9d5c9a1d881d3747bafa95a152ed721, type: 3}
+      propertyPath: actionIndicator
+      value: 
+      objectReference: {fileID: 1809915140}
+    - target: {fileID: 2563401438675574536, guid: c9d5c9a1d881d3747bafa95a152ed721, type: 3}
+      propertyPath: healthIndicator
+      value: 
+      objectReference: {fileID: 1351576634}
     - target: {fileID: 2601305403905483752, guid: c9d5c9a1d881d3747bafa95a152ed721, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -27931,6 +28355,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9d5c9a1d881d3747bafa95a152ed721, type: 3}
+--- !u!114 &5076565081615082085 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2563401438675574536, guid: c9d5c9a1d881d3747bafa95a152ed721, type: 3}
+  m_PrefabInstance: {fileID: 5076565081615082084}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ecda63f644332429f233100970f8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5325340873356350063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28122,7 +28557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5391147530827277836, guid: 0689fe5acafba094197cc09be516b323, type: 3}
       propertyPath: healthScheme
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5391147530827277836, guid: 0689fe5acafba094197cc09be516b323, type: 3}
       propertyPath: healthIndicator
@@ -28241,6 +28676,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChiefScientistJamie
       objectReference: {fileID: 0}
+    - target: {fileID: 1864230004172553769, guid: 73096aa8a0fe52844b5d821d90ede35b, type: 3}
+      propertyPath: actionIndicator
+      value: 
+      objectReference: {fileID: 444012085}
+    - target: {fileID: 1864230004172553769, guid: 73096aa8a0fe52844b5d821d90ede35b, type: 3}
+      propertyPath: healthIndicator
+      value: 
+      objectReference: {fileID: 791310163}
     - target: {fileID: 2185840328747565769, guid: 73096aa8a0fe52844b5d821d90ede35b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -28287,6 +28730,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73096aa8a0fe52844b5d821d90ede35b, type: 3}
+--- !u!114 &7448922191966162118 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1864230004172553769, guid: 73096aa8a0fe52844b5d821d90ede35b, type: 3}
+  m_PrefabInstance: {fileID: 7448922191966162117}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ecda63f644332429f233100970f8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7620428259679587824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28467,9 +28921,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8615877058639354212, guid: 8400bd0051d54fe418dbd282f4b7b8ba, type: 3}
+      propertyPath: actionIndicator
+      value: 
+      objectReference: {fileID: 1617336212}
+    - target: {fileID: 8615877058639354212, guid: 8400bd0051d54fe418dbd282f4b7b8ba, type: 3}
+      propertyPath: healthIndicator
+      value: 
+      objectReference: {fileID: 709392546}
     - target: {fileID: 8885838841231851326, guid: 8400bd0051d54fe418dbd282f4b7b8ba, type: 3}
       propertyPath: m_Name
       value: EngineerPaul
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8400bd0051d54fe418dbd282f4b7b8ba, type: 3}
+--- !u!114 &8615877059557235322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8615877058639354212, guid: 8400bd0051d54fe418dbd282f4b7b8ba, type: 3}
+  m_PrefabInstance: {fileID: 8615877059557235321}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ecda63f644332429f233100970f8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

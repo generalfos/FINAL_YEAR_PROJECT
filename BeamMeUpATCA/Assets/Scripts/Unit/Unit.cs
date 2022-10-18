@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace BeamMeUpATCA 
 {
@@ -28,9 +29,35 @@ namespace BeamMeUpATCA
 
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public UnitType UnitClass { get; private set; } = UnitType.Engineer;
-        [field: SerializeField] public float UnitMorale { get; private set; }
+
+        private float _moral;
+        public float UnitMorale { 
+            get => _moral; 
+            private set {
+                _moral = Mathf.Clamp(value, 0f, _maxMorale);
+
+                // Update the UI
+                if (!(healthIndicator is null)) 
+                    healthIndicator.color = GameManager.UI.GetMendableColour(_moral, _maxMorale, healthScheme);
+            } 
+        }
         [field: SerializeField] public Canvas UnitCanvas { get; private set; }
 
+        [SerializeField] private UIManager.ColorScheme healthScheme;
+        public Image healthIndicator;
+        
+        private UIManager.UnitState _unitState;
+        public UIManager.UnitState UnitState {
+            get => _unitState;
+            set {
+                _unitState = value;
+
+                // Update the UI
+                if (!(actionIndicator is null)) 
+                    actionIndicator.sprite = GameManager.UI.GetUnitState(_unitState);
+            }
+        }
+        public Image actionIndicator;
 
         private UnitPathfinder _pathfinder;
         public UnitPathfinder Pathfinder => _pathfinder ??= new UnitPathfinder(this);
@@ -52,6 +79,8 @@ namespace BeamMeUpATCA
             _maxMorale = 100;
             UnitMorale = _maxMorale;
             _moraleTickDmg = 1;
+
+            UnitState = UIManager.UnitState.IDLE; // Default to IDLE
 
             // Fetching the Canvas from Child
             UnitCanvas = this.GetComponentInChildren<Canvas>();
@@ -81,6 +110,8 @@ namespace BeamMeUpATCA
         {
             // Set self inside building to building arg
             BuildingInside = building;
+
+            UnitState = UIManager.UnitState.REPAIR;
             
             // Hide unit, disable clicking, and set unit inside building.
             Renderer.enabled = false;
@@ -152,9 +183,14 @@ namespace BeamMeUpATCA
         {
             if (!command) return;
 
+            // Change UI State Graphic to reflect command
+            if (command is GotoCommand) UnitState = UIManager.UnitState.MOVE;
+            if (command is MendCommand) UnitState = UIManager.UnitState.REPAIR;
+            
             // Indicate to the command it can be begin executing.
             command.enabled = true;
             command.Execute();
+
         }
 
         // Destroys a command instance.
@@ -222,9 +258,30 @@ namespace BeamMeUpATCA
             }
         }
 
+        private void UnitStateUpdate() {
+            // Check if the Unit is doing nothing (IDLE)
+            if (_commandQueue.Count == 0 && _activeCommand is null && _priorityCommand is null && BuildingInside is null) {
+                UnitState = UIManager.UnitState.IDLE;
+                return;
+            }
+
+            // If the player is inside a specific building, display dedicated graphic
+            if (BuildingInside is EngineerStation)      { UnitState = UIManager.UnitState.SHED; return;    }
+            if (BuildingInside is WeatherStation)       { UnitState = UIManager.UnitState.WEATHER; return; }
+            if (BuildingInside is ObservationStation)   { UnitState = UIManager.UnitState.OBS; return;     }
+            
+            // No Graphic for Rest, default to IDLE "zzz"
+            if (BuildingInside is BusStop)   { UnitState = UIManager.UnitState.IDLE; return; }
+
+            // Building has no graphic, default to "Mend"
+            if (!(BuildingInside is null))   { UnitState = UIManager.UnitState.REPAIR; return; }
+        
+        }
+
         private void Update()
         {
             CommandUpdate();
+            UnitStateUpdate();
 
             if (BuildingInside is BusStop)
             {
@@ -241,7 +298,7 @@ namespace BeamMeUpATCA
 
         private void TakeTickDamage()
         {
-            float newMorale = UnitMorale - _moraleTickDmg;
+            float newMorale = UnitMorale - (_moraleTickDmg * Time.deltaTime);
             if (newMorale <= 0)
             {
                 newMorale = 0;
