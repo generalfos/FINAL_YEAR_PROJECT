@@ -2,41 +2,73 @@ using UnityEngine;
 
 namespace BeamMeUpATCA
 {
-    public class LockCommand : Command
+    public class LockCommand : GotoCommand
     {
-        // Commands Unit to Lock/Unlock a building at the Command.Position
-        // Conditions: 
-        // 1. Building exists at Command.Position 
-        // 2. Building is Moveable.
-        // 3. Building is Enterable & this.unit has entered building
-        override protected void CommandAwake()
+        // Commands Unit to Lock a building at the Command.Position
+        // Conditions:
+        // 1. Building exists at Command.Position
+        // 2. Building is Lockable
+        // OR
+        // 1. Unit.BuildingInside != null
+        // 2. Building is Enterable && Lockable
+        // 3. Unit.BuildingInside.IsInside(unit) == true
+        protected override void CommandAwake() { Name = "Lock"; }
+        
+        private bool _isWaiting = false;
+        private Moveable _building = null;
+        
+        // Check if unit is currently in building. If so just call the lock command, otherwise
+        // call the unit pathfinder to navigate to the building and then attempt to lock.
+        public override void Execute()
         {
-            Name = "Lock";
+            if (!(unit.BuildingInside is null))
+            {
+                Building building = unit.BuildingInside;
+
+                // If building is not enterable (or the unit is not inside) return without setting _conditionsMet
+                if (!(building is Enterable enterable) || !(enterable.IsInside(unit))) return;
+            
+                // If building is not lockable return without setting _conditionsMet
+                if (!(building is Moveable moveable)) return;
+
+                _building = moveable;
+                moveable.ToggleLock();
+                
+            }
+            else
+            {
+                IInteractable interactable = Selector.SelectGameObject(ActiveCamera, Position, Mask.Building);
+
+                // If interactable is null or not moveable this will fail and conditions will not be met.
+                if (!(interactable is Moveable moveable)) return;
+            
+                _building = moveable;
+
+                if (((Building)_building).Anchors.CanAnchor(unit.transform.position))
+                {
+                    _building.ToggleLock();
+                }
+                else
+                {
+                    Vector3 position = ((Building)_building).Anchors.GetAnchorPoint();
+                    Goto(ActiveCamera, ActiveCamera.WorldToScreenPoint(position));
+                    _isWaiting = true;
+                }
+            }
+        }
+        
+        // If still waiting to get to the building.position keep checking in update
+        private void Update()
+        {
+            if (!(Building)_building || !(unit.BuildingInside is null)) return;
+            if (((Building)_building).Anchors.CanAnchor(unit.transform.position) && IsGoingTo)
+            {
+                _building.ToggleLock();
+                _isWaiting = false;
+            }
         }
 
-        // Check Command conditions. If conditions met but the unit is not 
-        // at the building dock, call Pathfinder - Goto(Camera, Vector2)
-        // Check in Update() for (IsGotoFinished && CommandConditions).
-        // Ensure methods respect the expected call count (single vs multiple calls)
-        // of the building interface methods.
-        public override void Execute() {}
-
-        // Update for loop per frame. FixedUpdate for loop per physics step.
-        // Update() counts in Time.deltaTime. FixedUpdate counts in Time.fixedDeltaTime.
-        private void Update() {}
-        private void FixedUpdate() {}
-
-        // Should return true if the command has finished execution. Goal condition.
-        // Consider adding a timeout to the command if it doesn't have an guaranteed end state.
-        public override bool IsFinished() { return true; }
-
-        // Any code that needs to be called if command is paused should go here.
-        private void OnDisable() {}
-
-        // Any Code that needs to be called if command is unpause should go here.
-        private void OnEnable() {}
-
-        // Any cleanup code that needs to be called if command is destroyed should go here.
-        private void OnDestroy() {}
+        // If we're still waiting for pathfinding return false
+        public override bool IsFinished() => !_isWaiting;
     }
 }

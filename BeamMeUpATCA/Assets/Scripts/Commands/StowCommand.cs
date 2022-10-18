@@ -39,7 +39,7 @@ namespace BeamMeUpATCA
             {
                 IInteractable interactable = Selector.SelectGameObject(ActiveCamera, Position, Mask.Building);
 
-                // If interactable is null or not mendable this will fail and conditions will not be met.
+                // If interactable is null or not Stowable this will fail and conditions will not be met.
                 if (!(interactable is Stowable stowable)) return;
             
                 _building = stowable;

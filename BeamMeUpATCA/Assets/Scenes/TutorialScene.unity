@@ -16653,6 +16653,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain
       objectReference: {fileID: 0}
+    - target: {fileID: 2708439443833481467, guid: d8e5534083f59e149bfe91b4cfb61f27, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2708439443833481470, guid: d8e5534083f59e149bfe91b4cfb61f27, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -21560,6 +21564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <SunLight>k__BackingField: {fileID: 1215177830}
+  rotationSpeed: 0.1
 --- !u!1 &1387707282 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7780448990190212175, guid: 8113db850516f2e4f904dc6543a7c766, type: 3}

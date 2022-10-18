@@ -8,7 +8,7 @@ namespace BeamMeUpATCA
         void Move(Unit unit, Transform positionAnchor); 
 
         // Takes a Unit and toggles a lock on Move() functionality on an implementing class.
-        void ToggleLock(Unit unit);
+        void ToggleLock();
         bool IsLocked { get; }
     }
 }

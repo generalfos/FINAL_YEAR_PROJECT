@@ -28,6 +28,6 @@ namespace BeamMeUpATCA
 
         // Should return true if the command has finished execution. Goal condition.
         // Consider adding a timeout to the command if it doesn't have an guaranteed end state.
-        public override bool IsFinished() { return true; }
+        public override bool IsFinished() => true;
     }
 }

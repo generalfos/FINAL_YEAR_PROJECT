@@ -45,13 +45,15 @@ namespace BeamMeUpATCA
 
         public void CommandUnits<T>(bool queue, Vector2 position) where T : Command
         {
-            for(var i = 0; i < _selectedUnits.Count; i ++) 
+            int offset = 0;
+            foreach (Unit unit in _selectedUnits)
             {
-                Command command = _selectedUnits[i].gameObject.AddComponent<T>();
+                Type commandType = ToggleCommandCheck(typeof(T), unit);
+                Command command = (Command) unit.gameObject.AddComponent(commandType);
 
                 // Command initialization
                 command.ActiveCamera = ActiveCamera;
-                command.Offset = i;
+                command.Offset = offset;
                 // TODO: Vector2 to Vector3 should be calculated on init, rather than when needed (like with pathfinder)
                 // TODO: This would require Pathfinder to also be refactored to take a Vector3 (instead of Vector2)
                 command.Position = position;
@@ -62,9 +64,33 @@ namespace BeamMeUpATCA
                     command.ResetQueue = true;
                 }
 
+                #if UNITYEDITOR
                 Debug.Log("Commanding " + _selectedUnits[i].name + " to preform the " + command.Name + " command");
-                _selectedUnits[i].AddCommand(command);
+                #endif
+                
+                unit.AddCommand(command);
+
+                // Iterate for following units
+                offset++;
             }
+        }
+
+        public Type ToggleCommandCheck(Type command, Unit unit)
+        {
+            // Checks if building is workable/enterable for toggle handling
+            Building building = unit.BuildingInside;
+            if (command == typeof(EnterCommand))
+            {
+                if (building) command = typeof(LeaveCommand);
+            }
+            if (command == typeof(WorkCommand))
+            {
+                if (building && building is Workable && Equals((building as Workable).WorkingUnit, unit))
+                {
+                    command = typeof(RestCommand);
+                }
+            }
+            return command;
         }
     }
 }
