@@ -59,7 +59,18 @@ namespace BeamMeUpATCA
         public static UIManager UI => Instance.SafeComponent<UIManager>(ref Instance.playerUI);
         
         private Building[] _buildings;
-        public static Building[] Buildings => Instance._buildings ??= FindObjectsOfType<Building>();
+        public static Building[] Buildings { 
+            get {
+                if (Instance._buildings == null) 
+                {
+                    Instance._buildings = FindObjectsOfType<Building>();
+                }
+                if (Instance._buildings.Length < 1 || Instance._buildings[0] is null) 
+                {
+                    Instance._buildings = FindObjectsOfType<Building>();
+                }
+                return Instance._buildings;
+            }}
 
         public static List<T> GetBuildings<T>() where T : Building
         {
