@@ -18,8 +18,10 @@ namespace BeamMeUpATCA
         private bool _conditionsMet = false;
         private Mendable _building = null;
 
-        public override void Execute() 
+        public override void Execute()
         {
+            if (unit.BuildingInside) return;
+            
             IInteractable interactable = Selector.SelectGameObject(ActiveCamera, Position, Mask.Building);
 
             // If interactable is null or not mendable this will fail and conditions will not be met.
@@ -42,8 +44,9 @@ namespace BeamMeUpATCA
 
         // Update for loop per frame. FixedUpdate for loop per physics step.
         // Update() counts in Time.deltaTime. FixedUpdate counts in Time.fixedDeltaTime.
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
             if (!_building) return;
             if (_building.Anchors.CanAnchor(unit.transform.position))
             {

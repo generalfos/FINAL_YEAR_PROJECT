@@ -10,6 +10,7 @@ namespace BeamMeUpATCA
         public static readonly Mask Unit = new Mask("Unit");
         public static readonly Mask Building = new Mask("Building");
         public static readonly Mask DishSlot = new Mask("ArrangementSlot");
+        public static readonly Mask Ground = new Mask("Ground");
 
         private int _mask;
         private readonly string _layerName;

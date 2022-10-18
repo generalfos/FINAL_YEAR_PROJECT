@@ -21,21 +21,6 @@ namespace BeamMeUpATCA
             // No 'IIntractables' were found on the 'selectionMask' with the respective matching mask.
             return null;
         }
-        
-        [Obsolete("This overload is depreciated. Please use SelectGameObject(Camera, Vector2, int) instead")]
-        public static GameObject SelectGameObject(Camera camera, Vector2 screenPoint, IEnumerable<string> selectableTags) 
-        {
-            if (Physics.Raycast(camera.ScreenPointToRay(screenPoint), out RaycastHit hit, camera.farClipPlane)) 
-            {
-                string rayCastHitTag = hit.transform.gameObject.tag;
-                foreach (string tag in selectableTags) 
-                {
-                    if (tag == rayCastHitTag) return hit.transform.gameObject;
-                }
-            } 
-            // No object was found with selectableTags
-            return null;
-        }
 
         private static float[]AnglePatternOffset = {0f, 180f, -90f, 90f, -135f, 45f, 135f, -45f};
 
@@ -49,25 +34,19 @@ namespace BeamMeUpATCA
 
             Vector3 result = Vector3.zero;
 
-            if (Physics.Raycast(camera.ScreenPointToRay(screenPoint), out RaycastHit hit))
+            if (Physics.Raycast(camera.ScreenPointToRay(screenPoint), out RaycastHit hit,
+                    camera.farClipPlane, Mask.Building | Mask.Ground))
             {
 
                 // Check for building to grab anchor point
                 Building building = hit.transform.gameObject.GetComponent<Building>();
-                
-                if (!(building is null))
+
+                if (building)
                 {
                     return building.Anchors.GetAnchorPoint();
                 }
 
-                if(NavMesh.SamplePosition(hit.point, out NavMeshHit myNavHit, 100 , -1))
-                {
-                    result = myNavHit.position;
-                }
-                else
-                {
-                    result = hit.point;
-                }
+                result = NavMesh.SamplePosition(hit.point, out NavMeshHit myNavHit, 1000f , -1) ? myNavHit.position : hit.point;
 
             }
             // If this isn't unit 1 then add offset to result destination.
@@ -77,26 +56,6 @@ namespace BeamMeUpATCA
             }
             return result;
         }
-
-        // HACK: This function does not return the expected value. Instead it returns
-        // A random position within 80f units of the ScreenPointToRay hit.point
-        // This is done to avoid NavMeshAgents getting stuck trying to head to the same
-        // position. There is also no check for the position being walkable as the method
-        // name implies. Please obsolete this method by implementing it above in NearestWalkable().
-        [Obsolete("NearestWalkableHACK is deprecated, please use NearestWalkable instead.")]
-        public static Vector3 NearestWalkableHACK(Camera camera, Vector2 screenPoint)
-        { 
-            if (Physics.Raycast(camera.ScreenPointToRay(screenPoint), out RaycastHit hit))
-            {
-                // Temp change to avoid exact agent collisions.
-                float tempX = UnityEngine.Random.Range(-40.0f, 40.0f);
-                float tempZ = UnityEngine.Random.Range(-40.0f, 40.0f);
-                return new Vector3(hit.point.x + tempX, hit.point.y, hit.point.z + tempZ);
-            } 
-            else 
-            {
-                return Vector3.zero;
-            }
-        }
+        
     }
 }

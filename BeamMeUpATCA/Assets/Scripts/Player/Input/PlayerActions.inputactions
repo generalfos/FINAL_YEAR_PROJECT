@@ -157,6 +157,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ModKey",
+                    "type": "Button",
+                    "id": "e6492404-ecae-48ab-a231-3bb63bcd0ac0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -465,6 +474,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Command: Leave",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a1a17f2a-34a7-4b68-b4f0-c50da8300fe0",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ModKey",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

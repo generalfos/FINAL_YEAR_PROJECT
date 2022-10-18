@@ -112,13 +112,14 @@ namespace BeamMeUpATCA
 
         #endregion // End of 'Enter Building'
         
-
         #region Commanding
 
         private Queue<Command> _commandQueue;
-        private Command _activeCommand;
-        private Command _priorityCommand;
         private Command _nextCommand;
+        private Command _activeCommand;
+        private Command _stashedCommand;
+        
+        private Command _executingCommand;
 
         public void AddCommand(Command command)
         {
@@ -135,50 +136,36 @@ namespace BeamMeUpATCA
                 if (_activeCommand != null)
                 {
                     _activeCommand.enabled = false;
+                    _stashedCommand = _activeCommand;
                 }
-
-                // Priority command holds the command queue hostage stopping activeCommand
-                // until the priority command has finished executing.
-                _priorityCommand = command;
-                ExecuteCommand(_priorityCommand);
+                
+                // Holds stashed command hostage until it's complete
+                _activeCommand = command;
             }
             else
             {
                 _commandQueue.Enqueue(command);
-                if (_nextCommand == null)
-                {
-                    _nextCommand = _commandQueue.Dequeue();
-                }
             }
         }
 
         private void ExecuteCommand(Command command)
         {
-            if (command is null) return;
+            if (!command) return;
 
             // Indicate to the command it can be begin executing.
             command.enabled = true;
             command.Execute();
         }
 
-        private Command ExecuteAndLoadCommand(Command command)
-        {
-            if (command is null) return null;
-
-            ExecuteCommand(command);
-
-            // If there is a next command then return it. Otherwise return null.
-            return _commandQueue.Count != 0 ? _commandQueue.Dequeue() : null;
-        }
-
         // Destroys a command instance.
-        private void DestroyCommand(Command command)
+        private void DestroyCommand(ref Command command)
         {
             // Guard Clause ensuring command is valid.
-            if (command is null)return;
+            if (!command) return;
 
-            // Debug.Log("Destroying Command: " + command.Name);
+            command.enabled = false;
             Destroy(command);
+            command = null;
         }
 
         // Clears Command Queue, NextCommand, and ActiveCommand and ensures Command instances are destroyed.
@@ -186,53 +173,52 @@ namespace BeamMeUpATCA
         {
             while (_commandQueue.Count > 0)
             {
-                DestroyCommand(_commandQueue.Dequeue());
+                Command command = _commandQueue.Dequeue();
+                DestroyCommand(ref command);
             }
         }
 
         // Clears next and active commands
         private void DestroyStagedCommands()
         {
-            DestroyCommand(_nextCommand);
-            _nextCommand = null;
-            DestroyCommand(_activeCommand);
-            _activeCommand = null;
+            DestroyCommand(ref _nextCommand);
+            DestroyCommand(ref _activeCommand);
+            DestroyCommand(ref _stashedCommand);
         }
 
-        // Handles execution order of commands
         private void CommandUpdate()
         {
-            // No commands should be running while a priority command exists.
-            if (!(_priorityCommand is null))
+            // If command is ready to execute run it
+            if (_executingCommand)
             {
-                // Guard Clause to allow priority command to run enabled.
-                if (!_priorityCommand.IsFinished()) return;
-
-                DestroyCommand(_priorityCommand);
-                _priorityCommand = null;
-
-                // Restore whatever activeCommand was running.
-                if (!(_activeCommand is null))
+                ExecuteCommand(_executingCommand);
+                _executingCommand = null;
+            } 
+            // If there is an active command loaded
+            else if (_activeCommand)
+            {
+                if (!_activeCommand.enabled)
                 {
-                    _activeCommand.enabled = true;
+                    _executingCommand = _activeCommand;
+
+                }
+                else if (_activeCommand.IsFinished())
+                {
+                    DestroyCommand(ref _activeCommand);
                 }
             }
             else
             {
-                // If the active command is null run the next command.
-                if (_activeCommand is null && !(_nextCommand is null))
+                // If there is a stashed command pop it out
+                if (_stashedCommand)
                 {
-                    _activeCommand = _nextCommand;
-                    // ExecuteCommand() returns the next command in queue
-                    _nextCommand = ExecuteAndLoadCommand(_activeCommand);
+                    _activeCommand = _stashedCommand;
+                    _stashedCommand = null;
                 }
-
-                // Evaluation left to right validates Command.IsFinished() check.
-                if (_activeCommand is null || !_activeCommand.IsFinished()) return;
-                
-                // If Command.IsFinished() delete object and set activeCommand to null.
-                DestroyCommand(_activeCommand);
-                _activeCommand = null;
+                else
+                {
+                    _activeCommand = _commandQueue.Count > 0 ? _commandQueue.Dequeue() : null;
+                }
             }
         }
 

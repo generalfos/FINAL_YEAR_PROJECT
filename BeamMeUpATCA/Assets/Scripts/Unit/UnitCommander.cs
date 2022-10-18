@@ -43,7 +43,7 @@ namespace BeamMeUpATCA
             _selectedUnits.Clear();
         }
 
-        public void CommandUnits<T>(Vector2 position) where T : Command
+        public void CommandUnits<T>(bool queue, Vector2 position) where T : Command
         {
             for(var i = 0; i < _selectedUnits.Count; i ++) 
             {
@@ -54,8 +54,13 @@ namespace BeamMeUpATCA
                 command.Offset = i;
                 // TODO: Vector2 to Vector3 should be calculated on init, rather than when needed (like with pathfinder)
                 // TODO: This would require Pathfinder to also be refactored to take a Vector3 (instead of Vector2)
-                command.Position = position; 
+                command.Position = position;
 
+                if (!queue)
+                {
+                    command.SkipQueue = true;
+                    command.ResetQueue = true;
+                }
 
                 Debug.Log("Commanding " + _selectedUnits[i].name + " to preform the " + command.Name + " command");
                 _selectedUnits[i].AddCommand(command);
