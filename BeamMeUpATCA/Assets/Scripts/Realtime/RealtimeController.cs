@@ -153,34 +153,32 @@ namespace BeamMeUpATCA
             }
 
             // Retrieve current positions of arrays
-            try
+
+            if (weatherData != null && weatherData.currConfig != null)
             {
-                dishPositions = validConfigs[weatherData.currConfig];
-            }
-            catch (Exception)
-            {
-                Debug.LogError("UpdateArrayPositions: Invalid Array Config Supplied");
-                return;
-            }
-            // Iterate over dishes and place them
-            foreach (Dish dish in dishes)
-            {
-                int id = dish.dishId;
-                if (id == 6)
+                if (validConfigs.ContainsKey(weatherData.currConfig))
                 {
-                    continue;
+                    dishPositions = validConfigs[weatherData.currConfig];
+                    
+                    // Iterate over dishes and place them
+                    foreach (Dish dish in dishes)
+                    {
+                        int id = dish.dishId;
+                        if (id == 6)
+                        {
+                            continue;
+                        }
+   
+                        dishPosition = dishPositions[id-1];
+
+                        JunctionBox box = boxDict[dishPosition];
+                        dish.SnapJunctionBox(box);
+                    }
                 }
-                try
+                else
                 {
-                    dishPosition = dishPositions[id-1];
+                    Debug.LogWarning("Could not get valid data from ATCA Live");
                 }
-                catch (Exception)
-                {
-                    Debug.LogError("UpdateArrayPositions: Invalid Dish Supplied");
-                    return;
-                }
-                JunctionBox box = boxDict[dishPosition];
-                dish.SnapJunctionBox(box);
             }
         }
 
