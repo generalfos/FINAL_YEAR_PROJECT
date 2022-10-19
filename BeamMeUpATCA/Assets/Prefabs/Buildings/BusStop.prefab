@@ -31,6 +31,7 @@ Transform:
   m_Children:
   - {fileID: 3712520518263611653}
   - {fileID: 3713487807048399264}
+  - {fileID: 538124790805041488}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,7 +76,7 @@ GameObject:
   - component: {fileID: 8573995525223510287}
   - component: {fileID: 2264024940863329430}
   - component: {fileID: 837591046165121373}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shape02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +157,7 @@ GameObject:
   - component: {fileID: 995803339925083818}
   - component: {fileID: 107868696499332956}
   - component: {fileID: 1451727775767780900}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shape01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,6 +227,80 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5106988905680251464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 538124790805041488}
+  - component: {fileID: 6015369193656532644}
+  m_Layer: 0
+  m_Name: ModelViewCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &538124790805041488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5106988905680251464}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.48, y: 1.35, z: 5.27}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1535769815612726411}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!20 &6015369193656532644
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5106988905680251464}
+  m_Enabled: 0
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 4
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 128
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 8600000, guid: a4066b1df88f9b94d882eb5c85c818ad, type: 2}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_AllowMSAA: 0
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1 &6416944491864986826
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +342,7 @@ GameObject:
   - component: {fileID: 7115380480100243257}
   - component: {fileID: 3631719867366638568}
   - component: {fileID: 5478426414318613305}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Line03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +423,7 @@ GameObject:
   - component: {fileID: 7803055025816776701}
   - component: {fileID: 1623225711077971129}
   - component: {fileID: 1451218082942130195}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BusStop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3712520518263611653}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Structure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +540,7 @@ GameObject:
   - component: {fileID: 8937443547583740692}
   - component: {fileID: 3972197775321555874}
   - component: {fileID: 1671893550251938330}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Line05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +621,7 @@ GameObject:
   - component: {fileID: 7287418003601273075}
   - component: {fileID: 1324968477838760758}
   - component: {fileID: 5227269593420485069}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Line01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

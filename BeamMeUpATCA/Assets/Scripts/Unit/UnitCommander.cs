@@ -21,9 +21,9 @@ namespace BeamMeUpATCA
 
         public void SelectUnit(Unit unit)
         {
-            // Prevent selecting the same unit multiple times
             if (_selectedUnits.Contains(unit)) return;
 
+            GameManager.UI.ClearModelView();
             GameManager.UI.SelectUnit(unit);
             _selectedUnits.Add(unit);
         }
@@ -44,6 +44,7 @@ namespace BeamMeUpATCA
 
         public void DeselectAllUnits() 
         {
+            GameManager.UI.ClearModelView();
             GameManager.UI.DeselectAllUnits();
             _selectedUnits.Clear();
         }
