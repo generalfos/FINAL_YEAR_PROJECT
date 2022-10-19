@@ -96,17 +96,16 @@ namespace BeamMeUpATCA
 
             if (interactable is Building building)
             {
+                CameraFocus(_camera, building.transform);
+                
                 // Find the positions of the building and camera - Use the difference to reposition the camera
-                Vector3 cameraPos = ActiveCamera.transform.position;
-                Vector3 buildingPos = building.transform.position;
-                Vector3 positionDiff = buildingPos - cameraPos + new Vector3(0, yOffset, zOffset);
+                //Vector3 cameraPos = ActiveCamera.transform.position;
+                //Vector3 buildingPos = building.transform.position;
+                //Vector3 positionDiff = buildingPos - cameraPos + new Vector3(0, yOffset, zOffset);
+                
 
-                //TODO
-                Debug.Log(building.name + " is at " + buildingPos);
-                Debug.Log("Camera is at " + cameraPos);
-
-                cameraPos += positionDiff;
-                ActiveCamera.transform.position = cameraPos;
+                //cameraPos += positionDiff;
+                //ActiveCamera.transform.position = cameraPos;
             }
         }
 
@@ -224,6 +223,11 @@ namespace BeamMeUpATCA
                                                camera_height, 
                                                target.position.z + offset);
 
+            if (target.gameObject.TryGetComponent<Building>(out Building bld))
+            {
+                GameManager.UI.UpdateModelView(bld);
+            }
+            
             // Set the new position to the camera
             camera.transform.position = new_position;
         }

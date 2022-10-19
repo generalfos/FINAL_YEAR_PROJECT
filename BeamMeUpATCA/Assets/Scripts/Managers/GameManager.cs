@@ -52,7 +52,7 @@ namespace BeamMeUpATCA
         private static Player Player => Instance._player ??= FindObjectsOfType<Player>()[0];
         
         public static CameraController CameraController => Player.PlayerCamera;
-        
+
         public static UnitCommander UnitCommander => Player.Commander;
 
         [SerializeField] private UIManager playerUI;

@@ -6,6 +6,38 @@ namespace BeamMeUpATCA
 {
     public class UIManager : MonoBehaviour
     {
+        #region MyRegion
+        [field: SerializeField] private RawImage ModelView;
+
+        private Camera _modelViewCamera;
+        public void UpdateModelView(Building building)
+        {
+            foreach (Transform child in building.transform)
+            {
+                if (child.gameObject.name != "ModelViewCamera") continue;
+                if (_modelViewCamera) _modelViewCamera.enabled = false;
+                
+                var modelCam = child.GetComponent<Camera>();
+                
+                modelCam.enabled = true;
+                _modelViewCamera = modelCam;
+                
+                ModelView.enabled = true;
+                break;
+            }
+        }
+
+        public void ClearModelView()
+        {
+            if (_modelViewCamera)
+            {
+                _modelViewCamera.enabled = false;
+                ModelView.enabled = false;
+            }
+        }
+
+        #endregion
+
 
         #region MendableMoralIndicators
 
