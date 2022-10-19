@@ -15,14 +15,24 @@ namespace BeamMeUpATCA
 
         public static float Volume { get; set; } = 0.75f;
 
+        public static bool isLoading = false;
+
         public static void Play(int sceneIndex)
         {
-            SceneManager.LoadSceneAsync(sceneIndex);
+            if (!isLoading)
+            {
+                isLoading = true;
+                SceneManager.LoadSceneAsync(sceneIndex);
+            }
         }
         
         public static void Play(string sceneName)
         {
-            SceneManager.LoadSceneAsync(sceneName);
+            if (!isLoading)
+            {
+                isLoading = true;
+                SceneManager.LoadSceneAsync(sceneName);
+            }
         }
         
         public static void SetVolume(float volumeAmount)
