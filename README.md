@@ -14,6 +14,15 @@ following.
 
 ### How to Build
 
+To build from source, you'll neet to clone the repo and initialise Git LFS as 
+we are using the large file system to handle some files.
+
+```bash
+git clone https://gitlab.com/teamnamefinal/Beammeupatca.git
+cd Beammeupatca
+git lfs install
+```
+
 #### Prerequisites
 
 To build this project you will need a couple of things:
@@ -23,6 +32,7 @@ To build this project you will need a couple of things:
 Using the Unity Editor Hub, click the drop down button next to `Open` and click
 `Add project from disk`. The folder to select is the `BeamMeUpATCA` folder in 
 the same directory as this README.
+
 
 #### Build
 
