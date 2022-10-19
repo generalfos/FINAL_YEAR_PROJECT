@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1215177832}
-  m_IndirectSpecularColor: {r: 0.45140433, g: 0.500897, b: 0.57231504, a: 1}
+  m_IndirectSpecularColor: {r: 0.4514047, g: 0.50089765, b: 0.5723155, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,6 +135,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 769.131
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1426721847}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 933635121}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -183,26 +203,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 769.131
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1426721847}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 933635121}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &32700719
@@ -650,6 +650,123 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8341d81a47ef493f8a532bfa9b7c1d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &95170327
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1211660522}
+    m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 53.571
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: NorthernJunctionBox (N7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <North>k__BackingField
+      value: 
+      objectReference: {fileID: 1929263983}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <South>k__BackingField
+      value: 
+      objectReference: {fileID: 830362467}
+    - target: {fileID: 4982670720202148519, guid: b590abb68a173604fac725118bae0776, type: 3}
+      propertyPath: m_Name
+      value: NorthenJunctionBox (N2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651402022681038877, guid: b590abb68a173604fac725118bae0776, type: 3}
+      propertyPath: m_RootOrder
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651402022681038877, guid: b590abb68a173604fac725118bae0776, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651402022681038877, guid: b590abb68a173604fac725118bae0776, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651402022681038877, guid: b590abb68a173604fac725118bae0776, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 15.081
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651402022681038877, guid: b590abb68a173604fac725118bae0776, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651402022681038877, guid: b590abb68a173604fac725118bae0776, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651402022681038877, guid: b590abb68a173604fac725118bae0776, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651402022681038877, guid: b590abb68a173604fac725118bae0776, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651402022681038877, guid: b590abb68a173604fac725118bae0776, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651402022681038877, guid: b590abb68a173604fac725118bae0776, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651402022681038877, guid: b590abb68a173604fac725118bae0776, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+--- !u!114 &95170328 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+  m_PrefabInstance: {fileID: 95170327}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8341d81a47ef493f8a532bfa9b7c1d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &95170329 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+  m_PrefabInstance: {fileID: 95170327}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &95291892 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -673,6 +790,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 60.324
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W98)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1647564437}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1335133260}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -721,26 +858,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (14)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 60.324
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W98)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1647564437}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1335133260}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &111663314
@@ -1636,11 +1753,11 @@ PrefabInstance:
     - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
       propertyPath: <North>k__BackingField
       value: 
-      objectReference: {fileID: 1585954892}
+      objectReference: {fileID: 95170328}
     - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
       propertyPath: <South>k__BackingField
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5325340873356350065}
     - target: {fileID: 4982670720202148519, guid: b590abb68a173604fac725118bae0776, type: 3}
       propertyPath: m_Name
       value: NorthenJunctionBox (N2)
@@ -1778,7 +1895,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeCamera: {fileID: 1157065297}
-  UICamera: {fileID: 0}
 --- !u!4 &227637230
 Transform:
   m_ObjectHideFlags: 0
@@ -2055,7 +2171,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
       propertyPath: m_RootOrder
-      value: 42
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2096,7 +2212,7 @@ PrefabInstance:
     - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
       propertyPath: <South>k__BackingField
       value: 
-      objectReference: {fileID: 1585954892}
+      objectReference: {fileID: 95170328}
     - target: {fileID: 4982670720202148519, guid: b590abb68a173604fac725118bae0776, type: 3}
       propertyPath: m_Name
       value: NorthenJunctionBox (N2)
@@ -2190,6 +2306,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -309.1605
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W147)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1782477498}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1049246784}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 28
@@ -2237,30 +2377,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (28)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -309.1605
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W147)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1782477498}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1049246784}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -7358,6 +7474,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -497.673
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W172)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1830588217}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 675433718}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -7405,30 +7545,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (32)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -497.673
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W172)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1830588217}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 675433718}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -7533,6 +7649,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 799.293
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W0)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1426721847}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -7581,22 +7713,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 799.293
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W0)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1426721847}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &371532710
@@ -7606,6 +7722,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -256.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W140)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 2145110357}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1274079209}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -7654,26 +7790,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (27)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -256.377
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W140)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 2145110357}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1274079209}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!4 &372357906 stripped
@@ -7699,6 +7815,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -316.701
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W148)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1274079209}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 451769506}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 29
@@ -7746,30 +7886,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (29)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 29
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -316.701
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W148)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1274079209}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 451769506}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -8117,6 +8233,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 452.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W45)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 259526415}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 708308320}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -8165,26 +8301,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (11)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 452.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W45)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 259526415}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 708308320}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &444012082
@@ -8656,6 +8772,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -37.7025
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W111)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 714376446}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 122982679}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -8703,34 +8847,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (21)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -37.7025
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W111)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 714376446}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 122982679}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -8835,6 +8951,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 693.726
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 372357909}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 2140354245}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -8883,26 +9019,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 693.726
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W14)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 372357909}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 2140354245}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &510019488
@@ -9246,6 +9362,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -573.078
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W182)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 675433718}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 191433279}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -9294,26 +9430,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (32)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -573.078
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W182)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 675433718}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 191433279}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &544179332
@@ -9440,6 +9556,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -671.1045
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W195)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 2022921066}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1878578178}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -9488,30 +9628,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (32)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 37
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -671.1045
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W195)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 2022921066}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1878578178}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &560830412
@@ -9521,6 +9637,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 784.212
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1353041207}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1807191813}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -9569,26 +9705,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 784.212
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1353041207}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1807191813}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!224 &564516757 stripped
@@ -15748,6 +15864,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 738.969
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 933635121}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 856523673}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -15796,26 +15932,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 738.969
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 933635121}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 856523673}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &768687708
@@ -16860,6 +16976,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -429.8085
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W163)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1049246784}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1830588217}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -16908,26 +17044,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (30)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -429.8085
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W163)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1049246784}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1830588217}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &878139176
@@ -17816,7 +17932,7 @@ PrefabInstance:
     - target: {fileID: 7927623839296212002, guid: 42f2677eced4d04409d1d995028e8fe6, type: 3}
       propertyPath: currentJunction
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5325340873356350065}
     - target: {fileID: 7927623839296212002, guid: 42f2677eced4d04409d1d995028e8fe6, type: 3}
       propertyPath: healthIndicator
       value: 
@@ -23371,7 +23487,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 2e9de4683d9d42d4d99194fe0356c163, type: 2}
   m_audioClip: {fileID: 8300000, guid: c2a24b3bafde32842b9f799cb7b6d984, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -23570,7 +23686,7 @@ PrefabInstance:
       objectReference: {fileID: 777835095}
     - target: {fileID: 7927623839296212002, guid: 42f2677eced4d04409d1d995028e8fe6, type: 3}
       propertyPath: <IsLocked>k__BackingField
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8433904437737376621, guid: 42f2677eced4d04409d1d995028e8fe6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23638,6 +23754,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30.162
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W102)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1335133260}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 919132148190808503}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -23686,26 +23822,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (18)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 30.162
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W102)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1335133260}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 919132148190808503}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &1086875835
@@ -24773,6 +24889,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 557.997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 2140354245}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 652429111}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -24821,26 +24957,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (10)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 557.997
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W32)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 2140354245}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 652429111}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &1157065294
@@ -24976,6 +25092,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -625.8615
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W189)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 2098089804}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 2022921066}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -25024,26 +25160,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (32)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -625.8615
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W189)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 2098089804}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 2022921066}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &1185936968
@@ -25359,6 +25475,7 @@ Transform:
   - {fileID: 95291892}
   - {fileID: 5325340873356350064}
   - {fileID: 830362468}
+  - {fileID: 95170329}
   - {fileID: 1929263984}
   - {fileID: 197785082}
   m_Father: {fileID: 934531388}
@@ -25597,6 +25714,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -135.729
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W124)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1929622100}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 67393433}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -25644,30 +25785,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (23)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -135.729
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W124)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1929622100}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 67393433}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -25753,6 +25870,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.6215
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W109)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 593556201}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 714376446}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -25801,30 +25942,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (16)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -22.6215
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W109)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 593556201}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 714376446}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &1273106734
@@ -25834,6 +25951,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 165.891
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W84)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 708308320}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1941899195}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -25882,26 +26019,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (13)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 165.891
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W84)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 708308320}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1941899195}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!4 &1274079206 stripped
@@ -26363,6 +26480,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 316.701
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W64)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 652429111}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1647564437}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -26411,26 +26548,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (12)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 316.701
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W64)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 652429111}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1647564437}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &1297813782
@@ -26609,6 +26726,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -143.2695
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W125)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1328068455}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 165398323}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -26657,30 +26798,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (24)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -143.2695
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W125)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1328068455}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 165398323}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &1319016716
@@ -26690,6 +26807,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 754.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1807191813}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1913988718}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -26738,26 +26875,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 754.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1807191813}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1913988718}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!4 &1328068452 stripped
@@ -27097,6 +27214,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -165.891
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W128)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 67393433}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 2145110357}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -27144,30 +27285,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (25)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -165.891
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W128)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 67393433}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 2145110357}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -27234,6 +27351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ea67ec090126c4e8b94b10018ef74f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ModelView: {fileID: 779700726}
   ShedIcon: {fileID: 21300000, guid: 5927803a7275d6a45bfec3101cbc0927, type: 3}
   IdleIcon: {fileID: 21300000, guid: 44f78b2e86dc9d447b5b3ab3c783ad84, type: 3}
   MoveIcon: {fileID: 21300000, guid: 8632b8161dab3f94f91849ca80c65022, type: 3}
@@ -27578,7 +27696,7 @@ PrefabInstance:
     - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
       propertyPath: <North>k__BackingField
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5325340873356350065}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &1418902146
@@ -27665,7 +27783,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
       propertyPath: m_RootOrder
-      value: 43
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27967,6 +28085,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2252.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W392) [-95.267x]
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -28014,18 +28144,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (32)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 39
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2252.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W392) [-95.267x]
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -28148,6 +28266,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -467.511
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W168)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 451769506}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1163475037}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 31
@@ -28196,26 +28334,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (31)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 31
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -467.511
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W168)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 451769506}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1163475037}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &1557588957
@@ -28468,6 +28586,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -52.7835
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W113)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 122982679}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1328068455}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -28515,30 +28657,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (22)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -52.7835
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W113)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 122982679}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1328068455}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -28627,40 +28745,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584767657}
   m_CullTransparentMesh: 1
---- !u!114 &1585954892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8341d81a47ef493f8a532bfa9b7c1d89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Anchors>k__BackingField:
-    anchorPoints: []
-    anchorRadius: 1
-  maxHealth: 100
-  healthScheme: 0
-  healthIndicator: {fileID: 0}
-  dmgMultiplier: 1
-  damageInterval: 3
-  repairInterval: 3
-  defaultRepairRate: 1
-  scientistRepairPercent: 0.75
-  engineerRepairPercent: 1
-  <ArrangementSlot>k__BackingField: {fileID: 0}
-  <North>k__BackingField: {fileID: 0}
-  <South>k__BackingField: {fileID: 0}
-  <East>k__BackingField: {fileID: 0}
-  <West>k__BackingField: {fileID: 0}
-  <IsNorthPaired>k__BackingField: 0
-  <IsSouthPaired>k__BackingField: 0
-  <IsEastPaired>k__BackingField: 0
-  <IsWestPaired>k__BackingField: 0
-  <Name>k__BackingField: 
 --- !u!1001 &1587280341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28668,6 +28752,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 723.888
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1913988718}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 372357909}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -28716,26 +28820,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 723.888
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W10)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1913988718}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 372357909}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &1587565510
@@ -28914,6 +28998,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -678.645
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W196)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 224822893}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -28961,26 +29065,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (32)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 38
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -678.645
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W196)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 224822893}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -29652,6 +29736,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 708.807
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 856523673}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 468690390}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -29700,26 +29804,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 708.807
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W12)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 856523673}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 468690390}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1 &1694099622
@@ -30188,6 +30272,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -45.243
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W112)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 92734409}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1929622100}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -30236,34 +30348,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (20)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -45.243
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W112)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 92734409}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1929622100}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &1779229787
@@ -30273,6 +30357,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -173.4315
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W129)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 165398323}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1782477498}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -30320,30 +30428,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (26)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -173.4315
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W129)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 165398323}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1782477498}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -30897,6 +30981,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -505.2135
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W173)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1163475037}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 2098089804}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -30944,30 +31052,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (32)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -505.2135
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W173)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1163475037}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 2098089804}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -36364,6 +36448,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30.162
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W110)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1142446734}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 92734409}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsEastPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <IsWestPaired>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -36411,34 +36523,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_Name
       value: junctionBox (19)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -30.162
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W110)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1142446734}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 92734409}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsEastPaired>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <IsWestPaired>k__BackingField
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
@@ -37532,6 +37616,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 678.645
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 468690390}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 259526415}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -37580,26 +37684,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 678.645
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W16)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 468690390}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 259526415}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &2080514321
@@ -37609,6 +37693,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 45.243
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W100)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 1941899195}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 1976526518}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -37657,26 +37761,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (15)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 45.243
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W100)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 1941899195}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 1976526518}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!1001 &2083747531
@@ -38102,6 +38186,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1211660522}
     m_Modifications:
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -633.402
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: m_Name
+      value: EasternJunctionBox (W190)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <East>k__BackingField
+      value: 
+      objectReference: {fileID: 191433279}
+    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+      propertyPath: <West>k__BackingField
+      value: 
+      objectReference: {fileID: 224822893}
     - target: {fileID: -8679921383154817045, guid: d3dbe9d665459fb4aa9c529f82dc7d31, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -38150,26 +38254,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: junctionBox (32)
       objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_RootOrder
-      value: 36
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -633.402
-      objectReference: {fileID: 0}
-    - target: {fileID: 2292623077212986030, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: m_Name
-      value: EasternJunctionBox (W190)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <East>k__BackingField
-      value: 
-      objectReference: {fileID: 191433279}
-    - target: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
-      propertyPath: <West>k__BackingField
-      value: 
-      objectReference: {fileID: 224822893}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
 --- !u!4 &2140354242 stripped
@@ -38527,7 +38611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1828348691772819567, guid: 7a796782dd6a3654cb86b82746cfcb71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 34.66
+      value: 34.011
       objectReference: {fileID: 0}
     - target: {fileID: 1828348691772819567, guid: 7a796782dd6a3654cb86b82746cfcb71, type: 3}
       propertyPath: m_LocalPosition.z
@@ -38878,6 +38962,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1484736685489307668, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
   m_PrefabInstance: {fileID: 5325340873356350063}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5325340873356350065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7339026480650777550, guid: f294cc262bd8ea04fb77af84899441ea, type: 3}
+  m_PrefabInstance: {fileID: 5325340873356350063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8341d81a47ef493f8a532bfa9b7c1d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5391147532192068490
 PrefabInstance:
   m_ObjectHideFlags: 0
