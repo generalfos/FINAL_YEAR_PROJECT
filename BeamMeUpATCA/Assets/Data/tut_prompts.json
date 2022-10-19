@@ -22,97 +22,116 @@ For telescopes, it reduces the quality of a scan resulting in lower score."
 			{
 			"seq_no": 3,
 			"title": "Repair",
-			"content": "When it drops low enough, an icon appears above the structure to show that things are getting critical.\n
-						Note that this telescope has the spanner icon above it. You’d better get the engineer to fix it.\n
-						To do this, left click the engineer, then right click the damaged array and select repair."
+			"content": "When it drops low enough, the array icons in the bottom right will start changing colours\n
+Note the state of the icons now.\n
+If they are not green, in order to fix the array you must left click the engineer, then use the (default: 3) key while hovering over the array to mend it."
 			},
 			{
 			"seq_no": 4,
 			"title": "Repair Times",
-			"content": "Repairing structures take time! This engineer won’t be able to do anything else until the dish is fixed."
+			"content": "Repairing structures take time! Any engineer occupied with fixing a dish can't do anything else until the dish is fixed."
 			},
 			{
 			"seq_no": 5,
-			"title": "Array Movement",
-			"content": "The telescopes aren’t static, they need to move along these rails. Note that the rails are also damaged.\n
-						The more damaged the rails, the slower the telescopes move when being moved to a new configuration.\n
-						Fix them by left clicking the engineer, and right clicking the rails and selecting repair."
+			"title": "Rail System",
+			"content": "The telescopes aren't static, they need to move along these rails. Note that the rails are also damaged.\n
+The more damaged the rails, the slower the telescopes move when being moved to a new configuration.\n
+You fix them the same way you fix arrays."
 			},
 			{
 			"seq_no": 6,
 			"title": "Unit Morale",
 			"content": "Note that the engineer also has a similar health bar. This is their morale. The lower a player’s morale,\n
-						the slower they perform tasks around the array. To refill their morale, they need to rest. \n
-						To do this, they need to go into town for a break."
+the slower they perform tasks around the array. To refill their morale, they need to rest. \n
+To do this, they need to go into town for a break."
 			},
 			{
 			"seq_no": 7,
 			"title": "Restoring Morale",
-			"content": "Left click the engineer, right click the bus stop and select 'Rest in town'"
+			"content": "To restore a units morale, you left click the unit, right click the bus stop and select 'Rest in town'"
 			},
 			{
 			"seq_no": 8,
 			"title": "Meet the Scientist",
-			"content": "The engineer will return shortly with full morale. Whilst we wait lets meet the scientist.\n
-						This is our scientist. We are going to send them to the observation room to keep a closer eye on the array.\n
-						While there is a character in the observation room, you get more points when completing a scan.\n
-						Left click the scientist, right click the Observation Room and click 'Observe'."
+			"content": "Lets meet the scientist.\n
+Scientists can be sent to the observation room to keep a closer eye on the array.\n
+While there is a character in the observation room, you get more points when completing a scan.\n
+To do this, left click the scientist, press (default: 1) while hovering over the observation station."
 			},
 			{
 			"seq_no": 9,
 			"title": "Stationing Units",
-			"content": "When a player is stationed in a building, a player icon appears above that building."
+			"content": "When a player is stationed in a building, a player icon shifts to indicate which building the unit is in."
 			},
 			{
 			"seq_no": 10,
 			"title": "The Weather Station",
 			"content": "The weather is looking grim. We should head to the Weather Station to keep an eye on things.\n
-						Left click the Scientist icon above the Observation Room, then right click “Observe” in the Weather Station.\n
-						Whilst there is a character observing in the Weather Station, you will get extra time to prepare for inclement conditions when a weather warning is issued."
+To do this select the scientist icon in the bottom left, then press (default: 1) while hovering over the Weather Station.\n
+Whilst there is a character observing in the Weather Station, you will get extra time to prepare for inclement conditions when a weather warning is issued."
 			},
 			{
 			"seq_no": 11,
-			"title": "Engineer Return",
-			"content": "The engineer is back from town! Note they now have a full morale bar."
+			"title": "Unit Return",
+			"content": "Upon unit return from relaxing activities in town they will have a fully replenished morale bar"
 			},
 			{
 			"seq_no": 12,
 			"title": "Radio Interference",
-			"content": "This tourist is using their mobile phone. Mobile phones emit radio signals which play havoc with radio telescope observations!\n
-						You need to tell this tourist to turn off their phone. Left click the engineer, then right click the tourist and select “Confiscate Phone”"
+			"content": "Sometimes tourists continue to use their mobile phone on site.\n
+Mobile phones emit radio signals which play havoc with radio telescope observations!\n
+You need to tell tourists such as these to turn off their phone. Left click the engineer, then right click the tourist and select “Confiscate Phone”."
 			},
 			{
 			"seq_no": 13,
 			"title": "Weather - High Winds",
 			"content": "A storm is coming! High wind can damage the array and dishes need to be stowed.\n
-						Luckily, there is a scientist observing in the Weather Station and we have some extra time to prepare.\n
-						Left click the engineer, right click the highlighted telescope and select 'Stow'."
+Luckily, when there is a scientist observing in the Weather Station and we have some extra time to prepare.\n
+To do this, left click the engineer, then press: (default: 6) while hovering your cursor over the array"
 			},
 			{
 			"seq_no": 14,
 			"title": "Multi Unit Commands",
-			"content": "There are two more engineers in the shed and we should put them to use!\n
-						Click on an engineer icon above the shed and right click the highlighted telescope and select 'Stow'.\n
-						Do the same with the other engineer icon and the other highlighted telescope.\n
-						Use your engineers to stow the remaining telescopes"
+			"content": "You have more engineers at your disposal and we should put them to use!\n
+To do this left click multiple engineers at a time then hover over a telescope and select 'Stow'.\n"
 			},
 			{
 			"seq_no": 15,
 			"title": "Morale Loss (Storms)",
-			"content": "Get your engineers inside! They lose morale faster if they get caught in a storm.\n
-						Left click and engineer, right click any building and select 'Hunker Down' after you right click on the Shed,\n
-						Observation Room, or Weather Station. Do this for all engineers"
+			"content": "During storms you must get your engineers inside! They lose morale faster if they get caught in a storm.\n
+Left click and engineer, right click any building and select 'Hunker Down' after you right click on the Shed,\n
+Observation Room, or Weather Station."
 			},
 			{
 			"seq_no": 16,
 			"title": "Weather (Lightning)",
-			"content": "There is another danger that storms present to the array; A lightning strike has cut the power supply to the array.\n
-						Note the failed power alert! Left click any engineer icon above a building then right click the shed and select 'Activate Generators'"
+			"content": "There is another danger that storms present to the array; A lightning strike can cut the power supply to the array.\n
+To fix this you must left click any engineer icon above a building then right click the shed and select 'Activate Generators'."
 			},
 			{
 			"seq_no": 17,
-			"title": "Power Restored",
-			"content": "Power has been restored to the array! The generators will automatically turn off once network power has been restored."
+			"title": "Array Configuration",
+			"content": "In order to observe different targets the array must be reconfigured. Individual dishes will need to be moved to align \n
+with different junction boxes. All dishes need to be stowed before they can be moved. To do this click on any engineer icon, then press (default: 6) while hovering over a dish.\n
+Do this for all the dishes."
+			},
+			{
+			"seq_no": 18,
+			"title": "Array Movements",
+			"content": "Once all dishes are stowed, you can begin moving the arrays to get them to their correct junction box for the current configuration.\n
+To move a dish, select an engineer and get them to enter the array you want to move. Then press (default: 4) while hovering over the empty slot you want to move to."
+			},
+			{
+			"seq_no": 19,
+			"title": "Score & Observation Progress",
+			"content": "Once the array is in the correct configuration and all array components are non critical, both your score and observation progress
+will start increasing. We must be careful though and keep an eye on things to make sure the observation goes smoothly"
+			},
+			{
+			"seq_no": 20,
+			"title": "Tutorial Complete",
+			"content": "Congragulations the tutorial is complete. Feel free to have a try practicing what you have learnt during this tutorial.\n
+When you are ready, return to the main menu to explore other modes."
 			}
 		]
 }
