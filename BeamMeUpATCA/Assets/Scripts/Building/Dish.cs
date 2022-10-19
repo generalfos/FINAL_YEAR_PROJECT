@@ -79,6 +79,15 @@ namespace BeamMeUpATCA
             {
                 HandleMovement(Time.deltaTime);
             }
+
+            if (_isDishRotating || _isTurretRotating || IsMoving)
+            {
+                PlayAudio();
+            }
+            else
+            {
+                StopAudio();
+            }
         }
 
         #endregion // End of 'Dish Initialization'
@@ -109,26 +118,14 @@ namespace BeamMeUpATCA
             _turretRotationPercent = turretComparison ? 1f : 0f;
         }
 
+        bool _isDishRotating = false;
+        bool _isTurretRotating = false;
         private void HandleRotation(float time)
         {
-            bool isDishRotating = _dishRotationPercent < 1f;
-            bool isTurretRotating = _turretRotationPercent < 1f;
+            _isDishRotating = _dishRotationPercent < 1f;
+            _isTurretRotating = _turretRotationPercent < 1f;
 
-            if (isDishRotating || isTurretRotating || IsMoving)
-            {
-                if (!soundPlaying)
-                {
-                    soundPlaying = true;
-                    if(rotationSound) rotationSound.Play();
-                }
-            }
-            else if (soundPlaying)
-            {
-                if(rotationSound) rotationSound.Stop();
-                soundPlaying = false;
-            }
-            
-            if (isDishRotating)
+            if (_isDishRotating)
             {
                 _dishRotationPercent += time * rotationSpeed;
                 _dishRotationPercent = Mathf.Clamp( _dishRotationPercent, 0f, 1f);
@@ -141,7 +138,7 @@ namespace BeamMeUpATCA
                 _unstowedAltitude = IsStowed ? _unstowedAltitude : -dish.transform.localEulerAngles.z;
             }
 
-            if (isTurretRotating)
+            if (_isTurretRotating)
             {
                 _turretRotationPercent += time * rotationSpeed;
                 _turretRotationPercent = Mathf.Clamp(_turretRotationPercent, 0, 1f);
@@ -154,7 +151,7 @@ namespace BeamMeUpATCA
                 _unstowedAzimuth = IsStowed ? _unstowedAzimuth : turret.transform.localEulerAngles.y;
             }
 
-            if (!isDishRotating && !isTurretRotating && !IsStowed && _previousLockState.Item1)
+            if (!_isDishRotating && !_isTurretRotating && !IsStowed && _previousLockState.Item1)
             {
                 IsLocked = _previousLockState.Item2;
                 _previousLockState.Item1 = false;
@@ -189,21 +186,6 @@ namespace BeamMeUpATCA
 
         private void HandleMovement(float time)
         {
-            if (IsMoving || _dishMovementPercent < 1f || IsStowed)
-            {
-                if (!soundPlaying)
-                {
-                    soundPlaying = true;
-                    Debug.Log("Test");
-                    if (rotationSound) rotationSound.Play();
-                }
-            }
-            else if (soundPlaying)
-            {
-                if(rotationSound) rotationSound.Stop();
-                soundPlaying = false;
-            }
-            
             if (!IsMoving) return;
             
             // Dock all paths to goalBox
@@ -332,5 +314,34 @@ namespace BeamMeUpATCA
         }
         
         #endregion // End of 'Mending'
+
+        #region Play/Stop Audio
+
+        private bool isAudioPlaying = false;
+        private void PlayAudio()
+        {
+            if (rotationSound)
+            {
+                if (!isAudioPlaying)
+                {
+                    rotationSound.Play();
+                }
+
+                isAudioPlaying = true;
+            }
+        }
+        
+        private void StopAudio()
+        {
+            if (rotationSound)
+            {
+                if (isAudioPlaying)
+                {
+                    rotationSound.Stop();
+                }
+                isAudioPlaying = false;
+            }
+        }
+        #endregion // End of 'Play/Stop Audio'
     }
 }
