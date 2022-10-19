@@ -4,40 +4,31 @@ namespace BeamMeUpATCA
 {
     public class EnterCommand : GotoCommand
     {
+        private bool _conditionsMet = false;
+        private Enterable _building = null;
+
         // Commands Unit to Enter the building at the Command.Position
         // Conditions: 
         // 1. Building exists at Command.Position
         // 2. Building is Enterable
-        protected override void CommandAwake() { Name = "Enter"; }
-
-        private bool _conditionsMet = false;
-        private Enterable _building = null;
-        
-        // Check Command conditions. If conditions met but the unit is not 
-        // at the building dock, call Pathfinder - Goto(Camera, Vector2)
-        // Check in Update() for (IsGotoFinished && CommandConditions).
-        // Ensure methods respect the expected call count (single vs multiple calls)
-        // of the building interface methods.
         public override void Execute()
         {
             // Action which cannot be preformed from inside a building.
-            if (!(unit.BuildingInside is null)) return;
-            
-            Debug.Log("Enter!");
-            
-            IInteractable interactable = Selector.SelectGameObject(ActiveCamera, Position, Mask.Building);
+            if (!(Unit.BuildingInside is null)) return;
+
+            IInteractable interactable = Selector.SelectGameObject(RayData.Item1, RayData.Item2, Mask.Building);
 
             // If interactable is null or not enterable this will fail and conditions will not be met.
             if (!(interactable is Building) || !(interactable is Enterable enterable)) return;
 
             _building = enterable;
             _conditionsMet = true;
-            if (((Building)_building).Anchors.CanAnchor(unit.transform.position))
+            if (((Building)_building).Anchors.CanAnchor(Unit.transform.position))
             {
-                _building.Enter(unit);
+                _building.Enter(Unit);
                 // Check if enter was successful
-                if (_building.IsInside(unit)) 
-                    unit.EnterBuilding((Building) _building);
+                if (_building.IsInside(Unit)) 
+                    Unit.EnterBuilding((Building) _building);
                 else
                 {
                     _conditionsMet = false;
@@ -47,7 +38,7 @@ namespace BeamMeUpATCA
             {
                 Debug.Log("Enter! Enter");
                 Vector3 position = ((Building)_building).Anchors.GetAnchorPoint();
-                Goto(ActiveCamera, ActiveCamera.WorldToScreenPoint(position));
+                Goto(RayData);
             }
         }
 
@@ -57,12 +48,12 @@ namespace BeamMeUpATCA
         {
             base.Update();
             if (!(Building)_building) return;
-            if (((Building)_building).Anchors.CanAnchor(unit.transform.position))
+            if (((Building)_building).Anchors.CanAnchor(Unit.transform.position))
             {
-                _building.Enter(unit);
+                _building.Enter(Unit);
                 // Check if enter was successful
-                if (_building.IsInside(unit)) 
-                    unit.EnterBuilding((Building) _building);
+                if (_building.IsInside(Unit)) 
+                    Unit.EnterBuilding((Building) _building);
                 else
                 {
                     _conditionsMet = false;
@@ -72,6 +63,6 @@ namespace BeamMeUpATCA
 
         // Should return true if the command has finished execution. Goal condition.
         // Consider adding a timeout to the command if it doesn't have an guaranteed end state.
-        public override bool IsFinished() => !_conditionsMet || ((Building)_building && _building.IsInside(unit));
+        public override bool IsFinished() => !_conditionsMet || ((Building)_building && _building.IsInside(Unit));
     }
 }

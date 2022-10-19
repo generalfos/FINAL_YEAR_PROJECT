@@ -4,22 +4,19 @@ namespace BeamMeUpATCA
 {
     public class GotoCommand : Command
     {
-        protected bool IsGoingTo = false;
-        private bool IsGotoFinished => IsGoingTo && unit.Pathfinder.PathFinished();
+        protected bool isGoingTo = false;
+        private bool IsGotoFinished => isGoingTo && Unit.Pathfinder.PathFinished();
+        private bool AbleToPath { get; set; } = false;
 
         // Commands Unit to Command.Position using Pathfinder.
         // Conditions: 1. Command.Position is a valid walkable position.
-        protected override void CommandAwake() { Name = "Goto"; }
-
-        private bool AbleToPath { get; set; } = false;
-        
         public override void Execute() 
         {
             // Action which cannot be preformed from inside a building.
-            if (unit.BuildingInside) return;
+            if (Unit.BuildingInside) return;
             
             AbleToPath = true;
-            Goto(ActiveCamera, Position);
+            Goto(RayData);
         }
 
         public override bool IsFinished() 
@@ -31,33 +28,33 @@ namespace BeamMeUpATCA
         private bool _isPathCalculated = false;
         protected virtual void Update()
         {
-            if (!_isPathCalculated) _isPathCalculated = unit.Pathfinder.RunPathing();
+            if (!_isPathCalculated) _isPathCalculated = Unit.Pathfinder.RunPathing();
         }
 
-        protected void Goto(Camera cam, Vector2 position) 
+        protected void Goto((Ray, float) rayCastData) 
         {
-            IsGoingTo = true;
-            unit.Pathfinder.Path(cam, position, Offset);
+            isGoingTo = true;
+            Unit.Pathfinder.Path(rayCastData, Offset);
 
-            unit.Pathfinder.DontDestroyPathOnCancel();
+            Unit.Pathfinder.DontDestroyPathOnCancel();
         }
 
         protected virtual void OnDisable() 
         {
             // Pauses path if command is disabled
-            if (IsGoingTo) unit.Pathfinder.SetPausePath(true);
+            if (isGoingTo) Unit.Pathfinder.SetPausePath(true);
         }
 
         protected virtual void OnEnable() 
         {
             // Unpauses path (if path existed) if command is enabled
-            if (IsGoingTo) unit.Pathfinder.SetPausePath(false);
+            if (isGoingTo) Unit.Pathfinder.SetPausePath(false);
         }
 
         protected virtual void OnDestroy() 
         {
             // Destroy path is command is canceled.
-            if (IsGoingTo) unit.Pathfinder.CancelPath();
+            if (isGoingTo) Unit.Pathfinder.CancelPath();
         }
     }
 }

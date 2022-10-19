@@ -50,6 +50,9 @@ namespace BeamMeUpATCA
 
         public void CommandUnits<T>(bool queue, Vector2 position) where T : Command
         {
+            // cacheRayData to allow Commands to handle how Ray is used, while also saving on performance
+            (Ray, float) cacheRayData = (ActiveCamera.ScreenPointToRay(position), ActiveCamera.farClipPlane);
+
             int offset = 0;
             foreach (Unit unit in _selectedUnits)
             {
@@ -57,18 +60,10 @@ namespace BeamMeUpATCA
                 Command command = (Command) unit.gameObject.AddComponent(commandType);
 
                 // Command initialization
-                command.ActiveCamera = ActiveCamera;
                 command.Offset = offset;
-                // TODO: Vector2 to Vector3 should be calculated on init, rather than when needed (like with pathfinder)
-                // TODO: This would require Pathfinder to also be refactored to take a Vector3 (instead of Vector2)
-                command.Position = position;
-
-                if (!queue)
-                {
-                    command.SkipQueue = true;
-                    command.ResetQueue = true;
-                }
-
+                command.RayData = cacheRayData;
+                command.ResetQueue = command.SkipQueue = !queue;
+                
                 #if UNITYEDITOR
                 Debug.Log("Commanding " + _selectedUnits[i].name + " to preform the " + command.Name + " command");
                 #endif
