@@ -4,6 +4,9 @@ namespace BeamMeUpATCA
 {
     public class LockCommand : GotoCommand
     {
+        private bool _isWaiting = false;
+        private Moveable _building = null;
+        
         // Commands Unit to Lock a building at the Command.Position
         // Conditions:
         // 1. Building exists at Command.Position
@@ -12,21 +15,14 @@ namespace BeamMeUpATCA
         // 1. Unit.BuildingInside != null
         // 2. Building is Enterable && Lockable
         // 3. Unit.BuildingInside.IsInside(unit) == true
-        protected override void CommandAwake() { Name = "Lock"; }
-        
-        private bool _isWaiting = false;
-        private Moveable _building = null;
-        
-        // Check if unit is currently in building. If so just call the lock command, otherwise
-        // call the unit pathfinder to navigate to the building and then attempt to lock.
         public override void Execute()
         {
-            if (!(unit.BuildingInside is null))
+            if (!(Unit.BuildingInside is null))
             {
-                Building building = unit.BuildingInside;
+                Building building = Unit.BuildingInside;
 
                 // If building is not enterable (or the unit is not inside) return without setting _conditionsMet
-                if (!(building is Enterable enterable) || !(enterable.IsInside(unit))) return;
+                if (!(building is Enterable enterable) || !(enterable.IsInside(Unit))) return;
             
                 // If building is not lockable return without setting _conditionsMet
                 if (!(building is Moveable moveable)) return;
@@ -37,31 +33,32 @@ namespace BeamMeUpATCA
             }
             else
             {
-                IInteractable interactable = Selector.SelectGameObject(ActiveCamera, Position, Mask.Building);
+                IInteractable interactable = Selector.SelectGameObject(RayData.Item1, RayData.Item2, Mask.Building);
 
                 // If interactable is null or not moveable this will fail and conditions will not be met.
                 if (!(interactable is Moveable moveable)) return;
             
                 _building = moveable;
 
-                if (((Building)_building).Anchors.CanAnchor(unit.transform.position))
+                if (((Building)_building).Anchors.CanAnchor(Unit.transform.position))
                 {
                     _building.ToggleLock();
                 }
                 else
                 {
                     Vector3 position = ((Building)_building).Anchors.GetAnchorPoint();
-                    Goto(ActiveCamera, ActiveCamera.WorldToScreenPoint(position));
+                    Goto(RayData);
                     _isWaiting = true;
                 }
             }
         }
         
         // If still waiting to get to the building.position keep checking in update
-        private void Update()
+        protected override void Update()
         {
-            if (!(Building)_building || !(unit.BuildingInside is null)) return;
-            if (((Building)_building).Anchors.CanAnchor(unit.transform.position) && IsGoingTo)
+            base.Update();
+            if (!(Building)_building || !(Unit.BuildingInside is null)) return;
+            if (((Building)_building).Anchors.CanAnchor(Unit.transform.position) && isGoingTo)
             {
                 _building.ToggleLock();
                 _isWaiting = false;

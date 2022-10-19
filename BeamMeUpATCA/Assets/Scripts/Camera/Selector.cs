@@ -1,7 +1,5 @@
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.AI;
-using System;
 
 namespace BeamMeUpATCA
 {
@@ -10,7 +8,13 @@ namespace BeamMeUpATCA
         public static IInteractable SelectGameObject(Camera camera, Vector2 screenPoint, int selectionMask) 
         {
             Ray ray = camera.ScreenPointToRay(screenPoint);
-            if (Physics.Raycast(ray, out RaycastHit hit, camera.farClipPlane, layerMask: selectionMask)) 
+            float cameraClipPlane = camera.farClipPlane;
+            return SelectGameObject(ray, cameraClipPlane, selectionMask);
+        }
+        
+        public static IInteractable SelectGameObject(Ray ray, float farClipPlane, int selectionMask) 
+        {
+            if (Physics.Raycast(ray, out RaycastHit hit, farClipPlane, layerMask: selectionMask)) 
             {
                 if (hit.transform.gameObject.TryGetComponent<IInteractable>(out IInteractable interactable))
                 {
@@ -26,7 +30,14 @@ namespace BeamMeUpATCA
 
         public static Vector3 NearestWalkable(Camera camera, Vector2 screenPoint, int unitOffset = 0, float unitSpacing = 0f)
         {
-            int patternLength = AnglePatternOffset.Length ;
+            Ray ray = camera.ScreenPointToRay(screenPoint);
+            float cameraClipPlane = camera.farClipPlane;
+            return NearestWalkable(ray, cameraClipPlane,unitOffset, unitSpacing);
+        }
+        
+        public static Vector3 NearestWalkable(Ray ray, float farClipPlane, int unitOffset = 0, float unitSpacing = 0f)
+        {
+            int patternLength = AnglePatternOffset.Length;
             
             // Each loop of AnglePatternOffset varies initial angle by 180f ( 0 -> 180 -> 0 -> ...)
             float startingAngle = ((int) unitOffset/patternLength) % 2 == 0 ? 0f : 180f;
@@ -34,8 +45,7 @@ namespace BeamMeUpATCA
 
             Vector3 result = Vector3.zero;
 
-            if (Physics.Raycast(camera.ScreenPointToRay(screenPoint), out RaycastHit hit,
-                    camera.farClipPlane, Mask.Building | Mask.Ground))
+            if (Physics.Raycast(ray, out RaycastHit hit, farClipPlane, Mask.Building | Mask.Ground))
             {
 
                 // Check for building to grab anchor point

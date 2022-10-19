@@ -6,39 +6,34 @@ namespace BeamMeUpATCA
 {
     public class MendCommand : GotoCommand
     {
+        private bool _conditionsMet = false;
+        private Mendable _building = null;
+
         // Commands Unit to Mend the building at the Command.Position
         // Conditions: 
         // 1. Building exists at Command.Position
         // 2. Building is Mendable
-        protected override void CommandAwake()
-        {
-            Name = "Mend";
-        }
-
-        private bool _conditionsMet = false;
-        private Mendable _building = null;
-
         public override void Execute()
         {
-            if (unit.BuildingInside) return;
+            if (Unit.BuildingInside) return;
             
-            IInteractable interactable = Selector.SelectGameObject(ActiveCamera, Position, Mask.Building);
+            IInteractable interactable = Selector.SelectGameObject(RayData.Item1, RayData.Item2, Mask.Building);
 
             // If interactable is null or not mendable this will fail and conditions will not be met.
             if (!(interactable is Mendable mendable)) return;
             
             _building = mendable;
             _conditionsMet = true;
-            if (_building.Anchors.CanAnchor(unit.transform.position))
+            if (_building.Anchors.CanAnchor(Unit.transform.position))
             {
-                _building.Mend(unit);
+                _building.Mend(Unit);
                 // Check if mend was successful
-                _conditionsMet = _building.IsMender(unit);
+                _conditionsMet = _building.IsMender(Unit);
             }
             else
             {
                 Vector3 position = _building.Anchors.GetAnchorPoint();
-                Goto(ActiveCamera, ActiveCamera.WorldToScreenPoint(position));
+                Goto(RayData);
             }
         }
 
@@ -48,11 +43,11 @@ namespace BeamMeUpATCA
         {
             base.Update();
             if (!_building) return;
-            if (_building.Anchors.CanAnchor(unit.transform.position))
+            if (_building.Anchors.CanAnchor(Unit.transform.position))
             {
-                _building.Mend(unit);
+                _building.Mend(Unit);
                 // Check if mend was successful
-                _conditionsMet = _building.IsMender(unit);
+                _conditionsMet = _building.IsMender(Unit);
             }
         }
 
@@ -65,7 +60,7 @@ namespace BeamMeUpATCA
         {
             base.OnDisable();
             if (!_building || !_conditionsMet) return;
-            if (_building.IsMender(unit)) _building.RemoveMender(unit);
+            if (_building.IsMender(Unit)) _building.RemoveMender(Unit);
         }
 
         protected override void OnEnable() 
@@ -74,11 +69,11 @@ namespace BeamMeUpATCA
             
             // If command has been paused rerun anchor and building checks for mend attempt
             if (!_building || !_conditionsMet) return;
-            if (_building.Anchors.CanAnchor(unit.transform.position))
+            if (_building.Anchors.CanAnchor(Unit.transform.position))
             {
-                _building.Mend(unit);
+                _building.Mend(Unit);
                 // Check if mend was successful
-                _conditionsMet = _building.IsMender(unit);
+                _conditionsMet = _building.IsMender(Unit);
             }
         }
 
@@ -86,7 +81,7 @@ namespace BeamMeUpATCA
         {
             base.OnDestroy();
             if (!_building || !_conditionsMet) return;
-            if (_building.IsMender(unit)) _building.RemoveMender(unit);
+            if (_building.IsMender(Unit)) _building.RemoveMender(Unit);
         }
     }
 }

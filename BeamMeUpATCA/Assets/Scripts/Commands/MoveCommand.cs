@@ -10,15 +10,12 @@ namespace BeamMeUpATCA
         // 2. unit.BuildingInside is Enterable
         // 3. unit.BuildingInside is Moveable
         // 4. Building.Lock = false;
-        protected override void CommandAwake() { Name = "Move"; }
-
-        // Unit must be inside dish and it can't be locked. Regardless of outcome return Finished = true
         public override void Execute()
         {
-            Building building = unit.BuildingInside;
+            Building building = Unit.BuildingInside;
 
             // If building is null or not enterable (or the unit is not inside) return without setting _conditionsMet
-            if (!(building is Enterable enterable) || !(enterable.IsInside(unit))) return;
+            if (!(building is Enterable enterable) || !(enterable.IsInside(Unit))) return;
             
             // If building is not workable (or currently being worked) return without setting _conditionsMet
             if (building is Moveable moveable)
@@ -26,10 +23,10 @@ namespace BeamMeUpATCA
                 // Don't bother trying to move dish if it's locked.
                 if (moveable.IsLocked) return;
                 
-                IInteractable interactable = Selector.SelectGameObject(ActiveCamera, Position, Mask.DishSlot);
+                IInteractable interactable = Selector.SelectGameObject(RayData.Item1, RayData.Item2, Mask.DishSlot);
 
                 // If interactable is null or not an ArrangementSlot this will fail and conditions will not be met.
-                if (interactable is ArrangementSlot dishSlot) moveable.Move(unit, dishSlot.transform);
+                if (interactable is ArrangementSlot dishSlot) moveable.Move(Unit, dishSlot.transform);
             }
         }
 

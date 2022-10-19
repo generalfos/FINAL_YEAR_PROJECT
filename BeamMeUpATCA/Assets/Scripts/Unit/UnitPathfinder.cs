@@ -30,12 +30,12 @@ namespace BeamMeUpATCA
         private NavMeshPath _path = new NavMeshPath();
         private Vector3 endPosition;
         
-        public void Path(Camera camera, Vector2 position, int unitOffset) 
+        public void Path((Ray, float) rayCastData, int unitOffset) 
         {
             if (!Agent.isOnNavMesh) return;
             float unitSpacing = UnitOffsetSpacing * (Agent.radius * 2);
             
-            Vector3 selectorPosition = Selector.NearestWalkable(camera, position, unitOffset, unitSpacing);
+            Vector3 selectorPosition = Selector.NearestWalkable(rayCastData.Item1, rayCastData.Item2, unitOffset, unitSpacing);
             if (Vector3.Distance(endPosition, selectorPosition) >= 0.15f)
             {
                 _pathPersistent = _pathFound = false;
