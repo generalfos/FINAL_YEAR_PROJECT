@@ -18,7 +18,7 @@ To build from source, you'll neet to clone the repo and initialise Git LFS as
 we are using the large file system to handle some files.
 
 ```bash
-git clone https://gitlab.com/teamnamefinal/Beammeupatca
+git clone https://gitlab.com/teamnamefinal/Beammeupatca.git
 cd Beammeupatca
 git lfs install
 ```
